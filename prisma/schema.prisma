@@ -1,0 +1,116 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+// ─────────────────────────────────────────
+// ENUM
+// ─────────────────────────────────────────
+
+enum Role {
+  ADMIN
+  EDITOR
+}
+
+enum Hari {
+  SENIN
+  SELASA
+  RABU
+  KAMIS
+  JUMAT
+  SABTU
+  MINGGU
+}
+
+// ─────────────────────────────────────────
+// TABLES
+// ─────────────────────────────────────────
+
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  password  String
+  role      Role     @default(EDITOR)
+  createdAt DateTime @default(now()) @map("created_at")
+  berita    Berita[]
+
+  @@map("users")
+}
+
+model Poli {
+  id        Int      @id @default(autoincrement())
+  namaPoli  String   @map("nama_poli")
+  createdAt DateTime @default(now()) @map("created_at")
+  dokter    Dokter[]
+
+  @@map("poli")
+}
+
+model Dokter {
+  id        Int            @id @default(autoincrement())
+  nama      String
+  spesialis String
+  foto      String?
+  poliId    Int            @map("poli_id")
+  createdAt DateTime       @default(now()) @map("created_at")
+  poli      Poli           @relation(fields: [poliId], references: [id])
+  jadwal    JadwalDokter[]
+
+  @@map("dokter")
+}
+
+model JadwalDokter {
+  id         Int      @id @default(autoincrement())
+  dokterId   Int      @map("dokter_id")
+  hari       Hari
+  jamMulai   String   @map("jam_mulai")
+  jamSelesai String   @map("jam_selesai")
+  createdAt  DateTime @default(now()) @map("created_at")
+  dokter     Dokter   @relation(fields: [dokterId], references: [id])
+
+  @@map("jadwal_dokter")
+}
+
+model Berita {
+  id        Int      @id @default(autoincrement())
+  judul     String
+  isi       String   @db.Text
+  gambar    String?
+  tanggal   DateTime @db.Date
+  userId    Int      @map("user_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@map("berita")
+}
+
+model Layanan {
+  id          Int             @id @default(autoincrement())
+  namaLayanan String          @map("nama_layanan")
+  deskripsi   String?         @db.Text
+  createdAt   DateTime        @default(now()) @map("created_at")
+  detail      LayananDetail[]
+
+  @@map("layanan")
+}
+
+model LayananDetail {
+  id        Int      @id @default(autoincrement())
+  layananId Int      @map("layanan_id")
+  namaPaket String   @map("nama_paket")
+  harga     Decimal  @db.Decimal(12, 2)
+  deskripsi String?  @db.Text
+  createdAt DateTime @default(now()) @map("created_at")
+  layanan   Layanan  @relation(fields: [layananId], references: [id])
+
+  @@map("layanan_detail")
+}

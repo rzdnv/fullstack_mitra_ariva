@@ -4,6 +4,44 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --color-cerise-red-50: #fff0f3;
+  --color-cerise-red-100: #ffe2e8;
+  --color-cerise-red-200: #ffc9d7;
+  --color-cerise-red-300: #ff9cb6;
+  --color-cerise-red-400: #ff6591;
+  --color-cerise-red-500: #ff306e;
+  --color-cerise-red-600: #f31260;
+  --color-cerise-red-700: #cd034e;
+  --color-cerise-red-800: #ab0649;
+  --color-cerise-red-900: #920944;
+  --color-cerise-red-950: #520020;
+
+  --color-havelock-blue-50: #f1f7fd;
+  --color-havelock-blue-100: #deecfb;
+  --color-havelock-blue-200: #c5def8;
+  --color-havelock-blue-300: #9dc9f3;
+  --color-havelock-blue-400: #6faceb;
+  --color-havelock-blue-500: #4c8ce4;
+  --color-havelock-blue-600: #3871d8;
+  --color-havelock-blue-700: #2f5dc6;
+  --color-havelock-blue-800: #2c4ca1;
+  --color-havelock-blue-900: #284280;
+  --color-havelock-blue-950: #1d2a4e;
+
+  --color-azure-50: #f4f6fb;
+  --color-azure-100: #e9edf5;
+  --color-azure-200: #ced8e9;
+  --color-azure-300: #a3b8d6;
+  --color-azure-400: #7192bf;
+  --color-azure-500: #5074a7;
+  --color-azure-600: #406093;
+  --color-azure-700: #324a72;
+  --color-azure-800: #2d405f;
+  --color-azure-900: #293751;
+  --color-azure-950: #1b2436;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
