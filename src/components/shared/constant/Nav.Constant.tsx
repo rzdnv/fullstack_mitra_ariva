@@ -4,14 +4,10 @@ import { FaYoutube } from "react-icons/fa";
 
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
+  { label: "Profile", href: "/profile" },
   { label: "Dokter", href: "/dokter" },
   { label: "Jadwal Dokter", href: "/jadwaldokter" },
   { label: "Layanan", href: "/layanan" },
-];
-
-const NAV_PROFILE = [
-  { label: "Visi Misi", href: "/visimisi" },
-  { label: "Tentang Kami", href: "/tentangkami" },
 ];
 
 const BUTTON_ITEMS = [
@@ -48,4 +44,4 @@ const SOSIAL_ITEMS = [
   },
 ];
 
-export { NAV_ITEMS, NAV_PROFILE, BUTTON_ITEMS, SOSIAL_ITEMS };
+export { NAV_ITEMS, BUTTON_ITEMS, SOSIAL_ITEMS };

@@ -21,11 +21,11 @@ import { Menu } from "lucide-react";
 import Image from "next/image";
 import { NAV_ITEMS } from "../constant/Nav.Constant";
 import { cn } from "@/lib/utils";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const Navbar = () => {
-  const router = useRouter();
+  const pathname = usePathname();
 
   const [scrolled, setScrolled] = useState(false);
 
@@ -47,16 +47,16 @@ const Navbar = () => {
           : "bg-transparent border-transparent",
       )}
     >
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+      <div className="container mx-auto flex h-20 items-center justify-between px-4">
         <div className="flex gap-7">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 ">
             <Image
-              src="/images/general/logo_MitraAriva.png"
+              src="/images/logo/logo_MitraAriva.png"
               alt="logo"
               width={200}
               height={200}
-              className="cursor-pointer w-15"
+              className="cursor-pointer w-18"
             />
             <p
               className={cn(
@@ -82,7 +82,7 @@ const Navbar = () => {
                         : "text-white hover:text-havelock-blue-300",
                       {
                         "text-havelock-blue-500 font-bold":
-                          router.pathname === item.href,
+                          pathname === item.href,
                       },
                     )}
                   >
@@ -122,7 +122,7 @@ const Navbar = () => {
                     className={cn(
                       "hover:text-cerise-red-600 w-full text-start font-medium text-gray-500",
                       {
-                        "text-cerise-red-600": router.pathname === item.href,
+                        "text-cerise-red-600": pathname === item.href,
                       },
                     )}
                   >

@@ -71,7 +71,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row w-full justify-between items-center gap-10 mt-10">
           <div className="flex flex-col md:flex-row items-center gap-6 mb-10 md:mb-0">
             <Image
-              src="/images/general/Logo_MitraAriva.png"
+              src="/images/logo/Logo_MitraAriva.png"
               alt="logo"
               width={160}
               height={80}

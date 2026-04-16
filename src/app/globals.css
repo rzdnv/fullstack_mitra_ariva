@@ -5,6 +5,11 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
+  /* FONT */
+  --font-timenewroman: "Times New Roman", Times, serif;
+  --font-playfair: "Playfair Display", serif;
+
+  /* COLOR */
   --color-cerise-red-50: #fff0f3;
   --color-cerise-red-100: #ffe2e8;
   --color-cerise-red-200: #ffc9d7;
@@ -153,6 +158,35 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+}
+
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-80%);
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-80%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee {
+  animation:
+    marquee-left 30s linear infinite,
+    marquee-right 30s linear infinite;
+  animation-direction: alternate;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
 }
 
 @layer base {
