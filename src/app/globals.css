@@ -34,6 +34,30 @@
   --color-havelock-blue-900: #284280;
   --color-havelock-blue-950: #1d2a4e;
 
+  --color-candlelight-50: #fefce8;
+  --color-candlelight-100: #fff9c2;
+  --color-candlelight-200: #ffef89;
+  --color-candlelight-300: #ffde42;
+  --color-candlelight-400: #fdca12;
+  --color-candlelight-500: #ecb106;
+  --color-candlelight-600: #cc8802;
+  --color-candlelight-700: #a36005;
+  --color-candlelight-800: #864b0d;
+  --color-candlelight-900: #723d11;
+  --color-candlelight-950: #431f05;
+
+  --color-your-pink-50: #fdf3f3;
+  --color-your-pink-100: #fde4e3;
+  --color-your-pink-200: #fbc3c1;
+  --color-your-pink-300: #f8aca9;
+  --color-your-pink-400: #f27b77;
+  --color-your-pink-500: #e8504b;
+  --color-your-pink-600: #d4342e;
+  --color-your-pink-700: #b22823;
+  --color-your-pink-800: #932521;
+  --color-your-pink-900: #7b2421;
+  --color-your-pink-950: #420f0d;
+
   --color-azure-50: #f4f6fb;
   --color-azure-100: #e9edf5;
   --color-azure-200: #ced8e9;
@@ -187,6 +211,15 @@
 
 .animate-marquee:hover {
   animation-play-state: paused;
+}
+
+@utility scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @layer base {
