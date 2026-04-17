@@ -19,7 +19,7 @@ interface PropTypes {
 const CardReview = (props: PropTypes) => {
   const { Name, Date, Review, Rating, Gender } = props;
   return (
-    <Card className="min-w-sm ">
+    <Card className="min-w-sm h-full">
       <CardHeader className="flex items-center gap-4">
         <Avatar size="lg">
           <AvatarImage
@@ -33,8 +33,8 @@ const CardReview = (props: PropTypes) => {
           <CardDescription>{Date}</CardDescription>
         </div>
       </CardHeader>
-      <CardContent className="flex flex-col gap-2">
-        <p className="line-clamp-3">{Review}</p>
+      <CardContent className="flex flex-col gap-2 h-full">
+        <p className="line-clamp-3 mb-auto">{Review}</p>
         <div className="flex gap-1">
           {Array.from({ length: Rating }).map((_, index) => (
             <Star
