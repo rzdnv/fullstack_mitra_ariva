@@ -3,6 +3,7 @@ import MainLayout from "../layout";
 import HeroSection from "@/components/home/HeroSection";
 import PartnerSection from "@/components/home/PartnerSection";
 import PoliSection from "@/components/home/PoliSection";
+import ReviewSection from "@/components/home/ReviewSection";
 
 const HomePage = () => {
   return (
@@ -11,6 +12,7 @@ const HomePage = () => {
       <HighlightSection />
       <PartnerSection />
       <PoliSection />
+      <ReviewSection />
     </MainLayout>
   );
 };
