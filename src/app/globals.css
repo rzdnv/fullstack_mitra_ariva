@@ -69,6 +69,18 @@
   --color-azure-800: #2d405f;
   --color-azure-900: #293751;
   --color-azure-950: #1b2436;
+
+  --color-seance-50: #fdf4ff;
+  --color-seance-100: #f9e8ff;
+  --color-seance-200: #f2d1fd;
+  --color-seance-300: #ebadfa;
+  --color-seance-400: #e17bf7;
+  --color-seance-500: #d049ec;
+  --color-seance-600: #b629d0;
+  --color-seance-700: #991fac;
+  --color-seance-800: #831c91;
+  --color-seance-900: #6a1c73;
+  --color-seance-950: #46054d;
 }
 
 @theme inline {

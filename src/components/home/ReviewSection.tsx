@@ -76,7 +76,7 @@ const ReviewSection = () => {
         </h1>
       </div>
 
-      <div className="w-full px-10 md:px-20">
+      <div className="w-full px-10 ">
         <Carousel
           className="w-full"
           opts={{
@@ -84,9 +84,9 @@ const ReviewSection = () => {
             loop: true,
           }}
         >
-          <CarouselContent className="gap-2">
+          <CarouselContent>
             {reviews.map((review, index) => (
-              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+              <CarouselItem key={index} className="sm:basis-1/2 lg:basis-1/3">
                 <div className="p-1 md:p-2 h-full">
                   <CardReview
                     Name={review.Name}

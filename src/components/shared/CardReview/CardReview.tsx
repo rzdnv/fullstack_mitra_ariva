@@ -19,7 +19,7 @@ interface PropTypes {
 const CardReview = (props: PropTypes) => {
   const { Name, Date, Review, Rating, Gender } = props;
   return (
-    <Card className="min-w-sm h-full">
+    <Card className=" h-full">
       <CardHeader className="flex items-center gap-4">
         <Avatar size="lg">
           <AvatarImage

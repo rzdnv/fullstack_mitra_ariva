@@ -1,4 +1,6 @@
-import CardReview from "../shared/CardReview/CardReview";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Image from "next/image";
+import { Button } from "../ui/button";
 
 const ServiceSection = () => {
   return (
@@ -11,58 +13,83 @@ const ServiceSection = () => {
           Layanan Profesional untuk Kualitas Hidup Lebih Baik
         </h1>
       </div>
-      <div className="flex gap-4 p-2 w-full overflow-x-auto scrollbar-hide">
-        <CardReview
-          Name="Marisa Nafi Mughnisa"
-          Date="17 februari 2026"
-          Review="pelayanan nya ramah, alhamdulilah saya habis tindakan tertusuk
-              paku, dengan tenaga profesional di rumah sakit ini lancar dan
-              biaya terjangkau, para staf juga sangat membantu dalam prosesnya"
-          Rating={5}
-          Gender="cewe"
-        />
-        <CardReview
-          Name="Farel zaqie"
-          Date="11 oktober 2025"
-          Review="rumah sakit langganan pelayanan oke dan memuaskan"
-          Rating={5}
-          Gender="cowo"
-        />
-        <CardReview
-          Name="Wiwit Lestari"
-          Date="3 oktober 2025"
-          Review="Pelayanan Ramah,tempatnya nyaman dan dokternya menyenangkan."
-          Rating={4}
-          Gender="cewe"
-        />
-        <CardReview
-          Name="Nur Rokhman"
-          Date="14 november 2025"
-          Review="Akses parkirnya enak, tidak perlu jalan kaki jauh jauh"
-          Rating={5}
-          Gender="cowo"
-        />
-        <CardReview
-          Name="Hanifah Dwimutia"
-          Date="20 desember 2025"
-          Review="overall baguss sihh, nyaman buat berobat, bersih, pelayanan bagus. akses juga gampang, bener2 dipinggir jalan besar, ke tempat2 penting kaya atm/alfamart juga deket"
-          Rating={5}
-          Gender="cewe"
-        />
-        <CardReview
-          Name="Karmila Riska"
-          Date="8 november 2025"
-          Review="Tempatnya nyaman dan ga berisik"
-          Rating={5}
-          Gender="cewe"
-        />
-        <CardReview
-          Name="Supriyanto"
-          Date="17 november 2025"
-          Review="RSKB mitra ariva..fasilitas bagus,bersih dan nyaman..pelayanan memuaskan..petugas ramah dan cekatan..maju terus RSKB mitra ariva"
-          Rating={5}
-          Gender="cowo"
-        />
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
+        <Card className="bg-havelock-blue-500/20  max-w-sm p-6">
+          <CardHeader>
+            <CardTitle className="text-havelock-blue-800 text-2xl font-bold">
+              Medical Check Up
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <h2 className="text-slate-800 w-3/4">
+              Kenali kondisi tubuh Anda lebih dalam sebagai langkah awal
+              investasi hidup sehat.
+              <br />.
+            </h2>
+            <div className="flex gap-2 items-end">
+              <Button variant="link" size="lg" className="text-slate-800">
+                Cek Detail
+              </Button>
+              <Image
+                src="/images/logo/mcu.png"
+                alt="MCU"
+                width={200}
+                height={200}
+                className="w-50 opacity-70"
+              />
+            </div>
+          </CardContent>
+        </Card>
+        <Card className="bg-your-pink-400/20  max-w-sm p-6">
+          <CardHeader>
+            <CardTitle className="text-your-pink-800 text-2xl font-bold">
+              Ultrasonografi (USG)
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <h2 className="text-slate-800 w-3/4">
+              Abadikan momen berharga dan pantau tumbuh kembang si kecil dengan
+              teknologi citra 3D & 4D yang detail dan nyata.
+            </h2>
+            <div className="flex gap-2 items-end">
+              <Button variant="link" size="lg" className="text-slate-800">
+                Cek Detail
+              </Button>
+              <Image
+                src="/images/logo/usg.png"
+                alt="MCU"
+                width={200}
+                height={200}
+                className="w-50 opacity-70"
+              />
+            </div>
+          </CardContent>
+        </Card>
+        <Card className="bg-seance-500/20  max-w-sm p-6">
+          <CardHeader>
+            <CardTitle className="text-seance-800 text-2xl font-bold">
+              Layanan Booster Vitamin
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <h2 className="text-slate-800 w-3/4">
+              Solusi praktis dan cepat untuk menjaga performa tubuh tetap prima
+              di tengah aktivitas yang padat.
+            </h2>
+            <div className="flex gap-2 items-end">
+              <Button variant="link" size="lg" className="text-slate-800">
+                Cek Detail
+              </Button>
+              <Image
+                src="/images/logo/infus.png"
+                alt="MCU"
+                width={200}
+                height={200}
+                className="w-50 opacity-70"
+              />
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
