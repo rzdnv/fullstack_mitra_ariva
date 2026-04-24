@@ -54,8 +54,12 @@ export async function DELETE(
 ) {
   try {
     const { id } = await params;
+    const dokter = await getDokterById(Number(id));
+
+    if (!dokter) return errorResponse("Dokter tidak ditemukan", 404);
+
     await deleteDokter(Number(id));
-    return successResponse(null, "Dokter berhasil dihapus");
+    return successResponse(dokter, "Dokter berhasil dihapus");
   } catch (error) {
     console.error("[DELETE /api/dokter/:id]", error);
     return errorResponse("Gagal menghapus dokter");

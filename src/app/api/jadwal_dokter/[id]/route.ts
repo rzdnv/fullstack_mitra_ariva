@@ -54,8 +54,12 @@ export async function DELETE(
 ) {
   try {
     const { id } = await params;
+    const jadwal = await getJadwalById(Number(id));
+
+    if (!jadwal) return errorResponse("Jadwal tidak ditemukan", 404);
+
     await deleteJadwal(Number(id));
-    return successResponse(null, "Jadwal berhasil dihapus");
+    return successResponse(jadwal, "Jadwal berhasil dihapus");
   } catch (error) {
     console.error("[DELETE /api/jadwal/:id]", error);
     return errorResponse("Gagal menghapus jadwal");

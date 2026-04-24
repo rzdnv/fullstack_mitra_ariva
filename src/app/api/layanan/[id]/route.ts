@@ -54,8 +54,12 @@ export async function DELETE(
 ) {
   try {
     const { id } = await params;
+    const layanan = await getLayananById(Number(id));
+
+    if (!layanan) return errorResponse("Layanan tidak ditemukan", 404);
+
     await deleteLayanan(Number(id));
-    return successResponse(null, "Layanan berhasil dihapus");
+    return successResponse(layanan, "Layanan berhasil dihapus");
   } catch (error) {
     console.error("[DELETE /api/layanan/:id]", error);
     return errorResponse("Gagal menghapus layanan");

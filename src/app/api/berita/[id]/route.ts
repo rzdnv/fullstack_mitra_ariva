@@ -54,8 +54,12 @@ export async function DELETE(
 ) {
   try {
     const { id } = await params;
+    const berita = await getBeritaById(Number(id));
+
+    if (!berita) return errorResponse("Berita tidak ditemukan", 404);
+
     await deleteBerita(Number(id));
-    return successResponse(null, "Berita berhasil dihapus");
+    return successResponse(berita, "Berita berhasil dihapus");
   } catch (error) {
     console.error("[DELETE /api/berita/:id]", error);
     return errorResponse("Gagal menghapus berita");

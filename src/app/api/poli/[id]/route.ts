@@ -54,8 +54,12 @@ export async function DELETE(
 ) {
   try {
     const { id } = await params;
+    const poli = await getPoliById(Number(id));
+
+    if (!poli) return errorResponse("Poli tidak ditemukan", 404);
+
     await deletePoli(Number(id));
-    return successResponse(null, "Poli berhasil dihapus");
+    return successResponse(poli, "Poli berhasil dihapus");
   } catch (error) {
     console.error("[DELETE /api/poli/:id]", error);
     return errorResponse("Gagal menghapus poli");
