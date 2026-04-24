@@ -6,6 +6,7 @@ import {
   deleteBerita,
 } from "@/lib/services/berita.service";
 import { successResponse, errorResponse } from "@/lib/api-response";
+import { requireAuth } from "@/lib/auth-guard";
 
 // GET /api/berita/:id
 export async function GET(
@@ -31,6 +32,9 @@ export async function PUT(
   { params }: { params: Promise<{ id: string }> },
 ) {
   try {
+    const { error } = await requireAuth();
+    if (error) return error;
+
     const { id } = await params;
     const body = await req.json();
     const parsed = updateBeritaSchema.safeParse(body);
@@ -53,6 +57,9 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> },
 ) {
   try {
+    const { error } = await requireAuth();
+    if (error) return error;
+
     const { id } = await params;
     const berita = await getBeritaById(Number(id));
 

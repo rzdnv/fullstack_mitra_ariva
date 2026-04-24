@@ -2,6 +2,7 @@ import { NextRequest } from "next/server";
 import { createDokterSchema } from "@/lib/validations/dokter.validation";
 import { getAllDokter, createDokter } from "@/lib/services/dokter.service";
 import { successResponse, errorResponse } from "@/lib/api-response";
+import { requireAuth } from "@/lib/auth-guard";
 
 // GET /api/dokter
 export async function GET(req: NextRequest) {
@@ -27,6 +28,9 @@ export async function GET(req: NextRequest) {
 // POST /api/dokter
 export async function POST(req: NextRequest) {
   try {
+    const { error } = await requireAuth();
+    if (error) return error;
+
     const body = await req.json();
     const parsed = createDokterSchema.safeParse(body);
 

@@ -6,6 +6,7 @@ import {
   getJadwalByDokter,
 } from "@/lib/services/jadwal.service";
 import { successResponse, errorResponse } from "@/lib/api-response";
+import { requireAuth } from "@/lib/auth-guard";
 
 // GET /api/jadwal
 export async function GET(req: NextRequest) {
@@ -30,6 +31,9 @@ export async function GET(req: NextRequest) {
 // POST /api/jadwal
 export async function POST(req: NextRequest) {
   try {
+    const { error } = await requireAuth();
+    if (error) return error;
+
     const body = await req.json();
     const parsed = createJadwalSchema.safeParse(body);
 

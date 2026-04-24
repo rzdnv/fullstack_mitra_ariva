@@ -5,6 +5,7 @@ import {
   createLayananDetail,
 } from "@/lib/services/layanan.service";
 import { successResponse, errorResponse } from "@/lib/api-response";
+import { requireAuth } from "@/lib/auth-guard";
 
 // GET /api/layanan/detail?layananId=1
 export async function GET(req: NextRequest) {
@@ -27,6 +28,9 @@ export async function GET(req: NextRequest) {
 // POST /api/layanan/detail
 export async function POST(req: NextRequest) {
   try {
+    const { error } = await requireAuth();
+    if (error) return error;
+
     const body = await req.json();
     const parsed = createLayananDetailSchema.safeParse(body);
 

@@ -6,6 +6,7 @@ import {
   deleteLayananDetail,
 } from "@/lib/services/layanan.service";
 import { successResponse, errorResponse } from "@/lib/api-response";
+import { requireAuth } from "@/lib/auth-guard";
 
 // GET /api/layanan/detail/:id
 export async function GET(
@@ -31,6 +32,9 @@ export async function PUT(
   { params }: { params: Promise<{ id: string }> },
 ) {
   try {
+    const { error } = await requireAuth();
+    if (error) return error;
+
     const { id } = await params;
     const body = await req.json();
     const parsed = updateLayananDetailSchema.safeParse(body);
@@ -54,8 +58,12 @@ export async function DELETE(
 ) {
   try {
     const { id } = await params;
+    const detail = await getLayananDetailById(Number(id));
+
+    if (!detail) return errorResponse("Detail layanan tidak ditemukan", 404);
+
     await deleteLayananDetail(Number(id));
-    return successResponse(null, "Detail layanan berhasil dihapus");
+    return successResponse(detail, "Detail layanan berhasil dihapus");
   } catch (error) {
     console.error("[DELETE /api/layanan/detail/:id]", error);
     return errorResponse("Gagal menghapus detail layanan");

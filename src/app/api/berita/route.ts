@@ -6,6 +6,7 @@ import {
   getBeritaTerbaru,
 } from "@/lib/services/berita.service";
 import { successResponse, errorResponse } from "@/lib/api-response";
+import { requireAuth } from "@/lib/auth-guard";
 
 // GET /api/berita
 // GET /api/berita?limit=5
@@ -31,6 +32,9 @@ export async function GET(req: NextRequest) {
 // POST /api/berita
 export async function POST(req: NextRequest) {
   try {
+    const { error } = await requireAuth();
+    if (error) return error;
+
     const body = await req.json();
     const parsed = createBeritaSchema.safeParse(body);
 

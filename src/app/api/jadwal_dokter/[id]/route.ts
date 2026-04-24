@@ -6,6 +6,7 @@ import {
   deleteJadwal,
 } from "@/lib/services/jadwal.service";
 import { successResponse, errorResponse } from "@/lib/api-response";
+import { requireAuth } from "@/lib/auth-guard";
 
 // GET /api/jadwal/:id
 export async function GET(
@@ -31,6 +32,9 @@ export async function PUT(
   { params }: { params: Promise<{ id: string }> },
 ) {
   try {
+    const { error } = await requireAuth();
+    if (error) return error;
+
     const { id } = await params;
     const body = await req.json();
     const parsed = updateJadwalSchema.safeParse(body);
@@ -53,6 +57,9 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> },
 ) {
   try {
+    const { error } = await requireAuth();
+    if (error) return error;
+
     const { id } = await params;
     const jadwal = await getJadwalById(Number(id));
 
