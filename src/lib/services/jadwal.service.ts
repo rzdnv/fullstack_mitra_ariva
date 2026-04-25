@@ -3,6 +3,7 @@ import {
   CreateJadwalInput,
   UpdateJadwalInput,
 } from "@/lib/validations/jadwal.validation";
+import { generateId } from "../generate-id";
 
 export async function getAllJadwal() {
   return await prisma.jadwalDokter.findMany({
@@ -59,6 +60,7 @@ export async function createJadwal(data: CreateJadwalInput) {
 
   return await prisma.jadwalDokter.create({
     data: {
+      id: generateId("jadwal"),
       dokterId: data.dokterId,
       hari: data.hari,
       jamMulai: data.jamMulai,

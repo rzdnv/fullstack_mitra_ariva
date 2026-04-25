@@ -36,7 +36,7 @@ enum Hari {
 // ─────────────────────────────────────────
 
 model User {
-  id        Int      @id @default(autoincrement())
+  id        Int      @id
   username  String   @unique
   password  String
   role      Role     @default(EDITOR)
@@ -47,7 +47,7 @@ model User {
 }
 
 model Poli {
-  id        Int      @id @default(autoincrement())
+  id        Int      @id
   namaPoli  String   @map("nama_poli")
   createdAt DateTime @default(now()) @map("created_at")
   dokter    Dokter[]
@@ -56,7 +56,7 @@ model Poli {
 }
 
 model Dokter {
-  id        Int            @id @default(autoincrement())
+  id        Int            @id
   nama      String
   spesialis String
   foto      String?
@@ -69,7 +69,7 @@ model Dokter {
 }
 
 model JadwalDokter {
-  id         Int      @id @default(autoincrement())
+  id         Int      @id
   dokterId   Int      @map("dokter_id")
   hari       Hari
   jamMulai   String   @map("jam_mulai")
@@ -81,7 +81,7 @@ model JadwalDokter {
 }
 
 model Berita {
-  id        Int      @id @default(autoincrement())
+  id        Int      @id
   judul     String
   isi       String   @db.Text
   gambar    String?
@@ -94,7 +94,7 @@ model Berita {
 }
 
 model Layanan {
-  id          Int             @id @default(autoincrement())
+  id          Int             @id
   namaLayanan String          @map("nama_layanan")
   deskripsi   String?         @db.Text
   createdAt   DateTime        @default(now()) @map("created_at")
@@ -104,7 +104,7 @@ model Layanan {
 }
 
 model LayananDetail {
-  id        Int      @id @default(autoincrement())
+  id        Int      @id
   layananId Int      @map("layanan_id")
   namaPaket String   @map("nama_paket")
   harga     Decimal  @db.Decimal(12, 2)

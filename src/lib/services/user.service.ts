@@ -4,6 +4,7 @@ import {
   CreateUserInput,
   UpdateUserInput,
 } from "@/lib/validations/user.validation";
+import { generateId } from "../generate-id";
 
 const selectUser = {
   id: true,
@@ -36,6 +37,7 @@ export async function createUser(data: CreateUserInput) {
 
   return await prisma.user.create({
     data: {
+      id: generateId("user"),
       username: data.username,
       password: hashedPassword,
       role: data.role,

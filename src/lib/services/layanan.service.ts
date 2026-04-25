@@ -5,6 +5,7 @@ import {
   CreateLayananDetailInput,
   UpdateLayananDetailInput,
 } from "@/lib/validations/layanan.validation";
+import { generateId } from "../generate-id";
 
 // ─────────────────────────────────────────
 // LAYANAN
@@ -38,6 +39,7 @@ export async function getLayananById(id: number) {
 export async function createLayanan(data: CreateLayananInput) {
   return await prisma.layanan.create({
     data: {
+      id: generateId("layanan"),
       namaLayanan: data.namaLayanan,
       deskripsi: data.deskripsi,
     },

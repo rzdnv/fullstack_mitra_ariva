@@ -3,6 +3,7 @@ import {
   CreatePoliInput,
   UpdatePoliInput,
 } from "@/lib/validations/poli.validation";
+import { generateId } from "../generate-id";
 
 export async function getAllPoli() {
   return await prisma.poli.findMany({
@@ -31,6 +32,7 @@ export async function getPoliById(id: number) {
 export async function createPoli(data: CreatePoliInput) {
   return await prisma.poli.create({
     data: {
+      id: generateId("dokter"),
       namaPoli: data.namaPoli,
     },
   });

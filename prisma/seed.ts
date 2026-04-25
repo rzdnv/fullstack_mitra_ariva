@@ -3,6 +3,7 @@ import { PrismaClient } from "../src/generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { Pool } from "pg";
 import bcrypt from "bcryptjs";
+import { generateId } from "@/lib/generate-id";
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
@@ -20,6 +21,7 @@ async function main() {
     where: { username: "admin" },
     update: {},
     create: {
+      id: generateId("user"),
       username: "admin",
       password: hashedPassword,
       role: "ADMIN",

@@ -3,6 +3,7 @@ import {
   CreateDokterInput,
   UpdateDokterInput,
 } from "@/lib/validations/dokter.validation";
+import { generateId } from "../generate-id";
 
 export async function getAllDokter() {
   return await prisma.dokter.findMany({
@@ -43,6 +44,7 @@ export async function getDokterByPoli(poliId: number) {
 export async function createDokter(data: CreateDokterInput) {
   return await prisma.dokter.create({
     data: {
+      id: generateId("dokter"),
       nama: data.nama,
       spesialis: data.spesialis,
       foto: data.foto,

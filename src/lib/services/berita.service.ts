@@ -3,6 +3,7 @@ import {
   CreateBeritaInput,
   UpdateBeritaInput,
 } from "@/lib/validations/berita.validation";
+import { generateId } from "../generate-id";
 
 export async function getAllBerita() {
   return await prisma.berita.findMany({
@@ -53,6 +54,7 @@ export async function getBeritaTerbaru(limit = 5) {
 export async function createBerita(data: CreateBeritaInput) {
   return await prisma.berita.create({
     data: {
+      id: generateId("berita"),
       judul: data.judul,
       isi: data.isi,
       gambar: data.gambar,
