@@ -93,6 +93,7 @@ export async function getLayananDetailById(id: number) {
 export async function createLayananDetail(data: CreateLayananDetailInput) {
   return await prisma.layananDetail.create({
     data: {
+      id: generateId("layananDetail"),
       layananId: data.layananId,
       namaPaket: data.namaPaket,
       harga: data.harga,

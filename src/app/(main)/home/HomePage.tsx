@@ -11,10 +11,10 @@ const HomePage = () => {
     <MainLayout>
       <HeroSection />
       <HighlightSection />
-      <PartnerSection />
       <PoliSection />
       <ServiceSection />
       <ReviewSection />
+      <PartnerSection />
     </MainLayout>
   );
 };
