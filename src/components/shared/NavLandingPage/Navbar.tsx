@@ -47,16 +47,16 @@ const Navbar = () => {
           : "bg-transparent border-transparent",
       )}
     >
-      <div className="container mx-auto flex h-20 items-center justify-between px-4">
+      <div className="container mx-auto flex h-18 items-center justify-between px-4">
         <div className="flex gap-7">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 ">
             <Image
-              src="/images/logo/logo_MitraAriva.png"
+              src="/images/logo/logo_MitraAriva.svg"
               alt="logo"
               width={200}
               height={200}
-              className="cursor-pointer w-18"
+              className="cursor-pointer w-16"
             />
             <p
               className={cn(

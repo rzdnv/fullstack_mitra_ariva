@@ -32,7 +32,7 @@ export async function getPoliById(id: number) {
 export async function createPoli(data: CreatePoliInput) {
   return await prisma.poli.create({
     data: {
-      id: generateId("dokter"),
+      id: generateId("poli"),
       namaPoli: data.namaPoli,
     },
   });
