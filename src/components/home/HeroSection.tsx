@@ -36,7 +36,7 @@ const HeroSection = () => {
               <div className="w-full h-full flex items-center justify-center md:justify-start md:items-end">
                 <div className="p-6 md:p-8 bg-havelock-blue-800/70 m-20 rounded-xl flex gap-4 items-center flex-col md:flex-row">
                   <Image
-                    src="/images/logo/logo_MitraAriva.svg"
+                    src="/images/logo/logo_mitraariva.png"
                     alt="logo"
                     width={200}
                     height={200}
