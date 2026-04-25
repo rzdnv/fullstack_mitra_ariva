@@ -52,7 +52,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 ">
             <Image
-              src="/images/logo/logo_mitraariva.png"
+              src="/images/logo/logo.png"
               alt="logo"
               width={200}
               height={200}
