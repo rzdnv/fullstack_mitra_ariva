@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   description: "Rumah Sakit Khusus Bedah Mitra Ariva",
   icons: {
-    icon: "/images/logo/logo.png",
+    icon: "/images/logo/logo.svg",
   },
 };
 
