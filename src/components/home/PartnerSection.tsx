@@ -13,42 +13,42 @@ const PartnerSection = () => {
       </div>
       <div className="flex gap-10 md:gap-20 animate-marquee ">
         <Image
-          src="/images/mitra/BPJSkesehatanlogo.svg"
+          src="/images/mitra/bpjskesehatan.svg"
           alt="partner"
           width={400}
           height={300}
           className="h-15 md:h-20"
         />
         <Image
-          src="/images/mitra/BPJSketenagakerjaanlogo.svg"
+          src="/images/mitra/bpjsketenagakerjaan.svg"
           alt="partner"
           width={400}
           height={300}
           className="h-15 md:h-20"
         />
         <Image
-          src="/images/mitra/LogoHalodoc.webp"
+          src="/images/mitra/halodoc.webp"
           alt="partner"
           width={400}
           height={300}
           className="h-15 md:h-20"
         />
         <Image
-          src="/images/mitra/BNILife.webp"
+          src="/images/mitra/bnilife.webp"
           alt="partner"
           width={400}
           height={300}
           className="h-15 md:h-20"
         />
         <Image
-          src="/images/mitra/BRILifelogo.svg"
+          src="/images/mitra/brilife.svg"
           alt="partner"
           width={400}
           height={300}
           className="h-15 md:h-20"
         />
         <Image
-          src="/images/mitra/LogoMandiriInhealth.svg"
+          src="/images/mitra/mandiriinhealth.svg"
           alt="partner"
           width={400}
           height={300}
@@ -57,42 +57,42 @@ const PartnerSection = () => {
 
         {/* duplicate biar loop smooth */}
         <Image
-          src="/images/mitra/BPJSkesehatanlogo.svg"
+          src="/images/mitra/bpjskesehatan.svg"
           alt="partner"
           width={400}
           height={300}
           className="h-15 md:h-20"
         />
         <Image
-          src="/images/mitra/BPJSketenagakerjaanlogo.svg"
+          src="/images/mitra/bpjsketenagakerjaan.svg"
           alt="partner"
           width={400}
           height={300}
           className="h-15 md:h-20"
         />
         <Image
-          src="/images/mitra/LogoHalodoc.webp"
+          src="/images/mitra/halodoc.webp"
           alt="partner"
           width={400}
           height={300}
           className="h-15 md:h-20"
         />
         <Image
-          src="/images/mitra/BNILife.webp"
+          src="/images/mitra/bnilife.webp"
           alt="partner"
           width={400}
           height={300}
           className="h-15 md:h-20"
         />
         <Image
-          src="/images/mitra/BRILifelogo.svg"
+          src="/images/mitra/brilife.svg"
           alt="partner"
           width={400}
           height={300}
           className="h-15 md:h-20"
         />
         <Image
-          src="/images/mitra/LogoMandiriInhealth.svg"
+          src="/images/mitra/mandiriinhealth.svg"
           alt="partner"
           width={400}
           height={300}
