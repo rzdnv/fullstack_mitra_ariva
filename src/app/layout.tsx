@@ -6,8 +6,14 @@ import QueryProvider from "@/components/providers/QueryProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "RSKB Mitra Ariva",
+  title: {
+    template: "%s | RSKB Mitra Ariva",
+    default: "RSKB Mitra Ariva",
+  },
   description: "Rumah Sakit Khusus Bedah Mitra Ariva",
+  icons: {
+    icon: "/images/logo/logo.png",
+  },
 };
 
 export default function RootLayout({
