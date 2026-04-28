@@ -13,12 +13,12 @@ const CardSchedule = (props: PropTypes) => {
   const { Schedules, Name, Poli } = props;
 
   const poliColorMap: Record<string, string> = {
-    Kandungan: "bg-candlelight-400 text-white",
-    Bedah: "bg-havelock-blue-400 text-white",
-    "Penyakit Dalam": "bg-your-pink-400 text-white",
-    Umum: "bg-havelock-blue-400 text-white",
-    Saraf: "bg-your-pink-400 text-white",
-    Gigi: "bg-candlelight-400 text-white",
+    "Poli Kandungan": "bg-candlelight-400 text-white",
+    "Poli Bedah": "bg-havelock-blue-400 text-white",
+    "Poli Penyakit Dalam": "bg-your-pink-400 text-white",
+    "Poli Umum": "bg-havelock-blue-400 text-white",
+    "Poli Saraf": "bg-your-pink-400 text-white",
+    "Poli Gigi": "bg-candlelight-400 text-white",
   };
 
   return (

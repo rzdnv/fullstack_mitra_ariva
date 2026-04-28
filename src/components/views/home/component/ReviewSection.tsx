@@ -7,7 +7,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import CardReview from "../shared/CardReview/CardReview";
+import CardReview from "../../../shared/CardReview/CardReview";
 
 const ReviewSection = () => {
   const reviews = [

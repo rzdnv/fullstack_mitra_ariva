@@ -1,7 +1,13 @@
+"use client";
+
 import Image from "next/image";
-import CardSchedule from "../shared/CardSchedule/CardSchedule";
+import CardSchedule from "../../../shared/CardSchedule/CardSchedule";
+import useHome from "../useHome";
+import { IDokter } from "@/types/dokter";
 
 const PoliSection = () => {
+  const { dataDokters, isLoadingDokters } = useHome();
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-10 px-10 md:px-20 ">
       {/* KIRI */}
@@ -14,7 +20,7 @@ const PoliSection = () => {
             height={300}
             className="w-15  md:w-20 "
           />
-          <p className="text-xl md:text-2xl font-bold text-center text-slate-800">
+          <p className=" md:text-2xl font-bold text-center text-slate-800">
             Kandungan
           </p>
         </div>
@@ -26,7 +32,7 @@ const PoliSection = () => {
             height={300}
             className="w-15  md:w-20 "
           />
-          <p className="text-xl md:text-2xl font-bold text-center text-slate-800">
+          <p className=" md:text-2xl font-bold text-center text-slate-800">
             Bedah
           </p>
         </div>
@@ -38,7 +44,7 @@ const PoliSection = () => {
             height={300}
             className="w-15  md:w-20 "
           />
-          <p className="text-xl md:text-2xl font-bold text-center text-slate-800">
+          <p className=" md:text-2xl font-bold text-center text-slate-800">
             Penyakit Dalam
           </p>
         </div>
@@ -50,7 +56,7 @@ const PoliSection = () => {
             height={300}
             className="w-15  md:w-20 "
           />
-          <p className="text-xl md:text-2xl font-bold text-center text-slate-800">
+          <p className=" md:text-2xl font-bold text-center text-slate-800">
             Umum
           </p>
         </div>
@@ -62,7 +68,7 @@ const PoliSection = () => {
             height={300}
             className="w-15  md:w-20 "
           />
-          <p className="text-xl md:text-2xl font-bold text-center text-slate-800">
+          <p className=" md:text-2xl font-bold text-center text-slate-800">
             Saraf
           </p>
         </div>
@@ -74,7 +80,7 @@ const PoliSection = () => {
             height={300}
             className="w-15  md:w-20 "
           />
-          <p className="text-xl md:text-2xl font-bold text-center text-slate-800">
+          <p className=" md:text-2xl font-bold text-center text-slate-800">
             Gigi
           </p>
         </div>
@@ -86,43 +92,17 @@ const PoliSection = () => {
           Jadwal Dokter
         </h1>
         <div className="grid grid-cols-1 gap-4 max-h-85 overflow-y-auto pb-5 pt-1 px-5 scrollbar-hide">
-          <CardSchedule
-            Name="dr. So Zanolo Krisna Payana, Sp.B, FICS"
-            Poli="Bedah"
-            Schedules={[
-              { Day: "Senin", Time: "16:00 - 18:00" },
-              { Day: "Selasa", Time: "16:00 - 18:00" },
-            ]}
-          />
-
-          <CardSchedule
-            Name="dr. Handy Darmawan, Sp.B"
-            Poli="Bedah"
-            Schedules={[
-              { Day: "Rabu ", Time: "16.00 - 18.00" },
-              { Day: "Jumat", Time: "10:00 - 12:00" },
-            ]}
-          />
-
-          <CardSchedule
-            Name="dr. Fajar Alam Sukma Raharja, Sp.OG, M.Kes"
-            Poli="Kandungan"
-            Schedules={[
-              { Day: "Senin", Time: "13:30 - 15:30" },
-              { Day: "Rabu", Time: "11:00 - 13:00" },
-              { Day: "Jumat", Time: "14:00 - 16:00" },
-            ]}
-          />
-
-          <CardSchedule
-            Name="dr. Shinta Wulansari, Sp.S"
-            Poli="Saraf"
-            Schedules={[
-              { Day: "Senin", Time: "16.00 - 18.00" },
-              { Day: "Selasa", Time: "16.00 - 18.00" },
-              { Day: "Rabu", Time: "16.00 - 18.00" },
-            ]}
-          />
+          {dataDokters?.map((dokter: IDokter) => (
+            <CardSchedule
+              key={dokter.id}
+              Name={dokter.nama}
+              Poli={dokter.poli.namaPoli}
+              Schedules={dokter.jadwal.map((j) => ({
+                Day: j.hari,
+                Time: `${j.jamMulai} - ${j.jamSelesai}`,
+              }))}
+            />
+          ))}
         </div>
       </div>
     </div>
