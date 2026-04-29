@@ -41,7 +41,7 @@ const CardReview = (props: PropTypes) => {
           {Array.from({ length: Rating }).map((_, index) => (
             <Star
               key={index}
-              className="w-5 h-5 "
+              className="w-3 h-3 md:w-5 md:h-5 "
               fill="#FFC81E"
               stroke="#FFC81E"
             />

@@ -40,13 +40,13 @@ const HeroSection = () => {
                     alt="logo"
                     width={200}
                     height={200}
-                    className="w-50 md:w-25"
+                    className="w-40 md:w-25"
                   />
                   <div className="text-center md:text-start">
-                    <h1 className="text-2xl md:text-3xl text-white font-bold ">
+                    <h1 className="text-xl md:text-3xl text-white font-bold ">
                       RSKB Mitra Ariva
                     </h1>
-                    <p className="text-3xl font-bold text-white md:text-4xl">
+                    <p className="text-2xl md:text-4xl font-bold text-white ">
                       Mitra anda menuju sehat
                     </p>
                   </div>
