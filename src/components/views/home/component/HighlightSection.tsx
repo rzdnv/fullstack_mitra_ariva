@@ -35,13 +35,13 @@ const HighlightSection = () => {
           />
         </div>
         <div className="flex gap-4 flex-col justify-center">
-          <p className="text-havelock-blue-500 text-xl tracking-tight">
+          <p className="text-havelock-blue-500 text-center md:text-xl tracking-tight">
             ✦ Pemulihan Anda Adalah Fokus Kami
           </p>
-          <h1 className="text-5xl font-playfair tracking-tight font-bold text-slate-800">
+          <h1 className="font-playfair text-2xl md:text-5xl text-center max-w-4xl text-slate-800 font-bold  md:mb-8">
             Di Sini, Kesembuhan anda menjadi prioritas utama
           </h1>
-          <p className=" text-lg text-slate-700 text-justify">
+          <p className=" text-base md:text-lg text-slate-700 text-justify px-0 md:px-10">
             Rumah Sakit Khusus Bedah Mitra Ariva hadir untuk memberikan
             pelayanan bedah yang aman dan terpercaya. Dengan dokter ahli yang
             berpengalaman dan alat medis yang modern, kami siap merawat Anda

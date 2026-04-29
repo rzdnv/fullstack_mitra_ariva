@@ -68,10 +68,10 @@ const ReviewSection = () => {
   return (
     <div className="flex flex-col gap-10 md:gap-15 w-full py-10 md:py-20 px-10 md:px-20 items-center">
       <div className="flex gap-4 flex-col items-center">
-        <p className="text-havelock-blue-500 text-xl tracking-tight">
+        <p className="text-havelock-blue-500 text-center md:text-xl tracking-tight">
           ✦ Cerita Pasien Kami
         </p>
-        <h1 className="font-playfair text-3xl md:text-5xl text-center max-w-4xl text-slate-800 font-bold">
+        <h1 className="font-playfair text-2xl md:text-5xl text-center max-w-4xl text-slate-800 font-bold">
           Kepercayaan Anda Adalah Kebanggaan Bagi Kami
         </h1>
       </div>

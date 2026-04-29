@@ -24,13 +24,13 @@ const CardSchedule = (props: PropTypes) => {
   return (
     <Card className="w-full p-4 md:p-6 border-havelock-blue-200/50">
       <CardHeader className="flex justify-between gap-3">
-        <CardTitle className="text-lg md:text-xl font-bold text-slate-800 leading-tight line-clamp-2">
+        <CardTitle className=" md:text-xl font-bold text-slate-800 leading-tight line-clamp-2">
           {Name}
         </CardTitle>
         <Badge
           variant="secondary"
           className={cn(
-            "md:font-semibold p-3 md:p-4 rounded-full",
+            "text-xs md:font-semibold md:p-4 rounded-full",
             poliColorMap[Poli] || "bg-gray-200 text-gray-800",
           )}
         >

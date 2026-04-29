@@ -11,16 +11,16 @@ const PoliSection = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-10 px-10 md:px-20 ">
       {/* KIRI */}
-      <div className="grid grid-cols-3">
+      <div className=" grid grid-cols-2 md:grid-cols-3">
         <div className="flex flex-col gap-2 aspect-square bg-candlelight-400/50 hover:bg-candlelight-400/70 transition-all duration-300 justify-center items-center">
           <Image
             src="/images/poli/obgyn.webp"
             alt="Poli"
             width={400}
             height={300}
-            className="w-15  md:w-20 "
+            className="w-10  md:w-20 "
           />
-          <p className=" md:text-2xl font-bold text-center text-slate-800">
+          <p className=" md:text-xl font-bold text-center text-slate-800">
             Kandungan
           </p>
         </div>
@@ -30,9 +30,9 @@ const PoliSection = () => {
             alt="Poli"
             width={400}
             height={300}
-            className="w-15  md:w-20 "
+            className="w-10  md:w-20 "
           />
-          <p className=" md:text-2xl font-bold text-center text-slate-800">
+          <p className=" md:text-xl font-bold text-center text-slate-800">
             Bedah
           </p>
         </div>
@@ -42,9 +42,9 @@ const PoliSection = () => {
             alt="Poli"
             width={400}
             height={300}
-            className="w-15  md:w-20 "
+            className="w-10  md:w-20 "
           />
-          <p className=" md:text-2xl font-bold text-center text-slate-800">
+          <p className=" md:text-xl font-bold text-center text-slate-800">
             Penyakit Dalam
           </p>
         </div>
@@ -54,9 +54,9 @@ const PoliSection = () => {
             alt="Poli"
             width={400}
             height={300}
-            className="w-15  md:w-20 "
+            className="w-10  md:w-20 "
           />
-          <p className=" md:text-2xl font-bold text-center text-slate-800">
+          <p className=" md:text-xl font-bold text-center text-slate-800">
             Umum
           </p>
         </div>
@@ -66,9 +66,9 @@ const PoliSection = () => {
             alt="Poli"
             width={400}
             height={300}
-            className="w-15  md:w-20 "
+            className="w-10  md:w-20 "
           />
-          <p className=" md:text-2xl font-bold text-center text-slate-800">
+          <p className=" md:text-xl font-bold text-center text-slate-800">
             Saraf
           </p>
         </div>
@@ -78,9 +78,9 @@ const PoliSection = () => {
             alt="Poli"
             width={400}
             height={300}
-            className="w-15  md:w-20 "
+            className="w-10  md:w-20 "
           />
-          <p className=" md:text-2xl font-bold text-center text-slate-800">
+          <p className=" md:text-xl font-bold text-center text-slate-800">
             Gigi
           </p>
         </div>
@@ -91,7 +91,7 @@ const PoliSection = () => {
         <h1 className="text-2xl  mb-4 md:text-4xl font-bold text-slate-800 text-center">
           Jadwal Dokter
         </h1>
-        <div className="grid grid-cols-1 gap-4 max-h-85 overflow-y-auto pb-5 pt-1 px-5 scrollbar-hide">
+        <div className="grid grid-cols-1 gap-4 max-h-85 overflow-y-auto pb-5 pt-1 px-1 md:px-5 scrollbar-hide">
           {dataDokters?.map((dokter: IDokter) => (
             <CardSchedule
               key={dokter.id}
