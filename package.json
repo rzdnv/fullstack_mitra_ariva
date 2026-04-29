@@ -29,6 +29,7 @@
     "nanoid": "^5.1.9",
     "next": "15.5.15",
     "next-auth": "^5.0.0-beta.30",
+    "next-cloudinary": "^6.17.5",
     "pg": "^8.20.0",
     "prisma": "^7.7.0",
     "radix-ui": "^1.4.3",

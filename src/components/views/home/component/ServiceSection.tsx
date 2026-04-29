@@ -1,8 +1,14 @@
+"use client";
+
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import Image from "next/image";
-import { Button } from "../../../ui/button";
+import { MoveRight } from "lucide-react";
+import useHome from "../useHome";
+import { ILayanan } from "@/types/layanan";
 
 const ServiceSection = () => {
+  const { dataLayanan, isLoadingLayanan } = useHome();
+
   return (
     <div className="flex flex-col gap-10 md:gap-15 w-full py-5 md:py-20 px-10 md:px-20 items-center ">
       <div className="flex gap-4 flex-col items-center">
@@ -13,8 +19,34 @@ const ServiceSection = () => {
           Layanan Profesional untuk Kualitas Hidup Lebih Baik
         </h1>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
-        <Card className="bg-havelock-blue-500/20  max-w-sm p-6">
+      <div className="w-full overflow-x-auto p-4">
+        <div className="flex gap-6 min-w-max px-1">
+          {dataLayanan?.map((layanan: ILayanan) => (
+            <Card
+              key={layanan.id}
+              className="w-[320px] shrink-0 rounded-2xl border-0 bg-havelock-blue-500/10 "
+            >
+              <CardHeader className="pb-3">
+                <CardTitle className="text-havelock-blue-800 text-2xl font-bold leading-snug">
+                  {layanan.namaLayanan}
+                </CardTitle>
+              </CardHeader>
+
+              <CardContent className="space-y-5">
+                <p className="text-slate-700 text-sm leading-relaxed min-h-18">
+                  {layanan.deskripsi}
+                </p>
+
+                <Button size="icon" className="rounded-full h-12 w-12 shrink-0">
+                  <MoveRight className="w-5 h-5" />
+                </Button>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 "> */}
+        {/* <Card className="bg-havelock-blue-500/20  max-w-sm p-6">
           <CardHeader>
             <CardTitle className="text-havelock-blue-800 text-2xl font-bold">
               Medical Check Up
@@ -89,7 +121,7 @@ const ServiceSection = () => {
               />
             </div>
           </CardContent>
-        </Card>
+        </Card> */}
       </div>
     </div>
   );

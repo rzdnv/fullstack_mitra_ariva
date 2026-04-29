@@ -4,6 +4,7 @@ import Image from "next/image";
 import CardSchedule from "../../../shared/CardSchedule/CardSchedule";
 import useHome from "../useHome";
 import { IDokter } from "@/types/dokter";
+import DoctorScheduleSkeleton from "@/components/shared/CardSchedule/DoctorScheduleSkeleton";
 
 const PoliSection = () => {
   const { dataDokters, isLoadingDokters } = useHome();
@@ -92,17 +93,21 @@ const PoliSection = () => {
           Jadwal Dokter
         </h1>
         <div className="grid grid-cols-1 gap-4 max-h-85 overflow-y-auto pb-5 pt-1 px-1 md:px-5 scrollbar-hide">
-          {dataDokters?.map((dokter: IDokter) => (
-            <CardSchedule
-              key={dokter.id}
-              Name={dokter.nama}
-              Poli={dokter.poli.namaPoli}
-              Schedules={dokter.jadwal.map((j) => ({
-                Day: j.hari,
-                Time: `${j.jamMulai} - ${j.jamSelesai}`,
-              }))}
-            />
-          ))}
+          {isLoadingDokters
+            ? Array.from({ length: 4 }).map((_, index) => (
+                <DoctorScheduleSkeleton key={index} />
+              ))
+            : dataDokters?.map((dokter: IDokter) => (
+                <CardSchedule
+                  key={dokter.id}
+                  Name={dokter.nama}
+                  Poli={dokter.poli.namaPoli}
+                  Schedules={dokter.jadwal.map((j) => ({
+                    Day: j.hari,
+                    Time: `${j.jamMulai} - ${j.jamSelesai}`,
+                  }))}
+                />
+              ))}
         </div>
       </div>
     </div>

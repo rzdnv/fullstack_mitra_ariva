@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import dokterServices from "@/services/dokter.service";
+import layananServices from "@/services/layanan.service";
 
 const useHome = () => {
   const getDokters = async () => {
@@ -14,11 +15,24 @@ const useHome = () => {
     enabled: true,
   });
 
-  console.log(dataDokters);
+  const getLayanan = async () => {
+    const result = await layananServices.getAll();
+    const { data } = result;
+    return data.data;
+  };
+
+  const { data: dataLayanan, isLoading: isLoadingLayanan } = useQuery({
+    queryKey: ["layanan"],
+    queryFn: getLayanan,
+    enabled: true,
+  });
 
   return {
     dataDokters,
     isLoadingDokters,
+
+    dataLayanan,
+    isLoadingLayanan,
   };
 };
 
