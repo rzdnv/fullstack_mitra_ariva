@@ -76,7 +76,7 @@ const ReviewSection = () => {
         </h1>
       </div>
 
-      <div className="w-full px-10 ">
+      <div className="w-full px-6 md:px-10 ">
         <Carousel
           className="w-full"
           opts={{
@@ -99,8 +99,8 @@ const ReviewSection = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="absolute -left-12 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white shadow-lg border rounded-full h-14 w-14" />
-          <CarouselNext className="absolute -right-12 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white shadow-lg border rounded-full h-14 w-14" />
+          <CarouselPrevious className="absolute -left-12 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white shadow-lg border rounded-full h-10 w-10 md:h-14 md:w-14" />
+          <CarouselNext className="absolute -right-12 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white shadow-lg border rounded-full h-10 w-10 md:h-14 md:w-14" />
         </Carousel>
       </div>
     </div>

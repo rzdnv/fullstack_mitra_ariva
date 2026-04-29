@@ -29,12 +29,14 @@ const CardReview = (props: PropTypes) => {
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
         <div>
-          <CardTitle className="text-slate-800 ">{Name}</CardTitle>
-          <CardDescription>{Date}</CardDescription>
+          <CardTitle className="text-slate-800 md:text-lg ">{Name}</CardTitle>
+          <CardDescription className="text-xs md:text-base">
+            {Date}
+          </CardDescription>
         </div>
       </CardHeader>
       <CardContent className="flex flex-col gap-2 h-full">
-        <p className="line-clamp-3 mb-auto">{Review}</p>
+        <p className="line-clamp-3 mb-auto text-xs md:text-base">{Review}</p>
         <div className="flex gap-1">
           {Array.from({ length: Rating }).map((_, index) => (
             <Star
