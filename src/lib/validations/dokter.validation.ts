@@ -3,7 +3,7 @@ import { z } from "zod";
 export const createDokterSchema = z.object({
   nama: z.string().min(1, "Nama dokter wajib diisi"),
   spesialis: z.string().min(1, "Spesialis wajib diisi"),
-  foto: z.string().min(1, "Format URL foto tidak valid").nullable(),
+  foto: z.string().min(1, "Format URL foto tidak valid"),
   poliId: z.coerce.number().int().positive({ message: "Poli wajib dipilih" }),
 });
 

@@ -3,11 +3,13 @@ import { z } from "zod";
 export const createLayananSchema = z.object({
   namaLayanan: z.string().min(1, "Nama layanan wajib diisi"),
   deskripsi: z.string().min(1, "Deskripsi Layanan wajib diisi"),
+  foto: z.string().min(1, "Format URL foto tidak valid"),
 });
 
 export const updateLayananSchema = z.object({
   namaLayanan: z.string().min(1, "Nama layanan wajib diisi").optional(),
   deskripsi: z.string().min(1, "Deskripsi Layanan wajib diisi").optional(),
+  foto: z.string().min(1, "Format URL foto tidak valid").optional(),
 });
 
 export const createLayananDetailSchema = z.object({

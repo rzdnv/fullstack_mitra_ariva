@@ -166,6 +166,7 @@ exports.Prisma.LayananScalarFieldEnum = {
   id: 'id',
   namaLayanan: 'namaLayanan',
   deskripsi: 'deskripsi',
+  foto: 'foto',
   createdAt: 'createdAt'
 };
 

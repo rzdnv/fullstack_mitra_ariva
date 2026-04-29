@@ -7170,6 +7170,7 @@ export namespace Prisma {
     id: number | null
     namaLayanan: string | null
     deskripsi: string | null
+    foto: string | null
     createdAt: Date | null
   }
 
@@ -7177,6 +7178,7 @@ export namespace Prisma {
     id: number | null
     namaLayanan: string | null
     deskripsi: string | null
+    foto: string | null
     createdAt: Date | null
   }
 
@@ -7184,6 +7186,7 @@ export namespace Prisma {
     id: number
     namaLayanan: number
     deskripsi: number
+    foto: number
     createdAt: number
     _all: number
   }
@@ -7201,6 +7204,7 @@ export namespace Prisma {
     id?: true
     namaLayanan?: true
     deskripsi?: true
+    foto?: true
     createdAt?: true
   }
 
@@ -7208,6 +7212,7 @@ export namespace Prisma {
     id?: true
     namaLayanan?: true
     deskripsi?: true
+    foto?: true
     createdAt?: true
   }
 
@@ -7215,6 +7220,7 @@ export namespace Prisma {
     id?: true
     namaLayanan?: true
     deskripsi?: true
+    foto?: true
     createdAt?: true
     _all?: true
   }
@@ -7309,6 +7315,7 @@ export namespace Prisma {
     id: number
     namaLayanan: string
     deskripsi: string | null
+    foto: string | null
     createdAt: Date
     _count: LayananCountAggregateOutputType | null
     _avg: LayananAvgAggregateOutputType | null
@@ -7335,6 +7342,7 @@ export namespace Prisma {
     id?: boolean
     namaLayanan?: boolean
     deskripsi?: boolean
+    foto?: boolean
     createdAt?: boolean
     detail?: boolean | Layanan$detailArgs<ExtArgs>
     _count?: boolean | LayananCountOutputTypeDefaultArgs<ExtArgs>
@@ -7344,6 +7352,7 @@ export namespace Prisma {
     id?: boolean
     namaLayanan?: boolean
     deskripsi?: boolean
+    foto?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["layanan"]>
 
@@ -7351,6 +7360,7 @@ export namespace Prisma {
     id?: boolean
     namaLayanan?: boolean
     deskripsi?: boolean
+    foto?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["layanan"]>
 
@@ -7358,10 +7368,11 @@ export namespace Prisma {
     id?: boolean
     namaLayanan?: boolean
     deskripsi?: boolean
+    foto?: boolean
     createdAt?: boolean
   }
 
-  export type LayananOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "namaLayanan" | "deskripsi" | "createdAt", ExtArgs["result"]["layanan"]>
+  export type LayananOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "namaLayanan" | "deskripsi" | "foto" | "createdAt", ExtArgs["result"]["layanan"]>
   export type LayananInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     detail?: boolean | Layanan$detailArgs<ExtArgs>
     _count?: boolean | LayananCountOutputTypeDefaultArgs<ExtArgs>
@@ -7378,6 +7389,7 @@ export namespace Prisma {
       id: number
       namaLayanan: string
       deskripsi: string | null
+      foto: string | null
       createdAt: Date
     }, ExtArgs["result"]["layanan"]>
     composites: {}
@@ -7806,6 +7818,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Layanan", 'Int'>
     readonly namaLayanan: FieldRef<"Layanan", 'String'>
     readonly deskripsi: FieldRef<"Layanan", 'String'>
+    readonly foto: FieldRef<"Layanan", 'String'>
     readonly createdAt: FieldRef<"Layanan", 'DateTime'>
   }
     
@@ -9435,6 +9448,7 @@ export namespace Prisma {
     id: 'id',
     namaLayanan: 'namaLayanan',
     deskripsi: 'deskripsi',
+    foto: 'foto',
     createdAt: 'createdAt'
   };
 
@@ -9888,6 +9902,7 @@ export namespace Prisma {
     id?: IntFilter<"Layanan"> | number
     namaLayanan?: StringFilter<"Layanan"> | string
     deskripsi?: StringNullableFilter<"Layanan"> | string | null
+    foto?: StringNullableFilter<"Layanan"> | string | null
     createdAt?: DateTimeFilter<"Layanan"> | Date | string
     detail?: LayananDetailListRelationFilter
   }
@@ -9896,6 +9911,7 @@ export namespace Prisma {
     id?: SortOrder
     namaLayanan?: SortOrder
     deskripsi?: SortOrderInput | SortOrder
+    foto?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     detail?: LayananDetailOrderByRelationAggregateInput
   }
@@ -9907,6 +9923,7 @@ export namespace Prisma {
     NOT?: LayananWhereInput | LayananWhereInput[]
     namaLayanan?: StringFilter<"Layanan"> | string
     deskripsi?: StringNullableFilter<"Layanan"> | string | null
+    foto?: StringNullableFilter<"Layanan"> | string | null
     createdAt?: DateTimeFilter<"Layanan"> | Date | string
     detail?: LayananDetailListRelationFilter
   }, "id">
@@ -9915,6 +9932,7 @@ export namespace Prisma {
     id?: SortOrder
     namaLayanan?: SortOrder
     deskripsi?: SortOrderInput | SortOrder
+    foto?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     _count?: LayananCountOrderByAggregateInput
     _avg?: LayananAvgOrderByAggregateInput
@@ -9930,6 +9948,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Layanan"> | number
     namaLayanan?: StringWithAggregatesFilter<"Layanan"> | string
     deskripsi?: StringNullableWithAggregatesFilter<"Layanan"> | string | null
+    foto?: StringNullableWithAggregatesFilter<"Layanan"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Layanan"> | Date | string
   }
 
@@ -9996,6 +10015,7 @@ export namespace Prisma {
   }
 
   export type UserCreateInput = {
+    id: number
     username: string
     password: string
     role?: $Enums.Role
@@ -10004,7 +10024,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateInput = {
-    id?: number
+    id: number
     username: string
     password: string
     role?: $Enums.Role
@@ -10013,6 +10033,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -10030,7 +10051,7 @@ export namespace Prisma {
   }
 
   export type UserCreateManyInput = {
-    id?: number
+    id: number
     username: string
     password: string
     role?: $Enums.Role
@@ -10038,6 +10059,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateManyMutationInput = {
+    id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -10053,19 +10075,21 @@ export namespace Prisma {
   }
 
   export type PoliCreateInput = {
+    id: number
     namaPoli: string
     createdAt?: Date | string
     dokter?: DokterCreateNestedManyWithoutPoliInput
   }
 
   export type PoliUncheckedCreateInput = {
-    id?: number
+    id: number
     namaPoli: string
     createdAt?: Date | string
     dokter?: DokterUncheckedCreateNestedManyWithoutPoliInput
   }
 
   export type PoliUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
     namaPoli?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     dokter?: DokterUpdateManyWithoutPoliNestedInput
@@ -10079,12 +10103,13 @@ export namespace Prisma {
   }
 
   export type PoliCreateManyInput = {
-    id?: number
+    id: number
     namaPoli: string
     createdAt?: Date | string
   }
 
   export type PoliUpdateManyMutationInput = {
+    id?: IntFieldUpdateOperationsInput | number
     namaPoli?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10096,6 +10121,7 @@ export namespace Prisma {
   }
 
   export type DokterCreateInput = {
+    id: number
     nama: string
     spesialis: string
     foto?: string | null
@@ -10105,7 +10131,7 @@ export namespace Prisma {
   }
 
   export type DokterUncheckedCreateInput = {
-    id?: number
+    id: number
     nama: string
     spesialis: string
     foto?: string | null
@@ -10115,6 +10141,7 @@ export namespace Prisma {
   }
 
   export type DokterUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
     spesialis?: StringFieldUpdateOperationsInput | string
     foto?: NullableStringFieldUpdateOperationsInput | string | null
@@ -10134,7 +10161,7 @@ export namespace Prisma {
   }
 
   export type DokterCreateManyInput = {
-    id?: number
+    id: number
     nama: string
     spesialis: string
     foto?: string | null
@@ -10143,6 +10170,7 @@ export namespace Prisma {
   }
 
   export type DokterUpdateManyMutationInput = {
+    id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
     spesialis?: StringFieldUpdateOperationsInput | string
     foto?: NullableStringFieldUpdateOperationsInput | string | null
@@ -10159,6 +10187,7 @@ export namespace Prisma {
   }
 
   export type JadwalDokterCreateInput = {
+    id: number
     hari: $Enums.Hari
     jamMulai: string
     jamSelesai: string
@@ -10167,7 +10196,7 @@ export namespace Prisma {
   }
 
   export type JadwalDokterUncheckedCreateInput = {
-    id?: number
+    id: number
     dokterId: number
     hari: $Enums.Hari
     jamMulai: string
@@ -10176,6 +10205,7 @@ export namespace Prisma {
   }
 
   export type JadwalDokterUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
     hari?: EnumHariFieldUpdateOperationsInput | $Enums.Hari
     jamMulai?: StringFieldUpdateOperationsInput | string
     jamSelesai?: StringFieldUpdateOperationsInput | string
@@ -10193,7 +10223,7 @@ export namespace Prisma {
   }
 
   export type JadwalDokterCreateManyInput = {
-    id?: number
+    id: number
     dokterId: number
     hari: $Enums.Hari
     jamMulai: string
@@ -10202,6 +10232,7 @@ export namespace Prisma {
   }
 
   export type JadwalDokterUpdateManyMutationInput = {
+    id?: IntFieldUpdateOperationsInput | number
     hari?: EnumHariFieldUpdateOperationsInput | $Enums.Hari
     jamMulai?: StringFieldUpdateOperationsInput | string
     jamSelesai?: StringFieldUpdateOperationsInput | string
@@ -10218,6 +10249,7 @@ export namespace Prisma {
   }
 
   export type BeritaCreateInput = {
+    id: number
     judul: string
     isi: string
     gambar?: string | null
@@ -10227,7 +10259,7 @@ export namespace Prisma {
   }
 
   export type BeritaUncheckedCreateInput = {
-    id?: number
+    id: number
     judul: string
     isi: string
     gambar?: string | null
@@ -10237,6 +10269,7 @@ export namespace Prisma {
   }
 
   export type BeritaUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
     judul?: StringFieldUpdateOperationsInput | string
     isi?: StringFieldUpdateOperationsInput | string
     gambar?: NullableStringFieldUpdateOperationsInput | string | null
@@ -10256,7 +10289,7 @@ export namespace Prisma {
   }
 
   export type BeritaCreateManyInput = {
-    id?: number
+    id: number
     judul: string
     isi: string
     gambar?: string | null
@@ -10266,6 +10299,7 @@ export namespace Prisma {
   }
 
   export type BeritaUpdateManyMutationInput = {
+    id?: IntFieldUpdateOperationsInput | number
     judul?: StringFieldUpdateOperationsInput | string
     isi?: StringFieldUpdateOperationsInput | string
     gambar?: NullableStringFieldUpdateOperationsInput | string | null
@@ -10284,23 +10318,28 @@ export namespace Prisma {
   }
 
   export type LayananCreateInput = {
+    id: number
     namaLayanan: string
     deskripsi?: string | null
+    foto?: string | null
     createdAt?: Date | string
     detail?: LayananDetailCreateNestedManyWithoutLayananInput
   }
 
   export type LayananUncheckedCreateInput = {
-    id?: number
+    id: number
     namaLayanan: string
     deskripsi?: string | null
+    foto?: string | null
     createdAt?: Date | string
     detail?: LayananDetailUncheckedCreateNestedManyWithoutLayananInput
   }
 
   export type LayananUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
     namaLayanan?: StringFieldUpdateOperationsInput | string
     deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    foto?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     detail?: LayananDetailUpdateManyWithoutLayananNestedInput
   }
@@ -10309,20 +10348,24 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     namaLayanan?: StringFieldUpdateOperationsInput | string
     deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    foto?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     detail?: LayananDetailUncheckedUpdateManyWithoutLayananNestedInput
   }
 
   export type LayananCreateManyInput = {
-    id?: number
+    id: number
     namaLayanan: string
     deskripsi?: string | null
+    foto?: string | null
     createdAt?: Date | string
   }
 
   export type LayananUpdateManyMutationInput = {
+    id?: IntFieldUpdateOperationsInput | number
     namaLayanan?: StringFieldUpdateOperationsInput | string
     deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    foto?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -10330,10 +10373,12 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     namaLayanan?: StringFieldUpdateOperationsInput | string
     deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    foto?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type LayananDetailCreateInput = {
+    id: number
     namaPaket: string
     harga: Decimal | DecimalJsLike | number | string
     deskripsi?: string | null
@@ -10342,7 +10387,7 @@ export namespace Prisma {
   }
 
   export type LayananDetailUncheckedCreateInput = {
-    id?: number
+    id: number
     layananId: number
     namaPaket: string
     harga: Decimal | DecimalJsLike | number | string
@@ -10351,6 +10396,7 @@ export namespace Prisma {
   }
 
   export type LayananDetailUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
     namaPaket?: StringFieldUpdateOperationsInput | string
     harga?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
@@ -10368,7 +10414,7 @@ export namespace Prisma {
   }
 
   export type LayananDetailCreateManyInput = {
-    id?: number
+    id: number
     layananId: number
     namaPaket: string
     harga: Decimal | DecimalJsLike | number | string
@@ -10377,6 +10423,7 @@ export namespace Prisma {
   }
 
   export type LayananDetailUpdateManyMutationInput = {
+    id?: IntFieldUpdateOperationsInput | number
     namaPaket?: StringFieldUpdateOperationsInput | string
     harga?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
@@ -10780,6 +10827,7 @@ export namespace Prisma {
     id?: SortOrder
     namaLayanan?: SortOrder
     deskripsi?: SortOrder
+    foto?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -10791,6 +10839,7 @@ export namespace Prisma {
     id?: SortOrder
     namaLayanan?: SortOrder
     deskripsi?: SortOrder
+    foto?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -10798,6 +10847,7 @@ export namespace Prisma {
     id?: SortOrder
     namaLayanan?: SortOrder
     deskripsi?: SortOrder
+    foto?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -10890,6 +10940,14 @@ export namespace Prisma {
     connect?: BeritaWhereUniqueInput | BeritaWhereUniqueInput[]
   }
 
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -10914,14 +10972,6 @@ export namespace Prisma {
     update?: BeritaUpdateWithWhereUniqueWithoutUserInput | BeritaUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: BeritaUpdateManyWithWhereWithoutUserInput | BeritaUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: BeritaScalarWhereInput | BeritaScalarWhereInput[]
-  }
-
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type BeritaUncheckedUpdateManyWithoutUserNestedInput = {
@@ -11334,6 +11384,7 @@ export namespace Prisma {
   }
 
   export type BeritaCreateWithoutUserInput = {
+    id: number
     judul: string
     isi: string
     gambar?: string | null
@@ -11342,7 +11393,7 @@ export namespace Prisma {
   }
 
   export type BeritaUncheckedCreateWithoutUserInput = {
-    id?: number
+    id: number
     judul: string
     isi: string
     gambar?: string | null
@@ -11390,6 +11441,7 @@ export namespace Prisma {
   }
 
   export type DokterCreateWithoutPoliInput = {
+    id: number
     nama: string
     spesialis: string
     foto?: string | null
@@ -11398,7 +11450,7 @@ export namespace Prisma {
   }
 
   export type DokterUncheckedCreateWithoutPoliInput = {
-    id?: number
+    id: number
     nama: string
     spesialis: string
     foto?: string | null
@@ -11445,12 +11497,13 @@ export namespace Prisma {
   }
 
   export type PoliCreateWithoutDokterInput = {
+    id: number
     namaPoli: string
     createdAt?: Date | string
   }
 
   export type PoliUncheckedCreateWithoutDokterInput = {
-    id?: number
+    id: number
     namaPoli: string
     createdAt?: Date | string
   }
@@ -11461,6 +11514,7 @@ export namespace Prisma {
   }
 
   export type JadwalDokterCreateWithoutDokterInput = {
+    id: number
     hari: $Enums.Hari
     jamMulai: string
     jamSelesai: string
@@ -11468,7 +11522,7 @@ export namespace Prisma {
   }
 
   export type JadwalDokterUncheckedCreateWithoutDokterInput = {
-    id?: number
+    id: number
     hari: $Enums.Hari
     jamMulai: string
     jamSelesai: string
@@ -11497,6 +11551,7 @@ export namespace Prisma {
   }
 
   export type PoliUpdateWithoutDokterInput = {
+    id?: IntFieldUpdateOperationsInput | number
     namaPoli?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -11536,6 +11591,7 @@ export namespace Prisma {
   }
 
   export type DokterCreateWithoutJadwalInput = {
+    id: number
     nama: string
     spesialis: string
     foto?: string | null
@@ -11544,7 +11600,7 @@ export namespace Prisma {
   }
 
   export type DokterUncheckedCreateWithoutJadwalInput = {
-    id?: number
+    id: number
     nama: string
     spesialis: string
     foto?: string | null
@@ -11569,6 +11625,7 @@ export namespace Prisma {
   }
 
   export type DokterUpdateWithoutJadwalInput = {
+    id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
     spesialis?: StringFieldUpdateOperationsInput | string
     foto?: NullableStringFieldUpdateOperationsInput | string | null
@@ -11586,6 +11643,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutBeritaInput = {
+    id: number
     username: string
     password: string
     role?: $Enums.Role
@@ -11593,7 +11651,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutBeritaInput = {
-    id?: number
+    id: number
     username: string
     password: string
     role?: $Enums.Role
@@ -11617,6 +11675,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutBeritaInput = {
+    id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -11632,6 +11691,7 @@ export namespace Prisma {
   }
 
   export type LayananDetailCreateWithoutLayananInput = {
+    id: number
     namaPaket: string
     harga: Decimal | DecimalJsLike | number | string
     deskripsi?: string | null
@@ -11639,7 +11699,7 @@ export namespace Prisma {
   }
 
   export type LayananDetailUncheckedCreateWithoutLayananInput = {
-    id?: number
+    id: number
     namaPaket: string
     harga: Decimal | DecimalJsLike | number | string
     deskripsi?: string | null
@@ -11685,15 +11745,18 @@ export namespace Prisma {
   }
 
   export type LayananCreateWithoutDetailInput = {
+    id: number
     namaLayanan: string
     deskripsi?: string | null
+    foto?: string | null
     createdAt?: Date | string
   }
 
   export type LayananUncheckedCreateWithoutDetailInput = {
-    id?: number
+    id: number
     namaLayanan: string
     deskripsi?: string | null
+    foto?: string | null
     createdAt?: Date | string
   }
 
@@ -11714,8 +11777,10 @@ export namespace Prisma {
   }
 
   export type LayananUpdateWithoutDetailInput = {
+    id?: IntFieldUpdateOperationsInput | number
     namaLayanan?: StringFieldUpdateOperationsInput | string
     deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    foto?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -11723,11 +11788,12 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     namaLayanan?: StringFieldUpdateOperationsInput | string
     deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    foto?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type BeritaCreateManyUserInput = {
-    id?: number
+    id: number
     judul: string
     isi: string
     gambar?: string | null
@@ -11736,6 +11802,7 @@ export namespace Prisma {
   }
 
   export type BeritaUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
     judul?: StringFieldUpdateOperationsInput | string
     isi?: StringFieldUpdateOperationsInput | string
     gambar?: NullableStringFieldUpdateOperationsInput | string | null
@@ -11762,7 +11829,7 @@ export namespace Prisma {
   }
 
   export type DokterCreateManyPoliInput = {
-    id?: number
+    id: number
     nama: string
     spesialis: string
     foto?: string | null
@@ -11770,6 +11837,7 @@ export namespace Prisma {
   }
 
   export type DokterUpdateWithoutPoliInput = {
+    id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
     spesialis?: StringFieldUpdateOperationsInput | string
     foto?: NullableStringFieldUpdateOperationsInput | string | null
@@ -11795,7 +11863,7 @@ export namespace Prisma {
   }
 
   export type JadwalDokterCreateManyDokterInput = {
-    id?: number
+    id: number
     hari: $Enums.Hari
     jamMulai: string
     jamSelesai: string
@@ -11803,6 +11871,7 @@ export namespace Prisma {
   }
 
   export type JadwalDokterUpdateWithoutDokterInput = {
+    id?: IntFieldUpdateOperationsInput | number
     hari?: EnumHariFieldUpdateOperationsInput | $Enums.Hari
     jamMulai?: StringFieldUpdateOperationsInput | string
     jamSelesai?: StringFieldUpdateOperationsInput | string
@@ -11826,7 +11895,7 @@ export namespace Prisma {
   }
 
   export type LayananDetailCreateManyLayananInput = {
-    id?: number
+    id: number
     namaPaket: string
     harga: Decimal | DecimalJsLike | number | string
     deskripsi?: string | null
@@ -11834,6 +11903,7 @@ export namespace Prisma {
   }
 
   export type LayananDetailUpdateWithoutLayananInput = {
+    id?: IntFieldUpdateOperationsInput | number
     namaPaket?: StringFieldUpdateOperationsInput | string
     harga?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     deskripsi?: NullableStringFieldUpdateOperationsInput | string | null

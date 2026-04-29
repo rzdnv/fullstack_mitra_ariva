@@ -42,6 +42,7 @@ export async function createLayanan(data: CreateLayananInput) {
       id: generateId("layanan"),
       namaLayanan: data.namaLayanan,
       deskripsi: data.deskripsi,
+      foto: data.foto,
     },
   });
 }
@@ -52,6 +53,7 @@ export async function updateLayanan(id: number, data: UpdateLayananInput) {
     data: {
       namaLayanan: data.namaLayanan,
       deskripsi: data.deskripsi,
+      foto: data.foto,
     },
   });
 }

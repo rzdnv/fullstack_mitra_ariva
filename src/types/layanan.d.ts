@@ -2,6 +2,7 @@ interface ILayanan {
   id: number;
   namaLayanan: string;
   deskripsi: string;
+  foto: string;
   detail: ILayananDetail[];
   _count?: { detail: number };
 }
