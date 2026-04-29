@@ -1,3 +1,4 @@
+import DokterSection from "./component/DokterSection";
 import HeroSection from "./component/HeroSection";
 import HighlightSection from "./component/HighlightSection";
 import PartnerSection from "./component/PartnerSection";
@@ -12,6 +13,7 @@ const Home = () => {
       <HighlightSection />
       <PoliSection />
       <ServiceSection />
+      <DokterSection />
       <ReviewSection />
       <PartnerSection />
     </div>

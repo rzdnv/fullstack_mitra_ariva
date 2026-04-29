@@ -19,8 +19,8 @@ const ServiceSection = () => {
           Layanan Profesional untuk Kualitas Hidup Lebih Baik
         </h1>
       </div>
-      <div className="w-full overflow-x-auto p-4">
-        <div className="flex justify-center gap-6 min-w-max px-1">
+      <div className="w-full overflow-x-auto py-4">
+        <div className="flex md:justify-center gap-6 min-w-max px-1">
           {isLoadingLayanan
             ? Array.from({ length: 5 }).map((_, index) => (
                 <Card
