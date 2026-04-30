@@ -16,7 +16,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 const DokterSection = () => {
   const { dataDokters, isLoadingDokters } = useHome();
   return (
-    <div className="flex flex-col gap-10 md:gap-15 w-full py-10 md:py-20 px-10 md:px-20 items-center">
+    <div className="flex flex-col gap-10 md:gap-15 w-full py-10 md:py-20 px-10 items-center">
       <div className="flex gap-4 flex-col items-center">
         <p className="text-havelock-blue-500 text-center md:text-xl tracking-tight">
           ✦ Mitra Kesehatan Anda
@@ -26,7 +26,7 @@ const DokterSection = () => {
         </h1>
       </div>
 
-      <div className="w-full px-6 ">
+      <div className="w-full px-6">
         <Carousel
           className="w-full"
           opts={{
@@ -39,7 +39,7 @@ const DokterSection = () => {
               ? Array.from({ length: 4 }).map((_, index) => (
                   <CarouselItem
                     key={index}
-                    className=" md:pl-4 basis-[85%] sm:basis-1/2 lg:basis-1/4"
+                    className="pl-4 sm:basis-1/2 lg:basis-1/4"
                   >
                     <Card className="overflow-hidden rounded-3xl border-0 bg-havelock-blue-500/10">
                       <Skeleton className="h-60 w-full" />
@@ -55,7 +55,7 @@ const DokterSection = () => {
               : dataDokters?.map((dokter: IDokter) => (
                   <CarouselItem
                     key={dokter.id}
-                    className="pl-2 md:pl-4 basis-[85%] sm:basis-1/2 lg:basis-1/4"
+                    className=" sm:basis-1/2 lg:basis-1/4"
                   >
                     <CardDokter
                       namaDokter={dokter.nama}
