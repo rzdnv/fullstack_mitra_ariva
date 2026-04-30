@@ -21,7 +21,7 @@ const Footer = () => {
             <Link
               href="https://mail.google.com/mail/?view=cm&fs=1&to=rskbmitraariva@gmail.com"
               target="_blank"
-              className="text-white md:text-lg hover:underline"
+              className="text-white md:text-lg hover:underline transition-all duration-300"
             >
               rskbmitraariva@gmail.com
             </Link>
@@ -35,7 +35,7 @@ const Footer = () => {
             </p>
             <Link
               href="tel:0281571328"
-              className="text-white md:text-lg hover:underline"
+              className="text-white md:text-lg hover:underline transition-all duration-300"
             >
               0281-571328
             </Link>
@@ -50,7 +50,7 @@ const Footer = () => {
             <Link
               href="https://wa.me/6281245489477?text=Halo%20saya%20ingin%20bertanya"
               target="_blank"
-              className="text-white md:text-lg hover:underline"
+              className="text-white md:text-lg hover:underline transition-all duration-300"
             >
               0812-4548-9477
             </Link>
@@ -95,7 +95,7 @@ const Footer = () => {
                     key={`sosial-${item.label}`}
                     href={item.href}
                     target="_blank"
-                    className="text-2xl lg:text-5xl text-white rounded-full border p-2 hover:bg-white hover:text-havelock-blue-600 "
+                    className="text-2xl lg:text-5xl text-white rounded-full border p-2 hover:bg-white hover:text-havelock-blue-600 transition-all duration-300"
                   >
                     {item.icon}
                   </Link>
@@ -114,7 +114,7 @@ const Footer = () => {
                 <Link
                   key={`footer-nav-${item.label}`}
                   href={item.href}
-                  className="cursor-pointer hover:underline text-white"
+                  className="cursor-pointer hover:underline transition-all duration-300 text-white"
                 >
                   {item.label}
                 </Link>

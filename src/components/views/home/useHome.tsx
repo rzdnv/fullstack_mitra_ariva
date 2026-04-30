@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import dokterServices from "@/services/dokter.service";
 import layananServices from "@/services/layanan.service";
+import beritaServices from "@/services/berita.service";
 
 const useHome = () => {
   const getDokters = async () => {
@@ -27,12 +28,27 @@ const useHome = () => {
     enabled: true,
   });
 
+  const getBerita = async () => {
+    const result = await beritaServices.getAll();
+    const { data } = result;
+    return data.data;
+  };
+
+  const { data: dataBerita, isLoading: isLoadingBerita } = useQuery({
+    queryKey: ["berita"],
+    queryFn: getBerita,
+    enabled: true,
+  });
+
   return {
     dataDokters,
     isLoadingDokters,
 
     dataLayanan,
     isLoadingLayanan,
+
+    dataBerita,
+    isLoadingBerita,
   };
 };
 

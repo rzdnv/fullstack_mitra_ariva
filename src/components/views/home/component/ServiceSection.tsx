@@ -10,7 +10,7 @@ const ServiceSection = () => {
   const { dataLayanan, isLoadingLayanan } = useHome();
 
   return (
-    <div className="flex flex-col gap-10 md:gap-15 w-full py-5 md:py-20 px-10 md:px-20 items-center ">
+    <section className="flex flex-col gap-10 w-full py-10 px-10 md:px-20 items-center ">
       <div className="flex gap-4 flex-col items-center">
         <p className="text-havelock-blue-500 text-center md:text-xl tracking-tight">
           ✦ Solusi Medis Terpadu
@@ -47,7 +47,7 @@ const ServiceSection = () => {
             : dataLayanan?.map((layanan: ILayanan) => (
                 <Card
                   key={layanan.id}
-                  className=" w-65 md:w-100 overflow-hidden rounded-2xl border-0 bg-havelock-blue-500/10 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+                  className=" w-65 md:w-100 overflow-hidden rounded-2xl border-0 bg-havelock-blue-500/10 shadow-lg"
                 >
                   {/* Foto */}
                   <Image
@@ -72,7 +72,7 @@ const ServiceSection = () => {
               ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

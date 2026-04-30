@@ -11,13 +11,13 @@ const DayTime = (props: PropTypes) => {
     <div className="flex items-center justify-between">
       <div className="flex items-center gap-1 ">
         <Calendar className=" w-3 h-3 md:h-4 md:w-4 text-havelock-blue-500" />
-        <span className=" text-xs md:text-base font-medium md:font-semibold text-slate-800">
+        <span className=" text-xs md:text-sm font-medium md:font-semibold text-slate-700">
           {Day}
         </span>
       </div>
       <div className="flex items-center gap-1 ">
         <Clock className=" w-3 h-3 md:h-4 md:w-4 text-havelock-blue-500" />
-        <span className="text-xs md:text-base font-medium md:font-semibold text-slate-800">
+        <span className="text-xs md:text-sm font-medium md:font-semibold text-slate-700">
           {Time} WIB
         </span>
       </div>

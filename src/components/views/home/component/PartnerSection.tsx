@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const PartnerSection = () => {
   return (
-    <div className="flex flex-col gap-10 md:gap-20 w-full py-10 mb-20 md:py-30 px-20 items-center overflow-hidden">
+    <div className="flex flex-col gap-10 w-full py-10 px-20 items-center overflow-hidden">
       <div className="flex gap-4 flex-col items-center">
         <p className="text-havelock-blue-500 text-center md:text-xl tracking-tight">
           ✦ Kemudahan Layanan Pasien

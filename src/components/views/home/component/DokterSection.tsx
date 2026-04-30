@@ -16,7 +16,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 const DokterSection = () => {
   const { dataDokters, isLoadingDokters } = useHome();
   return (
-    <div className="flex flex-col gap-10 md:gap-15 w-full py-10 md:py-20 px-10 items-center">
+    <div className="flex flex-col gap-10 w-full py-10 px-10 items-center">
       <div className="flex gap-4 flex-col items-center">
         <p className="text-havelock-blue-500 text-center md:text-xl tracking-tight">
           ✦ Mitra Kesehatan Anda

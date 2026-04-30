@@ -41,7 +41,7 @@ const HighlightSection = () => {
           <h1 className="font-playfair text-2xl md:text-5xl text-center max-w-4xl text-slate-800 font-bold  md:mb-8">
             Di Sini, Kesembuhan anda menjadi prioritas utama
           </h1>
-          <p className=" text-base md:text-lg text-slate-700 text-justify px-0 md:px-10">
+          <p className=" text-base md:text-lg text-slate-700 text-justify px-0 md:px-20">
             Rumah Sakit Khusus Bedah Mitra Ariva hadir untuk memberikan
             pelayanan bedah yang aman dan terpercaya. Dengan dokter ahli yang
             berpengalaman dan alat medis yang modern, kami siap merawat Anda
