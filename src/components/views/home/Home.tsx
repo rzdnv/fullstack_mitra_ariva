@@ -11,11 +11,11 @@ const Home = () => {
     <div>
       <HeroSection />
       <HighlightSection />
+      <PartnerSection />
       <PoliSection />
       <ServiceSection />
       <DokterSection />
       <ReviewSection />
-      <PartnerSection />
     </div>
   );
 };

@@ -11,15 +11,17 @@ const Footer = () => {
   return (
     <footer>
       <section className="flex flex-col items-center bg-havelock-blue-900 px-6 py-10 xl:py-16 xl:px-30">
-        <div className="flex flex-col md:flex-row w-full divide-y md:divide-y-0 md:divide-x divide-white/20">
+        <div className="flex flex-col lg:flex-row w-full divide-y lg:divide-y-0 lg:divide-x divide-white/20">
           {/* Email */}
           <div className="flex flex-col items-center justify-center gap-4 w-full py-8 text-center">
-            <Mail className="w-16 h-16 text-white" />
-            <p className="text-xl text-white font-semibold">Kontak Kami</p>
+            <Mail className="w-10 h-10 lg:w-16 lg:h-16 text-white" />
+            <p className="text-lg lg:text-xl text-white font-semibold">
+              Kontak Kami
+            </p>
             <Link
               href="https://mail.google.com/mail/?view=cm&fs=1&to=rskbmitraariva@gmail.com"
               target="_blank"
-              className="text-white text-lg hover:underline"
+              className="text-white md:text-lg hover:underline"
             >
               rskbmitraariva@gmail.com
             </Link>
@@ -27,11 +29,13 @@ const Footer = () => {
 
           {/* Phone */}
           <div className="flex flex-col items-center justify-center gap-4 w-full py-8 text-center">
-            <Phone className="w-16 h-16 text-white" />
-            <p className="text-xl text-white font-semibold">Hubungi Kami</p>
+            <Phone className="w-10 h-10 lg:w-16 lg:h-16 text-white" />
+            <p className="text-lg lg:text-xl text-white font-semibold">
+              Hubungi Kami
+            </p>
             <Link
               href="tel:0281571328"
-              className="text-white text-lg hover:underline"
+              className="text-white md:text-lg hover:underline"
             >
               0281-571328
             </Link>
@@ -39,12 +43,14 @@ const Footer = () => {
 
           {/* WhatsApp */}
           <div className="flex flex-col items-center justify-center gap-4 w-full py-8 text-center">
-            <FaWhatsapp className="w-16 h-16 text-white" />
-            <p className="text-xl text-white font-semibold">WhatsApp</p>
+            <FaWhatsapp className="w-10 h-10 lg:w-16 lg:h-16 text-white" />
+            <p className="text-lg lg:text-xl text-white font-semibold">
+              WhatsApp
+            </p>
             <Link
               href="https://wa.me/6281245489477?text=Halo%20saya%20ingin%20bertanya"
               target="_blank"
-              className="text-white text-lg hover:underline"
+              className="text-white md:text-lg hover:underline"
             >
               0812-4548-9477
             </Link>
@@ -52,8 +58,8 @@ const Footer = () => {
 
           {/* Location */}
           <div className="flex flex-col items-center justify-center gap-4 w-full py-8 text-center">
-            <MapPin className="w-16 h-16 text-white" />
-            <p className="text-xl text-white font-semibold">
+            <MapPin className="w-10 h-10 lg:w-16 lg:h-16 text-white" />
+            <p className="text-lg lg:text-xl text-white font-semibold">
               Kunjungi Rumah Sakit Kami
             </p>
 
@@ -68,8 +74,8 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row w-full justify-between items-center gap-10 mt-10">
-          <div className="flex flex-col md:flex-row items-center gap-6 mb-10 md:mb-0">
+        <div className="flex flex-col lg:flex-row w-full justify-between items-center gap-10 mt-10">
+          <div className="flex flex-col lg:flex-row items-center gap-6 mb-10 lg:mb-0">
             <Image
               src="/images/logo/logo.png"
               alt="logo"
@@ -79,17 +85,17 @@ const Footer = () => {
             />
 
             <div className="flex flex-col items-center justify-center h-full  gap-2">
-              <h2 className="text-white font-bold text-2xl">
+              <h2 className="text-white font-bold text-xl lg:text-2xl">
                 Follow RSKB Mitra Ariva
               </h2>
 
-              <div className="flex justify-center  md:justify-start w-full gap-4 ">
+              <div className="flex justify-center  lg:justify-start w-full gap-4 ">
                 {SOSIAL_ITEMS.map((item) => (
                   <Link
                     key={`sosial-${item.label}`}
                     href={item.href}
                     target="_blank"
-                    className="text-5xl text-white rounded-full border p-2 hover:bg-white hover:text-havelock-blue-600 "
+                    className="text-2xl lg:text-5xl text-white rounded-full border p-2 hover:bg-white hover:text-havelock-blue-600 "
                   >
                     {item.icon}
                   </Link>
@@ -100,10 +106,10 @@ const Footer = () => {
 
           {/* Navigation */}
           <div className="mb-10 flex flex-col gap-2 lg:mb-0 items-end justify-center">
-            <h2 className="text-2xl text-white font-bold lg:mb-2">
+            <h2 className="text-xl lg:text-2xl text-white font-bold lg:mb-2">
               About RSKB Mitra Ariva
             </h2>
-            <div className="flex gap-5 text-xl text-center justify-center w-full flex-col md:flex-row">
+            <div className="flex gap-5 lg:text-lg text-center justify-center w-full flex-col lg:flex-row">
               {NAV_ITEMS.map((item) => (
                 <Link
                   key={`footer-nav-${item.label}`}

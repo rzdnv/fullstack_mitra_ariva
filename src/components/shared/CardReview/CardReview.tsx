@@ -19,7 +19,7 @@ interface PropTypes {
 const CardReview = (props: PropTypes) => {
   const { Name, Date, Review, Rating, Gender } = props;
   return (
-    <Card className=" h-full">
+    <Card className=" h-full bg-slate-100/80">
       <CardHeader className="flex items-center gap-4">
         <Avatar size="lg">
           <AvatarImage
@@ -29,23 +29,19 @@ const CardReview = (props: PropTypes) => {
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
         <div>
-          <CardTitle className="text-slate-800 md:text-lg ">{Name}</CardTitle>
-          <CardDescription className="text-xs md:text-base">
+          <CardTitle className="text-slate-800 ">{Name}</CardTitle>
+          <CardDescription className="text-xs md:text-sm">
             {Date}
           </CardDescription>
         </div>
       </CardHeader>
       <CardContent className="flex flex-col gap-2 h-full">
-        <p className="line-clamp-3 mb-auto text-xs md:text-base">{Review}</p>
-        <div className="flex gap-1">
-          {Array.from({ length: Rating }).map((_, index) => (
-            <Star
-              key={index}
-              className="w-3 h-3 md:w-5 md:h-5 "
-              fill="#FFC81E"
-              stroke="#FFC81E"
-            />
-          ))}
+        <p className="line-clamp-3 mb-auto text-xs md:text-sm px-6 text-slate-900">
+          {Review}
+        </p>
+        <div className="flex items-center gap-1 mt-2">
+          <Star className="w-5 h-5 " fill="#FFC81E" stroke="#FFC81E" />
+          <span className="font-light italic">{Rating} Rating</span>
         </div>
       </CardContent>
     </Card>

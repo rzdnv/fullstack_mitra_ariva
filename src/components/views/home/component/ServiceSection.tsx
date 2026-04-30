@@ -47,7 +47,7 @@ const ServiceSection = () => {
             : dataLayanan?.map((layanan: ILayanan) => (
                 <Card
                   key={layanan.id}
-                  className=" w-80 md:w-100 overflow-hidden rounded-2xl border-0 bg-havelock-blue-500/10 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+                  className=" w-65 md:w-100 overflow-hidden rounded-2xl border-0 bg-havelock-blue-500/10 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
                 >
                   {/* Foto */}
                   <Image
@@ -60,7 +60,7 @@ const ServiceSection = () => {
 
                   {/* Content */}
                   <CardContent className="space-y-3 p-5">
-                    <CardTitle className="text-center  text-xl md:text-2xl font-bold leading-snug text-havelock-blue-800">
+                    <CardTitle className="text-center text-lg md:text-2xl font-bold leading-snug text-havelock-blue-800">
                       {layanan.namaLayanan}
                     </CardTitle>
 
