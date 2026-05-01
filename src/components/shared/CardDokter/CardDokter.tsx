@@ -26,7 +26,7 @@ const CardDokter = (props: PropTypes) => {
   return (
     <Card
       key={id}
-      className="h-full w-full overflow-hidden rounded-3xl border-0 bg-havelock-blue-500/10 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+      className="h-full w-full overflow-hidden rounded-3xl border-0  transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
     >
       {/* Foto */}
       <Image
@@ -38,7 +38,7 @@ const CardDokter = (props: PropTypes) => {
       />
 
       {/* Content */}
-      <CardContent className="flex flex-col justify-between space-y-4 px-4 lg:p-4">
+      <CardContent className="flex flex-col justify-between space-y-4 ">
         <div className="flex justify-center">
           <Badge
             variant="secondary"

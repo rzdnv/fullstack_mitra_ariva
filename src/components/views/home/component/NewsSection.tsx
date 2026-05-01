@@ -35,7 +35,7 @@ const NewsSection = () => {
               ))
             : dataBerita?.map((berita: IBerita) => (
                 <div
-                  className="max-w-xs h-full rounded-sm hover:bg-gray-100 hover:border transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                  className="max-w-xs h-full rounded-sm hover:bg-white hover:border transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
                   key={berita.id}
                 >
                   <Image

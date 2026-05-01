@@ -41,12 +41,18 @@ const HighlightSection = () => {
           <h1 className="font-playfair text-2xl md:text-5xl text-center max-w-4xl text-slate-800 font-bold  md:mb-8">
             Di Sini, Kesembuhan anda menjadi prioritas utama
           </h1>
-          <p className=" text-base md:text-lg text-slate-700 text-justify px-0 md:px-20">
-            Rumah Sakit Khusus Bedah Mitra Ariva hadir untuk memberikan
-            pelayanan bedah yang aman dan terpercaya. Dengan dokter ahli yang
-            berpengalaman dan alat medis yang modern, kami siap merawat Anda
-            dengan sepenuh hati agar Anda bisa kembali beraktivitas dengan sehat
-            dan tenang.
+          <p className=" text-sm lg:text-base text-slate-700 text-justify px-0 md:px-20">
+            Rumah Sakit Khusus Bedah (RSKB) Mitra Ariva hadir sebagai mitra
+            terpercaya yang mengutamakan keamanan dan kenyamanan dalam setiap
+            tindakan bedah. Kami memadukan keahlian tim dokter spesialis
+            berpengalaman dengan dukungan teknologi medis modern untuk menjamin
+            hasil diagnosa dan perawatan yang akurat. <br />
+            Kami berkomitmen memberikan pelayanan yang humanis dan dilakukan
+            sepenuh hati, mulai dari konsultasi hingga masa pemulihan
+            pasca-operasi. Fokus utama kami adalah membantu Anda kembali meraih
+            kualitas hidup prima, agar Anda dapat beraktivitas kembali dengan
+            sehat dan tenang. Di RSKB Mitra Ariva, kesembuhan Anda adalah
+            prioritas tertinggi kami.
           </p>
         </div>
       </div>

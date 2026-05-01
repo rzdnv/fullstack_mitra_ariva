@@ -22,7 +22,7 @@ const CardSchedule = (props: PropTypes) => {
   };
 
   return (
-    <Card className="w-full p-4 md:p-6 border-havelock-blue-200/50">
+    <Card className="w-full p-4 md:p-6 bg-gray-50 border-havelock-blue-200/50">
       <CardHeader className="flex flex-col md:flex-row md:justify-between gap-3">
         <CardTitle className=" md:text-xl font-bold text-slate-800 leading-tight line-clamp-2">
           {Name}

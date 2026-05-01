@@ -47,7 +47,7 @@ const ServiceSection = () => {
             : dataLayanan?.map((layanan: ILayanan) => (
                 <Card
                   key={layanan.id}
-                  className=" w-65 md:w-100 overflow-hidden rounded-2xl border-0 bg-havelock-blue-500/10 shadow-lg"
+                  className=" w-65 md:w-100 overflow-hidden rounded-2xl border-0 bg-white shadow-lg"
                 >
                   {/* Foto */}
                   <Image
