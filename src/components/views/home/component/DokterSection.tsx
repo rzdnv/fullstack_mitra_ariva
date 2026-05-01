@@ -26,7 +26,7 @@ const DokterSection = () => {
         </h1>
       </div>
 
-      <div className="w-full px-10 ">
+      <div className="w-full">
         <Carousel
           className="w-full"
           opts={{

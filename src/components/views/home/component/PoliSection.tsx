@@ -74,7 +74,7 @@ const PoliSection = () => {
   const { dataDokters, isLoadingDokters } = useHome();
 
   return (
-    <section className="flex flex-col gap-10  items-center my-10 mx-10 p-8 lg:p-10 bg-white border rounded-xl">
+    <section className="flex flex-col gap-10  items-center my-10 mx-10 px-4 py-8 lg:p-10 bg-white border rounded-xl">
       <div className="w-full flex gap-4 flex-col items-center lg:items-start">
         <p className="text-havelock-blue-500 text-center lg:text-start md:text-xl tracking-tight">
           ✦ Poliklinik & Jadwal
