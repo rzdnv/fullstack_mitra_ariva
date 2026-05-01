@@ -1,6 +1,20 @@
 import Image from "next/image";
 
+const PARTNERS = [
+  { src: "/images/logo/mitra/bpjskesehatan.svg", alt: "BPJS Kesehatan" },
+  {
+    src: "/images/logo/mitra/bpjsketenagakerjaan.svg",
+    alt: "BPJS Ketenagakerjaan",
+  },
+  { src: "/images/logo/mitra/halodoc.webp", alt: "Halodoc" },
+  { src: "/images/logo/mitra/bnilife.webp", alt: "BNI Life" },
+  { src: "/images/logo/mitra/brilife.svg", alt: "BRI Life" },
+  { src: "/images/logo/mitra/mandiriinhealth.svg", alt: "Mandiri Inhealth" },
+];
+
 const PartnerSection = () => {
+  const marqueeItems = [...PARTNERS, ...PARTNERS];
+
   return (
     <div className="flex flex-col gap-10 w-full py-30 px-20 items-center overflow-hidden">
       <div className="flex gap-4 flex-col items-center">
@@ -11,93 +25,18 @@ const PartnerSection = () => {
           Melayani Pasien Umum, BPJS, & Asuransi
         </h1>
       </div>
-      <div className="flex gap-10 md:gap-20 animate-marquee ">
-        <Image
-          src="/images/logo/mitra/bpjskesehatan.svg"
-          alt="partner"
-          width={400}
-          height={300}
-          className="h-10 md:h-20"
-        />
-        <Image
-          src="/images/logo/mitra/bpjsketenagakerjaan.svg"
-          alt="partner"
-          width={400}
-          height={300}
-          className="h-10 md:h-20"
-        />
-        <Image
-          src="/images/logo/mitra/halodoc.webp"
-          alt="partner"
-          width={400}
-          height={300}
-          className="h-10 md:h-20"
-        />
-        <Image
-          src="/images/logo/mitra/bnilife.webp"
-          alt="partner"
-          width={400}
-          height={300}
-          className="h-10 md:h-20"
-        />
-        <Image
-          src="/images/logo/mitra/brilife.svg"
-          alt="partner"
-          width={400}
-          height={300}
-          className="h-10 md:h-20"
-        />
-        <Image
-          src="/images/logo/mitra/mandiriinhealth.svg"
-          alt="partner"
-          width={400}
-          height={300}
-          className="h-10 md:h-20"
-        />
 
-        {/* duplicate biar loop smooth */}
-        <Image
-          src="/images/logo/mitra/bpjskesehatan.svg"
-          alt="partner"
-          width={400}
-          height={300}
-          className="h-10 md:h-20"
-        />
-        <Image
-          src="/images/logo/mitra/bpjsketenagakerjaan.svg"
-          alt="partner"
-          width={400}
-          height={300}
-          className="h-10 md:h-20"
-        />
-        <Image
-          src="/images/logo/mitra/halodoc.webp"
-          alt="partner"
-          width={400}
-          height={300}
-          className="h-10 md:h-20"
-        />
-        <Image
-          src="/images/logo/mitra/bnilife.webp"
-          alt="partner"
-          width={400}
-          height={300}
-          className="h-10 md:h-20"
-        />
-        <Image
-          src="/images/logo/mitra/brilife.svg"
-          alt="partner"
-          width={400}
-          height={300}
-          className="h-10 md:h-20"
-        />
-        <Image
-          src="/images/logo/mitra/mandiriinhealth.svg"
-          alt="partner"
-          width={400}
-          height={300}
-          className="h-10 md:h-20"
-        />
+      <div className="flex gap-10 md:gap-20 animate-marquee">
+        {marqueeItems.map((partner, i) => (
+          <Image
+            key={`${partner.alt}-${i}`}
+            src={partner.src}
+            alt={partner.alt}
+            width={400}
+            height={300}
+            className="h-10 md:h-20"
+          />
+        ))}
       </div>
     </div>
   );

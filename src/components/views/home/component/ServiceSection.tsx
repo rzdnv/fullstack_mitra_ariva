@@ -25,7 +25,7 @@ const ServiceSection = () => {
             ? Array.from({ length: 5 }).map((_, index) => (
                 <Card
                   key={index}
-                  className="w-[320px] overflow-hidden rounded-2xl border-0 bg-havelock-blue-500/10"
+                  className="w-60 md:w-90 overflow-hidden rounded-2xl border-0 bg-havelock-blue-500/10"
                 >
                   {/* Skeleton Foto */}
                   <Skeleton className="h-60 w-full rounded-none" />
@@ -47,7 +47,7 @@ const ServiceSection = () => {
             : dataLayanan?.map((layanan: ILayanan) => (
                 <Card
                   key={layanan.id}
-                  className=" w-65 md:w-100 overflow-hidden rounded-2xl border-0 bg-white shadow-lg"
+                  className=" w-65 md:w-90 overflow-hidden rounded-2xl border-0 bg-white shadow-lg"
                 >
                   {/* Foto */}
                   <Image
@@ -59,8 +59,8 @@ const ServiceSection = () => {
                   />
 
                   {/* Content */}
-                  <CardContent className="space-y-3 p-5">
-                    <CardTitle className="text-center text-lg md:text-2xl font-bold leading-snug text-havelock-blue-800">
+                  <CardContent className="space-y-3 px-5">
+                    <CardTitle className="text-center md:text-xl font-bold leading-snug text-havelock-blue-800">
                       {layanan.namaLayanan}
                     </CardTitle>
 

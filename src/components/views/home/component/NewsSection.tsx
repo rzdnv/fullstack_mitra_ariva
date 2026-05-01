@@ -5,6 +5,7 @@ import useHome from "../useHome";
 import { IBerita } from "@/types/berita";
 import { formatTanggal } from "@/components/shared/formatted/formated";
 import { Skeleton } from "@/components/ui/skeleton";
+import { User } from "lucide-react";
 
 const NewsSection = () => {
   const { dataBerita, isLoadingBerita } = useHome();
@@ -46,12 +47,20 @@ const NewsSection = () => {
                     className="aspect-video object-cover rounded-sm"
                   />
                   <div className="flex flex-col gap-2 p-2">
-                    <h2 className="line-clamp-3 font-bold text-slate-800">
+                    <h2 className="line-clamp-3  text-sm lg:text-base font-bold text-slate-800">
                       {berita.judul}
                     </h2>
-                    <p className="text-sm text-slate-400">
-                      {formatTanggal(berita.tanggal)}
-                    </p>
+                    <div className="flex gap-2 items-center">
+                      <p className="text-xs lg:text-sm text-slate-400">
+                        {formatTanggal(berita.tanggal)} |
+                      </p>
+                      <div className="flex gap-1 items-center">
+                        <User className="w-4 h-4 text-slate-400" />
+                        <p className="text-xs lg:text-sm text-slate-400">
+                          {berita.user.username}
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))}

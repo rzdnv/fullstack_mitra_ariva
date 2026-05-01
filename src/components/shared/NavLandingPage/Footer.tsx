@@ -126,7 +126,7 @@ const Footer = () => {
 
       {/* ===== COPYRIGHT ===== */}
       <section className="bg-havelock-blue-400">
-        <p className="w-full text-center py-4 text-sm">
+        <p className="w-full text-center py-4 text-xs text-slate-800 lg:text-sm">
           © 2026 Rumah Sakit Khusus Bedah Mitra Ariva. All rights reserved
         </p>
       </section>

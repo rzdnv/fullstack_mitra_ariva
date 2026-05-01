@@ -26,7 +26,7 @@ const DokterSection = () => {
         </h1>
       </div>
 
-      <div className="w-full px-6">
+      <div className="w-full px-10 ">
         <Carousel
           className="w-full"
           opts={{
@@ -39,10 +39,10 @@ const DokterSection = () => {
               ? Array.from({ length: 4 }).map((_, index) => (
                   <CarouselItem
                     key={index}
-                    className="pl-4 sm:basis-1/2 lg:basis-1/4"
+                    className="sm:basis-1/2 lg:basis-1/4"
                   >
                     <Card className="overflow-hidden rounded-3xl border-0 bg-havelock-blue-500/10">
-                      <Skeleton className="h-60 w-full" />
+                      <Skeleton className="h-40 w-full" />
 
                       <CardContent className="space-y-4 p-6">
                         <Skeleton className="mx-auto h-6 w-28 rounded-full" />
@@ -66,8 +66,8 @@ const DokterSection = () => {
                   </CarouselItem>
                 ))}
           </CarouselContent>
-          <CarouselPrevious className="absolute -left-12 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white shadow-lg border rounded-full h-10 w-10 md:h-14 md:w-14" />
-          <CarouselNext className="absolute -right-12 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white shadow-lg border rounded-full h-10 w-10 md:h-14 md:w-14" />
+          <CarouselPrevious className="absolute -left-8 lg:-left-12 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white shadow-lg border rounded-full h-12 w-12 md:h-14 md:w-14" />
+          <CarouselNext className="absolute -right-8 lg:-right-12 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white shadow-lg border rounded-full h-12 w-12 md:h-14 md:w-14" />
         </Carousel>
       </div>
     </div>

@@ -66,7 +66,7 @@ const ReviewSection = () => {
   ];
 
   return (
-    <div className="flex flex-col gap-10 w-full mb-20 py-10 px-10 md:px-20 items-center">
+    <div className="flex flex-col gap-10 w-full py-30 px-10 md:px-20 items-center bg-linear-to-b from-gray-100 from-10% to-white to-90%">
       <div className="flex gap-4 flex-col items-center">
         <p className="text-havelock-blue-500 text-center md:text-xl tracking-tight">
           ✦ Cerita Pasien Kami
@@ -76,7 +76,7 @@ const ReviewSection = () => {
         </h1>
       </div>
 
-      <div className="w-full px-6 md:px-10 ">
+      <div className="w-full px-0 md:px-10 ">
         <Carousel
           className="w-full"
           opts={{
@@ -99,8 +99,8 @@ const ReviewSection = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="absolute -left-12 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white shadow-lg border rounded-full h-10 w-10 md:h-14 md:w-14" />
-          <CarouselNext className="absolute -right-12 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white shadow-lg border rounded-full h-10 w-10 md:h-14 md:w-14" />
+          <CarouselPrevious className="absolute -left-6 lg:-left-12 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white shadow-lg border rounded-full h-12 w-12 md:h-14 md:w-14" />
+          <CarouselNext className="absolute -right-6 lg:-right-12 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white shadow-lg border rounded-full h-12 w-12 md:h-14 md:w-14" />
         </Carousel>
       </div>
     </div>

@@ -37,7 +37,7 @@ const CardSchedule = (props: PropTypes) => {
           {Poli}
         </Badge>
       </CardHeader>
-      <CardContent className="flex flex-col gap-3">
+      <CardContent className="grid  grid-cols-1 lg:grid-cols-2 gap-3">
         {Schedules.map((schedule, index) => (
           <DayTime key={index} Day={schedule.Day} Time={schedule.Time} />
         ))}

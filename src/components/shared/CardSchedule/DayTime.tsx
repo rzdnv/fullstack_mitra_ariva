@@ -8,16 +8,16 @@ interface PropTypes {
 const DayTime = (props: PropTypes) => {
   const { Day, Time } = props;
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex flex-col gap-2 p-1 border bg-white rounded-lg items-center">
       <div className="flex items-center gap-1 ">
         <Calendar className=" w-3 h-3 md:h-4 md:w-4 text-havelock-blue-500" />
-        <span className=" text-xs md:text-sm font-medium md:font-semibold text-slate-700">
+        <span className=" text-xs font-medium md:font-semibold text-slate-700">
           {Day}
         </span>
       </div>
       <div className="flex items-center gap-1 ">
         <Clock className=" w-3 h-3 md:h-4 md:w-4 text-havelock-blue-500" />
-        <span className="text-xs md:text-sm font-medium md:font-semibold text-slate-700">
+        <span className="text-xs font-medium md:font-semibold text-slate-700">
           {Time} WIB
         </span>
       </div>

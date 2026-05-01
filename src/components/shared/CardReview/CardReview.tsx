@@ -41,7 +41,7 @@ const CardReview = (props: PropTypes) => {
         </p>
         <div className="flex items-center gap-1 mt-2">
           <Star className="w-5 h-5 " fill="#FFC81E" stroke="#FFC81E" />
-          <span className="font-light italic">{Rating} Rating</span>
+          <span className="font-light text-sm italic">{Rating} Rating</span>
         </div>
       </CardContent>
     </Card>

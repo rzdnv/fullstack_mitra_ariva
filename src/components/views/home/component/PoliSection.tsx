@@ -53,10 +53,6 @@ const POLI_LIST: PoliItem[] = [
   },
 ];
 
-// ---------------------------------------------------------------------------
-// Sub-components
-// ---------------------------------------------------------------------------
-
 const PoliCard = ({ label, image, color }: PoliItem) => (
   <div
     className={`flex flex-col gap-2 aspect-square w-full h-full justify-center items-center transition-all duration-300 ${color}`}
@@ -68,22 +64,17 @@ const PoliCard = ({ label, image, color }: PoliItem) => (
       height={300}
       className="w-10 lg:w-15 xl:w-20"
     />
-    <p className="lg:text-xl font-bold text-center text-slate-800 px-4">
+    <p className="text-sm lg:text-xl font-bold text-center text-slate-800 px-4">
       {label}
     </p>
   </div>
 );
-
-// ---------------------------------------------------------------------------
-// Main Component
-// ---------------------------------------------------------------------------
 
 const PoliSection = () => {
   const { dataDokters, isLoadingDokters } = useHome();
 
   return (
     <section className="flex flex-col gap-10  items-center my-10 mx-10 p-8 lg:p-10 bg-white border rounded-xl">
-      {/* Heading */}
       <div className="w-full flex gap-4 flex-col items-center lg:items-start">
         <p className="text-havelock-blue-500 text-center lg:text-start md:text-xl tracking-tight">
           ✦ Poliklinik & Jadwal
@@ -93,16 +84,13 @@ const PoliSection = () => {
         </h1>
       </div>
 
-      {/* Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full ">
-        {/* Left — Poli Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3">
           {POLI_LIST.map((poli) => (
             <PoliCard key={poli.label} {...poli} />
           ))}
         </div>
 
-        {/* Right — Doctor Schedule List */}
         <div>
           <div className="grid grid-cols-1 gap-4 max-h-110 overflow-y-auto py-4 px-2 md:px-5 scrollbar-hide">
             {isLoadingDokters
