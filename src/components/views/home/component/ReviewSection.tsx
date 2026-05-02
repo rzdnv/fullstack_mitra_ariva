@@ -66,7 +66,7 @@ const ReviewSection = () => {
   ];
 
   return (
-    <div className="flex flex-col gap-10 w-full py-30 px-10 md:px-20 items-center bg-linear-to-b from-gray-100 from-10% to-white to-90%">
+    <div className="flex flex-col gap-10 w-full pb-30 pt-10 px-10 md:px-20 items-center bg-linear-to-b from-gray-100 from-10% to-white to-90%">
       <div className="flex gap-4 flex-col items-center">
         <p className="text-havelock-blue-500 text-center md:text-xl tracking-tight">
           ✦ Cerita Pasien Kami

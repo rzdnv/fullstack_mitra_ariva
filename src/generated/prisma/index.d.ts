@@ -44,10 +44,10 @@ export type Berita = $Result.DefaultSelection<Prisma.$BeritaPayload>
  */
 export type Layanan = $Result.DefaultSelection<Prisma.$LayananPayload>
 /**
- * Model LayananDetail
+ * Model Review
  * 
  */
-export type LayananDetail = $Result.DefaultSelection<Prisma.$LayananDetailPayload>
+export type Review = $Result.DefaultSelection<Prisma.$ReviewPayload>
 
 /**
  * Enums
@@ -265,14 +265,14 @@ export class PrismaClient<
   get layanan(): Prisma.LayananDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.layananDetail`: Exposes CRUD operations for the **LayananDetail** model.
+   * `prisma.review`: Exposes CRUD operations for the **Review** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more LayananDetails
-    * const layananDetails = await prisma.layananDetail.findMany()
+    * // Fetch zero or more Reviews
+    * const reviews = await prisma.review.findMany()
     * ```
     */
-  get layananDetail(): Prisma.LayananDetailDelegate<ExtArgs, ClientOptions>;
+  get review(): Prisma.ReviewDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -713,7 +713,7 @@ export namespace Prisma {
     JadwalDokter: 'JadwalDokter',
     Berita: 'Berita',
     Layanan: 'Layanan',
-    LayananDetail: 'LayananDetail'
+    Review: 'Review'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -729,7 +729,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "poli" | "dokter" | "jadwalDokter" | "berita" | "layanan" | "layananDetail"
+      modelProps: "user" | "poli" | "dokter" | "jadwalDokter" | "berita" | "layanan" | "review"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1177,77 +1177,77 @@ export namespace Prisma {
           }
         }
       }
-      LayananDetail: {
-        payload: Prisma.$LayananDetailPayload<ExtArgs>
-        fields: Prisma.LayananDetailFieldRefs
+      Review: {
+        payload: Prisma.$ReviewPayload<ExtArgs>
+        fields: Prisma.ReviewFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.LayananDetailFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LayananDetailPayload> | null
+            args: Prisma.ReviewFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.LayananDetailFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LayananDetailPayload>
+            args: Prisma.ReviewFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
           }
           findFirst: {
-            args: Prisma.LayananDetailFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LayananDetailPayload> | null
+            args: Prisma.ReviewFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.LayananDetailFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LayananDetailPayload>
+            args: Prisma.ReviewFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
           }
           findMany: {
-            args: Prisma.LayananDetailFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LayananDetailPayload>[]
+            args: Prisma.ReviewFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>[]
           }
           create: {
-            args: Prisma.LayananDetailCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LayananDetailPayload>
+            args: Prisma.ReviewCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
           }
           createMany: {
-            args: Prisma.LayananDetailCreateManyArgs<ExtArgs>
+            args: Prisma.ReviewCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.LayananDetailCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LayananDetailPayload>[]
+            args: Prisma.ReviewCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>[]
           }
           delete: {
-            args: Prisma.LayananDetailDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LayananDetailPayload>
+            args: Prisma.ReviewDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
           }
           update: {
-            args: Prisma.LayananDetailUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LayananDetailPayload>
+            args: Prisma.ReviewUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
           }
           deleteMany: {
-            args: Prisma.LayananDetailDeleteManyArgs<ExtArgs>
+            args: Prisma.ReviewDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.LayananDetailUpdateManyArgs<ExtArgs>
+            args: Prisma.ReviewUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.LayananDetailUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LayananDetailPayload>[]
+            args: Prisma.ReviewUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>[]
           }
           upsert: {
-            args: Prisma.LayananDetailUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LayananDetailPayload>
+            args: Prisma.ReviewUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
           }
           aggregate: {
-            args: Prisma.LayananDetailAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateLayananDetail>
+            args: Prisma.ReviewAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateReview>
           }
           groupBy: {
-            args: Prisma.LayananDetailGroupByArgs<ExtArgs>
-            result: $Utils.Optional<LayananDetailGroupByOutputType>[]
+            args: Prisma.ReviewGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ReviewGroupByOutputType>[]
           }
           count: {
-            args: Prisma.LayananDetailCountArgs<ExtArgs>
-            result: $Utils.Optional<LayananDetailCountAggregateOutputType> | number
+            args: Prisma.ReviewCountArgs<ExtArgs>
+            result: $Utils.Optional<ReviewCountAggregateOutputType> | number
           }
         }
       }
@@ -1365,7 +1365,7 @@ export namespace Prisma {
     jadwalDokter?: JadwalDokterOmit
     berita?: BeritaOmit
     layanan?: LayananOmit
-    layananDetail?: LayananDetailOmit
+    review?: ReviewOmit
   }
 
   /* Types for Logging */
@@ -1531,37 +1531,6 @@ export namespace Prisma {
    */
   export type DokterCountOutputTypeCountJadwalArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: JadwalDokterWhereInput
-  }
-
-
-  /**
-   * Count Type LayananCountOutputType
-   */
-
-  export type LayananCountOutputType = {
-    detail: number
-  }
-
-  export type LayananCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    detail?: boolean | LayananCountOutputTypeCountDetailArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * LayananCountOutputType without action
-   */
-  export type LayananCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the LayananCountOutputType
-     */
-    select?: LayananCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * LayananCountOutputType without action
-   */
-  export type LayananCountOutputTypeCountDetailArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: LayananDetailWhereInput
   }
 
 
@@ -7344,8 +7313,6 @@ export namespace Prisma {
     deskripsi?: boolean
     foto?: boolean
     createdAt?: boolean
-    detail?: boolean | Layanan$detailArgs<ExtArgs>
-    _count?: boolean | LayananCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["layanan"]>
 
   export type LayananSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7373,18 +7340,10 @@ export namespace Prisma {
   }
 
   export type LayananOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "namaLayanan" | "deskripsi" | "foto" | "createdAt", ExtArgs["result"]["layanan"]>
-  export type LayananInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    detail?: boolean | Layanan$detailArgs<ExtArgs>
-    _count?: boolean | LayananCountOutputTypeDefaultArgs<ExtArgs>
-  }
-  export type LayananIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type LayananIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $LayananPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Layanan"
-    objects: {
-      detail: Prisma.$LayananDetailPayload<ExtArgs>[]
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: number
       namaLayanan: string
@@ -7785,7 +7744,6 @@ export namespace Prisma {
    */
   export interface Prisma__LayananClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    detail<T extends Layanan$detailArgs<ExtArgs> = {}>(args?: Subset<T, Layanan$detailArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LayananDetailPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7837,10 +7795,6 @@ export namespace Prisma {
      */
     omit?: LayananOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: LayananInclude<ExtArgs> | null
-    /**
      * Filter, which Layanan to fetch.
      */
     where: LayananWhereUniqueInput
@@ -7859,10 +7813,6 @@ export namespace Prisma {
      */
     omit?: LayananOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: LayananInclude<ExtArgs> | null
-    /**
      * Filter, which Layanan to fetch.
      */
     where: LayananWhereUniqueInput
@@ -7880,10 +7830,6 @@ export namespace Prisma {
      * Omit specific fields from the Layanan
      */
     omit?: LayananOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: LayananInclude<ExtArgs> | null
     /**
      * Filter, which Layanan to fetch.
      */
@@ -7933,10 +7879,6 @@ export namespace Prisma {
      */
     omit?: LayananOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: LayananInclude<ExtArgs> | null
-    /**
      * Filter, which Layanan to fetch.
      */
     where?: LayananWhereInput
@@ -7984,10 +7926,6 @@ export namespace Prisma {
      * Omit specific fields from the Layanan
      */
     omit?: LayananOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: LayananInclude<ExtArgs> | null
     /**
      * Filter, which Layanans to fetch.
      */
@@ -8037,10 +7975,6 @@ export namespace Prisma {
      */
     omit?: LayananOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: LayananInclude<ExtArgs> | null
-    /**
      * The data needed to create a Layanan.
      */
     data: XOR<LayananCreateInput, LayananUncheckedCreateInput>
@@ -8088,10 +8022,6 @@ export namespace Prisma {
      * Omit specific fields from the Layanan
      */
     omit?: LayananOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: LayananInclude<ExtArgs> | null
     /**
      * The data needed to update a Layanan.
      */
@@ -8159,10 +8089,6 @@ export namespace Prisma {
      */
     omit?: LayananOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: LayananInclude<ExtArgs> | null
-    /**
      * The filter to search for the Layanan to update in case it exists.
      */
     where: LayananWhereUniqueInput
@@ -8189,10 +8115,6 @@ export namespace Prisma {
      */
     omit?: LayananOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: LayananInclude<ExtArgs> | null
-    /**
      * Filter which Layanan to delete.
      */
     where: LayananWhereUniqueInput
@@ -8213,30 +8135,6 @@ export namespace Prisma {
   }
 
   /**
-   * Layanan.detail
-   */
-  export type Layanan$detailArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the LayananDetail
-     */
-    select?: LayananDetailSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the LayananDetail
-     */
-    omit?: LayananDetailOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: LayananDetailInclude<ExtArgs> | null
-    where?: LayananDetailWhereInput
-    orderBy?: LayananDetailOrderByWithRelationInput | LayananDetailOrderByWithRelationInput[]
-    cursor?: LayananDetailWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: LayananDetailScalarFieldEnum | LayananDetailScalarFieldEnum[]
-  }
-
-  /**
    * Layanan without action
    */
   export type LayananDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -8248,412 +8146,402 @@ export namespace Prisma {
      * Omit specific fields from the Layanan
      */
     omit?: LayananOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: LayananInclude<ExtArgs> | null
   }
 
 
   /**
-   * Model LayananDetail
+   * Model Review
    */
 
-  export type AggregateLayananDetail = {
-    _count: LayananDetailCountAggregateOutputType | null
-    _avg: LayananDetailAvgAggregateOutputType | null
-    _sum: LayananDetailSumAggregateOutputType | null
-    _min: LayananDetailMinAggregateOutputType | null
-    _max: LayananDetailMaxAggregateOutputType | null
+  export type AggregateReview = {
+    _count: ReviewCountAggregateOutputType | null
+    _avg: ReviewAvgAggregateOutputType | null
+    _sum: ReviewSumAggregateOutputType | null
+    _min: ReviewMinAggregateOutputType | null
+    _max: ReviewMaxAggregateOutputType | null
   }
 
-  export type LayananDetailAvgAggregateOutputType = {
+  export type ReviewAvgAggregateOutputType = {
     id: number | null
-    layananId: number | null
-    harga: Decimal | null
+    rating: number | null
   }
 
-  export type LayananDetailSumAggregateOutputType = {
+  export type ReviewSumAggregateOutputType = {
     id: number | null
-    layananId: number | null
-    harga: Decimal | null
+    rating: number | null
   }
 
-  export type LayananDetailMinAggregateOutputType = {
+  export type ReviewMinAggregateOutputType = {
     id: number | null
-    layananId: number | null
-    namaPaket: string | null
-    harga: Decimal | null
-    deskripsi: string | null
+    nama: string | null
+    tanggal: Date | null
+    review: string | null
+    rating: number | null
+    gender: string | null
     createdAt: Date | null
   }
 
-  export type LayananDetailMaxAggregateOutputType = {
+  export type ReviewMaxAggregateOutputType = {
     id: number | null
-    layananId: number | null
-    namaPaket: string | null
-    harga: Decimal | null
-    deskripsi: string | null
+    nama: string | null
+    tanggal: Date | null
+    review: string | null
+    rating: number | null
+    gender: string | null
     createdAt: Date | null
   }
 
-  export type LayananDetailCountAggregateOutputType = {
+  export type ReviewCountAggregateOutputType = {
     id: number
-    layananId: number
-    namaPaket: number
-    harga: number
-    deskripsi: number
+    nama: number
+    tanggal: number
+    review: number
+    rating: number
+    gender: number
     createdAt: number
     _all: number
   }
 
 
-  export type LayananDetailAvgAggregateInputType = {
+  export type ReviewAvgAggregateInputType = {
     id?: true
-    layananId?: true
-    harga?: true
+    rating?: true
   }
 
-  export type LayananDetailSumAggregateInputType = {
+  export type ReviewSumAggregateInputType = {
     id?: true
-    layananId?: true
-    harga?: true
+    rating?: true
   }
 
-  export type LayananDetailMinAggregateInputType = {
+  export type ReviewMinAggregateInputType = {
     id?: true
-    layananId?: true
-    namaPaket?: true
-    harga?: true
-    deskripsi?: true
+    nama?: true
+    tanggal?: true
+    review?: true
+    rating?: true
+    gender?: true
     createdAt?: true
   }
 
-  export type LayananDetailMaxAggregateInputType = {
+  export type ReviewMaxAggregateInputType = {
     id?: true
-    layananId?: true
-    namaPaket?: true
-    harga?: true
-    deskripsi?: true
+    nama?: true
+    tanggal?: true
+    review?: true
+    rating?: true
+    gender?: true
     createdAt?: true
   }
 
-  export type LayananDetailCountAggregateInputType = {
+  export type ReviewCountAggregateInputType = {
     id?: true
-    layananId?: true
-    namaPaket?: true
-    harga?: true
-    deskripsi?: true
+    nama?: true
+    tanggal?: true
+    review?: true
+    rating?: true
+    gender?: true
     createdAt?: true
     _all?: true
   }
 
-  export type LayananDetailAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReviewAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which LayananDetail to aggregate.
+     * Filter which Review to aggregate.
      */
-    where?: LayananDetailWhereInput
+    where?: ReviewWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of LayananDetails to fetch.
+     * Determine the order of Reviews to fetch.
      */
-    orderBy?: LayananDetailOrderByWithRelationInput | LayananDetailOrderByWithRelationInput[]
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: LayananDetailWhereUniqueInput
+    cursor?: ReviewWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` LayananDetails from the position of the cursor.
+     * Take `±n` Reviews from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` LayananDetails.
+     * Skip the first `n` Reviews.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned LayananDetails
+     * Count returned Reviews
     **/
-    _count?: true | LayananDetailCountAggregateInputType
+    _count?: true | ReviewCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: LayananDetailAvgAggregateInputType
+    _avg?: ReviewAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: LayananDetailSumAggregateInputType
+    _sum?: ReviewSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: LayananDetailMinAggregateInputType
+    _min?: ReviewMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: LayananDetailMaxAggregateInputType
+    _max?: ReviewMaxAggregateInputType
   }
 
-  export type GetLayananDetailAggregateType<T extends LayananDetailAggregateArgs> = {
-        [P in keyof T & keyof AggregateLayananDetail]: P extends '_count' | 'count'
+  export type GetReviewAggregateType<T extends ReviewAggregateArgs> = {
+        [P in keyof T & keyof AggregateReview]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateLayananDetail[P]>
-      : GetScalarType<T[P], AggregateLayananDetail[P]>
+        : GetScalarType<T[P], AggregateReview[P]>
+      : GetScalarType<T[P], AggregateReview[P]>
   }
 
 
 
 
-  export type LayananDetailGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: LayananDetailWhereInput
-    orderBy?: LayananDetailOrderByWithAggregationInput | LayananDetailOrderByWithAggregationInput[]
-    by: LayananDetailScalarFieldEnum[] | LayananDetailScalarFieldEnum
-    having?: LayananDetailScalarWhereWithAggregatesInput
+  export type ReviewGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReviewWhereInput
+    orderBy?: ReviewOrderByWithAggregationInput | ReviewOrderByWithAggregationInput[]
+    by: ReviewScalarFieldEnum[] | ReviewScalarFieldEnum
+    having?: ReviewScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: LayananDetailCountAggregateInputType | true
-    _avg?: LayananDetailAvgAggregateInputType
-    _sum?: LayananDetailSumAggregateInputType
-    _min?: LayananDetailMinAggregateInputType
-    _max?: LayananDetailMaxAggregateInputType
+    _count?: ReviewCountAggregateInputType | true
+    _avg?: ReviewAvgAggregateInputType
+    _sum?: ReviewSumAggregateInputType
+    _min?: ReviewMinAggregateInputType
+    _max?: ReviewMaxAggregateInputType
   }
 
-  export type LayananDetailGroupByOutputType = {
+  export type ReviewGroupByOutputType = {
     id: number
-    layananId: number
-    namaPaket: string
-    harga: Decimal
-    deskripsi: string | null
+    nama: string
+    tanggal: Date
+    review: string
+    rating: number
+    gender: string
     createdAt: Date
-    _count: LayananDetailCountAggregateOutputType | null
-    _avg: LayananDetailAvgAggregateOutputType | null
-    _sum: LayananDetailSumAggregateOutputType | null
-    _min: LayananDetailMinAggregateOutputType | null
-    _max: LayananDetailMaxAggregateOutputType | null
+    _count: ReviewCountAggregateOutputType | null
+    _avg: ReviewAvgAggregateOutputType | null
+    _sum: ReviewSumAggregateOutputType | null
+    _min: ReviewMinAggregateOutputType | null
+    _max: ReviewMaxAggregateOutputType | null
   }
 
-  type GetLayananDetailGroupByPayload<T extends LayananDetailGroupByArgs> = Prisma.PrismaPromise<
+  type GetReviewGroupByPayload<T extends ReviewGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<LayananDetailGroupByOutputType, T['by']> &
+      PickEnumerable<ReviewGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof LayananDetailGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof ReviewGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], LayananDetailGroupByOutputType[P]>
-            : GetScalarType<T[P], LayananDetailGroupByOutputType[P]>
+              : GetScalarType<T[P], ReviewGroupByOutputType[P]>
+            : GetScalarType<T[P], ReviewGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type LayananDetailSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ReviewSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    layananId?: boolean
-    namaPaket?: boolean
-    harga?: boolean
-    deskripsi?: boolean
+    nama?: boolean
+    tanggal?: boolean
+    review?: boolean
+    rating?: boolean
+    gender?: boolean
     createdAt?: boolean
-    layanan?: boolean | LayananDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["layananDetail"]>
+  }, ExtArgs["result"]["review"]>
 
-  export type LayananDetailSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ReviewSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    layananId?: boolean
-    namaPaket?: boolean
-    harga?: boolean
-    deskripsi?: boolean
+    nama?: boolean
+    tanggal?: boolean
+    review?: boolean
+    rating?: boolean
+    gender?: boolean
     createdAt?: boolean
-    layanan?: boolean | LayananDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["layananDetail"]>
+  }, ExtArgs["result"]["review"]>
 
-  export type LayananDetailSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ReviewSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    layananId?: boolean
-    namaPaket?: boolean
-    harga?: boolean
-    deskripsi?: boolean
+    nama?: boolean
+    tanggal?: boolean
+    review?: boolean
+    rating?: boolean
+    gender?: boolean
     createdAt?: boolean
-    layanan?: boolean | LayananDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["layananDetail"]>
+  }, ExtArgs["result"]["review"]>
 
-  export type LayananDetailSelectScalar = {
+  export type ReviewSelectScalar = {
     id?: boolean
-    layananId?: boolean
-    namaPaket?: boolean
-    harga?: boolean
-    deskripsi?: boolean
+    nama?: boolean
+    tanggal?: boolean
+    review?: boolean
+    rating?: boolean
+    gender?: boolean
     createdAt?: boolean
   }
 
-  export type LayananDetailOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "layananId" | "namaPaket" | "harga" | "deskripsi" | "createdAt", ExtArgs["result"]["layananDetail"]>
-  export type LayananDetailInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    layanan?: boolean | LayananDefaultArgs<ExtArgs>
-  }
-  export type LayananDetailIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    layanan?: boolean | LayananDefaultArgs<ExtArgs>
-  }
-  export type LayananDetailIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    layanan?: boolean | LayananDefaultArgs<ExtArgs>
-  }
+  export type ReviewOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nama" | "tanggal" | "review" | "rating" | "gender" | "createdAt", ExtArgs["result"]["review"]>
 
-  export type $LayananDetailPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "LayananDetail"
-    objects: {
-      layanan: Prisma.$LayananPayload<ExtArgs>
-    }
+  export type $ReviewPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Review"
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      layananId: number
-      namaPaket: string
-      harga: Prisma.Decimal
-      deskripsi: string | null
+      nama: string
+      tanggal: Date
+      review: string
+      rating: number
+      gender: string
       createdAt: Date
-    }, ExtArgs["result"]["layananDetail"]>
+    }, ExtArgs["result"]["review"]>
     composites: {}
   }
 
-  type LayananDetailGetPayload<S extends boolean | null | undefined | LayananDetailDefaultArgs> = $Result.GetResult<Prisma.$LayananDetailPayload, S>
+  type ReviewGetPayload<S extends boolean | null | undefined | ReviewDefaultArgs> = $Result.GetResult<Prisma.$ReviewPayload, S>
 
-  type LayananDetailCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<LayananDetailFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: LayananDetailCountAggregateInputType | true
+  type ReviewCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ReviewFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ReviewCountAggregateInputType | true
     }
 
-  export interface LayananDetailDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['LayananDetail'], meta: { name: 'LayananDetail' } }
+  export interface ReviewDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Review'], meta: { name: 'Review' } }
     /**
-     * Find zero or one LayananDetail that matches the filter.
-     * @param {LayananDetailFindUniqueArgs} args - Arguments to find a LayananDetail
+     * Find zero or one Review that matches the filter.
+     * @param {ReviewFindUniqueArgs} args - Arguments to find a Review
      * @example
-     * // Get one LayananDetail
-     * const layananDetail = await prisma.layananDetail.findUnique({
+     * // Get one Review
+     * const review = await prisma.review.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends LayananDetailFindUniqueArgs>(args: SelectSubset<T, LayananDetailFindUniqueArgs<ExtArgs>>): Prisma__LayananDetailClient<$Result.GetResult<Prisma.$LayananDetailPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends ReviewFindUniqueArgs>(args: SelectSubset<T, ReviewFindUniqueArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one LayananDetail that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Review that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {LayananDetailFindUniqueOrThrowArgs} args - Arguments to find a LayananDetail
+     * @param {ReviewFindUniqueOrThrowArgs} args - Arguments to find a Review
      * @example
-     * // Get one LayananDetail
-     * const layananDetail = await prisma.layananDetail.findUniqueOrThrow({
+     * // Get one Review
+     * const review = await prisma.review.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends LayananDetailFindUniqueOrThrowArgs>(args: SelectSubset<T, LayananDetailFindUniqueOrThrowArgs<ExtArgs>>): Prisma__LayananDetailClient<$Result.GetResult<Prisma.$LayananDetailPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends ReviewFindUniqueOrThrowArgs>(args: SelectSubset<T, ReviewFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first LayananDetail that matches the filter.
+     * Find the first Review that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {LayananDetailFindFirstArgs} args - Arguments to find a LayananDetail
+     * @param {ReviewFindFirstArgs} args - Arguments to find a Review
      * @example
-     * // Get one LayananDetail
-     * const layananDetail = await prisma.layananDetail.findFirst({
+     * // Get one Review
+     * const review = await prisma.review.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends LayananDetailFindFirstArgs>(args?: SelectSubset<T, LayananDetailFindFirstArgs<ExtArgs>>): Prisma__LayananDetailClient<$Result.GetResult<Prisma.$LayananDetailPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends ReviewFindFirstArgs>(args?: SelectSubset<T, ReviewFindFirstArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first LayananDetail that matches the filter or
+     * Find the first Review that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {LayananDetailFindFirstOrThrowArgs} args - Arguments to find a LayananDetail
+     * @param {ReviewFindFirstOrThrowArgs} args - Arguments to find a Review
      * @example
-     * // Get one LayananDetail
-     * const layananDetail = await prisma.layananDetail.findFirstOrThrow({
+     * // Get one Review
+     * const review = await prisma.review.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends LayananDetailFindFirstOrThrowArgs>(args?: SelectSubset<T, LayananDetailFindFirstOrThrowArgs<ExtArgs>>): Prisma__LayananDetailClient<$Result.GetResult<Prisma.$LayananDetailPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends ReviewFindFirstOrThrowArgs>(args?: SelectSubset<T, ReviewFindFirstOrThrowArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more LayananDetails that matches the filter.
+     * Find zero or more Reviews that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {LayananDetailFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {ReviewFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all LayananDetails
-     * const layananDetails = await prisma.layananDetail.findMany()
+     * // Get all Reviews
+     * const reviews = await prisma.review.findMany()
      * 
-     * // Get first 10 LayananDetails
-     * const layananDetails = await prisma.layananDetail.findMany({ take: 10 })
+     * // Get first 10 Reviews
+     * const reviews = await prisma.review.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const layananDetailWithIdOnly = await prisma.layananDetail.findMany({ select: { id: true } })
+     * const reviewWithIdOnly = await prisma.review.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends LayananDetailFindManyArgs>(args?: SelectSubset<T, LayananDetailFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LayananDetailPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends ReviewFindManyArgs>(args?: SelectSubset<T, ReviewFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a LayananDetail.
-     * @param {LayananDetailCreateArgs} args - Arguments to create a LayananDetail.
+     * Create a Review.
+     * @param {ReviewCreateArgs} args - Arguments to create a Review.
      * @example
-     * // Create one LayananDetail
-     * const LayananDetail = await prisma.layananDetail.create({
+     * // Create one Review
+     * const Review = await prisma.review.create({
      *   data: {
-     *     // ... data to create a LayananDetail
+     *     // ... data to create a Review
      *   }
      * })
      * 
      */
-    create<T extends LayananDetailCreateArgs>(args: SelectSubset<T, LayananDetailCreateArgs<ExtArgs>>): Prisma__LayananDetailClient<$Result.GetResult<Prisma.$LayananDetailPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends ReviewCreateArgs>(args: SelectSubset<T, ReviewCreateArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many LayananDetails.
-     * @param {LayananDetailCreateManyArgs} args - Arguments to create many LayananDetails.
+     * Create many Reviews.
+     * @param {ReviewCreateManyArgs} args - Arguments to create many Reviews.
      * @example
-     * // Create many LayananDetails
-     * const layananDetail = await prisma.layananDetail.createMany({
+     * // Create many Reviews
+     * const review = await prisma.review.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends LayananDetailCreateManyArgs>(args?: SelectSubset<T, LayananDetailCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends ReviewCreateManyArgs>(args?: SelectSubset<T, ReviewCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many LayananDetails and returns the data saved in the database.
-     * @param {LayananDetailCreateManyAndReturnArgs} args - Arguments to create many LayananDetails.
+     * Create many Reviews and returns the data saved in the database.
+     * @param {ReviewCreateManyAndReturnArgs} args - Arguments to create many Reviews.
      * @example
-     * // Create many LayananDetails
-     * const layananDetail = await prisma.layananDetail.createManyAndReturn({
+     * // Create many Reviews
+     * const review = await prisma.review.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many LayananDetails and only return the `id`
-     * const layananDetailWithIdOnly = await prisma.layananDetail.createManyAndReturn({
+     * // Create many Reviews and only return the `id`
+     * const reviewWithIdOnly = await prisma.review.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -8663,28 +8551,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends LayananDetailCreateManyAndReturnArgs>(args?: SelectSubset<T, LayananDetailCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LayananDetailPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends ReviewCreateManyAndReturnArgs>(args?: SelectSubset<T, ReviewCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a LayananDetail.
-     * @param {LayananDetailDeleteArgs} args - Arguments to delete one LayananDetail.
+     * Delete a Review.
+     * @param {ReviewDeleteArgs} args - Arguments to delete one Review.
      * @example
-     * // Delete one LayananDetail
-     * const LayananDetail = await prisma.layananDetail.delete({
+     * // Delete one Review
+     * const Review = await prisma.review.delete({
      *   where: {
-     *     // ... filter to delete one LayananDetail
+     *     // ... filter to delete one Review
      *   }
      * })
      * 
      */
-    delete<T extends LayananDetailDeleteArgs>(args: SelectSubset<T, LayananDetailDeleteArgs<ExtArgs>>): Prisma__LayananDetailClient<$Result.GetResult<Prisma.$LayananDetailPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends ReviewDeleteArgs>(args: SelectSubset<T, ReviewDeleteArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one LayananDetail.
-     * @param {LayananDetailUpdateArgs} args - Arguments to update one LayananDetail.
+     * Update one Review.
+     * @param {ReviewUpdateArgs} args - Arguments to update one Review.
      * @example
-     * // Update one LayananDetail
-     * const layananDetail = await prisma.layananDetail.update({
+     * // Update one Review
+     * const review = await prisma.review.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -8694,30 +8582,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends LayananDetailUpdateArgs>(args: SelectSubset<T, LayananDetailUpdateArgs<ExtArgs>>): Prisma__LayananDetailClient<$Result.GetResult<Prisma.$LayananDetailPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends ReviewUpdateArgs>(args: SelectSubset<T, ReviewUpdateArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more LayananDetails.
-     * @param {LayananDetailDeleteManyArgs} args - Arguments to filter LayananDetails to delete.
+     * Delete zero or more Reviews.
+     * @param {ReviewDeleteManyArgs} args - Arguments to filter Reviews to delete.
      * @example
-     * // Delete a few LayananDetails
-     * const { count } = await prisma.layananDetail.deleteMany({
+     * // Delete a few Reviews
+     * const { count } = await prisma.review.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends LayananDetailDeleteManyArgs>(args?: SelectSubset<T, LayananDetailDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends ReviewDeleteManyArgs>(args?: SelectSubset<T, ReviewDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more LayananDetails.
+     * Update zero or more Reviews.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {LayananDetailUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {ReviewUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many LayananDetails
-     * const layananDetail = await prisma.layananDetail.updateMany({
+     * // Update many Reviews
+     * const review = await prisma.review.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -8727,14 +8615,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends LayananDetailUpdateManyArgs>(args: SelectSubset<T, LayananDetailUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends ReviewUpdateManyArgs>(args: SelectSubset<T, ReviewUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more LayananDetails and returns the data updated in the database.
-     * @param {LayananDetailUpdateManyAndReturnArgs} args - Arguments to update many LayananDetails.
+     * Update zero or more Reviews and returns the data updated in the database.
+     * @param {ReviewUpdateManyAndReturnArgs} args - Arguments to update many Reviews.
      * @example
-     * // Update many LayananDetails
-     * const layananDetail = await prisma.layananDetail.updateManyAndReturn({
+     * // Update many Reviews
+     * const review = await prisma.review.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -8743,8 +8631,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more LayananDetails and only return the `id`
-     * const layananDetailWithIdOnly = await prisma.layananDetail.updateManyAndReturn({
+     * // Update zero or more Reviews and only return the `id`
+     * const reviewWithIdOnly = await prisma.review.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -8757,56 +8645,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends LayananDetailUpdateManyAndReturnArgs>(args: SelectSubset<T, LayananDetailUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LayananDetailPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends ReviewUpdateManyAndReturnArgs>(args: SelectSubset<T, ReviewUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one LayananDetail.
-     * @param {LayananDetailUpsertArgs} args - Arguments to update or create a LayananDetail.
+     * Create or update one Review.
+     * @param {ReviewUpsertArgs} args - Arguments to update or create a Review.
      * @example
-     * // Update or create a LayananDetail
-     * const layananDetail = await prisma.layananDetail.upsert({
+     * // Update or create a Review
+     * const review = await prisma.review.upsert({
      *   create: {
-     *     // ... data to create a LayananDetail
+     *     // ... data to create a Review
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the LayananDetail we want to update
+     *     // ... the filter for the Review we want to update
      *   }
      * })
      */
-    upsert<T extends LayananDetailUpsertArgs>(args: SelectSubset<T, LayananDetailUpsertArgs<ExtArgs>>): Prisma__LayananDetailClient<$Result.GetResult<Prisma.$LayananDetailPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends ReviewUpsertArgs>(args: SelectSubset<T, ReviewUpsertArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of LayananDetails.
+     * Count the number of Reviews.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {LayananDetailCountArgs} args - Arguments to filter LayananDetails to count.
+     * @param {ReviewCountArgs} args - Arguments to filter Reviews to count.
      * @example
-     * // Count the number of LayananDetails
-     * const count = await prisma.layananDetail.count({
+     * // Count the number of Reviews
+     * const count = await prisma.review.count({
      *   where: {
-     *     // ... the filter for the LayananDetails we want to count
+     *     // ... the filter for the Reviews we want to count
      *   }
      * })
     **/
-    count<T extends LayananDetailCountArgs>(
-      args?: Subset<T, LayananDetailCountArgs>,
+    count<T extends ReviewCountArgs>(
+      args?: Subset<T, ReviewCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], LayananDetailCountAggregateOutputType>
+          : GetScalarType<T['select'], ReviewCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a LayananDetail.
+     * Allows you to perform aggregations operations on a Review.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {LayananDetailAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {ReviewAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -8826,13 +8714,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends LayananDetailAggregateArgs>(args: Subset<T, LayananDetailAggregateArgs>): Prisma.PrismaPromise<GetLayananDetailAggregateType<T>>
+    aggregate<T extends ReviewAggregateArgs>(args: Subset<T, ReviewAggregateArgs>): Prisma.PrismaPromise<GetReviewAggregateType<T>>
 
     /**
-     * Group by LayananDetail.
+     * Group by Review.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {LayananDetailGroupByArgs} args - Group by arguments.
+     * @param {ReviewGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -8847,14 +8735,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends LayananDetailGroupByArgs,
+      T extends ReviewGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: LayananDetailGroupByArgs['orderBy'] }
-        : { orderBy?: LayananDetailGroupByArgs['orderBy'] },
+        ? { orderBy: ReviewGroupByArgs['orderBy'] }
+        : { orderBy?: ReviewGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -8903,22 +8791,21 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, LayananDetailGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLayananDetailGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, ReviewGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetReviewGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the LayananDetail model
+   * Fields of the Review model
    */
-  readonly fields: LayananDetailFieldRefs;
+  readonly fields: ReviewFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for LayananDetail.
+   * The delegate class that acts as a "Promise-like" for Review.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__LayananDetailClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__ReviewClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    layanan<T extends LayananDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LayananDefaultArgs<ExtArgs>>): Prisma__LayananClient<$Result.GetResult<Prisma.$LayananPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8945,431 +8832,384 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the LayananDetail model
+   * Fields of the Review model
    */
-  interface LayananDetailFieldRefs {
-    readonly id: FieldRef<"LayananDetail", 'Int'>
-    readonly layananId: FieldRef<"LayananDetail", 'Int'>
-    readonly namaPaket: FieldRef<"LayananDetail", 'String'>
-    readonly harga: FieldRef<"LayananDetail", 'Decimal'>
-    readonly deskripsi: FieldRef<"LayananDetail", 'String'>
-    readonly createdAt: FieldRef<"LayananDetail", 'DateTime'>
+  interface ReviewFieldRefs {
+    readonly id: FieldRef<"Review", 'Int'>
+    readonly nama: FieldRef<"Review", 'String'>
+    readonly tanggal: FieldRef<"Review", 'DateTime'>
+    readonly review: FieldRef<"Review", 'String'>
+    readonly rating: FieldRef<"Review", 'Int'>
+    readonly gender: FieldRef<"Review", 'String'>
+    readonly createdAt: FieldRef<"Review", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * LayananDetail findUnique
+   * Review findUnique
    */
-  export type LayananDetailFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReviewFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the LayananDetail
+     * Select specific fields to fetch from the Review
      */
-    select?: LayananDetailSelect<ExtArgs> | null
+    select?: ReviewSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the LayananDetail
+     * Omit specific fields from the Review
      */
-    omit?: LayananDetailOmit<ExtArgs> | null
+    omit?: ReviewOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
+     * Filter, which Review to fetch.
      */
-    include?: LayananDetailInclude<ExtArgs> | null
-    /**
-     * Filter, which LayananDetail to fetch.
-     */
-    where: LayananDetailWhereUniqueInput
+    where: ReviewWhereUniqueInput
   }
 
   /**
-   * LayananDetail findUniqueOrThrow
+   * Review findUniqueOrThrow
    */
-  export type LayananDetailFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReviewFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the LayananDetail
+     * Select specific fields to fetch from the Review
      */
-    select?: LayananDetailSelect<ExtArgs> | null
+    select?: ReviewSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the LayananDetail
+     * Omit specific fields from the Review
      */
-    omit?: LayananDetailOmit<ExtArgs> | null
+    omit?: ReviewOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
+     * Filter, which Review to fetch.
      */
-    include?: LayananDetailInclude<ExtArgs> | null
-    /**
-     * Filter, which LayananDetail to fetch.
-     */
-    where: LayananDetailWhereUniqueInput
+    where: ReviewWhereUniqueInput
   }
 
   /**
-   * LayananDetail findFirst
+   * Review findFirst
    */
-  export type LayananDetailFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReviewFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the LayananDetail
+     * Select specific fields to fetch from the Review
      */
-    select?: LayananDetailSelect<ExtArgs> | null
+    select?: ReviewSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the LayananDetail
+     * Omit specific fields from the Review
      */
-    omit?: LayananDetailOmit<ExtArgs> | null
+    omit?: ReviewOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
+     * Filter, which Review to fetch.
      */
-    include?: LayananDetailInclude<ExtArgs> | null
-    /**
-     * Filter, which LayananDetail to fetch.
-     */
-    where?: LayananDetailWhereInput
+    where?: ReviewWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of LayananDetails to fetch.
+     * Determine the order of Reviews to fetch.
      */
-    orderBy?: LayananDetailOrderByWithRelationInput | LayananDetailOrderByWithRelationInput[]
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for LayananDetails.
+     * Sets the position for searching for Reviews.
      */
-    cursor?: LayananDetailWhereUniqueInput
+    cursor?: ReviewWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` LayananDetails from the position of the cursor.
+     * Take `±n` Reviews from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` LayananDetails.
+     * Skip the first `n` Reviews.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of LayananDetails.
+     * Filter by unique combinations of Reviews.
      */
-    distinct?: LayananDetailScalarFieldEnum | LayananDetailScalarFieldEnum[]
+    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[]
   }
 
   /**
-   * LayananDetail findFirstOrThrow
+   * Review findFirstOrThrow
    */
-  export type LayananDetailFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReviewFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the LayananDetail
+     * Select specific fields to fetch from the Review
      */
-    select?: LayananDetailSelect<ExtArgs> | null
+    select?: ReviewSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the LayananDetail
+     * Omit specific fields from the Review
      */
-    omit?: LayananDetailOmit<ExtArgs> | null
+    omit?: ReviewOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
+     * Filter, which Review to fetch.
      */
-    include?: LayananDetailInclude<ExtArgs> | null
-    /**
-     * Filter, which LayananDetail to fetch.
-     */
-    where?: LayananDetailWhereInput
+    where?: ReviewWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of LayananDetails to fetch.
+     * Determine the order of Reviews to fetch.
      */
-    orderBy?: LayananDetailOrderByWithRelationInput | LayananDetailOrderByWithRelationInput[]
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for LayananDetails.
+     * Sets the position for searching for Reviews.
      */
-    cursor?: LayananDetailWhereUniqueInput
+    cursor?: ReviewWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` LayananDetails from the position of the cursor.
+     * Take `±n` Reviews from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` LayananDetails.
+     * Skip the first `n` Reviews.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of LayananDetails.
+     * Filter by unique combinations of Reviews.
      */
-    distinct?: LayananDetailScalarFieldEnum | LayananDetailScalarFieldEnum[]
+    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[]
   }
 
   /**
-   * LayananDetail findMany
+   * Review findMany
    */
-  export type LayananDetailFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReviewFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the LayananDetail
+     * Select specific fields to fetch from the Review
      */
-    select?: LayananDetailSelect<ExtArgs> | null
+    select?: ReviewSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the LayananDetail
+     * Omit specific fields from the Review
      */
-    omit?: LayananDetailOmit<ExtArgs> | null
+    omit?: ReviewOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
+     * Filter, which Reviews to fetch.
      */
-    include?: LayananDetailInclude<ExtArgs> | null
-    /**
-     * Filter, which LayananDetails to fetch.
-     */
-    where?: LayananDetailWhereInput
+    where?: ReviewWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of LayananDetails to fetch.
+     * Determine the order of Reviews to fetch.
      */
-    orderBy?: LayananDetailOrderByWithRelationInput | LayananDetailOrderByWithRelationInput[]
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing LayananDetails.
+     * Sets the position for listing Reviews.
      */
-    cursor?: LayananDetailWhereUniqueInput
+    cursor?: ReviewWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` LayananDetails from the position of the cursor.
+     * Take `±n` Reviews from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` LayananDetails.
+     * Skip the first `n` Reviews.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of LayananDetails.
+     * Filter by unique combinations of Reviews.
      */
-    distinct?: LayananDetailScalarFieldEnum | LayananDetailScalarFieldEnum[]
+    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[]
   }
 
   /**
-   * LayananDetail create
+   * Review create
    */
-  export type LayananDetailCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReviewCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the LayananDetail
+     * Select specific fields to fetch from the Review
      */
-    select?: LayananDetailSelect<ExtArgs> | null
+    select?: ReviewSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the LayananDetail
+     * Omit specific fields from the Review
      */
-    omit?: LayananDetailOmit<ExtArgs> | null
+    omit?: ReviewOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
+     * The data needed to create a Review.
      */
-    include?: LayananDetailInclude<ExtArgs> | null
-    /**
-     * The data needed to create a LayananDetail.
-     */
-    data: XOR<LayananDetailCreateInput, LayananDetailUncheckedCreateInput>
+    data: XOR<ReviewCreateInput, ReviewUncheckedCreateInput>
   }
 
   /**
-   * LayananDetail createMany
+   * Review createMany
    */
-  export type LayananDetailCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReviewCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many LayananDetails.
+     * The data used to create many Reviews.
      */
-    data: LayananDetailCreateManyInput | LayananDetailCreateManyInput[]
+    data: ReviewCreateManyInput | ReviewCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * LayananDetail createManyAndReturn
+   * Review createManyAndReturn
    */
-  export type LayananDetailCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReviewCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the LayananDetail
+     * Select specific fields to fetch from the Review
      */
-    select?: LayananDetailSelectCreateManyAndReturn<ExtArgs> | null
+    select?: ReviewSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the LayananDetail
+     * Omit specific fields from the Review
      */
-    omit?: LayananDetailOmit<ExtArgs> | null
+    omit?: ReviewOmit<ExtArgs> | null
     /**
-     * The data used to create many LayananDetails.
+     * The data used to create many Reviews.
      */
-    data: LayananDetailCreateManyInput | LayananDetailCreateManyInput[]
+    data: ReviewCreateManyInput | ReviewCreateManyInput[]
     skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: LayananDetailIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * LayananDetail update
+   * Review update
    */
-  export type LayananDetailUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReviewUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the LayananDetail
+     * Select specific fields to fetch from the Review
      */
-    select?: LayananDetailSelect<ExtArgs> | null
+    select?: ReviewSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the LayananDetail
+     * Omit specific fields from the Review
      */
-    omit?: LayananDetailOmit<ExtArgs> | null
+    omit?: ReviewOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
+     * The data needed to update a Review.
      */
-    include?: LayananDetailInclude<ExtArgs> | null
+    data: XOR<ReviewUpdateInput, ReviewUncheckedUpdateInput>
     /**
-     * The data needed to update a LayananDetail.
+     * Choose, which Review to update.
      */
-    data: XOR<LayananDetailUpdateInput, LayananDetailUncheckedUpdateInput>
-    /**
-     * Choose, which LayananDetail to update.
-     */
-    where: LayananDetailWhereUniqueInput
+    where: ReviewWhereUniqueInput
   }
 
   /**
-   * LayananDetail updateMany
+   * Review updateMany
    */
-  export type LayananDetailUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReviewUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update LayananDetails.
+     * The data used to update Reviews.
      */
-    data: XOR<LayananDetailUpdateManyMutationInput, LayananDetailUncheckedUpdateManyInput>
+    data: XOR<ReviewUpdateManyMutationInput, ReviewUncheckedUpdateManyInput>
     /**
-     * Filter which LayananDetails to update
+     * Filter which Reviews to update
      */
-    where?: LayananDetailWhereInput
+    where?: ReviewWhereInput
     /**
-     * Limit how many LayananDetails to update.
+     * Limit how many Reviews to update.
      */
     limit?: number
   }
 
   /**
-   * LayananDetail updateManyAndReturn
+   * Review updateManyAndReturn
    */
-  export type LayananDetailUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReviewUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the LayananDetail
+     * Select specific fields to fetch from the Review
      */
-    select?: LayananDetailSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: ReviewSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the LayananDetail
+     * Omit specific fields from the Review
      */
-    omit?: LayananDetailOmit<ExtArgs> | null
+    omit?: ReviewOmit<ExtArgs> | null
     /**
-     * The data used to update LayananDetails.
+     * The data used to update Reviews.
      */
-    data: XOR<LayananDetailUpdateManyMutationInput, LayananDetailUncheckedUpdateManyInput>
+    data: XOR<ReviewUpdateManyMutationInput, ReviewUncheckedUpdateManyInput>
     /**
-     * Filter which LayananDetails to update
+     * Filter which Reviews to update
      */
-    where?: LayananDetailWhereInput
+    where?: ReviewWhereInput
     /**
-     * Limit how many LayananDetails to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: LayananDetailIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * LayananDetail upsert
-   */
-  export type LayananDetailUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the LayananDetail
-     */
-    select?: LayananDetailSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the LayananDetail
-     */
-    omit?: LayananDetailOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: LayananDetailInclude<ExtArgs> | null
-    /**
-     * The filter to search for the LayananDetail to update in case it exists.
-     */
-    where: LayananDetailWhereUniqueInput
-    /**
-     * In case the LayananDetail found by the `where` argument doesn't exist, create a new LayananDetail with this data.
-     */
-    create: XOR<LayananDetailCreateInput, LayananDetailUncheckedCreateInput>
-    /**
-     * In case the LayananDetail was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<LayananDetailUpdateInput, LayananDetailUncheckedUpdateInput>
-  }
-
-  /**
-   * LayananDetail delete
-   */
-  export type LayananDetailDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the LayananDetail
-     */
-    select?: LayananDetailSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the LayananDetail
-     */
-    omit?: LayananDetailOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: LayananDetailInclude<ExtArgs> | null
-    /**
-     * Filter which LayananDetail to delete.
-     */
-    where: LayananDetailWhereUniqueInput
-  }
-
-  /**
-   * LayananDetail deleteMany
-   */
-  export type LayananDetailDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which LayananDetails to delete
-     */
-    where?: LayananDetailWhereInput
-    /**
-     * Limit how many LayananDetails to delete.
+     * Limit how many Reviews to update.
      */
     limit?: number
   }
 
   /**
-   * LayananDetail without action
+   * Review upsert
    */
-  export type LayananDetailDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReviewUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the LayananDetail
+     * Select specific fields to fetch from the Review
      */
-    select?: LayananDetailSelect<ExtArgs> | null
+    select?: ReviewSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the LayananDetail
+     * Omit specific fields from the Review
      */
-    omit?: LayananDetailOmit<ExtArgs> | null
+    omit?: ReviewOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
+     * The filter to search for the Review to update in case it exists.
      */
-    include?: LayananDetailInclude<ExtArgs> | null
+    where: ReviewWhereUniqueInput
+    /**
+     * In case the Review found by the `where` argument doesn't exist, create a new Review with this data.
+     */
+    create: XOR<ReviewCreateInput, ReviewUncheckedCreateInput>
+    /**
+     * In case the Review was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ReviewUpdateInput, ReviewUncheckedUpdateInput>
+  }
+
+  /**
+   * Review delete
+   */
+  export type ReviewDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Filter which Review to delete.
+     */
+    where: ReviewWhereUniqueInput
+  }
+
+  /**
+   * Review deleteMany
+   */
+  export type ReviewDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Reviews to delete
+     */
+    where?: ReviewWhereInput
+    /**
+     * Limit how many Reviews to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Review without action
+   */
+  export type ReviewDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
   }
 
 
@@ -9455,16 +9295,17 @@ export namespace Prisma {
   export type LayananScalarFieldEnum = (typeof LayananScalarFieldEnum)[keyof typeof LayananScalarFieldEnum]
 
 
-  export const LayananDetailScalarFieldEnum: {
+  export const ReviewScalarFieldEnum: {
     id: 'id',
-    layananId: 'layananId',
-    namaPaket: 'namaPaket',
-    harga: 'harga',
-    deskripsi: 'deskripsi',
+    nama: 'nama',
+    tanggal: 'tanggal',
+    review: 'review',
+    rating: 'rating',
+    gender: 'gender',
     createdAt: 'createdAt'
   };
 
-  export type LayananDetailScalarFieldEnum = (typeof LayananDetailScalarFieldEnum)[keyof typeof LayananDetailScalarFieldEnum]
+  export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -9563,20 +9404,6 @@ export namespace Prisma {
    * Reference to a field of type 'Hari[]'
    */
   export type ListEnumHariFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Hari[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Decimal'
-   */
-  export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
-    
-
-
-  /**
-   * Reference to a field of type 'Decimal[]'
-   */
-  export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
     
 
 
@@ -9904,7 +9731,6 @@ export namespace Prisma {
     deskripsi?: StringNullableFilter<"Layanan"> | string | null
     foto?: StringNullableFilter<"Layanan"> | string | null
     createdAt?: DateTimeFilter<"Layanan"> | Date | string
-    detail?: LayananDetailListRelationFilter
   }
 
   export type LayananOrderByWithRelationInput = {
@@ -9913,7 +9739,6 @@ export namespace Prisma {
     deskripsi?: SortOrderInput | SortOrder
     foto?: SortOrderInput | SortOrder
     createdAt?: SortOrder
-    detail?: LayananDetailOrderByRelationAggregateInput
   }
 
   export type LayananWhereUniqueInput = Prisma.AtLeast<{
@@ -9925,7 +9750,6 @@ export namespace Prisma {
     deskripsi?: StringNullableFilter<"Layanan"> | string | null
     foto?: StringNullableFilter<"Layanan"> | string | null
     createdAt?: DateTimeFilter<"Layanan"> | Date | string
-    detail?: LayananDetailListRelationFilter
   }, "id">
 
   export type LayananOrderByWithAggregationInput = {
@@ -9952,66 +9776,68 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"Layanan"> | Date | string
   }
 
-  export type LayananDetailWhereInput = {
-    AND?: LayananDetailWhereInput | LayananDetailWhereInput[]
-    OR?: LayananDetailWhereInput[]
-    NOT?: LayananDetailWhereInput | LayananDetailWhereInput[]
-    id?: IntFilter<"LayananDetail"> | number
-    layananId?: IntFilter<"LayananDetail"> | number
-    namaPaket?: StringFilter<"LayananDetail"> | string
-    harga?: DecimalFilter<"LayananDetail"> | Decimal | DecimalJsLike | number | string
-    deskripsi?: StringNullableFilter<"LayananDetail"> | string | null
-    createdAt?: DateTimeFilter<"LayananDetail"> | Date | string
-    layanan?: XOR<LayananScalarRelationFilter, LayananWhereInput>
+  export type ReviewWhereInput = {
+    AND?: ReviewWhereInput | ReviewWhereInput[]
+    OR?: ReviewWhereInput[]
+    NOT?: ReviewWhereInput | ReviewWhereInput[]
+    id?: IntFilter<"Review"> | number
+    nama?: StringFilter<"Review"> | string
+    tanggal?: DateTimeFilter<"Review"> | Date | string
+    review?: StringFilter<"Review"> | string
+    rating?: IntFilter<"Review"> | number
+    gender?: StringFilter<"Review"> | string
+    createdAt?: DateTimeFilter<"Review"> | Date | string
   }
 
-  export type LayananDetailOrderByWithRelationInput = {
+  export type ReviewOrderByWithRelationInput = {
     id?: SortOrder
-    layananId?: SortOrder
-    namaPaket?: SortOrder
-    harga?: SortOrder
-    deskripsi?: SortOrderInput | SortOrder
+    nama?: SortOrder
+    tanggal?: SortOrder
+    review?: SortOrder
+    rating?: SortOrder
+    gender?: SortOrder
     createdAt?: SortOrder
-    layanan?: LayananOrderByWithRelationInput
   }
 
-  export type LayananDetailWhereUniqueInput = Prisma.AtLeast<{
+  export type ReviewWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: LayananDetailWhereInput | LayananDetailWhereInput[]
-    OR?: LayananDetailWhereInput[]
-    NOT?: LayananDetailWhereInput | LayananDetailWhereInput[]
-    layananId?: IntFilter<"LayananDetail"> | number
-    namaPaket?: StringFilter<"LayananDetail"> | string
-    harga?: DecimalFilter<"LayananDetail"> | Decimal | DecimalJsLike | number | string
-    deskripsi?: StringNullableFilter<"LayananDetail"> | string | null
-    createdAt?: DateTimeFilter<"LayananDetail"> | Date | string
-    layanan?: XOR<LayananScalarRelationFilter, LayananWhereInput>
+    AND?: ReviewWhereInput | ReviewWhereInput[]
+    OR?: ReviewWhereInput[]
+    NOT?: ReviewWhereInput | ReviewWhereInput[]
+    nama?: StringFilter<"Review"> | string
+    tanggal?: DateTimeFilter<"Review"> | Date | string
+    review?: StringFilter<"Review"> | string
+    rating?: IntFilter<"Review"> | number
+    gender?: StringFilter<"Review"> | string
+    createdAt?: DateTimeFilter<"Review"> | Date | string
   }, "id">
 
-  export type LayananDetailOrderByWithAggregationInput = {
+  export type ReviewOrderByWithAggregationInput = {
     id?: SortOrder
-    layananId?: SortOrder
-    namaPaket?: SortOrder
-    harga?: SortOrder
-    deskripsi?: SortOrderInput | SortOrder
+    nama?: SortOrder
+    tanggal?: SortOrder
+    review?: SortOrder
+    rating?: SortOrder
+    gender?: SortOrder
     createdAt?: SortOrder
-    _count?: LayananDetailCountOrderByAggregateInput
-    _avg?: LayananDetailAvgOrderByAggregateInput
-    _max?: LayananDetailMaxOrderByAggregateInput
-    _min?: LayananDetailMinOrderByAggregateInput
-    _sum?: LayananDetailSumOrderByAggregateInput
+    _count?: ReviewCountOrderByAggregateInput
+    _avg?: ReviewAvgOrderByAggregateInput
+    _max?: ReviewMaxOrderByAggregateInput
+    _min?: ReviewMinOrderByAggregateInput
+    _sum?: ReviewSumOrderByAggregateInput
   }
 
-  export type LayananDetailScalarWhereWithAggregatesInput = {
-    AND?: LayananDetailScalarWhereWithAggregatesInput | LayananDetailScalarWhereWithAggregatesInput[]
-    OR?: LayananDetailScalarWhereWithAggregatesInput[]
-    NOT?: LayananDetailScalarWhereWithAggregatesInput | LayananDetailScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"LayananDetail"> | number
-    layananId?: IntWithAggregatesFilter<"LayananDetail"> | number
-    namaPaket?: StringWithAggregatesFilter<"LayananDetail"> | string
-    harga?: DecimalWithAggregatesFilter<"LayananDetail"> | Decimal | DecimalJsLike | number | string
-    deskripsi?: StringNullableWithAggregatesFilter<"LayananDetail"> | string | null
-    createdAt?: DateTimeWithAggregatesFilter<"LayananDetail"> | Date | string
+  export type ReviewScalarWhereWithAggregatesInput = {
+    AND?: ReviewScalarWhereWithAggregatesInput | ReviewScalarWhereWithAggregatesInput[]
+    OR?: ReviewScalarWhereWithAggregatesInput[]
+    NOT?: ReviewScalarWhereWithAggregatesInput | ReviewScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Review"> | number
+    nama?: StringWithAggregatesFilter<"Review"> | string
+    tanggal?: DateTimeWithAggregatesFilter<"Review"> | Date | string
+    review?: StringWithAggregatesFilter<"Review"> | string
+    rating?: IntWithAggregatesFilter<"Review"> | number
+    gender?: StringWithAggregatesFilter<"Review"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Review"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -10323,7 +10149,6 @@ export namespace Prisma {
     deskripsi?: string | null
     foto?: string | null
     createdAt?: Date | string
-    detail?: LayananDetailCreateNestedManyWithoutLayananInput
   }
 
   export type LayananUncheckedCreateInput = {
@@ -10332,7 +10157,6 @@ export namespace Prisma {
     deskripsi?: string | null
     foto?: string | null
     createdAt?: Date | string
-    detail?: LayananDetailUncheckedCreateNestedManyWithoutLayananInput
   }
 
   export type LayananUpdateInput = {
@@ -10341,7 +10165,6 @@ export namespace Prisma {
     deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
     foto?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    detail?: LayananDetailUpdateManyWithoutLayananNestedInput
   }
 
   export type LayananUncheckedUpdateInput = {
@@ -10350,7 +10173,6 @@ export namespace Prisma {
     deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
     foto?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    detail?: LayananDetailUncheckedUpdateManyWithoutLayananNestedInput
   }
 
   export type LayananCreateManyInput = {
@@ -10377,65 +10199,73 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type LayananDetailCreateInput = {
+  export type ReviewCreateInput = {
     id: number
-    namaPaket: string
-    harga: Decimal | DecimalJsLike | number | string
-    deskripsi?: string | null
-    createdAt?: Date | string
-    layanan: LayananCreateNestedOneWithoutDetailInput
-  }
-
-  export type LayananDetailUncheckedCreateInput = {
-    id: number
-    layananId: number
-    namaPaket: string
-    harga: Decimal | DecimalJsLike | number | string
-    deskripsi?: string | null
+    nama: string
+    tanggal: Date | string
+    review: string
+    rating: number
+    gender: string
     createdAt?: Date | string
   }
 
-  export type LayananDetailUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    namaPaket?: StringFieldUpdateOperationsInput | string
-    harga?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    layanan?: LayananUpdateOneRequiredWithoutDetailNestedInput
-  }
-
-  export type LayananDetailUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    layananId?: IntFieldUpdateOperationsInput | number
-    namaPaket?: StringFieldUpdateOperationsInput | string
-    harga?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type LayananDetailCreateManyInput = {
+  export type ReviewUncheckedCreateInput = {
     id: number
-    layananId: number
-    namaPaket: string
-    harga: Decimal | DecimalJsLike | number | string
-    deskripsi?: string | null
+    nama: string
+    tanggal: Date | string
+    review: string
+    rating: number
+    gender: string
     createdAt?: Date | string
   }
 
-  export type LayananDetailUpdateManyMutationInput = {
+  export type ReviewUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    namaPaket?: StringFieldUpdateOperationsInput | string
-    harga?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    nama?: StringFieldUpdateOperationsInput | string
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    review?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    gender?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type LayananDetailUncheckedUpdateManyInput = {
+  export type ReviewUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    layananId?: IntFieldUpdateOperationsInput | number
-    namaPaket?: StringFieldUpdateOperationsInput | string
-    harga?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    nama?: StringFieldUpdateOperationsInput | string
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    review?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    gender?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReviewCreateManyInput = {
+    id: number
+    nama: string
+    tanggal: Date | string
+    review: string
+    rating: number
+    gender: string
+    createdAt?: Date | string
+  }
+
+  export type ReviewUpdateManyMutationInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    review?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    gender?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReviewUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
+    review?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    gender?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -10813,16 +10643,6 @@ export namespace Prisma {
     userId?: SortOrder
   }
 
-  export type LayananDetailListRelationFilter = {
-    every?: LayananDetailWhereInput
-    some?: LayananDetailWhereInput
-    none?: LayananDetailWhereInput
-  }
-
-  export type LayananDetailOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type LayananCountOrderByAggregateInput = {
     id?: SortOrder
     namaLayanan?: SortOrder
@@ -10855,75 +10675,44 @@ export namespace Prisma {
     id?: SortOrder
   }
 
-  export type DecimalFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-  }
-
-  export type LayananScalarRelationFilter = {
-    is?: LayananWhereInput
-    isNot?: LayananWhereInput
-  }
-
-  export type LayananDetailCountOrderByAggregateInput = {
+  export type ReviewCountOrderByAggregateInput = {
     id?: SortOrder
-    layananId?: SortOrder
-    namaPaket?: SortOrder
-    harga?: SortOrder
-    deskripsi?: SortOrder
+    nama?: SortOrder
+    tanggal?: SortOrder
+    review?: SortOrder
+    rating?: SortOrder
+    gender?: SortOrder
     createdAt?: SortOrder
   }
 
-  export type LayananDetailAvgOrderByAggregateInput = {
+  export type ReviewAvgOrderByAggregateInput = {
     id?: SortOrder
-    layananId?: SortOrder
-    harga?: SortOrder
+    rating?: SortOrder
   }
 
-  export type LayananDetailMaxOrderByAggregateInput = {
+  export type ReviewMaxOrderByAggregateInput = {
     id?: SortOrder
-    layananId?: SortOrder
-    namaPaket?: SortOrder
-    harga?: SortOrder
-    deskripsi?: SortOrder
+    nama?: SortOrder
+    tanggal?: SortOrder
+    review?: SortOrder
+    rating?: SortOrder
+    gender?: SortOrder
     createdAt?: SortOrder
   }
 
-  export type LayananDetailMinOrderByAggregateInput = {
+  export type ReviewMinOrderByAggregateInput = {
     id?: SortOrder
-    layananId?: SortOrder
-    namaPaket?: SortOrder
-    harga?: SortOrder
-    deskripsi?: SortOrder
+    nama?: SortOrder
+    tanggal?: SortOrder
+    review?: SortOrder
+    rating?: SortOrder
+    gender?: SortOrder
     createdAt?: SortOrder
   }
 
-  export type LayananDetailSumOrderByAggregateInput = {
+  export type ReviewSumOrderByAggregateInput = {
     id?: SortOrder
-    layananId?: SortOrder
-    harga?: SortOrder
-  }
-
-  export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedDecimalFilter<$PrismaModel>
-    _sum?: NestedDecimalFilter<$PrismaModel>
-    _min?: NestedDecimalFilter<$PrismaModel>
-    _max?: NestedDecimalFilter<$PrismaModel>
+    rating?: SortOrder
   }
 
   export type BeritaCreateNestedManyWithoutUserInput = {
@@ -11122,70 +10911,6 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutBeritaInput, UserUpdateWithoutBeritaInput>, UserUncheckedUpdateWithoutBeritaInput>
   }
 
-  export type LayananDetailCreateNestedManyWithoutLayananInput = {
-    create?: XOR<LayananDetailCreateWithoutLayananInput, LayananDetailUncheckedCreateWithoutLayananInput> | LayananDetailCreateWithoutLayananInput[] | LayananDetailUncheckedCreateWithoutLayananInput[]
-    connectOrCreate?: LayananDetailCreateOrConnectWithoutLayananInput | LayananDetailCreateOrConnectWithoutLayananInput[]
-    createMany?: LayananDetailCreateManyLayananInputEnvelope
-    connect?: LayananDetailWhereUniqueInput | LayananDetailWhereUniqueInput[]
-  }
-
-  export type LayananDetailUncheckedCreateNestedManyWithoutLayananInput = {
-    create?: XOR<LayananDetailCreateWithoutLayananInput, LayananDetailUncheckedCreateWithoutLayananInput> | LayananDetailCreateWithoutLayananInput[] | LayananDetailUncheckedCreateWithoutLayananInput[]
-    connectOrCreate?: LayananDetailCreateOrConnectWithoutLayananInput | LayananDetailCreateOrConnectWithoutLayananInput[]
-    createMany?: LayananDetailCreateManyLayananInputEnvelope
-    connect?: LayananDetailWhereUniqueInput | LayananDetailWhereUniqueInput[]
-  }
-
-  export type LayananDetailUpdateManyWithoutLayananNestedInput = {
-    create?: XOR<LayananDetailCreateWithoutLayananInput, LayananDetailUncheckedCreateWithoutLayananInput> | LayananDetailCreateWithoutLayananInput[] | LayananDetailUncheckedCreateWithoutLayananInput[]
-    connectOrCreate?: LayananDetailCreateOrConnectWithoutLayananInput | LayananDetailCreateOrConnectWithoutLayananInput[]
-    upsert?: LayananDetailUpsertWithWhereUniqueWithoutLayananInput | LayananDetailUpsertWithWhereUniqueWithoutLayananInput[]
-    createMany?: LayananDetailCreateManyLayananInputEnvelope
-    set?: LayananDetailWhereUniqueInput | LayananDetailWhereUniqueInput[]
-    disconnect?: LayananDetailWhereUniqueInput | LayananDetailWhereUniqueInput[]
-    delete?: LayananDetailWhereUniqueInput | LayananDetailWhereUniqueInput[]
-    connect?: LayananDetailWhereUniqueInput | LayananDetailWhereUniqueInput[]
-    update?: LayananDetailUpdateWithWhereUniqueWithoutLayananInput | LayananDetailUpdateWithWhereUniqueWithoutLayananInput[]
-    updateMany?: LayananDetailUpdateManyWithWhereWithoutLayananInput | LayananDetailUpdateManyWithWhereWithoutLayananInput[]
-    deleteMany?: LayananDetailScalarWhereInput | LayananDetailScalarWhereInput[]
-  }
-
-  export type LayananDetailUncheckedUpdateManyWithoutLayananNestedInput = {
-    create?: XOR<LayananDetailCreateWithoutLayananInput, LayananDetailUncheckedCreateWithoutLayananInput> | LayananDetailCreateWithoutLayananInput[] | LayananDetailUncheckedCreateWithoutLayananInput[]
-    connectOrCreate?: LayananDetailCreateOrConnectWithoutLayananInput | LayananDetailCreateOrConnectWithoutLayananInput[]
-    upsert?: LayananDetailUpsertWithWhereUniqueWithoutLayananInput | LayananDetailUpsertWithWhereUniqueWithoutLayananInput[]
-    createMany?: LayananDetailCreateManyLayananInputEnvelope
-    set?: LayananDetailWhereUniqueInput | LayananDetailWhereUniqueInput[]
-    disconnect?: LayananDetailWhereUniqueInput | LayananDetailWhereUniqueInput[]
-    delete?: LayananDetailWhereUniqueInput | LayananDetailWhereUniqueInput[]
-    connect?: LayananDetailWhereUniqueInput | LayananDetailWhereUniqueInput[]
-    update?: LayananDetailUpdateWithWhereUniqueWithoutLayananInput | LayananDetailUpdateWithWhereUniqueWithoutLayananInput[]
-    updateMany?: LayananDetailUpdateManyWithWhereWithoutLayananInput | LayananDetailUpdateManyWithWhereWithoutLayananInput[]
-    deleteMany?: LayananDetailScalarWhereInput | LayananDetailScalarWhereInput[]
-  }
-
-  export type LayananCreateNestedOneWithoutDetailInput = {
-    create?: XOR<LayananCreateWithoutDetailInput, LayananUncheckedCreateWithoutDetailInput>
-    connectOrCreate?: LayananCreateOrConnectWithoutDetailInput
-    connect?: LayananWhereUniqueInput
-  }
-
-  export type DecimalFieldUpdateOperationsInput = {
-    set?: Decimal | DecimalJsLike | number | string
-    increment?: Decimal | DecimalJsLike | number | string
-    decrement?: Decimal | DecimalJsLike | number | string
-    multiply?: Decimal | DecimalJsLike | number | string
-    divide?: Decimal | DecimalJsLike | number | string
-  }
-
-  export type LayananUpdateOneRequiredWithoutDetailNestedInput = {
-    create?: XOR<LayananCreateWithoutDetailInput, LayananUncheckedCreateWithoutDetailInput>
-    connectOrCreate?: LayananCreateOrConnectWithoutDetailInput
-    upsert?: LayananUpsertWithoutDetailInput
-    connect?: LayananWhereUniqueInput
-    update?: XOR<XOR<LayananUpdateToOneWithWhereWithoutDetailInput, LayananUpdateWithoutDetailInput>, LayananUncheckedUpdateWithoutDetailInput>
-  }
-
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -11354,33 +11079,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumHariFilter<$PrismaModel>
     _max?: NestedEnumHariFilter<$PrismaModel>
-  }
-
-  export type NestedDecimalFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-  }
-
-  export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedDecimalFilter<$PrismaModel>
-    _sum?: NestedDecimalFilter<$PrismaModel>
-    _min?: NestedDecimalFilter<$PrismaModel>
-    _max?: NestedDecimalFilter<$PrismaModel>
   }
 
   export type BeritaCreateWithoutUserInput = {
@@ -11690,108 +11388,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type LayananDetailCreateWithoutLayananInput = {
-    id: number
-    namaPaket: string
-    harga: Decimal | DecimalJsLike | number | string
-    deskripsi?: string | null
-    createdAt?: Date | string
-  }
-
-  export type LayananDetailUncheckedCreateWithoutLayananInput = {
-    id: number
-    namaPaket: string
-    harga: Decimal | DecimalJsLike | number | string
-    deskripsi?: string | null
-    createdAt?: Date | string
-  }
-
-  export type LayananDetailCreateOrConnectWithoutLayananInput = {
-    where: LayananDetailWhereUniqueInput
-    create: XOR<LayananDetailCreateWithoutLayananInput, LayananDetailUncheckedCreateWithoutLayananInput>
-  }
-
-  export type LayananDetailCreateManyLayananInputEnvelope = {
-    data: LayananDetailCreateManyLayananInput | LayananDetailCreateManyLayananInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type LayananDetailUpsertWithWhereUniqueWithoutLayananInput = {
-    where: LayananDetailWhereUniqueInput
-    update: XOR<LayananDetailUpdateWithoutLayananInput, LayananDetailUncheckedUpdateWithoutLayananInput>
-    create: XOR<LayananDetailCreateWithoutLayananInput, LayananDetailUncheckedCreateWithoutLayananInput>
-  }
-
-  export type LayananDetailUpdateWithWhereUniqueWithoutLayananInput = {
-    where: LayananDetailWhereUniqueInput
-    data: XOR<LayananDetailUpdateWithoutLayananInput, LayananDetailUncheckedUpdateWithoutLayananInput>
-  }
-
-  export type LayananDetailUpdateManyWithWhereWithoutLayananInput = {
-    where: LayananDetailScalarWhereInput
-    data: XOR<LayananDetailUpdateManyMutationInput, LayananDetailUncheckedUpdateManyWithoutLayananInput>
-  }
-
-  export type LayananDetailScalarWhereInput = {
-    AND?: LayananDetailScalarWhereInput | LayananDetailScalarWhereInput[]
-    OR?: LayananDetailScalarWhereInput[]
-    NOT?: LayananDetailScalarWhereInput | LayananDetailScalarWhereInput[]
-    id?: IntFilter<"LayananDetail"> | number
-    layananId?: IntFilter<"LayananDetail"> | number
-    namaPaket?: StringFilter<"LayananDetail"> | string
-    harga?: DecimalFilter<"LayananDetail"> | Decimal | DecimalJsLike | number | string
-    deskripsi?: StringNullableFilter<"LayananDetail"> | string | null
-    createdAt?: DateTimeFilter<"LayananDetail"> | Date | string
-  }
-
-  export type LayananCreateWithoutDetailInput = {
-    id: number
-    namaLayanan: string
-    deskripsi?: string | null
-    foto?: string | null
-    createdAt?: Date | string
-  }
-
-  export type LayananUncheckedCreateWithoutDetailInput = {
-    id: number
-    namaLayanan: string
-    deskripsi?: string | null
-    foto?: string | null
-    createdAt?: Date | string
-  }
-
-  export type LayananCreateOrConnectWithoutDetailInput = {
-    where: LayananWhereUniqueInput
-    create: XOR<LayananCreateWithoutDetailInput, LayananUncheckedCreateWithoutDetailInput>
-  }
-
-  export type LayananUpsertWithoutDetailInput = {
-    update: XOR<LayananUpdateWithoutDetailInput, LayananUncheckedUpdateWithoutDetailInput>
-    create: XOR<LayananCreateWithoutDetailInput, LayananUncheckedCreateWithoutDetailInput>
-    where?: LayananWhereInput
-  }
-
-  export type LayananUpdateToOneWithWhereWithoutDetailInput = {
-    where?: LayananWhereInput
-    data: XOR<LayananUpdateWithoutDetailInput, LayananUncheckedUpdateWithoutDetailInput>
-  }
-
-  export type LayananUpdateWithoutDetailInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    namaLayanan?: StringFieldUpdateOperationsInput | string
-    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
-    foto?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type LayananUncheckedUpdateWithoutDetailInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    namaLayanan?: StringFieldUpdateOperationsInput | string
-    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
-    foto?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
   export type BeritaCreateManyUserInput = {
     id: number
     judul: string
@@ -11891,38 +11487,6 @@ export namespace Prisma {
     hari?: EnumHariFieldUpdateOperationsInput | $Enums.Hari
     jamMulai?: StringFieldUpdateOperationsInput | string
     jamSelesai?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type LayananDetailCreateManyLayananInput = {
-    id: number
-    namaPaket: string
-    harga: Decimal | DecimalJsLike | number | string
-    deskripsi?: string | null
-    createdAt?: Date | string
-  }
-
-  export type LayananDetailUpdateWithoutLayananInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    namaPaket?: StringFieldUpdateOperationsInput | string
-    harga?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type LayananDetailUncheckedUpdateWithoutLayananInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    namaPaket?: StringFieldUpdateOperationsInput | string
-    harga?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type LayananDetailUncheckedUpdateManyWithoutLayananInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    namaPaket?: StringFieldUpdateOperationsInput | string
-    harga?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

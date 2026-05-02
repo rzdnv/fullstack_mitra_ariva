@@ -3,16 +3,7 @@ interface ILayanan {
   namaLayanan: string;
   deskripsi: string;
   foto: string;
-  detail: ILayananDetail[];
   _count?: { detail: number };
-}
-
-interface ILayananDetail {
-  id: number;
-  layananId: number;
-  namaPaket: string;
-  harga: number;
-  deskripsi: string;
 }
 
 export { ILayanan, ILayananDetail };

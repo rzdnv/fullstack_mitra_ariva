@@ -170,12 +170,13 @@ exports.Prisma.LayananScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
-exports.Prisma.LayananDetailScalarFieldEnum = {
+exports.Prisma.ReviewScalarFieldEnum = {
   id: 'id',
-  layananId: 'layananId',
-  namaPaket: 'namaPaket',
-  harga: 'harga',
-  deskripsi: 'deskripsi',
+  nama: 'nama',
+  tanggal: 'tanggal',
+  review: 'review',
+  rating: 'rating',
+  gender: 'gender',
   createdAt: 'createdAt'
 };
 
@@ -215,7 +216,7 @@ exports.Prisma.ModelName = {
   JadwalDokter: 'JadwalDokter',
   Berita: 'Berita',
   Layanan: 'Layanan',
-  LayananDetail: 'LayananDetail'
+  Review: 'Review'
 };
 
 /**

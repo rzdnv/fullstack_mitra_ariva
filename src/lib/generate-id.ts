@@ -8,8 +8,8 @@ const PREFIX = {
   poli: "11",
   jadwal: "13",
   layanan: "15",
-  layananDetail: "151",
   dokter: "17",
+  review: "18",
   berita: "19",
 } as const;
 
@@ -17,6 +17,6 @@ type TableName = keyof typeof PREFIX;
 
 export function generateId(table: TableName): number {
   const prefix = PREFIX[table];
-  const random = nanoid(); // contoh: "847"
+  const random = nanoid();
   return Number(`${prefix}${random}`);
 }

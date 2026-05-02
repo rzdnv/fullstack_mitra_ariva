@@ -84,7 +84,7 @@ const PoliSection = () => {
         </h1>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full ">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 w-full ">
         <div className="grid grid-cols-2 md:grid-cols-3">
           {POLI_LIST.map((poli) => (
             <PoliCard key={poli.label} {...poli} />

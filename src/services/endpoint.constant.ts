@@ -4,9 +4,9 @@ const endpoint = {
   DOKTER: "/dokter",
   JADWAL: "/jadwal",
   LAYANAN: "/layanan",
-  LAYANAN_DETAIL: "/layanan/detail",
   BERITA: "/berita",
   USERS: "/users",
+  REVIEW: "/review",
 };
 
 export default endpoint;
