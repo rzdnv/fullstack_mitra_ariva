@@ -12,6 +12,7 @@ import { IDokter } from "@/types/dokter";
 import CardDokter from "@/components/shared/CardDokter/CardDokter";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import DokterCardSkeleton from "@/components/shared/CardDokter/DokterCardSkeleton";
 
 const DokterSection = () => {
   const { dataDokters, isLoadingDokters } = useHome();
@@ -26,7 +27,7 @@ const DokterSection = () => {
         </h1>
       </div>
 
-      <div className="w-full">
+      <div className="w-full px-4 lg:px-10">
         <Carousel
           className="w-full"
           opts={{
@@ -41,15 +42,7 @@ const DokterSection = () => {
                     key={index}
                     className="sm:basis-1/2 lg:basis-1/4"
                   >
-                    <Card className="overflow-hidden rounded-3xl border-0 bg-havelock-blue-500/10">
-                      <Skeleton className="h-40 w-full" />
-
-                      <CardContent className="space-y-4 p-6">
-                        <Skeleton className="mx-auto h-6 w-28 rounded-full" />
-                        <Skeleton className="h-7 w-full rounded-md" />
-                        <Skeleton className="mx-auto h-5 w-3/4 rounded-md" />
-                      </CardContent>
-                    </Card>
+                    <DokterCardSkeleton />
                   </CarouselItem>
                 ))
               : dataDokters?.map((dokter: IDokter) => (

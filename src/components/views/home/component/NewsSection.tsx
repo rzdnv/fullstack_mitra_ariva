@@ -6,6 +6,8 @@ import { IBerita } from "@/types/berita";
 import { formatTanggal } from "@/components/shared/formatted/formated";
 import { Skeleton } from "@/components/ui/skeleton";
 import { User } from "lucide-react";
+import CardNews from "@/components/shared/CardNews/CardNews";
+import NewsCardSkeleton from "@/components/shared/CardNews/NewsCardSkeleton";
 
 const NewsSection = () => {
   const { dataBerita, isLoadingBerita } = useHome();
@@ -25,44 +27,16 @@ const NewsSection = () => {
         <div className="flex md:justify-center gap-6 min-w-max p-2">
           {isLoadingBerita
             ? Array.from({ length: 7 }).map((_, i) => (
-                <div key={i} className="min-w-xs h-full rounded-sm border p-2">
-                  <Skeleton className="aspect-video w-full rounded-sm" />
-                  <div className="flex flex-col gap-2 mt-2">
-                    <Skeleton className="h-4 w-3/4" />
-                    <Skeleton className="h-4 w-2/3" />
-                    <Skeleton className="h-3 w-1/3 mt-1" />
-                  </div>
-                </div>
+                <NewsCardSkeleton key={i} />
               ))
             : dataBerita?.map((berita: IBerita) => (
-                <div
-                  className="max-w-xs h-full rounded-sm hover:bg-white hover:border transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                <CardNews
                   key={berita.id}
-                >
-                  <Image
-                    src={`${berita.gambar}`}
-                    alt={berita.judul}
-                    width={400}
-                    height={300}
-                    className="aspect-video object-cover rounded-sm"
-                  />
-                  <div className="flex flex-col gap-2 p-2">
-                    <h2 className="line-clamp-3  text-sm lg:text-base font-bold text-slate-800">
-                      {berita.judul}
-                    </h2>
-                    <div className="flex gap-2 items-center">
-                      <p className="text-xs lg:text-sm text-slate-400">
-                        {formatTanggal(berita.tanggal)} |
-                      </p>
-                      <div className="flex gap-1 items-center">
-                        <User className="w-4 h-4 text-slate-400" />
-                        <p className="text-xs lg:text-sm text-slate-400">
-                          {berita.user.username}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  gambar={`${berita.gambar}`}
+                  judul={berita.judul}
+                  tanggal={berita.tanggal}
+                  username={berita.user.username}
+                />
               ))}
         </div>
       </div>

@@ -2,23 +2,15 @@
 
 import Image from "next/image";
 import CardSchedule from "../../../shared/CardSchedule/CardSchedule";
-import DoctorScheduleSkeleton from "@/components/shared/CardSchedule/DoctorScheduleSkeleton";
 import useHome from "../useHome";
 import { IDokter } from "@/types/dokter";
-
-// ---------------------------------------------------------------------------
-// Types
-// ---------------------------------------------------------------------------
+import ScheduleCardSkeleton from "@/components/shared/CardSchedule/ScheduleCardSkeleton";
 
 interface PoliItem {
   label: string;
   image: string;
   color: string;
 }
-
-// ---------------------------------------------------------------------------
-// Constants
-// ---------------------------------------------------------------------------
 
 const POLI_LIST: PoliItem[] = [
   {
@@ -95,7 +87,7 @@ const PoliSection = () => {
           <div className="grid grid-cols-1 gap-4 max-h-110 overflow-y-auto py-4 px-2 md:px-5 scrollbar-hide">
             {isLoadingDokters
               ? Array.from({ length: 4 }).map((_, i) => (
-                  <DoctorScheduleSkeleton key={i} />
+                  <ScheduleCardSkeleton key={i} />
                 ))
               : dataDokters?.map((dokter: IDokter) => (
                   <CardSchedule

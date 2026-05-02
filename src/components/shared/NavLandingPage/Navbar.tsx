@@ -53,7 +53,7 @@ const Navbar = () => {
             />
             <p
               className={cn(
-                "text-xl font-bold transition-colors",
+                "lg:text-xl font-bold transition-colors",
                 scrolled ? "text-slate-800" : "text-white",
               )}
             >

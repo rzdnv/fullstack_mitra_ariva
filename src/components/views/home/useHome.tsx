@@ -1,7 +1,10 @@
+"use client";
+
 import { useQuery } from "@tanstack/react-query";
 import dokterServices from "@/services/dokter.service";
 import layananServices from "@/services/layanan.service";
 import beritaServices from "@/services/berita.service";
+import reviewServices from "@/services/review.service";
 
 const useHome = () => {
   const getDokters = async () => {
@@ -40,6 +43,18 @@ const useHome = () => {
     enabled: true,
   });
 
+  const getReviews = async () => {
+    const result = await reviewServices.getAll();
+    const { data } = result;
+    return data.data;
+  };
+
+  const { data: dataReview, isLoading: isLoadingReview } = useQuery({
+    queryKey: ["review"],
+    queryFn: getReviews,
+    enabled: true,
+  });
+
   return {
     dataDokters,
     isLoadingDokters,
@@ -49,6 +64,9 @@ const useHome = () => {
 
     dataBerita,
     isLoadingBerita,
+
+    dataReview,
+    isLoadingReview,
   };
 };
 

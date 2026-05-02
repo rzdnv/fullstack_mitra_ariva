@@ -1,10 +1,9 @@
 "use client";
 
-import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import useHome from "../useHome";
 import { ILayanan } from "@/types/layanan";
-import Image from "next/image";
-import { Skeleton } from "@/components/ui/skeleton";
+import CardService from "@/components/shared/CardService/CardService";
+import ServiceCardSkeleton from "@/components/shared/CardService/ServiceCardSkeleton";
 
 const ServiceSection = () => {
   const { dataLayanan, isLoadingLayanan } = useHome();
@@ -23,52 +22,15 @@ const ServiceSection = () => {
         <div className="flex md:justify-center gap-6 min-w-max px-1">
           {isLoadingLayanan
             ? Array.from({ length: 5 }).map((_, index) => (
-                <Card
-                  key={index}
-                  className="w-60 md:w-90 overflow-hidden rounded-2xl border-0 bg-havelock-blue-500/10"
-                >
-                  {/* Skeleton Foto */}
-                  <Skeleton className="h-60 w-full rounded-none" />
-
-                  {/* Skeleton Content */}
-                  <CardContent className="space-y-4 p-5">
-                    {/* Judul */}
-                    <Skeleton className="mx-auto h-7 w-52 rounded-md" />
-
-                    {/* Deskripsi */}
-                    <div className="space-y-2">
-                      <Skeleton className="h-4 w-full rounded-md" />
-                      <Skeleton className="h-4 w-full rounded-md" />
-                      <Skeleton className="mx-auto h-4 w-3/4 rounded-md" />
-                    </div>
-                  </CardContent>
-                </Card>
+                <ServiceCardSkeleton key={index} />
               ))
             : dataLayanan?.map((layanan: ILayanan) => (
-                <Card
+                <CardService
                   key={layanan.id}
-                  className=" w-65 md:w-90 overflow-hidden rounded-2xl border-0 bg-white shadow-lg"
-                >
-                  {/* Foto */}
-                  <Image
-                    src={layanan.foto}
-                    alt={layanan.namaLayanan}
-                    width={400}
-                    height={600}
-                    className="h-auto w-full object-contain"
-                  />
-
-                  {/* Content */}
-                  <CardContent className="space-y-3 px-5">
-                    <CardTitle className="text-center md:text-xl font-bold leading-snug text-havelock-blue-800">
-                      {layanan.namaLayanan}
-                    </CardTitle>
-
-                    <p className=" px-6 text-center text-xs md:text-sm leading-relaxed text-slate-700">
-                      {layanan.deskripsi}
-                    </p>
-                  </CardContent>
-                </Card>
+                  foto={`${layanan.foto}`}
+                  namaLayanan={layanan.namaLayanan}
+                  deskripsi={layanan.deskripsi}
+                />
               ))}
         </div>
       </div>

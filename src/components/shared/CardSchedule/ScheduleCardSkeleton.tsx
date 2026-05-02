@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 
-const DoctorScheduleSkeleton = () => {
+const ScheduleCardSkeleton = () => {
   return (
     <Card className="rounded-2xl md:rounded-3xl border bg-white shadow-sm">
       <CardContent className="p-2 md:p-4 space-y-5 md:space-y-6">
@@ -26,4 +26,4 @@ const DoctorScheduleSkeleton = () => {
   );
 };
 
-export default DoctorScheduleSkeleton;
+export default ScheduleCardSkeleton;
