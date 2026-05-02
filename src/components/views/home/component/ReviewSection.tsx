@@ -7,11 +7,11 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import CardReview from "../../../shared/CardReview/CardReview";
+import CardReview from "../../../shared/Card/CardReview/CardReview";
 import useHome from "../useHome";
 import { IReview } from "@/types/review";
 import { formatTanggal } from "@/components/shared/formatted/formated";
-import ReviewCardSkeleton from "@/components/shared/CardReview/ReviewCardSkeleton";
+import ReviewCardSkeleton from "@/components/shared/Card/CardReview/ReviewCardSkeleton";
 
 const ReviewSection = () => {
   const { dataReview, isLoadingReview } = useHome();

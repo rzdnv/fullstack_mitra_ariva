@@ -4,6 +4,7 @@ import {
   UpdateDokterInput,
 } from "@/lib/validations/dokter.validation";
 import { generateId } from "../generate-id";
+import cloudinaryService from "../cloudinary";
 
 export async function getAllDokter() {
   return await prisma.dokter.findMany({
@@ -72,6 +73,22 @@ export async function updateDokter(id: number, data: UpdateDokterInput) {
 }
 
 export async function deleteDokter(id: number) {
+  const dokter = await prisma.dokter.findUnique({
+    where: { id },
+    select: { foto: true },
+  });
+
+  if (dokter?.foto) {
+    const result = await cloudinaryService.remove(dokter.foto);
+    if (!result || result.result !== "ok") {
+      throw new Error("Gagal menghapus foto di Cloudinary");
+    }
+  }
+
+  await prisma.jadwalDokter.deleteMany({
+    where: { dokterId: id },
+  });
+
   return await prisma.dokter.delete({
     where: { id },
   });

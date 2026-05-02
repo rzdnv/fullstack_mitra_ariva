@@ -2,8 +2,8 @@
 
 import useHome from "../useHome";
 import { ILayanan } from "@/types/layanan";
-import CardService from "@/components/shared/CardService/CardService";
-import ServiceCardSkeleton from "@/components/shared/CardService/ServiceCardSkeleton";
+import CardService from "@/components/shared/Card/CardService/CardService";
+import ServiceCardSkeleton from "@/components/shared/Card/CardService/ServiceCardSkeleton";
 
 const ServiceSection = () => {
   const { dataLayanan, isLoadingLayanan } = useHome();

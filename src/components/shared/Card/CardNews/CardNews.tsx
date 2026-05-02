@@ -1,6 +1,6 @@
 import { User } from "lucide-react";
 import Image from "next/image";
-import { formatTanggal } from "../formatted/formated";
+import { formatTanggal } from "../../formatted/formated";
 
 interface PropTypes {
   gambar: string;

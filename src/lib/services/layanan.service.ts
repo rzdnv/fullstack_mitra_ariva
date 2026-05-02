@@ -4,6 +4,7 @@ import {
   UpdateLayananInput,
 } from "@/lib/validations/layanan.validation";
 import { generateId } from "../generate-id";
+import cloudinaryService from "../cloudinary";
 
 export async function getAllLayanan() {
   return await prisma.layanan.findMany({
@@ -40,6 +41,18 @@ export async function updateLayanan(id: number, data: UpdateLayananInput) {
 }
 
 export async function deleteLayanan(id: number) {
+  const layanan = await prisma.layanan.findUnique({
+    where: { id },
+    select: { foto: true },
+  });
+
+  if (layanan?.foto) {
+    const result = await cloudinaryService.remove(layanan.foto);
+    if (!result || result.result !== "ok") {
+      throw new Error("Gagal menghapus foto di Cloudinary");
+    }
+  }
+
   return await prisma.layanan.delete({
     where: { id },
   });

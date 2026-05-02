@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import CardSchedule from "../../../shared/CardSchedule/CardSchedule";
+import CardSchedule from "../../../shared/Card/CardSchedule/CardSchedule";
 import useHome from "../useHome";
 import { IDokter } from "@/types/dokter";
-import ScheduleCardSkeleton from "@/components/shared/CardSchedule/ScheduleCardSkeleton";
+import ScheduleCardSkeleton from "@/components/shared/Card/CardSchedule/ScheduleCardSkeleton";
 
 interface PoliItem {
   label: string;

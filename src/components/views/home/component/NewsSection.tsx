@@ -1,13 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import useHome from "../useHome";
 import { IBerita } from "@/types/berita";
-import { formatTanggal } from "@/components/shared/formatted/formated";
-import { Skeleton } from "@/components/ui/skeleton";
-import { User } from "lucide-react";
-import CardNews from "@/components/shared/CardNews/CardNews";
-import NewsCardSkeleton from "@/components/shared/CardNews/NewsCardSkeleton";
+import CardNews from "@/components/shared/Card/CardNews/CardNews";
+import NewsCardSkeleton from "@/components/shared/Card/CardNews/NewsCardSkeleton";
 
 const NewsSection = () => {
   const { dataBerita, isLoadingBerita } = useHome();

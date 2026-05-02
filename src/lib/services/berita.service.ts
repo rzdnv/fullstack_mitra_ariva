@@ -4,6 +4,7 @@ import {
   UpdateBeritaInput,
 } from "@/lib/validations/berita.validation";
 import { generateId } from "../generate-id";
+import cloudinaryService from "../cloudinary";
 
 export async function getAllBerita() {
   return await prisma.berita.findMany({
@@ -96,6 +97,19 @@ export async function updateBerita(id: number, data: UpdateBeritaInput) {
 }
 
 export async function deleteBerita(id: number) {
+  const berita = await prisma.berita.findUnique({
+    where: { id },
+    select: { gambar: true },
+  });
+
+  if (berita?.gambar) {
+    const result = await cloudinaryService.remove(berita.gambar);
+
+    if (!result || result.result !== "ok") {
+      throw new Error("Gagal menghapus gambar di Cloudinary");
+    }
+  }
+
   return await prisma.berita.delete({
     where: { id },
   });

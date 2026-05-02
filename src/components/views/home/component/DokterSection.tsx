@@ -9,10 +9,8 @@ import {
 } from "@/components/ui/carousel";
 import useHome from "../useHome";
 import { IDokter } from "@/types/dokter";
-import CardDokter from "@/components/shared/CardDokter/CardDokter";
-import { Card, CardContent } from "@/components/ui/card";
-import { Skeleton } from "@/components/ui/skeleton";
-import DokterCardSkeleton from "@/components/shared/CardDokter/DokterCardSkeleton";
+import CardDokter from "@/components/shared/Card/CardDokter/CardDokter";
+import DokterCardSkeleton from "@/components/shared/Card/CardDokter/DokterCardSkeleton";
 
 const DokterSection = () => {
   const { dataDokters, isLoadingDokters } = useHome();
