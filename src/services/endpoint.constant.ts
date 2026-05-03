@@ -7,6 +7,11 @@ const endpoint = {
   BERITA: "/berita",
   USERS: "/users",
   REVIEW: "/review",
+  CLOUDINARY: {
+    UPLOAD: "/cloudinary/upload",
+    UPLOAD_MULTIPLE: "/cloudinary/upload-multiple",
+    REMOVE: "/cloudinary/remove",
+  },
 };
 
 export default endpoint;

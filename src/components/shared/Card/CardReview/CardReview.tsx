@@ -30,9 +30,7 @@ const CardReview = (props: PropTypes) => {
         </Avatar>
         <div>
           <CardTitle className="text-slate-800 ">{Name}</CardTitle>
-          <CardDescription className="text-xs md:text-sm">
-            {Date}
-          </CardDescription>
+          <CardDescription className="text-xs ">{Date}</CardDescription>
         </div>
       </CardHeader>
       <CardContent className="flex flex-col gap-2 h-full">
