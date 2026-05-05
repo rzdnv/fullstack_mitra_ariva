@@ -1,25 +1,20 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
+import dynamic from "next/dynamic";
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
-import {
-  Sheet,
-  SheetContent,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
-import Image from "next/image";
 import { NAV_ITEMS } from "../constant/Nav.Constant";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+
+// ← Import Sheet secara dynamic agar tidak SSR
+const MobileMenu = dynamic(() => import("./MobileMenu"), { ssr: false });
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -85,35 +80,8 @@ const Navbar = () => {
           </NavigationMenu>
         </div>
 
-        {/* Mobile Menu */}
-        <Sheet>
-          <SheetTrigger className="md:hidden inline-flex items-center justify-center rounded-md border border-input bg-background p-2 hover:bg-accent transition-colors">
-            <Menu className="h-5 w-5" />
-            <span className="sr-only">Open menu</span>
-          </SheetTrigger>
-
-          <SheetContent side="right" className="w-65 sm:w-[320px]">
-            <SheetHeader>
-              <SheetTitle>Navigation</SheetTitle>
-            </SheetHeader>
-            <div className="flex flex-col gap-3 px-2">
-              {NAV_ITEMS.map((item) => (
-                <Link
-                  key={`nav-side-${item.label}`}
-                  href={item.href}
-                  className={cn(
-                    "w-full px-3 py-2 rounded-md text-start font-medium text-gray-500 hover:text-cerise-red-600 hover:bg-gray-100 transition-colors",
-                    pathname === item.href &&
-                      "text-cerise-red-600 bg-gray-100 font-semibold",
-                  )}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-            <SheetFooter></SheetFooter>
-          </SheetContent>
-        </Sheet>
+        {/* Mobile Menu — dynamic import, no SSR */}
+        <MobileMenu pathname={pathname} />
       </div>
     </nav>
   );
