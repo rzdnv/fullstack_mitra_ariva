@@ -15,12 +15,15 @@ import { DokterCardSkeleton } from "@/components/shared/Card/CardDokter/DokterCa
 const DokterSection2 = () => {
   const { dataDokters, isLoadingDokters } = useHome();
   return (
-    <div className="flex flex-col gap-4 lg:gap-10 w-full py-10 px-10 items-center bg-white">
-      <div className="flex gap-4 flex-col items-center">
-        <p className="text-havelock-blue-500 text-center md:text-xl tracking-tight">
+    <div
+      className="flex w-full flex-col items-center gap-4 bg-white px-10 py-10 lg:gap-10"
+      id="dokterSection"
+    >
+      <div className="flex flex-col items-center gap-4">
+        <p className="text-havelock-blue-500 text-center tracking-tight md:text-xl">
           ✦ Mitra Kesehatan Anda
         </p>
-        <h1 className="font-DMSerif text-3xl md:text-5xl text-center max-w-4xl text-slate-800">
+        <h1 className="font-DMSerif max-w-4xl text-center text-3xl text-slate-800 md:text-5xl">
           Ditangani oleh Tenaga Medis Profesional & Berpengalaman
         </h1>
       </div>
@@ -33,7 +36,7 @@ const DokterSection2 = () => {
             loop: true,
           }}
         >
-          <CarouselContent className="py-4">
+          <CarouselContent className="px-2 py-4">
             {isLoadingDokters
               ? Array.from({ length: 4 }).map((_, i) => (
                   <CarouselItem key={i} className="lg:basis-1/2">
@@ -54,8 +57,8 @@ const DokterSection2 = () => {
                   </CarouselItem>
                 ))}
           </CarouselContent>
-          <CarouselPrevious className="absolute -left-8 lg:-left-12 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white shadow-lg border rounded-full h-12 w-12 md:h-14 md:w-14" />
-          <CarouselNext className="absolute -right-8 lg:-right-12 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white shadow-lg border rounded-full h-12 w-12 md:h-14 md:w-14" />
+          <CarouselPrevious className="absolute top-1/2 -left-8 h-12 w-12 -translate-y-1/2 rounded-full border bg-white/90 shadow-lg hover:bg-white md:h-14 md:w-14 lg:-left-12" />
+          <CarouselNext className="absolute top-1/2 -right-8 h-12 w-12 -translate-y-1/2 rounded-full border bg-white/90 shadow-lg hover:bg-white md:h-14 md:w-14 lg:-right-12" />
         </Carousel>
       </div>
     </div>

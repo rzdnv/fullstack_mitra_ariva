@@ -5,8 +5,7 @@ import { FaYoutube } from "react-icons/fa";
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
   { label: "Profile", href: "/profile" },
-  { label: "Dokter", href: "/dokter" },
-  { label: "Jadwal Dokter", href: "/jadwaldokter" },
+  { label: "Dokter", href: "#dokterSection" },
   { label: "Layanan", href: "/layanan" },
 ];
 

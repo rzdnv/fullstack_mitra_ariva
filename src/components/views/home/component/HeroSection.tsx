@@ -6,7 +6,6 @@ import { Autoplay, EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 
 const images = [
   "/images/general/hero1.webp",
@@ -17,7 +16,7 @@ const images = [
 
 const HeroSection = () => {
   return (
-    <section className="w-full h-screen mb-10">
+    <section className="h-[75vh] w-full lg:h-screen">
       <Swiper
         modules={[Autoplay, EffectFade]}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
@@ -25,39 +24,34 @@ const HeroSection = () => {
         effect="fade"
         fadeEffect={{ crossFade: true }}
         speed={1200}
-        className="w-full h-full"
+        className="h-full w-full"
       >
         {images.map((img, i) => (
           <SwiperSlide key={i}>
             <div
-              className="w-full h-full bg-cover bg-center transition-transform duration-5000"
+              className="relative h-full w-full bg-cover bg-center transition-transform duration-5000"
               style={{ backgroundImage: `url(${img})` }}
             >
-              <div className="w-full h-full flex items-center justify-center md:justify-start md:items-end">
-                <div className="p-6 md:p-8 bg-havelock-blue-800/70 m-20 rounded-xl flex gap-4 items-center flex-col md:flex-row">
+              <div className="flex h-full w-full items-center justify-center">
+                <div className="z-10 flex flex-col items-center gap-4 rounded-xl p-6 lg:flex-row">
                   <Image
                     src="/images/logo/logo.png"
                     alt="logo"
                     width={200}
                     height={200}
-                    className="w-40 md:w-25"
+                    className="w-40"
                   />
                   <div className="text-center md:text-start">
-                    <h1 className="text-xl md:text-3xl text-white font-bold ">
-                      RSKB Mitra Ariva
+                    <h1 className="font-playfair text-2xl font-bold text-white lg:text-5xl">
+                      RSKB
                     </h1>
-                    <p className="text-2xl md:text-4xl font-bold text-white ">
-                      Mitra anda menuju sehat
+                    <p className="text-5xl font-bold text-white lg:text-8xl">
+                      MITRA ARIVA
                     </p>
                   </div>
-                  <Button
-                    variant="secondary"
-                    className="p-4 w-full md:w-fit text-havelock-blue-700 md:p-8 md:text-lg md:font-bold"
-                  >
-                    Daftar Online
-                  </Button>
                 </div>
               </div>
+              <div className="bg-havelock-blue-800/50 absolute inset-0" />
             </div>
           </SwiperSlide>
         ))}
