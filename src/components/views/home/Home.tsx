@@ -1,9 +1,9 @@
-import DokterSection from "./component/DokterSection";
+import DokterSection2 from "./component/DokterSection";
 import HeroSection from "./component/HeroSection";
 import HighlightSection from "./component/HighlightSection";
 import NewsSection from "./component/NewsSection";
 import PartnerSection from "./component/PartnerSection";
-import PoliSection from "./component/PoliSection";
+// import PoliSection from "./component/PoliSection";
 import ReviewSection from "./component/ReviewSection";
 import ServiceSection from "./component/ServiceSection";
 
@@ -13,9 +13,9 @@ const Home = () => {
       <HeroSection />
       <HighlightSection />
       <PartnerSection />
-      <PoliSection />
+      {/* <PoliSection /> */}
+      <DokterSection2 />
       <ServiceSection />
-      <DokterSection />
       <NewsSection />
       <ReviewSection />
     </div>

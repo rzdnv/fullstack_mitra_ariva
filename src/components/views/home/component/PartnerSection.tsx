@@ -16,12 +16,12 @@ const PartnerSection = () => {
   const marqueeItems = [...PARTNERS, ...PARTNERS];
 
   return (
-    <div className="flex flex-col gap-10 w-full py-30 px-20 items-center overflow-hidden">
+    <div className="flex flex-col gap-10 w-full py-20 lg:py-30 px-20 items-center overflow-hidden">
       <div className="flex gap-4 flex-col items-center">
         <p className="text-havelock-blue-500 text-center md:text-xl tracking-tight">
           ✦ Kemudahan Layanan Pasien
         </p>
-        <h1 className="font-playfair text-2xl md:text-5xl text-center max-w-4xl text-slate-800 font-bold">
+        <h1 className="font-DMSerif text-3xl md:text-5xl text-center max-w-4xl text-slate-800">
           Melayani Pasien Umum, BPJS, & Asuransi
         </h1>
       </div>

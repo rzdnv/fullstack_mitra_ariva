@@ -1,10 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import CardSchedule from "../../../shared/Card/CardSchedule/CardSchedule";
-import useHome from "../useHome";
-import { IDokter } from "@/types/dokter";
-import ScheduleCardSkeleton from "@/components/shared/Card/CardSchedule/ScheduleCardSkeleton";
 
 interface PoliItem {
   label: string;
@@ -16,91 +12,61 @@ const POLI_LIST: PoliItem[] = [
   {
     label: "Poli Kandungan",
     image: "/images/poli/obgyn.webp",
-    color: "bg-candlelight-400/50 hover:bg-candlelight-400/70",
+    color: "border-candlelight-400/50 ",
   },
   {
     label: "Poli Bedah",
     image: "/images/poli/bedah.webp",
-    color: "bg-havelock-blue-400/50 hover:bg-havelock-blue-400/70",
+    color: "border-havelock-blue-400/50 ",
   },
   {
     label: "Poli Penyakit Dalam",
     image: "/images/poli/penyakit-dalam.webp",
-    color: "bg-your-pink-400/50 hover:bg-your-pink-400/70",
+    color: "border-your-pink-400/50 ",
   },
   {
     label: "Poli Umum",
     image: "/images/poli/umum.webp",
-    color: "bg-havelock-blue-400/50 hover:bg-havelock-blue-400/70",
+    color: "border-havelock-blue-400/50 ",
   },
   {
     label: "Poli Saraf",
     image: "/images/poli/saraf.webp",
-    color: "bg-your-pink-400/50 hover:bg-your-pink-400/70",
+    color: "border-your-pink-400/50 ",
   },
   {
     label: "Poli Gigi",
     image: "/images/poli/gigi.webp",
-    color: "bg-candlelight-400/50 hover:bg-candlelight-400/70",
+    color: "border-candlelight-400/50",
   },
 ];
 
 const PoliCard = ({ label, image, color }: PoliItem) => (
   <div
-    className={`flex flex-col gap-2 aspect-square w-full h-full justify-center items-center transition-all duration-300 ${color}`}
+    className={`flex aspect-video px-2 border-5 w-full h-full justify-center rounded-2xl items-center ${color}`}
   >
-    <Image
-      src={image}
-      alt={label}
-      width={400}
-      height={300}
-      className="w-10 lg:w-15 xl:w-20"
-    />
-    <p className="text-sm lg:text-xl font-bold text-center text-slate-800 px-4">
-      {label}
-    </p>
+    <Image src={image} alt={label} width={400} height={300} className="w-10" />
+    <p className="text-sm lg:text-base font-bold text-slate-800">{label}</p>
   </div>
 );
 
 const PoliSection = () => {
-  const { dataDokters, isLoadingDokters } = useHome();
-
   return (
-    <section className="flex flex-col gap-10  items-center my-10 mx-10 px-4 py-8 lg:p-10 bg-white border rounded-xl">
-      <div className="w-full flex gap-4 flex-col items-center lg:items-start">
+    <section className="flex flex-col gap-8 items-center my-10 p-10">
+      <div className="w-full flex gap-4 flex-col px-10 items-center lg:items-start">
         <p className="text-havelock-blue-500 text-center lg:text-start md:text-xl tracking-tight">
-          ✦ Poliklinik & Jadwal
+          ✦ Poliklinik Spesialis
         </p>
-        <h1 className="font-playfair text-2xl md:text-5xl text-center lg:text-start max-w-4xl text-slate-800 font-bold">
-          Temukan Jadwal Praktik Dokter Spesialis Kami
+        <h1 className="font-DMSerif text-3xl md:text-5xl text-center lg:text-start max-w-4xl text-slate-800">
+          Pilihan Layanan Medis Terpadu untuk Anda
         </h1>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 w-full ">
-        <div className="grid grid-cols-2 md:grid-cols-3">
+      <div className=" w-full ">
+        <div className="grid grid-cols-2 gap-2 lg:grid-cols-6 items-center">
           {POLI_LIST.map((poli) => (
             <PoliCard key={poli.label} {...poli} />
           ))}
-        </div>
-
-        <div>
-          <div className="grid grid-cols-1 gap-4 max-h-110 overflow-y-auto py-4 px-2 md:px-5 scrollbar-hide">
-            {isLoadingDokters
-              ? Array.from({ length: 4 }).map((_, i) => (
-                  <ScheduleCardSkeleton key={i} />
-                ))
-              : dataDokters?.map((dokter: IDokter) => (
-                  <CardSchedule
-                    key={dokter.id}
-                    Name={dokter.nama}
-                    Poli={dokter.poli.namaPoli}
-                    Schedules={dokter.jadwal.map((j) => ({
-                      Day: j.hari,
-                      Time: `${j.jamMulai} - ${j.jamSelesai}`,
-                    }))}
-                  />
-                ))}
-          </div>
         </div>
       </div>
     </section>

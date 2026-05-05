@@ -22,7 +22,7 @@ const ReviewSection = () => {
         <p className="text-havelock-blue-500 text-center md:text-xl tracking-tight">
           ✦ Cerita Pasien Kami
         </p>
-        <h1 className="font-playfair text-2xl md:text-5xl text-center max-w-4xl text-slate-800 font-bold">
+        <h1 className="font-DMSerif text-3xl md:text-5xl text-center max-w-4xl text-slate-800">
           Kepercayaan Anda Adalah Kebanggaan Bagi Kami
         </h1>
       </div>

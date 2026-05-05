@@ -12,6 +12,17 @@ const CardService = (props: PropTypes) => {
 
   return (
     <Card className=" w-65 md:w-90 overflow-hidden rounded-2xl border-0 bg-white shadow-lg">
+      {/* Content */}
+      {/* <CardContent className="space-y-3 px-5 h-1/4">
+        <CardTitle className="text-center md:text-xl font-bold leading-snug text-havelock-blue-800">
+          {namaLayanan}
+        </CardTitle>
+
+        <p className=" px-6 text-center text-xs md:text-sm leading-relaxed text-slate-700">
+          {deskripsi}
+        </p>
+      </CardContent> */}
+
       {/* Foto */}
       <Image
         src={foto}
@@ -20,17 +31,6 @@ const CardService = (props: PropTypes) => {
         height={600}
         className="h-auto w-full object-contain"
       />
-
-      {/* Content */}
-      <CardContent className="space-y-3 px-5">
-        <CardTitle className="text-center md:text-xl font-bold leading-snug text-havelock-blue-800">
-          {namaLayanan}
-        </CardTitle>
-
-        <p className=" px-6 text-center text-xs md:text-sm leading-relaxed text-slate-700">
-          {deskripsi}
-        </p>
-      </CardContent>
     </Card>
   );
 };

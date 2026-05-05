@@ -38,7 +38,7 @@ const HighlightSection = () => {
           <p className="text-havelock-blue-500 text-center md:text-xl tracking-tight">
             ✦ Pemulihan Anda Adalah Fokus Kami
           </p>
-          <h1 className="font-playfair text-2xl md:text-5xl text-center max-w-4xl text-slate-800 font-bold  md:mb-8">
+          <h1 className="font-DMSerif text-3xl md:text-5xl text-center max-w-4xl text-slate-800  md:mb-8">
             Di Sini, Kesembuhan anda menjadi prioritas utama
           </h1>
           <p className=" text-sm lg:text-base text-slate-700 text-justify px-0 md:px-20">
