@@ -3,6 +3,7 @@
 import Image from "next/image";
 import JourneySection from "./component/JourneySection";
 import VisiMisiSection from "./component/VisiMisiSection";
+import RawatInapSection from "./component/RawatInapSection";
 
 const Profile = () => {
   return (
@@ -29,9 +30,10 @@ const Profile = () => {
       </section>
 
       {/* content */}
-      <section className="space-y-10 px-10 py-10 lg:space-y-20 lg:px-20">
+      <section className="space-y-8 px-10 py-10 lg:space-y-20 lg:px-20">
         <JourneySection />
         <VisiMisiSection />
+        <RawatInapSection></RawatInapSection>
       </section>
     </main>
   );

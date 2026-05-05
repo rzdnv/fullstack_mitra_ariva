@@ -5,7 +5,8 @@ import { FaYoutube } from "react-icons/fa";
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
   { label: "Profile", href: "/profile" },
-  { label: "Dokter", href: "#dokterSection" },
+  { label: "Dokter", href: "/dokter" },
+  { label: "Berita", href: "/berita" },
   { label: "Layanan", href: "/layanan" },
 ];
 
@@ -15,13 +16,6 @@ const BUTTON_ITEMS = [
     href: "/auth/login",
     classname: "bg-cerise-red-600 hover:bg-cerise-red-500/70",
     variant: "default" as const,
-  },
-  {
-    label: "Register",
-    href: "/auth/register",
-    classname:
-      "border-cerise-red-600 text-cerise-red-600 hover:border-cerise-red-500/70 hover:text-cerise-red-500/70",
-    variant: "outline" as const,
   },
 ];
 

@@ -1,3 +1,4 @@
+import { FasilitiesCard } from "@/components/shared/Card/CardFasilities/FasilitiesCard";
 import {
   Stethoscope,
   Bed,
@@ -40,40 +41,7 @@ export const LAYANAN_LIST = [
   },
 ];
 
-type LayananCardProps = {
-  title: string;
-  desc: string;
-  icon: React.ElementType;
-};
-
-export function LayananCard({ title, desc, icon: Icon }: LayananCardProps) {
-  return (
-    <div className="border-havelock-blue-400 rounded-2xl border bg-white p-6 shadow-md">
-      {/* Icon */}
-      <div className="mb-4 w-fit rounded-xl bg-slate-100 p-4">
-        <Icon className="text-havelock-blue-600 h-6 w-6" />
-      </div>
-
-      {/* Title */}
-      <h3 className="mb-2 font-bold text-slate-800 lg:text-lg">{title}</h3>
-
-      {/* Desc */}
-      <p className="mb-4 text-xs leading-relaxed text-slate-500 lg:text-sm">
-        {desc}
-      </p>
-
-      {/* Info */}
-      <div className="text-havelock-blue-600 flex items-center gap-2 text-xs font-medium lg:text-sm">
-        <span className="h-2 w-2 rounded-full bg-yellow-500" />
-        Layanan Tersedia
-      </div>
-    </div>
-  );
-}
-// import { LAYANAN_LIST } from "./layanan.data";
-// import { LayananCard } from "./LayananCard";
-
-export default function LayananSection() {
+const FacilitiesSection = () => {
   return (
     <section className="flex w-full flex-col gap-4 px-6 py-20 lg:gap-10 lg:px-20">
       <div className="flex flex-col gap-4">
@@ -86,9 +54,11 @@ export default function LayananSection() {
       </div>
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-3 lg:gap-6">
         {LAYANAN_LIST.map((item, index) => (
-          <LayananCard key={index} {...item} />
+          <FasilitiesCard key={index} {...item} />
         ))}
       </div>
     </section>
   );
-}
+};
+
+export default FacilitiesSection;
