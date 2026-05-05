@@ -9,8 +9,8 @@ const NewsSection = () => {
   const { dataBerita, isLoadingBerita } = useHome();
 
   return (
-    <section className=" mx-10 my-20">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 p-10 rounded-2xl w-full bg-white  items-center lg:items-start">
+    <section className=" mx-8 lg:mx-10 my-20">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 py-10 px-4 lg:px-10  rounded-2xl w-full bg-white  items-center lg:items-start">
         <div className="flex gap-2 md:gap-4 flex-col items-center lg:items-start">
           <p className="text-havelock-blue-500 text-center lg:text-start md:text-xl tracking-tight">
             ✦ Info Kesehatan

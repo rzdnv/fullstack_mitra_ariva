@@ -9,7 +9,8 @@ import {
 } from "@/components/ui/carousel";
 import useHome from "../useHome";
 import { IDokter } from "@/types/dokter";
-import DokterSchedule from "@/components/shared/Card/CardSchedule/DokterSchedule";
+import CardDokter from "@/components/shared/Card/CardDokter/CardDokter";
+import { DokterCardSkeleton } from "@/components/shared/Card/CardDokter/DokterCardSkeleton";
 
 const DokterSection2 = () => {
   const { dataDokters, isLoadingDokters } = useHome();
@@ -33,19 +34,25 @@ const DokterSection2 = () => {
           }}
         >
           <CarouselContent className="py-4">
-            {dataDokters?.map((dokter: IDokter) => (
-              <CarouselItem key={dokter.id} className=" lg:basis-1/2">
-                <DokterSchedule
-                  namaDokter={dokter.nama}
-                  fotoDokter={`${dokter.foto}`}
-                  poli={dokter.poli.namaPoli}
-                  Schedules={dokter.jadwal.map((j) => ({
-                    Day: j.hari,
-                    Time: `${j.jamMulai} - ${j.jamSelesai}`,
-                  }))}
-                />
-              </CarouselItem>
-            ))}
+            {isLoadingDokters
+              ? Array.from({ length: 4 }).map((_, i) => (
+                  <CarouselItem key={i} className="lg:basis-1/2">
+                    <DokterCardSkeleton />
+                  </CarouselItem>
+                ))
+              : dataDokters?.map((dokter: IDokter) => (
+                  <CarouselItem key={dokter.id} className="lg:basis-1/2">
+                    <CardDokter
+                      namaDokter={dokter.nama}
+                      fotoDokter={`${dokter.foto}`}
+                      poli={dokter.poli.namaPoli}
+                      Schedules={dokter.jadwal.map((j) => ({
+                        Day: j.hari,
+                        Time: `${j.jamMulai} - ${j.jamSelesai}`,
+                      }))}
+                    />
+                  </CarouselItem>
+                ))}
           </CarouselContent>
           <CarouselPrevious className="absolute -left-8 lg:-left-12 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white shadow-lg border rounded-full h-12 w-12 md:h-14 md:w-14" />
           <CarouselNext className="absolute -right-8 lg:-right-12 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white shadow-lg border rounded-full h-12 w-12 md:h-14 md:w-14" />

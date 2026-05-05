@@ -1,18 +1,17 @@
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import DayTime from "./DayTime";
 
 interface PropTypes {
-  id?: string;
-  fotoDokter: string;
   namaDokter: string;
-  Poli: string;
-  Spesialis: string;
+  poli: string;
+  fotoDokter: string;
+  Schedules: Array<{ Day: string; Time: string }>;
 }
 
 const CardDokter = (props: PropTypes) => {
-  const { id, fotoDokter, namaDokter, Poli, Spesialis } = props;
+  const { Schedules, namaDokter, fotoDokter, poli } = props;
 
   const poliColorMap: Record<string, string> = {
     "Poli Kandungan": "bg-candlelight-400 text-white",
@@ -24,42 +23,36 @@ const CardDokter = (props: PropTypes) => {
   };
 
   return (
-    <Card
-      key={id}
-      className="h-full w-full overflow-hidden rounded-3xl border-0  transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
-    >
-      {/* Foto */}
-      <Image
-        src={fotoDokter}
-        alt={namaDokter}
-        width={400}
-        height={600}
-        className="h-auto w-full object-cover rounded-t-3xl"
-      />
-
-      {/* Content */}
-      <CardContent className="flex flex-col justify-between space-y-4 ">
-        <div className="flex justify-center">
-          <Badge
-            variant="secondary"
-            className={cn(
-              "text-xs lg:font-semibold lg:p-4 rounded-full",
-              poliColorMap[Poli] || "bg-gray-200 text-gray-800",
-            )}
-          >
-            {Poli}
-          </Badge>
-        </div>
-
-        <CardTitle className="line-clamp-2 text-center text-base lg:text-xl font-bold leading-snug text-havelock-blue-800">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 p-4 rounded-2xl shadow-lg border bg-white transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-havelock-blue-500">
+      <div className="w-full h-full rounded-xl overflow-hidden">
+        <Image
+          src={fotoDokter}
+          alt={namaDokter}
+          width={300}
+          height={400}
+          className="w-full h-full"
+        />
+      </div>
+      <div className="p-4 space-y-4">
+        <h1 className=" md:text-xl font-bold text-slate-800 leading-tight line-clamp-2">
           {namaDokter}
-        </CardTitle>
-
-        <p className="line-clamp-2 text-center text-xs lg:text-sm leading-relaxed text-slate-700">
-          {Spesialis}
-        </p>
-      </CardContent>
-    </Card>
+        </h1>
+        <Badge
+          variant="secondary"
+          className={cn(
+            "text-xs md:font-semibold md:p-4 rounded-full",
+            poliColorMap[poli] || "bg-gray-200 text-gray-800",
+          )}
+        >
+          {poli}
+        </Badge>
+        <div className="grid grid-cols-1 gap-2">
+          {Schedules.map((schedule, index) => (
+            <DayTime key={index} Day={schedule.Day} Time={schedule.Time} />
+          ))}
+        </div>
+      </div>
+    </div>
   );
 };
 
