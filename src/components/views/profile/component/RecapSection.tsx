@@ -4,7 +4,7 @@ import CountUp from "react-countup";
 import { HIGHLIGHT_LIST } from "./constant/highlight.constant";
 import { Badge } from "@/components/ui/badge";
 
-export function HighlightSection() {
+export function RecapSection() {
   return (
     <section className="w-full px-4 lg:px-20">
       <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">

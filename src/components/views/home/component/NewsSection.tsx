@@ -2,8 +2,8 @@
 
 import useHome from "../useHome";
 import { IBerita } from "@/types/berita";
-import CardNews from "@/components/shared/Card/CardNews/CardNews";
-import NewsCardSkeleton from "@/components/shared/Card/CardNews/NewsCardSkeleton";
+import NewsCardSkeleton from "./Card/CardNews/NewsCardSkeleton";
+import CardNews from "./Card/CardNews/CardNews";
 
 const NewsSection = () => {
   const { dataBerita, isLoadingBerita } = useHome();

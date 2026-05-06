@@ -2,6 +2,14 @@ const VisiMisiSection = () => {
   return (
     <section className="w-full">
       <div className="grid w-full grid-cols-1 gap-4 lg:grid-cols-2">
+        <div className="flex flex-col items-center gap-4 rounded-xl bg-white p-8 lg:col-span-2">
+          <h1 className="text-havelock-blue-500 text-xl font-bold">
+            ✦ Our Internal Motto
+          </h1>
+          <h2 className="font-DMSerif text-center text-4xl text-slate-900 lg:text-5xl">
+            Mitra Anda Menuju Sehat
+          </h2>
+        </div>
         <div className="border-havelock-blue-500 flex flex-col gap-4 rounded-xl border-2 bg-white p-8">
           <h1 className="text-havelock-blue-500 text-xl font-bold">✦ VISI</h1>
           <h2 className="font-DMSerif text-lg text-slate-900 lg:text-2xl">
@@ -61,14 +69,6 @@ const VisiMisiSection = () => {
               memenuhi ekspektasi medis yang tertinggi.
             </li>
           </ol>
-        </div>
-        <div className="flex flex-col items-center gap-4 rounded-xl bg-white p-8 lg:col-span-2">
-          <h1 className="text-havelock-blue-500 text-xl font-bold">
-            ✦ Our Internal Motto
-          </h1>
-          <h2 className="font-DMSerif text-center text-4xl text-slate-900 lg:text-5xl">
-            Mitra Anda Menuju Sehat
-          </h2>
         </div>
       </div>
     </section>

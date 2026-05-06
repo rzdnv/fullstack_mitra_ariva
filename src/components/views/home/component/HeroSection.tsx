@@ -8,10 +8,10 @@ import "swiper/css/effect-fade";
 import Image from "next/image";
 
 const images = [
-  "/images/general/hero1.webp",
-  "/images/general/hero2.webp",
-  "/images/general/hero3.webp",
-  "/images/general/hero4.webp",
+  "/images/general/hero/hero1.webp",
+  "/images/general/hero/hero2.webp",
+  "/images/general/hero/hero3.webp",
+  "/images/general/hero/hero4.webp",
 ];
 
 const HeroSection = () => {

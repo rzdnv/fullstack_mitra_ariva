@@ -1,4 +1,4 @@
-import { FasilitiesCard } from "@/components/shared/Card/CardFasilities/FasilitiesCard";
+import { FasilitiesCard } from "@/components/views/home/component/Card/CardFasilities/FasilitiesCard";
 import {
   Stethoscope,
   Bed,

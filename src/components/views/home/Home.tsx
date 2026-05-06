@@ -5,7 +5,6 @@ import HeroSection from "./component/HeroSection";
 import HighlightSection from "./component/HighlightSection";
 import NewsSection from "./component/NewsSection";
 import PartnerSection from "./component/PartnerSection";
-// import PoliSection from "./component/PoliSection";
 import ReviewSection from "./component/ReviewSection";
 import ServiceSection from "./component/ServiceSection";
 
@@ -17,7 +16,6 @@ const Home = () => {
       <HighlightSection />
       <FacilitiesSection />
       <PartnerSection />
-      {/* <PoliSection /> */}
       <DokterSection2 />
       <ServiceSection />
       <NewsSection />
