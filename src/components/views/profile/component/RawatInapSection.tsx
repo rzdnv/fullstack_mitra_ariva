@@ -1,27 +1,5 @@
-import {
-  LucideIcon,
-  BedDouble,
-  Star,
-  ShieldPlus,
-  Users,
-  Activity,
-  Shield,
-} from "lucide-react";
-
-type RawatInapItem = {
-  title: string;
-  bedCount: number;
-  icon: LucideIcon;
-};
-
-export const RAWAT_INAP_LIST: RawatInapItem[] = [
-  { title: "VIP", bedCount: 2, icon: Star },
-  { title: "Kelas 1", bedCount: 3, icon: BedDouble },
-  { title: "Kelas 2", bedCount: 4, icon: Users },
-  { title: "Kelas 3", bedCount: 12, icon: Users },
-  { title: "ICU", bedCount: 2, icon: Activity },
-  { title: "Ruang Isolasi", bedCount: 2, icon: ShieldPlus },
-];
+import { LucideIcon } from "lucide-react";
+import { RAWAT_INAP_LIST } from "./constant/RawatInap.constant";
 
 type RawatInapCardProps = {
   title: string;
@@ -60,8 +38,8 @@ export function RawatInapCard({
 
 export default function RawatInapSection() {
   return (
-    <section className="w-full px-6 py-10">
-      <div className="mb-6">
+    <section className="w-full px-6">
+      <div className="mb-10">
         <p className="text-havelock-blue-500 tracking-tight md:text-xl">
           ✦ Ruang Rawat Inap
         </p>
@@ -70,7 +48,7 @@ export default function RawatInapSection() {
         </h1>
       </div>
 
-      <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         {RAWAT_INAP_LIST.map((item, index) => (
           <RawatInapCard key={index} {...item} />
         ))}

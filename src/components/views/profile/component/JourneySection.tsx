@@ -1,30 +1,12 @@
-import CountUp from "react-countup";
-
 const JourneySection = () => {
   return (
     <section className="space-y-8">
-      <h1 className="text-3xl font-bold text-slate-900 lg:text-5xl">
-        Perjalanan Kami
-      </h1>
-
-      <div className="flex flex-col gap-4 lg:flex-row">
-        <div className="flex items-center">
-          <CountUp
-            start={0}
-            end={20}
-            duration={3}
-            className="font-DMSerif text-havelock-blue-500 text-9xl"
-          />
-          <span className="font-DMSerif text-havelock-blue-500 text-7xl">
-            +
-          </span>
-        </div>
-
-        <div className="space-y-2">
-          <h2 className="font-DMSerif text-lg font-light lg:text-xl">
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col justify-center gap-4 px-0 lg:px-20">
+          <h2 className="font-DMSerif text-center text-xl font-light lg:text-3xl">
             Dua Dekade Mengabdi untuk Kesembuhan Anda
           </h2>
-          <p className="text-justify lg:text-lg">
+          <p className="text-center text-base/7 lg:text-lg/8">
             <b>RSKB Mitra Ariva</b> lahir dari sebuah visi mulia pada{" "}
             <b>5 April 2002</b>. Didirikan oleh{" "}
             <b>Yayasan Mitra Keluarga Purwokerto</b>, institusi ini tumbuh
@@ -39,11 +21,11 @@ const JourneySection = () => {
         </div>
       </div>
 
-      <div className="space-y-2">
-        <h2 className="font-DMSerif text-lg font-light lg:text-xl">
+      <div className="flex flex-col justify-center gap-4 px-0 lg:px-20">
+        <h2 className="font-DMSerif text-center text-xl font-light lg:text-3xl">
           Mengapa Kami Ada?
         </h2>
-        <p className="text-justify lg:text-lg">
+        <p className="text-center text-base/7 lg:text-lg/8">
           Kehadiran kami merupakan bagian integral dari pembangunan kesehatan di
           wilayah <b>Ajibarang dan sekitarnya</b>. Kami percaya bahwa layanan
           bedah berkualitas tidak harus mahal; itulah sebabnya kami berkomitmen

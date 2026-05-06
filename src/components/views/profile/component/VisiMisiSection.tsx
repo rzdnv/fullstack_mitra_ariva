@@ -66,7 +66,7 @@ const VisiMisiSection = () => {
           <h1 className="text-havelock-blue-500 text-xl font-bold">
             ✦ Our Internal Motto
           </h1>
-          <h2 className="font-DMSerif text-center text-2xl text-slate-900 lg:text-5xl">
+          <h2 className="font-DMSerif text-center text-4xl text-slate-900 lg:text-5xl">
             Mitra Anda Menuju Sehat
           </h2>
         </div>
