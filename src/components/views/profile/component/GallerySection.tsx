@@ -1,13 +1,20 @@
 import Image from "next/image";
 
 const GALLERY = [
-  { src: "/images/general/hero/hero1.webp", alt: "HERO1" },
-  { src: "/images/general/hero/hero1.webp", alt: "HERO1" },
-  { src: "/images/general/hero/hero1.webp", alt: "HERO1" },
-  { src: "/images/general/hero/hero1.webp", alt: "HERO1" },
-  { src: "/images/general/hero/hero1.webp", alt: "HERO1" },
-  { src: "/images/general/hero/hero1.webp", alt: "HERO1" },
-  { src: "/images/general/hero/hero1.webp", alt: "HERO1" },
+  { src: "/images/general/gallery/gallery1.webp", alt: "Gallery" },
+  { src: "/images/general/gallery/gallery2.webp", alt: "Gallery" },
+  { src: "/images/general/gallery/gallery3.webp", alt: "Gallery" },
+  { src: "/images/general/gallery/gallery4.webp", alt: "Gallery" },
+  { src: "/images/general/gallery/gallery5.webp", alt: "Gallery" },
+  { src: "/images/general/gallery/gallery6.webp", alt: "Gallery" },
+  { src: "/images/general/gallery/gallery7.webp", alt: "Gallery" },
+  { src: "/images/general/gallery/gallery8.webp", alt: "Gallery" },
+  { src: "/images/general/gallery/gallery9.webp", alt: "Gallery" },
+  { src: "/images/general/gallery/gallery10.webp", alt: "Gallery" },
+  { src: "/images/general/gallery/gallery11.webp", alt: "Gallery" },
+  { src: "/images/general/gallery/gallery12.webp", alt: "Gallery" },
+  { src: "/images/general/gallery/gallery13.webp", alt: "Gallery" },
+  { src: "/images/general/gallery/gallery14.webp", alt: "Gallery" },
 ];
 
 const GallerySection = () => {
@@ -32,7 +39,7 @@ const GallerySection = () => {
               alt={gallery.alt}
               width={500}
               height={500}
-              className="h-auto w-full rounded-xl object-cover transition duration-300 hover:scale-105"
+              className="hover:border-havelock-blue-500 h-auto w-full rounded-xl object-cover transition duration-300 hover:scale-105 hover:border-4"
             />
           </div>
         ))}
