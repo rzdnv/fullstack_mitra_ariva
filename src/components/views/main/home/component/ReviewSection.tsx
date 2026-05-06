@@ -11,7 +11,7 @@ import CardReview from "./Card/CardReview/CardReview";
 import useHome from "../useHome";
 import { IReview } from "@/types/review";
 import { formatTanggal } from "@/components/shared/formatted/formated";
-import ReviewCardSkeleton from "@/components/views/home/component/Card/CardReview/ReviewCardSkeleton";
+import ReviewCardSkeleton from "@/components/views/main/home/component/Card/CardReview/ReviewCardSkeleton";
 
 const ReviewSection = () => {
   const { dataReview, isLoadingReview } = useHome();

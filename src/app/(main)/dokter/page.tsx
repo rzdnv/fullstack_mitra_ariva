@@ -1,4 +1,4 @@
-import Dokter from "@/components/views/dokter/Dokter";
+import Dokter from "@/components/views/main/dokter/Dokter";
 import { Metadata } from "next";
 
 export const metadata: Metadata = { title: "Dokter" };

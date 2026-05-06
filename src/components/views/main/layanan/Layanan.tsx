@@ -1,6 +1,12 @@
+"use client";
+
 import Image from "next/image";
+import useLayanan from "./useLayanan";
+import { ILayanan } from "@/types/layanan";
 
 const Layanan = () => {
+  const { dataLayanan, isLoadingLayanan } = useLayanan();
+
   return (
     <main className="bg-white">
       <section
@@ -25,7 +31,22 @@ const Layanan = () => {
       </section>
 
       {/* content */}
-      <section className="grid grid-cols-1 gap-6 px-10 py-10 md:grid-cols-2 lg:px-20"></section>
+      <section className="grid grid-cols-2 gap-10 px-10 py-10 md:grid-cols-3 lg:px-20">
+        {dataLayanan?.map((layanan: ILayanan) => (
+          <div
+            key={layanan.id}
+            className="h-full w-full overflow-hidden rounded-xl"
+          >
+            <Image
+              src={layanan.foto}
+              alt={layanan.namaLayanan}
+              width={300}
+              height={400}
+              className="h-full w-full"
+            />
+          </div>
+        ))}
+      </section>
     </main>
   );
 };
