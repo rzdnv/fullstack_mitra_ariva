@@ -15,10 +15,10 @@ const Home = () => {
       <ContactSection />
       <HighlightSection />
       <FacilitiesSection />
-      <PartnerSection />
       <DokterSection2 />
       <ServiceSection />
       <NewsSection />
+      <PartnerSection />
       <ReviewSection />
     </div>
   );

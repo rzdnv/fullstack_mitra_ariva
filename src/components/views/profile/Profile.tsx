@@ -6,6 +6,7 @@ import VisiMisiSection from "./component/VisiMisiSection";
 // import RawatInapSection from "./component/RawatInapSection";
 import { RecapSection } from "./component/RecapSection";
 import GallerySection from "./component/GallerySection";
+import PartnersSection from "./component/PartnersSection";
 
 const Profile = () => {
   return (
@@ -32,7 +33,7 @@ const Profile = () => {
       </section>
 
       {/* content */}
-      <section className="space-y-6 px-10 py-10 lg:space-y-20 lg:px-20">
+      <section className="space-y-6 px-10 py-20 lg:space-y-20 lg:px-20">
         {/* <h1 className="font-DMSerif text-center text-3xl text-slate-900 lg:text-5xl">
           Perjalanan Kami
         </h1> */}
@@ -40,6 +41,7 @@ const Profile = () => {
         <JourneySection />
         <VisiMisiSection />
         <GallerySection />
+        <PartnersSection />
       </section>
     </main>
   );

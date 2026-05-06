@@ -17,7 +17,7 @@ const ReviewSection = () => {
   const { dataReview, isLoadingReview } = useHome();
 
   return (
-    <div className="flex w-full flex-col items-center gap-10 bg-linear-to-b from-gray-100 from-10% to-white to-90% px-10 pt-10 pb-30 md:px-20">
+    <div className="flex w-full flex-col items-center gap-10 bg-linear-to-t from-white to-transparent px-10 pt-10 pb-30 md:px-20">
       <div className="flex flex-col items-center gap-4">
         <p className="text-havelock-blue-500 text-center tracking-tight md:text-xl">
           ✦ Cerita Pasien Kami

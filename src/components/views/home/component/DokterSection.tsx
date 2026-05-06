@@ -47,6 +47,7 @@ const DokterSection2 = () => {
                   <CarouselItem key={dokter.id} className="lg:basis-1/2">
                     <CardDokter
                       namaDokter={dokter.nama}
+                      spesialis={dokter.spesialis}
                       fotoDokter={`${dokter.foto}`}
                       poli={dokter.poli.namaPoli}
                       Schedules={dokter.jadwal.map((j) => ({

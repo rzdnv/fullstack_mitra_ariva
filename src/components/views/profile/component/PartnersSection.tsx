@@ -15,36 +15,41 @@ const PARTNERS = [
   { src: "/images/logo/mitra/pertamina.png", alt: "Pertamina" },
   { src: "/images/logo/mitra/admedika.png", alt: "AdMedika" },
   { src: "/images/logo/mitra/bumiputera.png", alt: "Bumiputera" },
+  { src: "/images/logo/mitra/chubb.png", alt: "CHUBB" },
+  { src: "/images/logo/mitra/fwd.png", alt: "FWD" },
+  { src: "/images/logo/mitra/prudential.png", alt: "Prudential" },
+  { src: "/images/logo/mitra/zurich.png", alt: "Zurich" },
 ];
 
-const PartnerSection = () => {
-  const marqueeItems = [...PARTNERS, ...PARTNERS];
-
+const PartnersSection = () => {
   return (
-    <div className="flex w-full flex-col items-center gap-10 overflow-hidden px-20 py-20 lg:py-30">
+    <section className="w-full space-y-8">
       <div className="flex flex-col items-center gap-4">
         <p className="text-havelock-blue-500 text-center tracking-tight md:text-xl">
-          ✦ Kemudahan Layanan Pasien
+          ✦ Jaringan Kemitraan Kami
         </p>
         <h1 className="font-DMSerif max-w-4xl text-center text-3xl text-slate-800 md:text-5xl">
-          Melayani Pasien Umum, BPJS, & Asuransi
+          Bersinergi dengan Mitra Terkemuka untuk Akses Kesehatan Anda
         </h1>
       </div>
-
-      <div className="animate-marquee flex gap-10 md:gap-20">
-        {marqueeItems.map((partner, i) => (
-          <Image
-            key={`${partner.alt}-${i}`}
-            src={partner.src}
-            alt={partner.alt}
-            width={400}
-            height={300}
-            className="h-10 md:h-20"
-          />
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5 lg:px-20">
+        {PARTNERS.map((partner, i) => (
+          <div
+            key={i}
+            className="flex aspect-video items-center justify-center"
+          >
+            <Image
+              src={partner.src}
+              alt={partner.alt}
+              width={300}
+              height={400}
+              className="w-35 md:w-50"
+            />
+          </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
-export default PartnerSection;
+export default PartnersSection;
