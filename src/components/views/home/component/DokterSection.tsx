@@ -39,12 +39,12 @@ const DokterSection2 = () => {
           <CarouselContent className="px-2 py-4">
             {isLoadingDokters
               ? Array.from({ length: 4 }).map((_, i) => (
-                  <CarouselItem key={i} className="lg:basis-1/2">
+                  <CarouselItem key={i} className="md:basis-1/2">
                     <DokterCardSkeleton />
                   </CarouselItem>
                 ))
               : dataDokters?.map((dokter: IDokter) => (
-                  <CarouselItem key={dokter.id} className="lg:basis-1/2">
+                  <CarouselItem key={dokter.id} className="md:basis-1/2">
                     <CardDokter
                       namaDokter={dokter.nama}
                       spesialis={dokter.spesialis}

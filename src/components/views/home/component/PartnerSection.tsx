@@ -21,7 +21,7 @@ const PartnerSection = () => {
   const marqueeItems = [...PARTNERS, ...PARTNERS];
 
   return (
-    <div className="flex w-full flex-col items-center gap-10 overflow-hidden px-20 py-20 lg:py-30">
+    <div className="flex w-full flex-col items-center gap-10 overflow-hidden px-20 py-10 lg:py-30">
       <div className="flex flex-col items-center gap-4">
         <p className="text-havelock-blue-500 text-center tracking-tight md:text-xl">
           ✦ Kemudahan Layanan Pasien

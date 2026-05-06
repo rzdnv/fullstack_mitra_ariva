@@ -24,7 +24,7 @@ const CardDokter = (props: PropTypes) => {
   };
 
   return (
-    <div className="hover:border-havelock-blue-500 grid grid-cols-1 gap-2 rounded-2xl border bg-white p-4 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-xl lg:grid-cols-2">
+    <div className="hover:border-havelock-blue-500 grid h-full grid-cols-1 gap-2 rounded-2xl border bg-white p-4 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-xl lg:grid-cols-2">
       <div className="h-full w-full overflow-hidden rounded-xl">
         <Image
           src={fotoDokter}

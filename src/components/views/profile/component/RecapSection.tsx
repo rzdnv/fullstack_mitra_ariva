@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 export function RecapSection() {
   return (
     <section className="w-full px-4 lg:px-20">
-      <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
         {HIGHLIGHT_LIST.map((item, index) => (
           <div
             key={index}
