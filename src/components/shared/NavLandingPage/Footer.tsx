@@ -10,56 +10,56 @@ import { Button } from "@/components/ui/button";
 const Footer = () => {
   return (
     <footer>
-      <section className="flex flex-col items-center bg-havelock-blue-900 px-6 py-10 xl:py-16 xl:px-30">
-        <div className="flex flex-col lg:flex-row w-full divide-y lg:divide-y-0 lg:divide-x divide-white/20">
+      <section className="bg-havelock-blue-900 flex flex-col items-center px-6 py-10 xl:px-30 xl:py-16">
+        <div className="flex w-full flex-col divide-y divide-white/20 lg:flex-row lg:divide-x lg:divide-y-0">
           {/* Email */}
-          <div className="flex flex-col items-center justify-center gap-4 w-full py-8 text-center">
-            <Mail className="w-10 h-10 lg:w-16 lg:h-16 text-white" />
-            <p className="text-lg lg:text-xl text-white font-semibold">
+          <div className="flex w-full flex-col items-center justify-center gap-4 py-8 text-center">
+            <Mail className="h-10 w-10 text-white lg:h-16 lg:w-16" />
+            <p className="text-lg font-semibold text-white lg:text-xl">
               Kontak Kami
             </p>
             <Link
               href="https://mail.google.com/mail/?view=cm&fs=1&to=rskbmitraariva@gmail.com"
               target="_blank"
-              className="text-white md:text-lg hover:underline transition-all duration-300"
+              className="text-white transition-all duration-300 hover:underline md:text-lg"
             >
               rskbmitraariva@gmail.com
             </Link>
           </div>
 
           {/* Phone */}
-          <div className="flex flex-col items-center justify-center gap-4 w-full py-8 text-center">
-            <Phone className="w-10 h-10 lg:w-16 lg:h-16 text-white" />
-            <p className="text-lg lg:text-xl text-white font-semibold">
+          <div className="flex w-full flex-col items-center justify-center gap-4 py-8 text-center">
+            <Phone className="h-10 w-10 text-white lg:h-16 lg:w-16" />
+            <p className="text-lg font-semibold text-white lg:text-xl">
               Hubungi Kami
             </p>
             <Link
               href="tel:0281571328"
-              className="text-white md:text-lg hover:underline transition-all duration-300"
+              className="text-white transition-all duration-300 hover:underline md:text-lg"
             >
               0281-571328
             </Link>
           </div>
 
           {/* WhatsApp */}
-          <div className="flex flex-col items-center justify-center gap-4 w-full py-8 text-center">
-            <FaWhatsapp className="w-10 h-10 lg:w-16 lg:h-16 text-white" />
-            <p className="text-lg lg:text-xl text-white font-semibold">
+          <div className="flex w-full flex-col items-center justify-center gap-4 py-8 text-center">
+            <FaWhatsapp className="h-10 w-10 text-white lg:h-16 lg:w-16" />
+            <p className="text-lg font-semibold text-white lg:text-xl">
               WhatsApp
             </p>
             <Link
               href="https://wa.me/6281245489477?text=Halo%20saya%20ingin%20bertanya"
               target="_blank"
-              className="text-white md:text-lg hover:underline transition-all duration-300"
+              className="text-white transition-all duration-300 hover:underline md:text-lg"
             >
               0812-4548-9477
             </Link>
           </div>
 
           {/* Location */}
-          <div className="flex flex-col items-center justify-center gap-4 w-full py-8 text-center">
-            <MapPin className="w-10 h-10 lg:w-16 lg:h-16 text-white" />
-            <p className="text-lg lg:text-xl text-white font-semibold">
+          <div className="flex w-full flex-col items-center justify-center gap-4 py-8 text-center">
+            <MapPin className="h-10 w-10 text-white lg:h-16 lg:w-16" />
+            <p className="text-lg font-semibold text-white lg:text-xl">
               Kunjungi Rumah Sakit Kami
             </p>
 
@@ -67,15 +67,15 @@ const Footer = () => {
               href="https://maps.app.goo.gl/DEk3FHtgZJ15f8WF7"
               target="_blank"
             >
-              <Button className="px-6 py-3 bg-transparent border border-white text-white hover:bg-white hover:text-havelock-blue-600 transition">
+              <Button className="hover:text-havelock-blue-600 border border-white bg-transparent px-6 py-3 text-white transition hover:bg-white">
                 Lihat Peta
               </Button>
             </Link>
           </div>
         </div>
 
-        <div className="flex flex-col lg:flex-row w-full justify-between items-center gap-10 mt-10">
-          <div className="flex flex-col lg:flex-row items-center gap-6 mb-10 lg:mb-0">
+        <div className="mt-10 flex w-full flex-col items-center justify-between gap-10 lg:flex-row">
+          <div className="mb-10 flex flex-col items-center gap-6 lg:mb-0 lg:flex-row">
             <Image
               src="/images/logo/logo.png"
               alt="logo"
@@ -84,18 +84,18 @@ const Footer = () => {
               className="object-contain"
             />
 
-            <div className="flex flex-col items-center justify-center h-full  gap-2">
-              <h2 className="text-white font-bold text-xl lg:text-2xl">
+            <div className="flex h-full flex-col items-center justify-center gap-2">
+              <h2 className="text-xl font-bold text-white lg:text-2xl">
                 Follow RSKB Mitra Ariva
               </h2>
 
-              <div className="flex justify-center  lg:justify-start w-full gap-4 ">
+              <div className="flex w-full justify-center gap-4 lg:justify-start">
                 {SOSIAL_ITEMS.map((item) => (
                   <Link
                     key={`sosial-${item.label}`}
                     href={item.href}
                     target="_blank"
-                    className="text-2xl lg:text-5xl text-white rounded-full border p-2 hover:bg-white hover:text-havelock-blue-600 transition-all duration-300"
+                    className="hover:text-havelock-blue-600 rounded-full border p-2 text-xl text-white transition-all duration-300 hover:bg-white lg:text-4xl"
                   >
                     {item.icon}
                   </Link>
@@ -105,16 +105,16 @@ const Footer = () => {
           </div>
 
           {/* Navigation */}
-          <div className="mb-10 flex flex-col gap-2 lg:mb-0 items-end justify-center">
-            <h2 className="text-xl lg:text-2xl text-white font-bold lg:mb-2">
+          <div className="mb-10 flex flex-col items-end justify-center gap-2 lg:mb-0">
+            <h2 className="text-xl font-bold text-white lg:mb-2 lg:text-2xl">
               About RSKB Mitra Ariva
             </h2>
-            <div className="flex gap-5 lg:text-lg text-center justify-center w-full flex-col lg:flex-row">
+            <div className="flex w-full flex-col justify-center gap-5 text-center lg:flex-row lg:text-lg">
               {NAV_ITEMS.map((item) => (
                 <Link
                   key={`footer-nav-${item.label}`}
                   href={item.href}
-                  className="cursor-pointer hover:underline transition-all duration-300 text-white"
+                  className="cursor-pointer text-white transition-all duration-300 hover:underline"
                 >
                   {item.label}
                 </Link>
@@ -126,7 +126,7 @@ const Footer = () => {
 
       {/* ===== COPYRIGHT ===== */}
       <section className="bg-havelock-blue-400">
-        <p className="w-full text-center py-4 text-xs text-slate-800 lg:text-sm">
+        <p className="w-full py-4 text-center text-xs text-slate-800 lg:text-sm">
           © 2026 Rumah Sakit Khusus Bedah Mitra Ariva. All rights reserved
         </p>
       </section>
