@@ -1,22 +1,24 @@
-import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
-import AdminSidebar from "./AdminSidebar";
-import AdminHeader from "./AdminHeader";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { AppSidebar } from "./app-sidebar";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import UserHeader from "./userheader";
 
 interface Props {
   children: React.ReactNode;
 }
 
-export default function AdminLayout({ children }: Props) {
+const AdminLayout = ({ children }: Props) => {
   return (
     <TooltipProvider>
       <SidebarProvider>
-        <AdminSidebar />
+        <AppSidebar />
         <SidebarInset>
-          <AdminHeader />
-          <main className="min-h-screen flex-1 bg-gray-50 p-6">{children}</main>
+          <UserHeader />
+          {children}
         </SidebarInset>
       </SidebarProvider>
     </TooltipProvider>
   );
-}
+};
+
+export default AdminLayout;

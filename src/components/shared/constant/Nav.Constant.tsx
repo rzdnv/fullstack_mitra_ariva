@@ -42,72 +42,54 @@ const SOSIAL_ITEMS = [
   },
 ];
 
-// ─────────────────────────────────────────
-// ADMIN NAV
-// ─────────────────────────────────────────
 const ADMIN_NAV_ITEMS = [
   {
-    group: "Menu Utama",
-    items: [
-      {
-        label: "Dashboard",
-        href: "/admin",
-        icon: LayoutDashboard,
-        adminOnly: false,
-      },
-    ],
+    title: "Dashboard",
+    url: "/admin",
+    icon: LayoutDashboard,
+    adminOnly: false,
   },
   {
-    group: "Kelola Data",
-    items: [
-      {
-        label: "Dokter",
-        href: "/admin/dokter",
-        icon: Stethoscope,
-        adminOnly: false,
-      },
-      {
-        label: "Jadwal Dokter",
-        href: "/admin/jadwal",
-        icon: CalendarDays,
-        adminOnly: false,
-      },
-      {
-        label: "Poli",
-        href: "/admin/poli",
-        icon: Building2,
-        adminOnly: false,
-      },
-      {
-        label: "Layanan",
-        href: "/admin/layanan",
-        icon: HeartPulse,
-        adminOnly: false,
-      },
-      {
-        label: "Berita",
-        href: "/admin/berita",
-        icon: Newspaper,
-        adminOnly: false,
-      },
-      {
-        label: "Review",
-        href: "/admin/review",
-        icon: Star,
-        adminOnly: false,
-      },
-    ],
+    title: "Dokter",
+    url: "/admin/dokter",
+    icon: Stethoscope,
+    adminOnly: false,
   },
   {
-    group: "Pengaturan",
-    items: [
-      {
-        label: "Kelola User",
-        href: "/admin/users",
-        icon: Users,
-        adminOnly: true, // ← hanya ADMIN
-      },
-    ],
+    title: "Jadwal Dokter",
+    url: "/admin/jadwal",
+    icon: CalendarDays,
+    adminOnly: false,
+  },
+  {
+    title: "Poli",
+    url: "/admin/poli",
+    icon: Building2,
+    adminOnly: false,
+  },
+  {
+    title: "Layanan",
+    url: "/admin/layanan",
+    icon: HeartPulse,
+    adminOnly: false,
+  },
+  {
+    title: "Berita",
+    url: "/admin/berita",
+    icon: Newspaper,
+    adminOnly: false,
+  },
+  {
+    title: "Review",
+    url: "/admin/review",
+    icon: Star,
+    adminOnly: false,
+  },
+  {
+    title: "Kelola User",
+    url: "/admin/users",
+    icon: Users,
+    adminOnly: true,
   },
 ];
 
