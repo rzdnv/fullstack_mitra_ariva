@@ -8,8 +8,7 @@ import { formatTanggal } from "@/components/shared/formatted/formated";
 import useDetailBerita from "./useDetailBerita";
 
 const DetailBerita = () => {
-  const { dataBerita, isLoadingBerita, detailBerita, isLoadingDetailBerita } =
-    useDetailBerita();
+  const { dataBerita, detailBerita, isLoadingDetailBerita } = useDetailBerita();
 
   // Loading state
   if (isLoadingDetailBerita) {
