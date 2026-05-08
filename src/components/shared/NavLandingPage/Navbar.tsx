@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
-import { ArrowRight, LogOut, User } from "lucide-react";
+import { ArrowRight, LogOut, User, UserRound } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -92,7 +92,7 @@ const Navbar = () => {
                     {item.label}
 
                     {pathname === item.href && (
-                      <span className="bg-havelock-blue-500 absolute -bottom-2 left-0 h-[2px] w-full rounded-full" />
+                      <span className="bg-havelock-blue-500 absolute -bottom-2 left-0 h-0.5 w-full rounded-full" />
                     )}
                   </Link>
                 </NavigationMenuItem>
@@ -161,12 +161,11 @@ const Navbar = () => {
             ) : (
               <Button
                 asChild
-                className="bg-havelock-blue-500 hover:bg-havelock-blue-600 h-12 rounded-full px-6 text-white shadow-lg"
+                className="bg-havelock-blue-500 hover:bg-havelock-blue-600 h-12 rounded-full text-white shadow-lg"
               >
                 <Link href="/login" className="flex items-center gap-3">
-                  Login
                   <div className="text-havelock-blue-500 flex h-7 w-7 items-center justify-center rounded-full bg-white">
-                    <ArrowRight className="h-4 w-4" />
+                    <UserRound className="h-4 w-4" />
                   </div>
                 </Link>
               </Button>

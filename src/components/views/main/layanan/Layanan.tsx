@@ -31,11 +31,11 @@ const Layanan = () => {
       </section>
 
       {/* content */}
-      <section className="grid grid-cols-2 gap-10 px-10 py-10 md:grid-cols-3 lg:px-20">
+      <section className="grid gap-6 px-10 py-10 md:grid-cols-2 lg:grid-cols-3 lg:gap-10 lg:px-20">
         {dataLayanan?.map((layanan: ILayanan) => (
           <div
             key={layanan.id}
-            className="h-full w-full overflow-hidden rounded-xl"
+            className="h-full w-full overflow-hidden rounded-md lg:rounded-xl"
           >
             <Image
               src={layanan.foto}

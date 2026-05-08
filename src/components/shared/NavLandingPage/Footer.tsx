@@ -21,7 +21,7 @@ const Footer = () => {
             <Link
               href="https://mail.google.com/mail/?view=cm&fs=1&to=rskbmitraariva@gmail.com"
               target="_blank"
-              className="text-white transition-all duration-300 hover:underline md:text-lg"
+              className="text-white transition-all duration-300 hover:underline"
             >
               rskbmitraariva@gmail.com
             </Link>
@@ -35,7 +35,7 @@ const Footer = () => {
             </p>
             <Link
               href="tel:0281571328"
-              className="text-white transition-all duration-300 hover:underline md:text-lg"
+              className="text-white transition-all duration-300 hover:underline"
             >
               0281-571328
             </Link>
@@ -50,7 +50,7 @@ const Footer = () => {
             <Link
               href="https://wa.me/6281245489477?text=Halo%20saya%20ingin%20bertanya"
               target="_blank"
-              className="text-white transition-all duration-300 hover:underline md:text-lg"
+              className="text-white transition-all duration-300 hover:underline"
             >
               0812-4548-9477
             </Link>
@@ -66,10 +66,9 @@ const Footer = () => {
             <Link
               href="https://maps.app.goo.gl/DEk3FHtgZJ15f8WF7"
               target="_blank"
+              className="text-white transition-all duration-300 hover:underline"
             >
-              <Button className="hover:text-havelock-blue-600 border border-white bg-transparent px-6 py-3 text-white transition hover:bg-white">
-                Lihat Peta
-              </Button>
+              Jl. Raya Ajibarang, Banyumas
             </Link>
           </div>
         </div>

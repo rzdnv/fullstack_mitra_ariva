@@ -17,7 +17,7 @@ const ContactSection = () => {
               href="tel:0281571328"
               className="text-sm font-semibold hover:underline lg:text-base"
             >
-              (021) 555-1234
+              0281-571328
             </Link>
           </div>
         </div>

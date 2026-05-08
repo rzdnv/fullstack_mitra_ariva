@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import useBerita from "./useBerita";
 import { IBerita } from "@/types/berita";
 import NewsCardSkeleton from "../home/component/Card/CardNews/NewsCardSkeleton";
 import CardNews from "../home/component/Card/CardNews/CardNews";
+import useBerita from "./useBerita";
 
 const Berita = () => {
   const { dataBerita, isLoadingBerita } = useBerita();
@@ -41,6 +41,7 @@ const Berita = () => {
           : dataBerita?.map((berita: IBerita) => (
               <CardNews
                 key={berita.id}
+                _id={berita.id}
                 gambar={`${berita.gambar}`}
                 judul={berita.judul}
                 isi={berita.isi}

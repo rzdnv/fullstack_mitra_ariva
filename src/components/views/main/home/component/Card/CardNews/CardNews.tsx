@@ -1,8 +1,12 @@
+"use client";
+
 import { formatTanggal } from "@/components/shared/formatted/formated";
 import { User } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 interface PropTypes {
+  _id: number;
   gambar: string;
   judul: string;
   isi: string;
@@ -11,10 +15,15 @@ interface PropTypes {
 }
 
 const CardNews = (props: PropTypes) => {
-  const { gambar, judul, isi, tanggal, username } = props;
+  const { _id, gambar, judul, isi, tanggal, username } = props;
+
+  const router = useRouter();
 
   return (
-    <div className="flex h-full w-full flex-col rounded-sm lg:flex-row">
+    <div
+      onClick={() => router.push(`/berita/${_id}`)}
+      className="flex h-full w-full cursor-pointer flex-col rounded-sm transition-all duration-300 hover:shadow-md lg:flex-row"
+    >
       <Image
         src={gambar}
         alt={judul}
@@ -22,20 +31,22 @@ const CardNews = (props: PropTypes) => {
         height={300}
         className="aspect-video w-full rounded-sm object-cover lg:w-1/2"
       />
+
       <div className="flex flex-col gap-2 p-4">
-        <h2 className="line-clamp-2 text-sm font-bold text-slate-800 lg:text-base">
+        <h2 className="line-clamp-2 text-sm font-bold text-slate-800">
           {judul}
         </h2>
-        <p className="line-clamp-2 text-justify text-sm text-slate-400 lg:line-clamp-3">
+
+        <p className="line-clamp-2 text-justify text-xs text-slate-400 lg:line-clamp-3">
           {isi}
         </p>
+
         <div className="flex items-center gap-2">
-          <p className="text-xs text-slate-400 lg:text-sm">
-            {formatTanggal(tanggal)} |
-          </p>
+          <p className="text-xs text-slate-400">{formatTanggal(tanggal)} |</p>
+
           <div className="flex items-center gap-1">
             <User className="h-4 w-4 text-slate-400" />
-            <p className="text-xs text-slate-400 lg:text-sm">{username}</p>
+            <p className="text-xs text-slate-400">{username}</p>
           </div>
         </div>
       </div>

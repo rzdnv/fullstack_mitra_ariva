@@ -28,13 +28,14 @@ const NewsSection = () => {
         </div>
 
         <div className="w-full overflow-y-auto">
-          <div className="flex h-120 flex-col gap-6 p-2">
+          <div className="flex h-120 flex-col gap-6">
             {isLoadingBerita
               ? Array.from({ length: 7 }).map((_, i) => (
                   <NewsCardSkeleton key={i} />
                 ))
               : dataBerita?.map((berita: IBerita) => (
                   <CardNews
+                    _id={berita.id}
                     key={berita.id}
                     gambar={`${berita.gambar}`}
                     judul={berita.judul}
