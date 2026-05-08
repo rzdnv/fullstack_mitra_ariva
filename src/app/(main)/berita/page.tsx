@@ -1,4 +1,4 @@
-import Berita from "@/components/views/main/Berita/Berita";
+import Berita from "@/components/views/main/berita/Berita";
 import { Metadata } from "next";
 
 export const metadata: Metadata = { title: "Berita" };

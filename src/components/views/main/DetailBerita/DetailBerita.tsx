@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import useDetailBerita from "./useDetailBerita";
 import { IBerita } from "@/types/berita";
 import CardNews from "../home/component/Card/CardNews/CardNews";
 import { User } from "lucide-react";
 import { formatTanggal } from "@/components/shared/formatted/formated";
+import useDetailBerita from "./useDetailBerita";
 
 const DetailBerita = () => {
   const { dataBerita, isLoadingBerita, detailBerita, isLoadingDetailBerita } =
