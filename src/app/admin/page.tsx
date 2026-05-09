@@ -1,3 +1,4 @@
+import Dashboard from "@/components/views/admin/dashboard/Dashboard";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -7,10 +8,7 @@ export const metadata: Metadata = {
 export default function AdminPage() {
   return (
     <div>
-      <h2 className="mb-6 text-2xl font-bold text-slate-800">Dashboard</h2>
-      <p className="text-gray-500">
-        Selamat datang di panel admin RSKB Mitra Ariva.
-      </p>
+      <Dashboard />
     </div>
   );
 }

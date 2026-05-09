@@ -7,6 +7,7 @@ const endpoint = {
   BERITA: "/berita",
   USERS: "/users",
   REVIEW: "/review",
+  DASHBOARD: "/dashboard",
   CLOUDINARY: {
     UPLOAD: "/cloudinary/upload",
     UPLOAD_MULTIPLE: "/cloudinary/upload-multiple",

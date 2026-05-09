@@ -59,7 +59,10 @@ export function NavMain({ items }: NavMainProps) {
                 >
                   <Link
                     href={item.url}
-                    className={cn(pathname === item.url && "font-semibold")}
+                    className={cn(
+                      pathname === item.url &&
+                        "text-havelock-blue-700 font-semibold",
+                    )}
                   >
                     {item.icon && <item.icon className="h-4 w-4" />}
                     <span>{item.title}</span>
@@ -96,7 +99,8 @@ export function NavMain({ items }: NavMainProps) {
                           <Link
                             href={subItem.url}
                             className={cn(
-                              pathname === subItem.url && "font-semibold",
+                              pathname === subItem.url &&
+                                "text-havelock-blue-700 font-semibold",
                             )}
                           >
                             <span>{subItem.title}</span>
