@@ -1,9 +1,9 @@
 "use client";
 
+import ServiceCardSkeleton from "@/components/views/main/home/component/Card/CardService/ServiceCardSkeleton";
 import useHome from "../useHome";
 import { ILayanan } from "@/types/layanan";
 import CardService from "@/components/views/main/home/component/Card/CardService/CardService";
-import ServiceCardSkeleton from "@/components/views/main/home/component/Card/CardService/ServiceCardSkeleton";
 
 const ServiceSection = () => {
   const { dataLayanan, isLoadingLayanan } = useHome();

@@ -1,9 +1,9 @@
 "use client";
 
+import NewsCardSkeleton from "@/components/shared/card/CardNews/NewsCardSkeleton";
 import useHome from "../useHome";
 import { IBerita } from "@/types/berita";
-import NewsCardSkeleton from "./Card/CardNews/NewsCardSkeleton";
-import CardNews from "./Card/CardNews/CardNews";
+import CardNews from "@/components/shared/card/CardNews/CardNews";
 
 const NewsSection = () => {
   const { dataBerita, isLoadingBerita } = useHome();

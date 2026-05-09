@@ -33,7 +33,7 @@ const CardNews = (props: PropTypes) => {
       />
 
       <div className="flex flex-col gap-2 p-4">
-        <h2 className="line-clamp-2 text-sm font-bold text-slate-800">
+        <h2 className="line-clamp-2 text-sm font-bold text-slate-800 lg:text-base">
           {judul}
         </h2>
 
@@ -41,12 +41,15 @@ const CardNews = (props: PropTypes) => {
           {isi}
         </p>
 
-        <div className="flex items-center gap-2">
-          <p className="text-xs text-slate-400">{formatTanggal(tanggal)} |</p>
+        <div className="flex flex-wrap items-center gap-2 text-xs text-slate-400">
+          <p>{formatTanggal(tanggal)}</p>
+
+          <span>•</span>
 
           <div className="flex items-center gap-1">
-            <User className="h-4 w-4 text-slate-400" />
-            <p className="text-xs text-slate-400">{username}</p>
+            <User className="h-4 w-4" />
+
+            <p>{username}</p>
           </div>
         </div>
       </div>

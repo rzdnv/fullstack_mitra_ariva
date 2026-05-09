@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import { IBerita } from "@/types/berita";
-import NewsCardSkeleton from "../home/component/Card/CardNews/NewsCardSkeleton";
-import CardNews from "../home/component/Card/CardNews/CardNews";
 import useBerita from "./useBerita";
+import NewsCardSkeleton from "@/components/shared/card/CardNews/NewsCardSkeleton";
+import CardNews from "@/components/shared/card/CardNews/CardNews";
 
 const Berita = () => {
   const { dataBerita, isLoadingBerita } = useBerita();

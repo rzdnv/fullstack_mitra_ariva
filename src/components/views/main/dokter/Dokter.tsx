@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import useDokter from "./useDokter";
-import { DokterCardSkeleton } from "../home/component/Card/CardDokter/DokterCardSkeleton";
 import { IDokter } from "@/types/dokter";
-import CardDokter from "../home/component/Card/CardDokter/CardDokter";
+import { DokterCardSkeleton } from "@/components/shared/card/CardDokter/DokterCardSkeleton";
+import CardDokter from "@/components/shared/card/CardDokter/CardDokter";
 
 const Dokter = () => {
   const { dataDokters, isLoadingDokters } = useDokter();

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { LogIn, LogOut, Menu, User } from "lucide-react";
+import { LogOut, Menu, User, UserRound } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -117,8 +117,7 @@ const MobileMenu = ({ pathname }: Props) => {
               className="bg-havelock-blue-500 hover:bg-havelock-blue-600 h-12 w-full rounded-xl"
             >
               <Link href="/login" className="flex items-center gap-2">
-                <LogIn className="h-4 w-4" />
-                Login
+                <UserRound className="h-4 w-4" />
               </Link>
             </Button>
           )}
