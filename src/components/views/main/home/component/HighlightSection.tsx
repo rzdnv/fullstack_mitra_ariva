@@ -2,8 +2,8 @@ import Image from "next/image";
 
 const HighlightSection = () => {
   return (
-    <div className="w-full px-10 py-10 md:px-20">
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+    <div className="w-full px-10 py-10 lg:px-20">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <div className="grid grid-cols-2 gap-4">
           <Image
             src="/images/general/highlight/highlight1.webp"
@@ -35,13 +35,13 @@ const HighlightSection = () => {
           />
         </div>
         <div className="flex flex-col justify-center gap-4">
-          <p className="text-havelock-blue-500 text-center tracking-tight md:text-xl">
+          <p className="text-havelock-blue-500 text-center tracking-tight lg:text-xl">
             ✦ Pemulihan Anda Adalah Fokus Kami
           </p>
-          <h1 className="font-DMSerif max-w-4xl text-center text-3xl text-slate-800 md:mb-8 md:text-5xl">
+          <h1 className="font-DMSerif max-w-4xl text-center text-3xl text-slate-800 lg:mb-8 lg:text-5xl">
             Di Sini, Kesembuhan anda menjadi prioritas utama
           </h1>
-          <p className="px-0 text-justify text-sm text-slate-700 md:px-20 lg:text-base">
+          <p className="px-0 text-center text-sm text-slate-700 lg:px-20 lg:text-justify lg:text-base">
             Rumah Sakit Khusus Bedah (RSKB) Mitra Ariva hadir sebagai mitra
             terpercaya yang mengutamakan keamanan dan kenyamanan dalam setiap
             tindakan bedah. Kami memadukan keahlian tim dokter spesialis

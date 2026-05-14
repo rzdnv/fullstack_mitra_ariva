@@ -42,11 +42,9 @@ export function NavMain({ items }: NavMainProps) {
   return (
     <SidebarGroup>
       <SidebarGroupLabel>Menu</SidebarGroupLabel>
-      <SidebarMenu>
+      <SidebarMenu className="space-y-2">
         {items.map((item) => {
-          const isActive =
-            pathname === item.url ||
-            item.items?.some((sub) => pathname === sub.url);
+          const isActive = pathname === item.url;
 
           // Tidak ada sub items → langsung link
           if (!item.items || item.items.length === 0) {
@@ -56,14 +54,12 @@ export function NavMain({ items }: NavMainProps) {
                   asChild
                   tooltip={item.title}
                   isActive={pathname === item.url}
+                  className={cn(
+                    pathname === item.url &&
+                      "bg-havelock-blue-50! text-havelock-blue-700! font-semibold!",
+                  )}
                 >
-                  <Link
-                    href={item.url}
-                    className={cn(
-                      pathname === item.url &&
-                        "text-havelock-blue-700 font-semibold",
-                    )}
-                  >
+                  <Link href={item.url}>
                     {item.icon && <item.icon className="h-4 w-4" />}
                     <span>{item.title}</span>
                   </Link>
@@ -95,14 +91,12 @@ export function NavMain({ items }: NavMainProps) {
                         <SidebarMenuSubButton
                           asChild
                           isActive={pathname === subItem.url}
+                          className={cn(
+                            pathname === subItem.url &&
+                              "text-havelock-blue-700! font-semibold!",
+                          )}
                         >
-                          <Link
-                            href={subItem.url}
-                            className={cn(
-                              pathname === subItem.url &&
-                                "text-havelock-blue-700 font-semibold",
-                            )}
-                          >
+                          <Link href={subItem.url}>
                             <span>{subItem.title}</span>
                           </Link>
                         </SidebarMenuSubButton>

@@ -109,7 +109,7 @@ const Navbar = () => {
             ) : session ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <button className="flex items-center gap-3 rounded-full border border-gray-200 bg-white px-3 py-2 shadow-sm transition hover:shadow-md">
+                  <button className="flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-2 shadow-sm transition hover:shadow-md">
                     <div className="bg-havelock-blue-500 flex h-9 w-9 items-center justify-center rounded-full font-bold text-white">
                       {session.user?.username?.charAt(0).toUpperCase() ?? "U"}
                     </div>

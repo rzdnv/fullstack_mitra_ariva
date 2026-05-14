@@ -9,16 +9,16 @@ const NewsSection = () => {
   const { dataBerita, isLoadingBerita } = useHome();
 
   return (
-    <section className="mx-8 my-20 lg:mx-10">
-      <div className="grid w-full grid-cols-1 items-center gap-5 rounded-2xl bg-white px-4 py-10 lg:grid-cols-2 lg:items-start lg:px-10">
-        <div className="flex flex-col items-center gap-2 md:gap-4 lg:items-start">
-          <p className="text-havelock-blue-500 text-center tracking-tight md:text-xl lg:text-start">
+    <section className="mx-8 my-20 md:mx-10">
+      <div className="grid w-full grid-cols-1 items-center gap-5 rounded-2xl bg-white px-4 py-10 md:grid-cols-2 md:items-start md:px-10">
+        <div className="flex flex-col items-center gap-2 px-6 text-center md:items-start md:gap-4">
+          <p className="text-havelock-blue-500 text-center tracking-tight md:text-start md:text-xl">
             ✦ Kabar RSKB Mitra Ariva
           </p>
-          <h1 className="font-DMSerif max-w-4xl text-center text-2xl text-slate-800 md:text-5xl lg:text-start">
+          <h1 className="font-DMSerif max-w-4xl text-center text-2xl text-slate-800 md:text-start md:text-5xl">
             Lebih dari Sekadar Medis: Informasi untuk Komunitas
           </h1>
-          <p className="hidden text-start text-sm/7 text-slate-500 lg:flex">
+          <p className="text-center text-sm/7 text-slate-500 md:text-start">
             Sejak berdiri pada tahun 2002, kami berkomitmen untuk menjadi
             institusi yang transparan dan bermanfaat bagi warga Ajibarang. Di
             sini, Anda dapat menemukan laporan kegiatan sosial kami, pembaruan
