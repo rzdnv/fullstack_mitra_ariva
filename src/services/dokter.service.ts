@@ -3,7 +3,9 @@ import endpoint from "./endpoint.constant";
 import { IDokter } from "@/types/dokter";
 
 const dokterServices = {
-  getAll: () => instance.get(endpoint.DOKTER),
+  // getAll: () => instance.get(endpoint.DOKTER),
+  getAll: (params?: string) =>
+    instance.get(`${endpoint.DOKTER}${params ? `?${params}` : ""}`),
 
   getByPoli: (poliId: number) =>
     instance.get(`${endpoint.DOKTER}?poliId=${poliId}`),

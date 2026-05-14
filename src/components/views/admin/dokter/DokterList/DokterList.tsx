@@ -3,8 +3,25 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { Plus, Pencil, Trash2, Loader2, User } from "lucide-react";
+import {
+  Plus,
+  Pencil,
+  Trash2,
+  Loader2,
+  User,
+  Search,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import {
   Table,
   TableBody,
@@ -33,38 +50,69 @@ export default function DokterList() {
   const router = useRouter();
   const {
     dataDokters,
+    meta,
     isLoadingDokters,
     isRefetchingDokters,
     selectedId,
     setSelectedId,
     handleDeleteDokter,
     isPendingDeleteDokter,
+    currentSearch,
+    currentLimit,
+    currentPage,
+    handleSearch,
+    handleChangePage,
+    handleChangeLimit,
   } = useDokterList();
 
   return (
-    <div>
+    <div className="p-6">
       {/* Header */}
       <div className="mb-6 flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-slate-800">Kelola Dokter</h2>
           <p className="mt-1 text-sm text-gray-500">
-            Kelola data dokter RSKB Mitra Ariva
+            Total {meta?.total ?? 0} dokter
           </p>
         </div>
-        <Button
-          onClick={() => router.push("/admin/dokter/tambah")}
-          className="flex items-center gap-2"
-        >
-          <Plus className="h-4 w-4" />
+        <Button onClick={() => router.push("/admin/dokter/tambah")}>
+          <Plus className="mr-2 h-4 w-4" />
           Tambah Dokter
         </Button>
       </div>
 
-      {/* Refetching indicator */}
+      {/* Search & Limit */}
+      <div className="mb-4 flex items-center justify-between gap-4">
+        {/* Search */}
+        <div className="relative w-full max-w-xs">
+          <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-gray-400" />
+          <Input
+            placeholder="Cari dokter..."
+            className="pl-9"
+            defaultValue={currentSearch}
+            onChange={(e) => handleSearch(e.target.value)}
+          />
+        </div>
+
+        {/* Limit per page */}
+        <Select value={currentLimit} onValueChange={handleChangeLimit}>
+          <SelectTrigger className="w-32">
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="5">5 </SelectItem>
+            <SelectItem value="10">10 </SelectItem>
+            <SelectItem value="25">25 </SelectItem>
+            <SelectItem value="50">50 </SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+
+      {/* Refetching */}
       {isRefetchingDokters && (
-        <div className="mb-4 flex items-center gap-2 text-xs text-gray-400">
+        <div className="mb-2 flex items-center gap-2 text-xs text-gray-400">
           <Loader2 className="h-3 w-3 animate-spin" />
-          Memperbarui data...
+          Memperbarui...
         </div>
       )}
 
@@ -82,7 +130,6 @@ export default function DokterList() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {/* Loading Skeleton */}
             {isLoadingDokters ? (
               Array.from({ length: 5 }).map((_, i) => (
                 <TableRow key={i}>
@@ -106,24 +153,25 @@ export default function DokterList() {
                   </TableCell>
                 </TableRow>
               ))
-            ) : dataDokters?.length === 0 ? (
-              // Empty state
+            ) : dataDokters.length === 0 ? (
               <TableRow>
                 <TableCell
                   colSpan={6}
                   className="py-10 text-center text-gray-400"
                 >
-                  Belum ada data dokter
+                  {currentSearch
+                    ? `Tidak ada dokter dengan nama "${currentSearch}"`
+                    : "Belum ada data dokter"}
                 </TableCell>
               </TableRow>
             ) : (
-              dataDokters?.map((dokter: IDokter, index: number) => (
+              dataDokters.map((dokter: IDokter, index: number) => (
                 <TableRow key={dokter.id} className="hover:bg-gray-50">
                   <TableCell className="text-sm text-gray-500">
-                    {index + 1}
+                    {(Number(currentPage) - 1) * Number(currentLimit) +
+                      index +
+                      1}
                   </TableCell>
-
-                  {/* Foto */}
                   <TableCell>
                     {dokter.foto ? (
                       <Image
@@ -139,33 +187,22 @@ export default function DokterList() {
                       </div>
                     )}
                   </TableCell>
-
-                  {/* Nama */}
                   <TableCell className="font-medium text-slate-800">
                     {dokter.nama}
                   </TableCell>
-
-                  {/* Spesialis */}
                   <TableCell className="text-gray-600">
                     {dokter.spesialis}
                   </TableCell>
-
-                  {/* Poli */}
                   <TableCell>
                     <Badge variant="secondary">{dokter.poli.namaPoli}</Badge>
                   </TableCell>
-
-                  {/* Aksi */}
                   <TableCell>
                     <div className="flex items-center justify-center gap-2">
-                      {/* Edit */}
                       <Button size="sm" variant="outline" asChild>
                         <Link href={`/admin/dokter/${dokter.id}`}>
                           <Pencil className="h-4 w-4" />
                         </Link>
                       </Button>
-
-                      {/* Delete */}
                       <AlertDialog
                         open={selectedId === dokter.id}
                         onOpenChange={(open) =>
@@ -173,11 +210,7 @@ export default function DokterList() {
                         }
                       >
                         <AlertDialogTrigger asChild>
-                          <Button
-                            size="sm"
-                            variant="destructive"
-                            onClick={() => setSelectedId(dokter.id)}
-                          >
+                          <Button size="sm" variant="destructive">
                             <Trash2 className="h-4 w-4" />
                           </Button>
                         </AlertDialogTrigger>
@@ -204,10 +237,7 @@ export default function DokterList() {
                               className="bg-red-500 hover:bg-red-600"
                             >
                               {isPendingDeleteDokter ? (
-                                <>
-                                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                  Menghapus...
-                                </>
+                                <Loader2 className="h-4 w-4 animate-spin" />
                               ) : (
                                 "Hapus"
                               )}
@@ -222,6 +252,51 @@ export default function DokterList() {
             )}
           </TableBody>
         </Table>
+
+        {/* Pagination */}
+        {meta && meta.totalPage > 1 && (
+          <div className="flex items-center justify-between border-t px-4 py-4">
+            <p className="text-sm text-gray-500">
+              Halaman {currentPage} dari {meta.totalPage}
+            </p>
+            <div className="flex items-center gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => handleChangePage(Number(currentPage) - 1)}
+                disabled={Number(currentPage) === 1}
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </Button>
+
+              {Array.from({ length: meta.totalPage }).map((_, i) => {
+                const pageNumber = i + 1;
+                return (
+                  <Button
+                    key={pageNumber}
+                    variant={
+                      Number(currentPage) === pageNumber ? "default" : "outline"
+                    }
+                    size="sm"
+                    className="h-8 w-8 p-0"
+                    onClick={() => handleChangePage(pageNumber)}
+                  >
+                    {pageNumber}
+                  </Button>
+                );
+              })}
+
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => handleChangePage(Number(currentPage) + 1)}
+                disabled={Number(currentPage) === meta.totalPage}
+              >
+                <ChevronRight className="h-4 w-4" />
+              </Button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

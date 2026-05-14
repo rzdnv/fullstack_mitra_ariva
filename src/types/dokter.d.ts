@@ -11,7 +11,14 @@ interface IDokter {
   jadwal: IJadwal[];
 }
 
-export { IDokter };
+interface IDokterParams {
+  page?: string;
+  limit?: string;
+  search?: string;
+  poliId?: string;
+}
+
+export { IDokter, IDokterParams };
 
 // export interface Jadwal {
 //   id: number;

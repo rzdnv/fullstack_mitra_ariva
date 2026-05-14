@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { AxiosError } from "axios";
-import { toast } from "sonner";
+import useChangeUrl from "@/hooks/useChangeUrl";
 import dokterServices from "@/services/dokter.service";
-import { IDokter } from "@/types/dokter";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useState } from "react";
+import { toast } from "sonner";
+import { AxiosError } from "axios";
 
 interface ErrorResponse {
   message: string;
@@ -12,31 +12,36 @@ interface ErrorResponse {
 const useDokterList = () => {
   const queryClient = useQueryClient();
   const [selectedId, setSelectedId] = useState<number | null>(null);
+  const { currentPage, currentLimit, currentSearch, setUrl } = useChangeUrl();
 
+  // ─────────────────────────────────────────
   // GET ALL
-  const getDokters = async (): Promise<IDokter[]> => {
-    const { data } = await dokterServices.getAll();
+  // ─────────────────────────────────────────
+  const getDokters = async () => {
+    let params = `limit=${currentLimit}&page=${currentPage}`;
+    if (currentSearch) {
+      params += `&search=${currentSearch}`;
+    }
+    const { data } = await dokterServices.getAll(params);
     return data.data;
   };
 
   const {
-    data: dataDokters,
+    data,
     isLoading: isLoadingDokters,
     isRefetching: isRefetchingDokters,
   } = useQuery({
-    queryKey: ["dokter"],
+    queryKey: ["dokter", currentPage, currentLimit, currentSearch],
     queryFn: getDokters,
+    enabled: !!currentPage && !!currentLimit,
   });
 
+  // ─────────────────────────────────────────
   // DELETE
-  const deleteDokter = async (id: number) => {
-    const { data } = await dokterServices.delete(id);
-    return data;
-  };
-
+  // ─────────────────────────────────────────
   const { mutate: mutateDeleteDokter, isPending: isPendingDeleteDokter } =
     useMutation({
-      mutationFn: deleteDokter,
+      mutationFn: (id: number) => dokterServices.delete(id),
       onSuccess: () => {
         toast.success("Dokter berhasil dihapus", { position: "top-right" });
         queryClient.invalidateQueries({ queryKey: ["dokter"] });
@@ -50,16 +55,43 @@ const useDokterList = () => {
       },
     });
 
-  const handleDeleteDokter = (id: number) => mutateDeleteDokter(id);
+  // ─────────────────────────────────────────
+  // SEARCH & PAGINATION
+  // ─────────────────────────────────────────
+  const handleSearch = (value: string) => {
+    setUrl({ search: value, page: "1" });
+  };
+
+  const handleChangePage = (page: number) => {
+    setUrl({ page: String(page) });
+  };
+
+  const handleChangeLimit = (limit: string) => {
+    setUrl({ limit, page: "1" });
+  };
 
   return {
-    dataDokters,
+    // Data
+    dataDokters: data?.data ?? [],
+    meta: data?.meta,
+
+    // Loading
     isLoadingDokters,
     isRefetchingDokters,
+
+    // Delete
     selectedId,
     setSelectedId,
-    handleDeleteDokter,
+    handleDeleteDokter: (id: number) => mutateDeleteDokter(id),
     isPendingDeleteDokter,
+
+    // Search & Pagination
+    currentSearch,
+    currentLimit,
+    currentPage,
+    handleSearch,
+    handleChangePage,
+    handleChangeLimit,
   };
 };
 
