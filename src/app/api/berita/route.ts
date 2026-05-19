@@ -6,24 +6,40 @@ import { requireAuth } from "@/lib/auth-guard";
 import {
   createBerita,
   getAllBerita,
-  getBeritaTerbaru,
+  getBeritaByUser,
+  getBeritaPaginated,
 } from "@/lib/services/berita.service";
 
 // GET /api/berita
-// GET /api/berita?limit=5
 export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
+    const page = searchParams.get("page");
     const limit = searchParams.get("limit");
+    const search = searchParams.get("search") ?? "";
+    const userId = searchParams.get("userId");
 
-    let berita;
-    if (limit) {
-      berita = await getBeritaTerbaru(Number(limit));
-    } else {
-      berita = await getAllBerita();
+    if (!page && !limit) {
+      if (userId) {
+        // Ambil semua berdasarkan user
+        const user = await getBeritaByUser(Number(userId));
+        return successResponse(user, "Data berita berhasil diambil");
+      }
+
+      // Ambil semua
+      const berita = await getAllBerita();
+      return successResponse(berita, "Data berita berhasil diambil");
     }
 
-    return successResponse(berita, "Data berita berhasil diambil");
+    // Kalau ada page & limit → pagination
+    const result = await getBeritaPaginated({
+      page: Number(page ?? 1),
+      limit: Number(limit ?? 10),
+      search,
+      userId: userId ? Number(userId) : undefined,
+    });
+
+    return successResponse(result, "Data berita berhasil diambil");
   } catch (error) {
     console.error("[GET /api/berita]", error);
     return errorResponse("Gagal mengambil data berita");

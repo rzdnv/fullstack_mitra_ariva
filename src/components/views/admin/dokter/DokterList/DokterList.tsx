@@ -66,7 +66,7 @@ export default function DokterList() {
   } = useDokterList();
 
   return (
-    <div className="p-6">
+    <div>
       {/* Header */}
       <div className="mb-6 flex items-center justify-between">
         <div>

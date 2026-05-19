@@ -12,13 +12,6 @@ export interface DokterPaginatedResponse {
   };
 }
 
-// export interface CreateDokterPayload {
-//   nama: string;
-//   spesialis: string;
-//   foto?: string | null;
-//   poliId: number;
-// }
-
 const dokterServices = {
   // Ambil semua tanpa pagination → untuk dropdown/select
   getAll: (poliId?: number) =>

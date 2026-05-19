@@ -10,7 +10,7 @@ import { IDokterParams } from "@/types/dokter";
 // GET — Semua (tanpa pagination) → Server Component
 export async function getAllDokter() {
   return await prisma.dokter.findMany({
-    orderBy: { createdAt: "desc" },
+    orderBy: { poliId: "asc" },
     include: {
       poli: true,
       jadwal: { orderBy: { hari: "asc" } },

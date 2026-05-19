@@ -10,7 +10,14 @@ export interface IBerita {
   user: IUser;
 }
 
-export { IBerita };
+interface IBeritaParams {
+  page?: number;
+  limit?: number;
+  search?: string;
+  userId?: number;
+}
+
+export { IBerita, IBeritaParams };
 
 // export interface CreateBeritaPayload {
 //   judul: string;

@@ -2,11 +2,26 @@ import instance from "@/lib/axios/instance";
 import endpoint from "./endpoint.constant";
 import { IBerita } from "@/types/berita";
 
-const beritaServices = {
-  getAll: () => instance.get(endpoint.BERITA),
+export interface BeritaPaginatedResponse {
+  data: IBerita[];
+  meta: {
+    total: number;
+    page: number;
+    limit: number;
+    totalPage: number;
+  };
+}
 
-  getTerbaru: (limit: number) =>
-    instance.get(`${endpoint.BERITA}?limit=${limit}`),
+const beritaServices = {
+  getAll: (userId?: number) =>
+    instance.get(
+      userId ? `${endpoint.BERITA}?userId=${userId}` : endpoint.BERITA,
+    ),
+
+  getAllPaginated: (params: string) =>
+    instance.get<{ data: BeritaPaginatedResponse }>(
+      `${endpoint.BERITA}?${params}`,
+    ),
 
   getById: (id: number) => instance.get(`${endpoint.BERITA}/${id}`),
 

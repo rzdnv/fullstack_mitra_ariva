@@ -5,6 +5,7 @@ import {
 } from "@/lib/validations/berita.validation";
 import { generateId } from "../generate-id";
 import cloudinaryService from "../cloudinary";
+import { IBeritaParams } from "@/types/berita";
 
 export async function getAllBerita() {
   return await prisma.berita.findMany({
@@ -21,9 +22,56 @@ export async function getAllBerita() {
   });
 }
 
-export async function getBeritaById(id: number) {
-  return await prisma.berita.findUnique({
-    where: { id },
+// GET — Dengan pagination & search → API Route
+export async function getBeritaPaginated({
+  page = 1,
+  limit = 10,
+  search = "",
+  userId,
+}: IBeritaParams) {
+  const where = {
+    ...(search && {
+      judul: {
+        contains: search,
+        mode: "insensitive" as const,
+      },
+    }),
+    ...(userId && { userId }),
+  };
+
+  const [berita, total] = await Promise.all([
+    prisma.berita.findMany({
+      where,
+      skip: (page - 1) * limit,
+      take: limit,
+      include: {
+        user: {
+          select: {
+            id: true,
+            username: true,
+            role: true,
+          },
+        },
+      },
+      orderBy: { tanggal: "desc" },
+    }),
+    prisma.berita.count({ where }),
+  ]);
+
+  return {
+    data: berita,
+    meta: {
+      total,
+      page,
+      limit,
+      totalPage: Math.ceil(total / limit),
+    },
+  };
+}
+
+export async function getBeritaByUser(userId: number) {
+  return await prisma.berita.findMany({
+    where: { userId },
     include: {
       user: {
         select: {
@@ -33,13 +81,13 @@ export async function getBeritaById(id: number) {
         },
       },
     },
+    orderBy: { createdAt: "desc" },
   });
 }
 
-export async function getBeritaTerbaru(limit = 5) {
-  return await prisma.berita.findMany({
-    take: limit,
-    orderBy: { tanggal: "desc" },
+export async function getBeritaById(id: number) {
+  return await prisma.berita.findUnique({
+    where: { id },
     include: {
       user: {
         select: {
