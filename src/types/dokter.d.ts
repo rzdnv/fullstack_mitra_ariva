@@ -12,10 +12,10 @@ interface IDokter {
 }
 
 interface IDokterParams {
-  page?: string;
-  limit?: string;
+  page?: number;
+  limit?: number;
   search?: string;
-  poliId?: string;
+  poliId?: number;
 }
 
 export { IDokter, IDokterParams };

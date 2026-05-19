@@ -1,78 +1,48 @@
 import { NextRequest } from "next/server";
+import {
+  getAllDokter,
+  createDokter,
+  getDokterByPoli,
+  getDokterPaginated,
+} from "@/lib/services/dokter.service";
 import { createDokterSchema } from "@/lib/validations/dokter.validation";
-import { getAllDokter, createDokter } from "@/lib/services/dokter.service";
 import { successResponse, errorResponse } from "@/lib/api-response";
 import { requireAuth } from "@/lib/auth-guard";
-import { prisma } from "@/lib/prisma";
 
-// GET /api/dokter
-// export async function GET(req: NextRequest) {
-//   try {
-//     const { searchParams } = new URL(req.url);
-//     const poliId = searchParams.get("poliId");
-
-//     let dokter;
-//     if (poliId) {
-//       const { getDokterByPoli } = await import("@/lib/services/dokter.service");
-//       dokter = await getDokterByPoli(Number(poliId));
-//     } else {
-//       dokter = await getAllDokter();
-//     }
-
-//     return successResponse(dokter, "Data dokter berhasil diambil");
-//   } catch (error) {
-//     console.error("[GET /api/dokter]", error);
-//     return errorResponse("Gagal mengambil data dokter");
-//   }
-// }
 export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
-    const page = Number(searchParams.get("page") ?? 1);
-    const limit = Number(searchParams.get("limit") ?? 10);
+    const page = searchParams.get("page");
+    const limit = searchParams.get("limit");
     const search = searchParams.get("search") ?? "";
     const poliId = searchParams.get("poliId");
 
-    const where = {
-      ...(search && {
-        OR: [
-          { nama: { contains: search, mode: "insensitive" as const } },
-          { spesialis: { contains: search, mode: "insensitive" as const } },
-        ],
-      }),
-      ...(poliId && { poliId: Number(poliId) }),
-    };
+    if (!page && !limit) {
+      if (poliId) {
+        const dokter = await getDokterByPoli(Number(poliId));
+        return successResponse(dokter, "Data dokter berhasil diambil");
+      }
 
-    const [dokter, total] = await Promise.all([
-      prisma.dokter.findMany({
-        where,
-        skip: (page - 1) * limit,
-        take: limit,
-        include: { poli: true, jadwal: true },
-        orderBy: { createdAt: "desc" },
-      }),
-      prisma.dokter.count({ where }),
-    ]);
+      // Ambil semua
+      const dokter = await getAllDokter();
+      return successResponse(dokter, "Data dokter berhasil diambil");
+    }
 
-    return successResponse(
-      {
-        data: dokter,
-        meta: {
-          total,
-          page,
-          limit,
-          totalPage: Math.ceil(total / limit),
-        },
-      },
-      "Data dokter berhasil diambil",
-    );
+    // Kalau ada page & limit → pagination
+    const result = await getDokterPaginated({
+      page: Number(page ?? 1),
+      limit: Number(limit ?? 10),
+      search,
+      poliId: poliId ? Number(poliId) : undefined,
+    });
+
+    return successResponse(result, "Data dokter berhasil diambil");
   } catch (error) {
     console.error("[GET /api/dokter]", error);
     return errorResponse("Gagal mengambil data dokter");
   }
 }
 
-// POST /api/dokter
 export async function POST(req: NextRequest) {
   try {
     const { error } = await requireAuth();

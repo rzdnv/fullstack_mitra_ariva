@@ -1,5 +1,5 @@
 import ContactSection from "./component/ContactSection";
-import DokterSection2 from "./component/DokterSection";
+import DokterSection from "./component/DokterSection";
 import FacilitiesSection from "./component/FacilitiesSection";
 import HeroSection from "./component/HeroSection";
 import HighlightSection from "./component/HighlightSection";
@@ -15,7 +15,7 @@ const Home = () => {
       <ContactSection />
       <HighlightSection />
       <FacilitiesSection />
-      <DokterSection2 />
+      <DokterSection />
       <ServiceSection />
       <NewsSection />
       <PartnerSection />

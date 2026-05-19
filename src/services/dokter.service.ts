@@ -2,13 +2,34 @@ import instance from "@/lib/axios/instance";
 import endpoint from "./endpoint.constant";
 import { IDokter } from "@/types/dokter";
 
-const dokterServices = {
-  // getAll: () => instance.get(endpoint.DOKTER),
-  getAll: (params?: string) =>
-    instance.get(`${endpoint.DOKTER}${params ? `?${params}` : ""}`),
+export interface DokterPaginatedResponse {
+  data: IDokter[];
+  meta: {
+    total: number;
+    page: number;
+    limit: number;
+    totalPage: number;
+  };
+}
 
-  getByPoli: (poliId: number) =>
-    instance.get(`${endpoint.DOKTER}?poliId=${poliId}`),
+// export interface CreateDokterPayload {
+//   nama: string;
+//   spesialis: string;
+//   foto?: string | null;
+//   poliId: number;
+// }
+
+const dokterServices = {
+  // Ambil semua tanpa pagination → untuk dropdown/select
+  getAll: (poliId?: number) =>
+    instance.get(
+      poliId ? `${endpoint.DOKTER}?poliId=${poliId}` : endpoint.DOKTER,
+    ),
+
+  getAllPaginated: (params: string) =>
+    instance.get<{ data: DokterPaginatedResponse }>(
+      `${endpoint.DOKTER}?${params}`,
+    ),
 
   getById: (id: number) => instance.get(`${endpoint.DOKTER}/${id}`),
 

@@ -14,15 +14,13 @@ const useDokterList = () => {
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const { currentPage, currentLimit, currentSearch, setUrl } = useChangeUrl();
 
-  // ─────────────────────────────────────────
   // GET ALL
-  // ─────────────────────────────────────────
   const getDokters = async () => {
     let params = `limit=${currentLimit}&page=${currentPage}`;
     if (currentSearch) {
       params += `&search=${currentSearch}`;
     }
-    const { data } = await dokterServices.getAll(params);
+    const { data } = await dokterServices.getAllPaginated(params);
     return data.data;
   };
 
@@ -36,9 +34,7 @@ const useDokterList = () => {
     enabled: !!currentPage && !!currentLimit,
   });
 
-  // ─────────────────────────────────────────
   // DELETE
-  // ─────────────────────────────────────────
   const { mutate: mutateDeleteDokter, isPending: isPendingDeleteDokter } =
     useMutation({
       mutationFn: (id: number) => dokterServices.delete(id),
@@ -55,9 +51,7 @@ const useDokterList = () => {
       },
     });
 
-  // ─────────────────────────────────────────
   // SEARCH & PAGINATION
-  // ─────────────────────────────────────────
   const handleSearch = (value: string) => {
     setUrl({ search: value, page: "1" });
   };
@@ -69,6 +63,8 @@ const useDokterList = () => {
   const handleChangeLimit = (limit: string) => {
     setUrl({ limit, page: "1" });
   };
+
+  // console.log(data);
 
   return {
     // Data

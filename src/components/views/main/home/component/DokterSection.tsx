@@ -12,7 +12,7 @@ import { IDokter } from "@/types/dokter";
 import { DokterCardSkeleton } from "@/components/shared/card/CardDokter/DokterCardSkeleton";
 import CardDokter from "@/components/shared/card/CardDokter/CardDokter";
 
-const DokterSection2 = () => {
+const DokterSection = () => {
   const { dataDokters, isLoadingDokters } = useHome();
   return (
     <div
@@ -66,4 +66,4 @@ const DokterSection2 = () => {
   );
 };
 
-export default DokterSection2;
+export default DokterSection;
