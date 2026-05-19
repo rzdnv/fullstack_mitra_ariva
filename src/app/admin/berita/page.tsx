@@ -1,13 +1,15 @@
+import BeritaList from "@/components/views/admin/berita/BeritaList/BeritaList";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: "Berita",
+  title: "Kelola Berita",
 };
 
 export default function BeritaPage() {
   return (
-    <div>
-      <div>Berita</div>
-    </div>
+    <Suspense fallback={<div className="p-6 text-gray-400">Memuat...</div>}>
+      <BeritaList />
+    </Suspense>
   );
 }
