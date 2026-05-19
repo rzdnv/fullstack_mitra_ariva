@@ -1,3 +1,5 @@
+// src/app/admin/dokter/page.tsx
+import { Suspense } from "react";
 import DokterList from "@/components/views/admin/dokter/DokterList/DokterList";
 import type { Metadata } from "next";
 
@@ -7,8 +9,8 @@ export const metadata: Metadata = {
 
 export default function DokterPage() {
   return (
-    <main>
+    <Suspense fallback={<div className="p-6 text-gray-400">Memuat...</div>}>
       <DokterList />
-    </main>
+    </Suspense>
   );
 }
