@@ -1,14 +1,35 @@
 import { NextRequest } from "next/server";
 import { createLayananSchema } from "@/lib/validations/layanan.validation";
-import { getAllLayanan, createLayanan } from "@/lib/services/layanan.service";
+import {
+  getAllLayanan,
+  createLayanan,
+  getLayananPaginated,
+} from "@/lib/services/layanan.service";
 import { successResponse, errorResponse } from "@/lib/api-response";
 import { requireAuth } from "@/lib/auth-guard";
 
 // GET /api/layanan
-export async function GET() {
+export async function GET(req: NextRequest) {
   try {
-    const layanan = await getAllLayanan();
-    return successResponse(layanan, "Data layanan berhasil diambil");
+    const { searchParams } = new URL(req.url);
+    const page = searchParams.get("page");
+    const limit = searchParams.get("limit");
+    const search = searchParams.get("search") ?? "";
+
+    if (!page && !limit) {
+      // Ambil semua
+      const layanan = await getAllLayanan();
+      return successResponse(layanan, "Data layanan berhasil diambil");
+    }
+
+    // Kalau ada page & limit → pagination
+    const result = await getLayananPaginated({
+      page: Number(page ?? 1),
+      limit: Number(limit ?? 10),
+      search,
+    });
+
+    return successResponse(result, "Data layanan berhasil diambil");
   } catch (error) {
     console.error("[GET /api/layanan]", error);
     return errorResponse("Gagal mengambil data layanan");

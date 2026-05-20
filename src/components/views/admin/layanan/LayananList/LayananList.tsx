@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import {
   Plus,
@@ -39,43 +40,42 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
-import usePoliList from "./usePoliList";
-import { IPoli } from "@/types/poli";
+import useLayananList from "./useLayananList";
+import { ILayanan } from "@/types/layanan";
 
-export default function PoliList() {
+export default function LayananList() {
   const router = useRouter();
   const {
-    dataPolis,
+    dataLayanans,
     meta,
-    isLoadingPolis,
-    isRefetchingPolis,
+    isLoadingLayanans,
+    isRefetchingLayanans,
     selectedId,
     setSelectedId,
-    handleDeletePoli,
-    isPendingDeletePoli,
+    handleDeleteLayanan,
+    isPendingDeleteLayanan,
     currentSearch,
     currentLimit,
     currentPage,
     handleSearch,
     handleChangePage,
     handleChangeLimit,
-  } = usePoliList();
+  } = useLayananList();
 
   return (
     <div>
       {/* Header */}
       <div className="mb-6 flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-slate-800">Kelola Poli</h2>
+          <h2 className="text-2xl font-bold text-slate-800">Kelola Layanan</h2>
           <p className="mt-1 text-sm text-gray-500">
-            Total {meta?.total ?? 0} Poli
+            Total {meta?.total ?? 0} Layanan
           </p>
         </div>
-        <Button onClick={() => router.push("/admin/poli/tambah")}>
+        <Button onClick={() => router.push("/admin/layanan/tambah")}>
           <Plus className="mr-2 h-4 w-4" />
-          Tambah Poli
+          Tambah Layanan
         </Button>
       </div>
 
@@ -85,7 +85,7 @@ export default function PoliList() {
         <div className="relative w-full max-w-xs">
           <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-gray-400" />
           <Input
-            placeholder="Cari poli..."
+            placeholder="Cari layanan..."
             className="pl-9"
             defaultValue={currentSearch}
             onChange={(e) => handleSearch(e.target.value)}
@@ -107,7 +107,7 @@ export default function PoliList() {
       </div>
 
       {/* Refetching */}
-      {isRefetchingPolis && (
+      {isRefetchingLayanans && (
         <div className="mb-2 flex items-center gap-2 text-xs text-gray-400">
           <Loader2 className="h-3 w-3 animate-spin" />
           Memperbarui...
@@ -120,13 +120,14 @@ export default function PoliList() {
           <TableHeader>
             <TableRow className="bg-gray-50">
               <TableHead className="w-12">No</TableHead>
-              <TableHead>Poli</TableHead>
-              <TableHead>Total Dokter</TableHead>
+              <TableHead>Foto</TableHead>
+              <TableHead>Nama Layanan</TableHead>
+              <TableHead>Deskripsi</TableHead>
               <TableHead className="text-center">Aksi</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {isLoadingPolis ? (
+            {isLoadingLayanans ? (
               Array.from({ length: 5 }).map((_, i) => (
                 <TableRow key={i}>
                   <TableCell>
@@ -149,45 +150,52 @@ export default function PoliList() {
                   </TableCell>
                 </TableRow>
               ))
-            ) : dataPolis.length === 0 ? (
+            ) : dataLayanans.length === 0 ? (
               <TableRow>
                 <TableCell
                   colSpan={6}
                   className="py-10 text-center text-gray-400"
                 >
                   {currentSearch
-                    ? `Tidak ada poli dengan nama "${currentSearch}"`
-                    : "Belum ada data poli"}
+                    ? `Tidak ada layanan dengan nama "${currentSearch}"`
+                    : "Belum ada data layanan"}
                 </TableCell>
               </TableRow>
             ) : (
-              dataPolis.map((poli: IPoli, index: number) => (
-                <TableRow key={poli.id} className="hover:bg-gray-50">
+              dataLayanans.map((layanan: ILayanan, index: number) => (
+                <TableRow key={layanan.id} className="hover:bg-gray-50">
                   <TableCell className="text-sm text-gray-500">
                     {(Number(currentPage) - 1) * Number(currentLimit) +
                       index +
                       1}
                   </TableCell>
+                  <TableCell>
+                    <Image
+                      src={`${layanan.foto}`}
+                      alt={layanan.namaLayanan}
+                      width={40}
+                      height={40}
+                      className="h-auto w-25 rounded-md object-cover"
+                    />
+                  </TableCell>
                   <TableCell className="font-medium text-slate-800">
-                    {poli.namaPoli}
+                    {layanan.namaLayanan}
+                  </TableCell>
+                  <TableCell className="font-medium text-slate-800">
+                    {layanan.deskripsi}
                   </TableCell>
 
                   <TableCell>
-                    <Badge variant="secondary">
-                      Dokter : {poli._count?.dokter}
-                    </Badge>
-                  </TableCell>
-                  <TableCell>
                     <div className="flex items-center justify-center gap-2">
                       <Button size="sm" variant="outline" asChild>
-                        <Link href={`/admin/poli/${poli.id}`}>
+                        <Link href={`/admin/layanan/${layanan.id}`}>
                           <Pencil className="h-4 w-4" />
                         </Link>
                       </Button>
                       <AlertDialog
-                        open={selectedId === poli.id}
+                        open={selectedId === layanan.id}
                         onOpenChange={(open) =>
-                          setSelectedId(open ? poli.id : null)
+                          setSelectedId(open ? layanan.id : null)
                         }
                       >
                         <AlertDialogTrigger asChild>
@@ -197,11 +205,11 @@ export default function PoliList() {
                         </AlertDialogTrigger>
                         <AlertDialogContent>
                           <AlertDialogHeader>
-                            <AlertDialogTitle>Hapus poli</AlertDialogTitle>
+                            <AlertDialogTitle>Hapus Layanan</AlertDialogTitle>
                             <AlertDialogDescription>
                               Apakah yakin ingin menghapus{" "}
                               <span className="font-semibold text-slate-800">
-                                {poli.namaPoli}
+                                {layanan.namaLayanan}
                               </span>
                             </AlertDialogDescription>
                           </AlertDialogHeader>
@@ -212,11 +220,11 @@ export default function PoliList() {
                               Batal
                             </AlertDialogCancel>
                             <AlertDialogAction
-                              onClick={() => handleDeletePoli(poli.id)}
-                              disabled={isPendingDeletePoli}
+                              onClick={() => handleDeleteLayanan(layanan.id)}
+                              disabled={isPendingDeleteLayanan}
                               className="bg-red-500 hover:bg-red-600"
                             >
-                              {isPendingDeletePoli ? (
+                              {isPendingDeleteLayanan ? (
                                 <Loader2 className="h-4 w-4 animate-spin" />
                               ) : (
                                 "Hapus"

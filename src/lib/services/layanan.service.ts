@@ -5,11 +5,48 @@ import {
 } from "@/lib/validations/layanan.validation";
 import { generateId } from "../generate-id";
 import cloudinaryService from "../cloudinary";
+import { IParams } from "@/types/param";
 
 export async function getAllLayanan() {
   return await prisma.layanan.findMany({
     orderBy: { createdAt: "desc" },
   });
+}
+
+// GET — Dengan pagination & search → API Route
+export async function getLayananPaginated({
+  page = 1,
+  limit = 10,
+  search = "",
+}: IParams) {
+  const where = {
+    ...(search && {
+      namaLayanan: {
+        contains: search,
+        mode: "insensitive" as const,
+      },
+    }),
+  };
+
+  const [layanan, total] = await Promise.all([
+    prisma.layanan.findMany({
+      where,
+      skip: (page - 1) * limit,
+      take: limit,
+      orderBy: { createdAt: "desc" },
+    }),
+    prisma.layanan.count({ where }),
+  ]);
+
+  return {
+    data: layanan,
+    meta: {
+      total,
+      page,
+      limit,
+      totalPage: Math.ceil(total / limit),
+    },
+  };
 }
 
 export async function getLayananById(id: number) {

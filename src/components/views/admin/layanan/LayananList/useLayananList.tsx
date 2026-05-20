@@ -3,49 +3,50 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { toast } from "sonner";
 import { AxiosError } from "axios";
-import poliServices from "@/services/poli.service";
+import layananServices from "@/services/layanan.service";
 
 interface ErrorResponse {
   message: string;
 }
 
-const usePoliList = () => {
+const useLayananList = () => {
   const queryClient = useQueryClient();
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const { currentPage, currentLimit, currentSearch, setUrl } = useChangeUrl();
 
   // GET ALL
-  const getPolis = async () => {
+  const getLayanans = async () => {
     let params = `limit=${currentLimit}&page=${currentPage}`;
     if (currentSearch) {
       params += `&search=${currentSearch}`;
     }
-    const { data } = await poliServices.getAllPaginated(params);
+    const { data } = await layananServices.getAllPaginated(params);
     return data.data;
   };
 
   const {
     data,
-    isLoading: isLoadingPolis,
-    isRefetching: isRefetchingPolis,
+    isLoading: isLoadingLayanans,
+    isRefetching: isRefetchingLayanans,
   } = useQuery({
-    queryKey: ["poli", currentPage, currentLimit, currentSearch],
-    queryFn: getPolis,
+    queryKey: ["layanan", currentPage, currentLimit, currentSearch],
+    queryFn: getLayanans,
     enabled: !!currentPage && !!currentLimit,
   });
 
   // DELETE
-  const { mutate: mutateDeletePoli, isPending: isPendingDeletePoli } =
+  const { mutate: mutateDeleteLayanan, isPending: isPendingDeleteLayanan } =
     useMutation({
-      mutationFn: (id: number) => poliServices.delete(id),
+      mutationFn: (id: number) => layananServices.delete(id),
       onSuccess: () => {
-        toast.success("Poli berhasil dihapus", { position: "top-right" });
-        queryClient.invalidateQueries({ queryKey: ["poli"] });
+        toast.success("Layanan berhasil dihapus", { position: "top-right" });
+        queryClient.invalidateQueries({ queryKey: ["layanan"] });
         queryClient.invalidateQueries({ queryKey: ["dashboard"] });
         setSelectedId(null);
       },
       onError: (error: AxiosError<ErrorResponse>) => {
-        const message = error.response?.data?.message ?? "Gagal menghapus poli";
+        const message =
+          error.response?.data?.message ?? "Gagal menghapus layanan";
         toast.error(message, { position: "top-right" });
       },
     });
@@ -63,22 +64,22 @@ const usePoliList = () => {
     setUrl({ limit, page: "1" });
   };
 
-  // console.log(data?.data);
+  // console.log(data);
 
   return {
     // Data
-    dataPolis: data?.data ?? [],
+    dataLayanans: data?.data ?? [],
     meta: data?.meta,
 
     // Loading
-    isLoadingPolis,
-    isRefetchingPolis,
+    isLoadingLayanans,
+    isRefetchingLayanans,
 
     // Delete
     selectedId,
     setSelectedId,
-    handleDeletePoli: (id: number) => mutateDeletePoli(id),
-    isPendingDeletePoli,
+    handleDeleteLayanan: (id: number) => mutateDeleteLayanan(id),
+    isPendingDeleteLayanan,
 
     // Search & Pagination
     currentSearch,
@@ -90,4 +91,4 @@ const usePoliList = () => {
   };
 };
 
-export default usePoliList;
+export default useLayananList;
