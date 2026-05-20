@@ -4,8 +4,7 @@ import {
   UpdateJadwalInput,
 } from "@/lib/validations/jadwal.validation";
 import { generateId } from "../generate-id";
-import { IJadwalParams } from "@/types/jadwal";
-import { Hari } from "@/generated/prisma";
+import { HariType, IJadwalParams } from "@/types/jadwal";
 
 export async function getAllJadwal() {
   return await prisma.jadwalDokter.findMany({
@@ -30,7 +29,7 @@ export async function getJadwalPaginated({
   const where = {
     ...(search && {
       hari: {
-        equals: search.toUpperCase() as Hari,
+        equals: search.toUpperCase() as HariType,
       },
     }),
     ...(dokterId && { dokterId }),

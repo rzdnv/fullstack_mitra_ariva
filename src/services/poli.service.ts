@@ -2,8 +2,21 @@ import instance from "@/lib/axios/instance";
 import endpoint from "./endpoint.constant";
 import { IPoli } from "@/types/poli";
 
+export interface PoliPaginatedResponse {
+  data: IPoli[];
+  meta: {
+    total: number;
+    page: number;
+    limit: number;
+    totalPage: number;
+  };
+}
+
 const poliServices = {
   getAll: () => instance.get(endpoint.POLI),
+
+  getAllPaginated: (params: string) =>
+    instance.get<{ data: PoliPaginatedResponse }>(`${endpoint.POLI}?${params}`),
 
   getById: (id: number) => instance.get(`${endpoint.POLI}/${id}`),
 

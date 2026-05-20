@@ -1,14 +1,34 @@
 import { NextRequest } from "next/server";
 import { createPoliSchema } from "@/lib/validations/poli.validation";
-import { getAllPoli, createPoli } from "@/lib/services/poli.service";
+import {
+  getAllPoli,
+  createPoli,
+  getPoliPaginated,
+} from "@/lib/services/poli.service";
 import { successResponse, errorResponse } from "@/lib/api-response";
 import { requireAuth } from "@/lib/auth-guard";
 
-// GET /api/poli
-export async function GET() {
+export async function GET(req: NextRequest) {
   try {
-    const poli = await getAllPoli();
-    return successResponse(poli, "Data poli berhasil diambil");
+    const { searchParams } = new URL(req.url);
+    const page = searchParams.get("page");
+    const limit = searchParams.get("limit");
+    const search = searchParams.get("search") ?? "";
+
+    if (!page && !limit) {
+      // Ambil semua
+      const poli = await getAllPoli();
+      return successResponse(poli, "Data poli berhasil diambil");
+    }
+
+    // Kalau ada page & limit → pagination
+    const result = await getPoliPaginated({
+      page: Number(page ?? 1),
+      limit: Number(limit ?? 10),
+      search,
+    });
+
+    return successResponse(result, "Data poli berhasil diambil");
   } catch (error) {
     console.error("[GET /api/poli]", error);
     return errorResponse("Gagal mengambil data poli");

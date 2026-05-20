@@ -4,16 +4,60 @@ import {
   UpdatePoliInput,
 } from "@/lib/validations/poli.validation";
 import { generateId } from "../generate-id";
+import { IParams } from "@/types/param";
 
 export async function getAllPoli() {
   return await prisma.poli.findMany({
     orderBy: { createdAt: "desc" },
     include: {
+      dokter: true,
       _count: {
         select: { dokter: true },
       },
     },
   });
+}
+
+// GET — Dengan pagination & search → API Route
+export async function getPoliPaginated({
+  page = 1,
+  limit = 10,
+  search = "",
+}: IParams) {
+  const where = {
+    ...(search && {
+      namaPoli: {
+        contains: search,
+        mode: "insensitive" as const,
+      },
+    }),
+  };
+
+  const [poli, total] = await Promise.all([
+    prisma.poli.findMany({
+      where,
+      skip: (page - 1) * limit,
+      take: limit,
+      include: {
+        dokter: true,
+        _count: {
+          select: { dokter: true },
+        },
+      },
+      orderBy: { createdAt: "desc" },
+    }),
+    prisma.poli.count({ where }),
+  ]);
+
+  return {
+    data: poli,
+    meta: {
+      total,
+      page,
+      limit,
+      totalPage: Math.ceil(total / limit),
+    },
+  };
 }
 
 export async function getPoliById(id: number) {
