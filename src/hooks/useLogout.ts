@@ -5,17 +5,13 @@ import { AxiosError } from "axios";
 import instance from "@/lib/axios/instance";
 import endpoint from "@/services/endpoint.constant";
 
-// ─────────────────────────────────────────
 // Service
-// ─────────────────────────────────────────
 const logoutService = async () => {
   const result = await instance.post(`${endpoint.AUTH}/logout`);
   return result.data;
 };
 
-// ─────────────────────────────────────────
 // Hook
-// ─────────────────────────────────────────
 const useLogout = () => {
   const router = useRouter();
 

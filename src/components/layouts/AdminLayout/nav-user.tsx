@@ -1,7 +1,6 @@
 "use client";
 
 import { ChevronsUpDown, Loader2, LogOut } from "lucide-react";
-
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -19,14 +18,14 @@ import {
 } from "@/components/ui/sidebar";
 import { useSession } from "next-auth/react";
 import useLogout from "@/hooks/useLogout";
+import { useRouter } from "next/navigation";
 
 export function NavUser() {
   const { data: session } = useSession();
   const User = session?.user;
-
   const { handleLogout, isPendingLogout } = useLogout();
-
   const { isMobile } = useSidebar();
+  const router = useRouter();
 
   return (
     <SidebarMenu>
@@ -51,6 +50,7 @@ export function NavUser() {
               <ChevronsUpDown className="ml-auto size-4" />
             </SidebarMenuButton>
           </DropdownMenuTrigger>
+
           <DropdownMenuContent
             className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
             side={isMobile ? "bottom" : "right"}
@@ -72,20 +72,26 @@ export function NavUser() {
                 </div>
               </div>
             </DropdownMenuLabel>
+
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <button
-                onClick={handleLogout}
-                disabled={isPendingLogout}
-                className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-sm text-red-500 transition-colors hover:bg-red-50 disabled:opacity-50"
-              >
-                {isPendingLogout ? (
-                  <Loader2 className="h-4 w-4 animate-spin" />
-                ) : (
-                  <LogOut className="h-4 w-4" />
-                )}
-                Logout
-              </button>
+
+            <DropdownMenuItem
+              onClick={() => router.push("/")}
+              className="cursor-pointer"
+            >
+              Home
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={handleLogout}
+              disabled={isPendingLogout}
+              className="cursor-pointer gap-3 text-red-500 focus:text-red-500"
+            >
+              {isPendingLogout ? (
+                <Loader2 className="h-4 w-4 animate-spin" />
+              ) : (
+                <LogOut className="h-4 w-4" />
+              )}
+              Logout
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
