@@ -1,13 +1,15 @@
+import JadwalList from "@/components/views/admin/jadwal/JadwalList/JadwalList";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: "Jadwal Dokter",
+  title: "Kelola Jadwal Dokter",
 };
 
 export default function JadwalPage() {
   return (
-    <div>
-      <div>Jadwal Dokter</div>
-    </div>
+    <Suspense fallback={<div className="p-6 text-gray-400">Memuat...</div>}>
+      <JadwalList />
+    </Suspense>
   );
 }

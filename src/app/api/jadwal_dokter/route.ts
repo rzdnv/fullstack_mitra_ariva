@@ -4,27 +4,42 @@ import {
   getAllJadwal,
   createJadwal,
   getJadwalByDokter,
+  getJadwalPaginated,
 } from "@/lib/services/jadwal.service";
 import { successResponse, errorResponse } from "@/lib/api-response";
 import { requireAuth } from "@/lib/auth-guard";
 
-// GET /api/jadwal
 export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
+    const page = searchParams.get("page");
+    const limit = searchParams.get("limit");
+    const search = searchParams.get("search") ?? "";
     const dokterId = searchParams.get("dokterId");
 
-    let jadwal;
-    if (dokterId) {
-      jadwal = await getJadwalByDokter(Number(dokterId));
-    } else {
-      jadwal = await getAllJadwal();
+    if (!page && !limit) {
+      if (dokterId) {
+        const dokter = await getJadwalByDokter(Number(dokterId));
+        return successResponse(dokter, "Data dokter berhasil diambil");
+      }
+
+      // Ambil semua
+      const jadwal = await getAllJadwal();
+      return successResponse(jadwal, "Data jadwal dokter berhasil diambil");
     }
 
-    return successResponse(jadwal, "Data jadwal berhasil diambil");
+    // Kalau ada page & limit → pagination
+    const result = await getJadwalPaginated({
+      page: Number(page ?? 1),
+      limit: Number(limit ?? 10),
+      search,
+      dokterId: dokterId ? Number(dokterId) : undefined,
+    });
+
+    return successResponse(result, "Data jadwal dokter berhasil diambil");
   } catch (error) {
-    console.error("[GET /api/jadwal]", error);
-    return errorResponse("Gagal mengambil data jadwal");
+    console.error("[GET /api/jadwal_dokter]", error);
+    return errorResponse("Gagal mengambil data jadwal dokter");
   }
 }
 

@@ -2,8 +2,23 @@ import instance from "@/lib/axios/instance";
 import endpoint from "./endpoint.constant";
 import { IJadwal } from "@/types/jadwal";
 
+export interface JadwalPaginatedResponse {
+  data: IJadwal[];
+  meta: {
+    total: number;
+    page: number;
+    limit: number;
+    totalPage: number;
+  };
+}
+
 const jadwalServices = {
   getAll: () => instance.get(endpoint.JADWAL),
+
+  getAllPaginated: (params: string) =>
+    instance.get<{ data: JadwalPaginatedResponse }>(
+      `${endpoint.JADWAL}?${params}`,
+    ),
 
   getByDokter: (dokterId: number) =>
     instance.get(`${endpoint.JADWAL}?dokterId=${dokterId}`),

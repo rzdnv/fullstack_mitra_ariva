@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import {
   Plus,
@@ -42,41 +41,41 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
-import useBeritaList from "./useBeritaList";
-import { IBerita } from "@/types/berita";
+import useJadwalList from "./useJadwalList";
+import { IJadwal } from "@/types/jadwal";
 
-export default function BeritaList() {
+export default function JadwalList() {
   const router = useRouter();
   const {
-    dataBeritas,
+    dataJadwals,
     meta,
-    isLoadingBeritas,
-    isRefetchingBeritas,
+    isLoadingJadwals,
+    isRefetchingJadwals,
     selectedId,
     setSelectedId,
-    handleDeleteBerita,
-    isPendingDeleteBerita,
+    handleDeleteJadwal,
+    isPendingDeleteJadwal,
     currentSearch,
     currentLimit,
     currentPage,
     handleSearch,
     handleChangePage,
     handleChangeLimit,
-  } = useBeritaList();
+  } = useJadwalList();
 
   return (
     <div>
       {/* Header */}
       <div className="mb-6 flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-slate-800">Kelola Berita</h2>
+          <h2 className="text-2xl font-bold text-slate-800">Kelola Jadwal</h2>
           <p className="mt-1 text-sm text-gray-500">
-            Total {meta?.total ?? 0} berita
+            Total {meta?.total ?? 0} Jadwal Dokter
           </p>
         </div>
-        <Button onClick={() => router.push("/admin/berita/tambah")}>
+        <Button onClick={() => router.push("/admin/jadwal/tambah")}>
           <Plus className="mr-2 h-4 w-4" />
-          Tambah Berita
+          Tambah Jadwal
         </Button>
       </div>
 
@@ -86,7 +85,7 @@ export default function BeritaList() {
         <div className="relative w-full max-w-xs">
           <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-gray-400" />
           <Input
-            placeholder="Cari berita..."
+            placeholder="Cari jadwal..."
             className="pl-9"
             defaultValue={currentSearch}
             onChange={(e) => handleSearch(e.target.value)}
@@ -108,7 +107,7 @@ export default function BeritaList() {
       </div>
 
       {/* Refetching */}
-      {isRefetchingBeritas && (
+      {isRefetchingJadwals && (
         <div className="mb-2 flex items-center gap-2 text-xs text-gray-400">
           <Loader2 className="h-3 w-3 animate-spin" />
           Memperbarui...
@@ -121,14 +120,15 @@ export default function BeritaList() {
           <TableHeader>
             <TableRow className="bg-gray-50">
               <TableHead className="w-12">No</TableHead>
-              <TableHead>Foto</TableHead>
-              <TableHead>Judul</TableHead>
-              <TableHead>Author</TableHead>
+              <TableHead>Hari</TableHead>
+              <TableHead>Jam Mulai</TableHead>
+              <TableHead>Jam Selesai</TableHead>
+              <TableHead>Dokter</TableHead>
               <TableHead className="text-center">Aksi</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {isLoadingBeritas ? (
+            {isLoadingJadwals ? (
               Array.from({ length: 5 }).map((_, i) => (
                 <TableRow key={i}>
                   <TableCell>
@@ -151,52 +151,49 @@ export default function BeritaList() {
                   </TableCell>
                 </TableRow>
               ))
-            ) : dataBeritas.length === 0 ? (
+            ) : dataJadwals.length === 0 ? (
               <TableRow>
                 <TableCell
                   colSpan={6}
                   className="py-10 text-center text-gray-400"
                 >
                   {currentSearch
-                    ? `Tidak ada berita dengan nama "${currentSearch}"`
-                    : "Belum ada data berita"}
+                    ? `Tidak ada jadwal dengan nama "${currentSearch}"`
+                    : "Belum ada data jadwal"}
                 </TableCell>
               </TableRow>
             ) : (
-              dataBeritas.map((berita: IBerita, index: number) => (
-                <TableRow key={berita.id} className="hover:bg-gray-50">
+              dataJadwals.map((jadwal: IJadwal, index: number) => (
+                <TableRow key={jadwal.id} className="hover:bg-gray-50">
                   <TableCell className="text-sm text-gray-500">
                     {(Number(currentPage) - 1) * Number(currentLimit) +
                       index +
                       1}
                   </TableCell>
-                  <TableCell>
-                    <Image
-                      src={`${berita.gambar}`}
-                      alt={berita.judul}
-                      width={40}
-                      height={40}
-                      className="h-10 w-20 object-cover"
-                    />
+                  <TableCell className="font-medium text-slate-800">
+                    {jadwal.hari}
                   </TableCell>
                   <TableCell className="font-medium text-slate-800">
-                    {berita.judul}
+                    {jadwal.jamMulai}
+                  </TableCell>
+                  <TableCell className="font-medium text-slate-800">
+                    {jadwal.jamSelesai}
                   </TableCell>
 
                   <TableCell>
-                    <Badge variant="secondary">{berita.user.username}</Badge>
+                    <Badge variant="secondary">{jadwal.dokter.nama}</Badge>
                   </TableCell>
                   <TableCell>
                     <div className="flex items-center justify-center gap-2">
                       <Button size="sm" variant="outline" asChild>
-                        <Link href={`/admin/berita/${berita.id}`}>
+                        <Link href={`/admin/jadwal/${jadwal.id}`}>
                           <Pencil className="h-4 w-4" />
                         </Link>
                       </Button>
                       <AlertDialog
-                        open={selectedId === berita.id}
+                        open={selectedId === jadwal.id}
                         onOpenChange={(open) =>
-                          setSelectedId(open ? berita.id : null)
+                          setSelectedId(open ? jadwal.id : null)
                         }
                       >
                         <AlertDialogTrigger asChild>
@@ -206,11 +203,11 @@ export default function BeritaList() {
                         </AlertDialogTrigger>
                         <AlertDialogContent>
                           <AlertDialogHeader>
-                            <AlertDialogTitle>Hapus Berita</AlertDialogTitle>
+                            <AlertDialogTitle>Hapus Jadwal</AlertDialogTitle>
                             <AlertDialogDescription>
                               Apakah yakin ingin menghapus{" "}
                               <span className="font-semibold text-slate-800">
-                                {berita.judul}
+                                jadwal {jadwal.hari} - {jadwal.dokter.nama}
                               </span>
                             </AlertDialogDescription>
                           </AlertDialogHeader>
@@ -221,11 +218,11 @@ export default function BeritaList() {
                               Batal
                             </AlertDialogCancel>
                             <AlertDialogAction
-                              onClick={() => handleDeleteBerita(berita.id)}
-                              disabled={isPendingDeleteBerita}
+                              onClick={() => handleDeleteJadwal(jadwal.id)}
+                              disabled={isPendingDeleteJadwal}
                               className="bg-red-500 hover:bg-red-600"
                             >
-                              {isPendingDeleteBerita ? (
+                              {isPendingDeleteJadwal ? (
                                 <Loader2 className="h-4 w-4 animate-spin" />
                               ) : (
                                 "Hapus"

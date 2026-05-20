@@ -2,7 +2,7 @@ const endpoint = {
   AUTH: "/auth",
   POLI: "/poli",
   DOKTER: "/dokter",
-  JADWAL: "/jadwal",
+  JADWAL: "/jadwal_dokter",
   LAYANAN: "/layanan",
   BERITA: "/berita",
   USERS: "/users",

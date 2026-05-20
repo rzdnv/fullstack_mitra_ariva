@@ -18,7 +18,14 @@ export interface IJadwal {
   dokter: IDokter;
 }
 
-export { IJadwal };
+interface IJadwalParams {
+  page?: number;
+  limit?: number;
+  search?: string;
+  dokterId?: number;
+}
+
+export { IJadwal, IJadwalParams };
 
 // export interface CreateJadwalPayload {
 //   dokterId: number;

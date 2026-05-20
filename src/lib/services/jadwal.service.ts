@@ -4,6 +4,8 @@ import {
   UpdateJadwalInput,
 } from "@/lib/validations/jadwal.validation";
 import { generateId } from "../generate-id";
+import { IJadwalParams } from "@/types/jadwal";
+import { Hari } from "@/generated/prisma";
 
 export async function getAllJadwal() {
   return await prisma.jadwalDokter.findMany({
@@ -16,6 +18,50 @@ export async function getAllJadwal() {
       },
     },
   });
+}
+
+// GET — Dengan pagination & search → API Route
+export async function getJadwalPaginated({
+  page = 1,
+  limit = 10,
+  search = "",
+  dokterId,
+}: IJadwalParams) {
+  const where = {
+    ...(search && {
+      hari: {
+        equals: search.toUpperCase() as Hari,
+      },
+    }),
+    ...(dokterId && { dokterId }),
+  };
+
+  const [jadwal, total] = await Promise.all([
+    prisma.jadwalDokter.findMany({
+      where,
+      skip: (page - 1) * limit,
+      take: limit,
+      include: {
+        dokter: {
+          include: {
+            poli: true,
+          },
+        },
+      },
+      orderBy: { hari: "asc" },
+    }),
+    prisma.jadwalDokter.count({ where }),
+  ]);
+
+  return {
+    data: jadwal,
+    meta: {
+      total,
+      page,
+      limit,
+      totalPage: Math.ceil(total / limit),
+    },
+  };
 }
 
 export async function getJadwalById(id: number) {
