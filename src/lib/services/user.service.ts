@@ -5,6 +5,7 @@ import {
   UpdateUserInput,
 } from "@/lib/validations/user.validation";
 import { generateId } from "../generate-id";
+import { IParams } from "@/types/param";
 
 const selectUser = {
   id: true,
@@ -18,6 +19,42 @@ export async function getAllUser() {
     select: selectUser,
     orderBy: { createdAt: "desc" },
   });
+}
+
+// GET — Dengan pagination & search → API Route
+export async function getUserPaginated({
+  page = 1,
+  limit = 10,
+  search = "",
+}: IParams) {
+  const where = {
+    ...(search && {
+      username: {
+        contains: search,
+        mode: "insensitive" as const,
+      },
+    }),
+  };
+
+  const [user, total] = await Promise.all([
+    prisma.user.findMany({
+      where,
+      skip: (page - 1) * limit,
+      take: limit,
+      orderBy: { createdAt: "desc" },
+    }),
+    prisma.user.count({ where }),
+  ]);
+
+  return {
+    data: user,
+    meta: {
+      total,
+      page,
+      limit,
+      totalPage: Math.ceil(total / limit),
+    },
+  };
 }
 
 export async function getUserById(id: number) {

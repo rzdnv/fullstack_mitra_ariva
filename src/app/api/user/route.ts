@@ -1,23 +1,41 @@
 import { NextRequest } from "next/server";
 import { createUserSchema } from "@/lib/validations/user.validation";
-import { getAllUser, createUser } from "@/lib/services/user.service";
+import {
+  getAllUser,
+  createUser,
+  getUserPaginated,
+} from "@/lib/services/user.service";
 import { successResponse, errorResponse } from "@/lib/api-response";
 import { requireAdmin } from "@/lib/auth-guard";
 
 // GET /api/users
-export async function GET() {
+// GET /api/review — public
+export async function GET(req: NextRequest) {
   try {
-    const { error } = await requireAdmin();
-    if (error) return error;
+    const { searchParams } = new URL(req.url);
+    const page = searchParams.get("page");
+    const limit = searchParams.get("limit");
+    const search = searchParams.get("search") ?? "";
 
-    const users = await getAllUser();
-    return successResponse(users, "Data user berhasil diambil");
+    if (!page && !limit) {
+      // Ambil semua
+      const user = await getAllUser();
+      return successResponse(user, "Data user berhasil diambil");
+    }
+
+    // Kalau ada page & limit → pagination
+    const result = await getUserPaginated({
+      page: Number(page ?? 1),
+      limit: Number(limit ?? 10),
+      search,
+    });
+
+    return successResponse(result, "Data user berhasil diambil");
   } catch (error) {
-    console.error("[GET /api/users]", error);
+    console.error("[GET /api/user]", error);
     return errorResponse("Gagal mengambil data user");
   }
 }
-
 // POST /api/users
 export async function POST(req: NextRequest) {
   try {

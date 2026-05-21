@@ -5,7 +5,7 @@ const endpoint = {
   JADWAL: "/jadwal_dokter",
   LAYANAN: "/layanan",
   BERITA: "/berita",
-  USERS: "/users",
+  USERS: "/user",
   REVIEW: "/review",
   DASHBOARD: "/dashboard",
   CLOUDINARY: {
