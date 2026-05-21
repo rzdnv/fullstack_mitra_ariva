@@ -4,11 +4,48 @@ import {
   CreateReviewInput,
   UpdateReviewInput,
 } from "@/lib/validations/review.validation";
+import { IParams } from "@/types/param";
 
 export async function getAllReview() {
   return await prisma.review.findMany({
     orderBy: { tanggal: "desc" },
   });
+}
+
+// GET — Dengan pagination & search → API Route
+export async function getReviewPaginated({
+  page = 1,
+  limit = 10,
+  search = "",
+}: IParams) {
+  const where = {
+    ...(search && {
+      nama: {
+        contains: search,
+        mode: "insensitive" as const,
+      },
+    }),
+  };
+
+  const [review, total] = await Promise.all([
+    prisma.review.findMany({
+      where,
+      skip: (page - 1) * limit,
+      take: limit,
+      orderBy: { createdAt: "desc" },
+    }),
+    prisma.review.count({ where }),
+  ]);
+
+  return {
+    data: review,
+    meta: {
+      total,
+      page,
+      limit,
+      totalPage: Math.ceil(total / limit),
+    },
+  };
 }
 
 export async function getReviewById(id: number) {

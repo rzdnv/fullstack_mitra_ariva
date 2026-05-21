@@ -2,8 +2,23 @@ import instance from "@/lib/axios/instance";
 import endpoint from "./endpoint.constant";
 import { IReview } from "@/types/review";
 
+export interface ReviewPaginatedResponse {
+  data: IReview[];
+  meta: {
+    total: number;
+    page: number;
+    limit: number;
+    totalPage: number;
+  };
+}
+
 const reviewServices = {
   getAll: () => instance.get(endpoint.REVIEW),
+
+  getAllPaginated: (params: string) =>
+    instance.get<{ data: ReviewPaginatedResponse }>(
+      `${endpoint.REVIEW}?${params}`,
+    ),
 
   getById: (id: number) => instance.get(`${endpoint.REVIEW}/${id}`),
 
