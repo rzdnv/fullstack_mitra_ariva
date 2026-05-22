@@ -1,24 +1,37 @@
 import { IJadwal } from "./jadwal";
 import { IPoli } from "./poli";
 
-interface IDokter {
+export interface IDokter {
   id: number;
   nama: string;
   spesialis: string;
-  foto: string | null;
+  foto: string;
   poliId: number;
+
   poli: IPoli;
   jadwal: IJadwal[];
 }
 
-interface IDokterParams {
+export interface ICreateDokter {
+  nama: string;
+  spesialis: string;
+  foto: string;
+  poliId: number;
+}
+
+export interface IUpdateDokter {
+  nama?: string;
+  spesialis?: string;
+  foto?: string;
+  poliId?: number;
+}
+
+export interface IDokterParams {
   page?: number;
   limit?: number;
   search?: string;
   poliId?: number;
 }
-
-export { IDokter, IDokterParams };
 
 // export interface Jadwal {
 //   id: number;

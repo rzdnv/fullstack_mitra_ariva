@@ -1,10 +1,7 @@
 // src/services/upload.service.ts
 import instance from "@/lib/axios/instance";
 import endpoint from "./endpoint.constant";
-
-export interface IFileURL {
-  fileUrl: string;
-}
+import { IFileURL } from "@/types/file";
 
 const formDataHeader = {
   headers: {

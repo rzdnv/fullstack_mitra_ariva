@@ -45,6 +45,7 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import useDokterList from "./useDokterList";
 import { IDokter } from "@/types/dokter";
+import TambahDokter from "../TambahDokter/TambahDokter";
 
 export default function DokterList() {
   const router = useRouter();
@@ -75,10 +76,8 @@ export default function DokterList() {
             Total {meta?.total ?? 0} dokter
           </p>
         </div>
-        <Button onClick={() => router.push("/admin/dokter/tambah")}>
-          <Plus className="mr-2 h-4 w-4" />
-          Tambah Dokter
-        </Button>
+
+        <TambahDokter></TambahDokter>
       </div>
 
       {/* Search & Limit */}

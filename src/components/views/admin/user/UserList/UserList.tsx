@@ -40,7 +40,6 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Skeleton } from "@/components/ui/skeleton";
-import { formatTanggal } from "@/components/shared/formatted/formated";
 import useUserList from "./useUserList";
 import { IUser } from "@/types/user";
 
