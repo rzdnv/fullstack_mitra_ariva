@@ -5,7 +5,6 @@ import Link from "next/link";
 import { NAV_ITEMS, SOSIAL_ITEMS } from "../constant/Nav.Constant";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
-import { Button } from "@/components/ui/button";
 
 const Footer = () => {
   return (

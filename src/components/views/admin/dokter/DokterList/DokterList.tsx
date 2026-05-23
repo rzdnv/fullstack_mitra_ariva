@@ -2,9 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import {
-  Plus,
   Pencil,
   Trash2,
   Loader2,
@@ -12,6 +10,7 @@ import {
   Search,
   ChevronLeft,
   ChevronRight,
+  Plus,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -46,9 +45,10 @@ import { Skeleton } from "@/components/ui/skeleton";
 import useDokterList from "./useDokterList";
 import { IDokter } from "@/types/dokter";
 import TambahDokter from "../TambahDokter/TambahDokter";
+import { useState } from "react";
 
 export default function DokterList() {
-  const router = useRouter();
+  const [openTambah, setOpenTambah] = useState(false);
   const {
     dataDokters,
     meta,
@@ -77,7 +77,13 @@ export default function DokterList() {
           </p>
         </div>
 
-        <TambahDokter></TambahDokter>
+        <Button
+          onClick={() => setOpenTambah(true)}
+          className="bg-havelock-blue-600 p-4"
+        >
+          <Plus className="mr-2 h-4 w-4" />
+          Tambah Dokter
+        </Button>
       </div>
 
       {/* Search & Limit */}
@@ -296,6 +302,7 @@ export default function DokterList() {
             </div>
           </div>
         )}
+        <TambahDokter open={openTambah} onOpenChange={setOpenTambah} />
       </div>
     </div>
   );

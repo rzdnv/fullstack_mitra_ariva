@@ -1,28 +1,16 @@
-import { Card, CardContent, CardTitle } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import Image from "next/image";
 
 interface PropTypes {
   foto: string;
   namaLayanan: string;
-  deskripsi: string;
 }
 
 const CardService = (props: PropTypes) => {
-  const { foto, namaLayanan, deskripsi } = props;
+  const { foto, namaLayanan } = props;
 
   return (
-    <Card className=" w-65 md:w-90 overflow-hidden rounded-2xl border-0 bg-white shadow-lg">
-      {/* Content */}
-      {/* <CardContent className="space-y-3 px-5 h-1/4">
-        <CardTitle className="text-center md:text-xl font-bold leading-snug text-havelock-blue-800">
-          {namaLayanan}
-        </CardTitle>
-
-        <p className=" px-6 text-center text-xs md:text-sm leading-relaxed text-slate-700">
-          {deskripsi}
-        </p>
-      </CardContent> */}
-
+    <Card className="w-65 overflow-hidden rounded-2xl border-0 bg-white shadow-lg md:w-90">
       {/* Foto */}
       <Image
         src={foto}

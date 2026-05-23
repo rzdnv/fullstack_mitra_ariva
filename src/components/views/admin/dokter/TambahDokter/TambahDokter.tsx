@@ -1,7 +1,7 @@
 "use client";
 
 import { Controller } from "react-hook-form";
-import { Loader2, Plus } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 import useTambahDokter from "./useTambahDokter";
 
@@ -9,7 +9,6 @@ import { IPoli } from "@/types/poli";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 
 import {
   Dialog,
@@ -17,7 +16,6 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 
 import {
@@ -29,8 +27,14 @@ import {
 } from "@/components/ui/select";
 
 import InputImage from "@/components/shared/InputImage/InputImage";
+import { Field, FieldDescription, FieldLabel } from "@/components/ui/field";
 
-export default function TambahDokter() {
+interface Props {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}
+
+export default function TambahDokter({ open, onOpenChange }: Props) {
   const {
     control,
     handleSubmit,
@@ -50,27 +54,33 @@ export default function TambahDokter() {
     isDeletingFoto,
     handleUploadFoto,
     handleRemoveFoto,
-  } = useTambahDokter();
+    handleResetForm,
+  } = useTambahDokter({
+    onSuccess: () => {
+      onOpenChange(false);
+    },
+  });
+
+  // HANDLE CLOSE DIALOG
+  const handleDialogChange = async (value: boolean) => {
+    if (!value) {
+      await handleResetForm();
+    }
+
+    onOpenChange(value);
+  };
 
   return (
-    <Dialog>
-      {/* TRIGGER */}
-      <DialogTrigger asChild>
-        <Button>
-          <Plus className="mr-2 size-4" />
-          Tambah Dokter
-        </Button>
-      </DialogTrigger>
-
-      {/* CONTENT */}
+    <Dialog open={open} onOpenChange={handleDialogChange}>
       <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-3xl">
         <DialogHeader>
-          <DialogTitle>Tambah Dokter</DialogTitle>
+          <DialogTitle className="font-DMSerif text-2xl">
+            Tambah Dokter
+          </DialogTitle>
 
           <DialogDescription>Tambahkan data dokter baru</DialogDescription>
         </DialogHeader>
 
-        {/* FORM */}
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             {/* FOTO */}
@@ -89,15 +99,15 @@ export default function TambahDokter() {
               />
             </div>
 
-            {/* FORM INPUT */}
+            {/* FORM */}
             <div className="space-y-4 rounded-xl border bg-white p-6">
               <h3 className="mb-4 font-semibold text-slate-800">
                 Informasi Dokter
               </h3>
 
               {/* NAMA */}
-              <div className="space-y-1.5">
-                <Label htmlFor="nama">Nama Dokter</Label>
+              <Field data-invalid={!!errors.nama}>
+                <FieldLabel htmlFor="nama">Nama Dokter</FieldLabel>
 
                 <Controller
                   name="nama"
@@ -106,22 +116,23 @@ export default function TambahDokter() {
                     <Input
                       {...field}
                       id="nama"
-                      placeholder="dr. Nama Lengkap, Sp.X"
+                      placeholder="nama"
                       disabled={isPendingCreate}
+                      aria-invalid={!!errors.nama}
                     />
                   )}
                 />
 
                 {errors.nama && (
-                  <p className="text-destructive text-xs">
+                  <FieldDescription className="text-destructive text-xs">
                     {errors.nama.message}
-                  </p>
+                  </FieldDescription>
                 )}
-              </div>
+              </Field>
 
               {/* SPESIALIS */}
-              <div className="space-y-1.5">
-                <Label htmlFor="spesialis">Spesialis</Label>
+              <Field data-invalid={!!errors.spesialis}>
+                <FieldLabel htmlFor="spesialis">Spesialis</FieldLabel>
 
                 <Controller
                   name="spesialis"
@@ -132,20 +143,21 @@ export default function TambahDokter() {
                       id="spesialis"
                       placeholder="Dokter Spesialis Bedah"
                       disabled={isPendingCreate}
+                      aria-invalid={!!errors.spesialis}
                     />
                   )}
                 />
 
                 {errors.spesialis && (
-                  <p className="text-destructive text-xs">
+                  <FieldDescription className="text-destructive text-xs">
                     {errors.spesialis.message}
-                  </p>
+                  </FieldDescription>
                 )}
-              </div>
+              </Field>
 
               {/* POLI */}
-              <div className="space-y-1.5">
-                <Label>Poli</Label>
+              <Field data-invalid={!!errors.poliId}>
+                <FieldLabel>Poli</FieldLabel>
 
                 <Controller
                   name="poliId"
@@ -156,7 +168,7 @@ export default function TambahDokter() {
                       onValueChange={(value) => field.onChange(Number(value))}
                       disabled={isLoadingPoli || isPendingCreate}
                     >
-                      <SelectTrigger>
+                      <SelectTrigger aria-invalid={!!errors.poliId}>
                         <SelectValue
                           placeholder={
                             isLoadingPoli ? "Memuat poli..." : "Pilih poli"
@@ -176,17 +188,21 @@ export default function TambahDokter() {
                 />
 
                 {errors.poliId && (
-                  <p className="text-destructive text-xs">
+                  <FieldDescription className="text-destructive text-xs">
                     {errors.poliId.message}
-                  </p>
+                  </FieldDescription>
                 )}
-              </div>
+              </Field>
             </div>
           </div>
 
           {/* ACTION */}
           <div className="flex items-center justify-end gap-3">
-            <Button type="submit" disabled={isPendingCreate || isUploadingFoto}>
+            <Button
+              type="submit"
+              disabled={isPendingCreate || isUploadingFoto}
+              className="bg-apple-500 p-4"
+            >
               {isPendingCreate ? (
                 <>
                   <Loader2 className="mr-2 size-4 animate-spin" />

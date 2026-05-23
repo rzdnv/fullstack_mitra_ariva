@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { toast } from "sonner";
@@ -28,10 +27,11 @@ interface ErrorResponse {
   message: string;
 }
 
-// Hook
-const useTambahDokter = () => {
-  const router = useRouter();
+interface UseTambahDokterProps {
+  onSuccess?: () => void; // ← tambahkan
+}
 
+const useTambahDokter = ({ onSuccess }: UseTambahDokterProps = {}) => {
   const queryClient = useQueryClient();
 
   // FOTO STATE
@@ -130,6 +130,20 @@ const useTambahDokter = () => {
     }
   };
 
+  const handleResetForm = async () => {
+    if (fotoUrl) {
+      try {
+        await uploadServices.removeFile({
+          fileUrl: fotoUrl,
+        });
+      } catch {}
+    }
+
+    reset();
+
+    setFotoUrl(null);
+  };
+
   // CREATE DOKTER
   const { mutate: mutateCreateDokter, isPending: isPendingCreate } =
     useMutation({
@@ -151,8 +165,7 @@ const useTambahDokter = () => {
         reset();
 
         setFotoUrl(null);
-
-        router.push("/admin/dokter");
+        onSuccess?.();
       },
 
       onError: (error: AxiosError<ErrorResponse>) => {
@@ -189,6 +202,7 @@ const useTambahDokter = () => {
     isDeletingFoto,
     handleUploadFoto,
     handleRemoveFoto,
+    handleResetForm,
   };
 };
 

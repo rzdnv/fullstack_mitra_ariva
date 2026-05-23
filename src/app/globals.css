@@ -85,6 +85,18 @@
   --color-seance-800: #831c91;
   --color-seance-900: #6a1c73;
   --color-seance-950: #46054d;
+
+  --color-apple-50: #f2fde8;
+  --color-apple-100: #e2fbcc;
+  --color-apple-200: #c6f79f;
+  --color-apple-300: #a1ee68;
+  --color-apple-400: #7fe239;
+  --color-apple-500: #60c71b;
+  --color-apple-600: #48a111;
+  --color-apple-700: #387912;
+  --color-apple-800: #2f6014;
+  --color-apple-900: #2a5116;
+  --color-apple-950: #122d06;
 }
 
 @theme inline {
