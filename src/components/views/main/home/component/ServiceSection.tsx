@@ -29,7 +29,6 @@ const ServiceSection = () => {
                   key={layanan.id}
                   foto={`${layanan.foto}`}
                   namaLayanan={layanan.namaLayanan}
-                  deskripsi={layanan.deskripsi}
                 />
               ))}
         </div>
