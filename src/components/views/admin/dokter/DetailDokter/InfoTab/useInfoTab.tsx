@@ -1,17 +1,15 @@
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { useState } from "react";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { AxiosError } from "axios";
-import { toast } from "sonner";
-
-import dokterServices from "@/services/dokter.service";
 import poliServices from "@/services/poli.service";
 import uploadServices from "@/services/upload.service";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+
+import { z } from "zod";
 
 // Schema
-const tambahDokterSchema = z.object({
+const updateDokterSchema = z.object({
   nama: z.string().min(1, "Nama dokter wajib diisi"),
 
   spesialis: z.string().min(1, "Spesialis wajib diisi"),
@@ -21,19 +19,9 @@ const tambahDokterSchema = z.object({
   foto: z.string().min(1, "Foto wajib diupload"),
 });
 
-export type TambahDokterValues = z.infer<typeof tambahDokterSchema>;
+export type UpdateDokterValues = z.infer<typeof updateDokterSchema>;
 
-interface ErrorResponse {
-  message: string;
-}
-
-interface UseTambahDokterProps {
-  onSuccess?: () => void;
-}
-
-const useTambahDokter = ({ onSuccess }: UseTambahDokterProps = {}) => {
-  const queryClient = useQueryClient();
-
+const useInfoTab = () => {
   // FOTO STATE
   const [fotoUrl, setFotoUrl] = useState<string | null>(null);
 
@@ -46,10 +34,11 @@ const useTambahDokter = ({ onSuccess }: UseTambahDokterProps = {}) => {
     control,
     handleSubmit,
     setValue,
-    formState: { errors },
     reset,
-  } = useForm<TambahDokterValues>({
-    resolver: zodResolver(tambahDokterSchema),
+    watch,
+    formState: { errors },
+  } = useForm<UpdateDokterValues>({
+    resolver: zodResolver(updateDokterSchema),
 
     defaultValues: {
       nama: "",
@@ -130,80 +119,25 @@ const useTambahDokter = ({ onSuccess }: UseTambahDokterProps = {}) => {
     }
   };
 
-  const handleResetForm = async () => {
-    if (fotoUrl) {
-      try {
-        await uploadServices.removeFile({
-          fileUrl: fotoUrl,
-        });
-      } catch {}
-    }
-
-    reset();
-
-    setFotoUrl(null);
-  };
-
-  // CREATE DOKTER
-  const { mutate: mutateCreateDokter, isPending: isPendingCreate } =
-    useMutation({
-      mutationFn: dokterServices.create,
-
-      onSuccess: () => {
-        toast.success("Dokter berhasil ditambahkan", {
-          position: "top-right",
-        });
-
-        queryClient.invalidateQueries({
-          queryKey: ["dokter"],
-        });
-
-        queryClient.invalidateQueries({
-          queryKey: ["dashboard"],
-        });
-
-        reset();
-
-        setFotoUrl(null);
-        onSuccess?.();
-      },
-
-      onError: (error: AxiosError<ErrorResponse>) => {
-        const message =
-          error.response?.data?.message ?? "Gagal menambahkan dokter";
-
-        toast.error(message, {
-          position: "top-right",
-        });
-      },
-    });
-
-  // SUBMIT
-  const onSubmit = (values: TambahDokterValues) => {
-    mutateCreateDokter(values);
-  };
-
   return {
-    control,
-    handleSubmit,
-    errors,
-
-    // submit
-    onSubmit,
-    isPendingCreate,
-
-    // poli
+    // Poli
     dataPoli,
     isLoadingPoli,
 
-    // foto
+    // form
+    control,
+    handleSubmit,
+    errors,
+    watch,
+    reset,
+
+    // image
     fotoUrl,
     isUploadingFoto,
     isDeletingFoto,
     handleUploadFoto,
     handleRemoveFoto,
-    handleResetForm,
   };
 };
 
-export default useTambahDokter;
+export default useInfoTab;

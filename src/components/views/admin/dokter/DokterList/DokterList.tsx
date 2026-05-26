@@ -239,7 +239,7 @@ export default function DokterList() {
                             <AlertDialogAction
                               onClick={() => handleDeleteDokter(dokter.id)}
                               disabled={isPendingDeleteDokter}
-                              className="bg-red-500 hover:bg-red-600"
+                              className="bg-cerise-red-500 hover:bg-cerise-red-600"
                             >
                               {isPendingDeleteDokter ? (
                                 <Loader2 className="h-4 w-4 animate-spin" />
