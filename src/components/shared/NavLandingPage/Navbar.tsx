@@ -49,10 +49,10 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 z-50 w-full px-4 pt-5">
+    <nav className="fixed top-0 z-50 w-full px-6 pt-5">
       <div
         className={cn(
-          "container mx-auto flex h-20 items-center justify-between rounded-full border px-8 transition-all duration-300",
+          "container mx-auto flex h-20 items-center justify-between rounded-full border px-4 transition-all duration-300",
           scrolled
             ? "border-gray-200 bg-white shadow-xl"
             : "border-white/20 bg-white/80 backdrop-blur-md",
@@ -107,25 +107,25 @@ const Navbar = () => {
             {status === "loading" ? (
               <div className="h-11 w-32 animate-pulse rounded-full bg-gray-200" />
             ) : session ? (
-              <DropdownMenu>
+              <DropdownMenu modal={false}>
                 <DropdownMenuTrigger asChild>
-                  <button className="flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-2 shadow-sm transition hover:shadow-md">
+                  <button className="flex items-center gap-2 rounded-full border border-gray-200 bg-white px-2 py-2 shadow-sm transition hover:shadow-md">
                     <div className="bg-havelock-blue-500 flex h-9 w-9 items-center justify-center rounded-full font-bold text-white">
                       {session.user?.username?.charAt(0).toUpperCase() ?? "U"}
                     </div>
 
-                    <div className="text-left">
+                    {/* <div className="text-left">
                       <p className="text-sm font-semibold text-gray-800">
                         {session.user?.username}
                       </p>
                       <p className="text-xs text-gray-500">
                         {session.user?.role}
                       </p>
-                    </div>
+                    </div> */}
                   </button>
                 </DropdownMenuTrigger>
 
-                <DropdownMenuContent align="end" className="w-52">
+                <DropdownMenuContent align="end" className="w-50">
                   <DropdownMenuLabel>
                     <div className="flex flex-col">
                       <span className="font-semibold">

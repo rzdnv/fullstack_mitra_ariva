@@ -1,4 +1,3 @@
-// src/app/admin/dokter/page.tsx
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import DetailDokter from "@/components/views/admin/dokter/DetailDokter/DetailDokter";

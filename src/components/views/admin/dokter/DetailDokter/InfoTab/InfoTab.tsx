@@ -61,17 +61,16 @@ const InfoTab = ({
     handleRemoveFoto,
   } = useInfoTab();
 
-  // isi form dari data dokter
   useEffect(() => {
-    if (dataDokter) {
+    if (dataDokter && dataPoli) {
       reset({
         nama: dataDokter.nama,
         spesialis: dataDokter.spesialis,
         poliId: dataDokter.poliId,
-        foto: dataDokter.foto || "",
+        foto: dataDokter.foto,
       });
     }
-  }, [dataDokter, reset]);
+  }, [dataDokter, dataPoli, reset]);
 
   const foto = watch("foto");
 
@@ -114,7 +113,7 @@ const InfoTab = ({
       {/* FOTO */}
       <Card>
         <CardHeader>
-          <CardTitle>Foto Dokter</CardTitle>
+          <CardTitle className="font-DMSerif text-2xl">Foto Dokter</CardTitle>
 
           <CardDescription>Perbarui foto profil dokter</CardDescription>
         </CardHeader>
@@ -148,7 +147,9 @@ const InfoTab = ({
       {/* INFORMASI */}
       <Card>
         <CardHeader>
-          <CardTitle>Informasi Dokter</CardTitle>
+          <CardTitle className="font-DMSerif text-2xl">
+            Informasi Dokter
+          </CardTitle>
 
           <CardDescription>Perbarui informasi dokter</CardDescription>
         </CardHeader>
@@ -176,7 +177,7 @@ const InfoTab = ({
             control={control}
             render={({ field }) => (
               <Select
-                value={String(field.value)}
+                value={field.value ? String(field.value) : undefined}
                 onValueChange={(value) => field.onChange(Number(value))}
                 disabled={isLoadingPoli}
               >
@@ -203,7 +204,7 @@ const InfoTab = ({
           <Button
             type="submit"
             disabled={isPendingMutateUpdateDokter}
-            className="w-full"
+            className="bg-apple-500 w-full p-4"
           >
             {isPendingMutateUpdateDokter ? "Menyimpan..." : "Simpan Perubahan"}
           </Button>

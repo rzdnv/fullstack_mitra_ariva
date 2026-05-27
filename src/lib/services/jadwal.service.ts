@@ -41,11 +41,7 @@ export async function getJadwalPaginated({
       skip: (page - 1) * limit,
       take: limit,
       include: {
-        dokter: {
-          include: {
-            poli: true,
-          },
-        },
+        dokter: true,
       },
       orderBy: { hari: "asc" },
     }),
