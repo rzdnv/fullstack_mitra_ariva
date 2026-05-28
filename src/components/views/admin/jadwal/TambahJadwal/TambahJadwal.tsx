@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import useTambahJadwal from "./useTambahJadwal";
+import { IDokter } from "@/types/dokter";
 
 const HARI_OPTIONS = [
   { label: "Senin", value: "SENIN" },
@@ -34,15 +35,20 @@ const HARI_OPTIONS = [
 interface Props {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  dokterId: number;
 }
 
-export default function TambahJadwal({ open, onOpenChange, dokterId }: Props) {
-  const { control, handleSubmit, errors, onSubmit, isPendingCreate } =
-    useTambahJadwal({
-      onSuccess: () => onOpenChange(false),
-      dokterId,
-    });
+export default function TambahJadwal({ open, onOpenChange }: Props) {
+  const {
+    control,
+    handleSubmit,
+    errors,
+    onSubmit,
+    isPendingCreate,
+    dataDokters,
+    isLoadingDokters,
+  } = useTambahJadwal({
+    onSuccess: () => onOpenChange(false),
+  });
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -55,6 +61,45 @@ export default function TambahJadwal({ open, onOpenChange, dokterId }: Props) {
         </DialogHeader>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          {/* Dokter */}
+          <Field data-invalid={!!errors.dokterId}>
+            <FieldLabel>Dokter</FieldLabel>
+
+            <Controller
+              name="dokterId"
+              control={control}
+              render={({ field }) => (
+                <Select
+                  value={field.value ? String(field.value) : undefined}
+                  onValueChange={(value) => field.onChange(Number(value))}
+                  disabled={isPendingCreate}
+                >
+                  <SelectTrigger aria-invalid={!!errors.dokterId}>
+                    <SelectValue
+                      placeholder={
+                        isLoadingDokters ? "Memuat dokter..." : "Pilih dokter"
+                      }
+                    />
+                  </SelectTrigger>
+
+                  <SelectContent>
+                    {dataDokters?.map((dokter: IDokter) => (
+                      <SelectItem key={dokter.id} value={dokter.id.toString()}>
+                        {dokter.nama}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              )}
+            />
+
+            {errors.dokterId && (
+              <FieldDescription className="text-destructive text-xs">
+                {errors.dokterId.message}
+              </FieldDescription>
+            )}
+          </Field>
+
           {/* HARI */}
           <Field data-invalid={!!errors.hari}>
             <FieldLabel>Hari</FieldLabel>

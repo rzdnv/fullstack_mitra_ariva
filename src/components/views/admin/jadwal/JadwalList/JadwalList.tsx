@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import {
   Plus,
   Pencil,
@@ -43,9 +42,11 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import useJadwalList from "./useJadwalList";
 import { IJadwal } from "@/types/jadwal";
+import { useState } from "react";
+import TambahJadwal from "../TambahJadwal/TambahJadwal";
 
 export default function JadwalList() {
-  const router = useRouter();
+  const [openTambah, setOpenTambah] = useState(false);
   const {
     dataJadwals,
     meta,
@@ -73,7 +74,10 @@ export default function JadwalList() {
             Total {meta?.total ?? 0} Jadwal Dokter
           </p>
         </div>
-        <Button onClick={() => router.push("/admin/jadwal/tambah")}>
+        <Button
+          onClick={() => setOpenTambah(true)}
+          className="bg-havelock-blue-600 p-4"
+        >
           <Plus className="mr-2 h-4 w-4" />
           Tambah Jadwal
         </Button>
@@ -283,6 +287,7 @@ export default function JadwalList() {
             </div>
           </div>
         )}
+        <TambahJadwal open={openTambah} onOpenChange={setOpenTambah} />
       </div>
     </div>
   );

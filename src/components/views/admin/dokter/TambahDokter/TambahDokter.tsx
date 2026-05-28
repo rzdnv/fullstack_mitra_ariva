@@ -209,7 +209,7 @@ export default function TambahDokter({ open, onOpenChange }: Props) {
                   Menyimpan...
                 </>
               ) : (
-                "Simpan Dokter"
+                "Tambah Dokter"
               )}
             </Button>
           </div>

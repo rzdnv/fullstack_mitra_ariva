@@ -52,7 +52,6 @@ interface PropTypes {
 
 export default function JadwalTab({ dataDokter }: PropTypes) {
   const [openTambah, setOpenTambah] = useState(false);
-  // const { data: dataDokter, isLoading } = useAllDokter();
 
   const {
     dataJadwals,
