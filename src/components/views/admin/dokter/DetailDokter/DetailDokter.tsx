@@ -38,7 +38,7 @@ export default function DetailDokter() {
           />
         </TabsContent>
         <TabsContent value="jadwal" className="my-2">
-          <JadwalTab />
+          <JadwalTab dataDokter={dataDokter} />
         </TabsContent>
       </Tabs>
     </div>

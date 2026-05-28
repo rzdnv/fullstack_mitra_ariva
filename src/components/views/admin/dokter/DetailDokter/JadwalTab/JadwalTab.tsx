@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import {
   Plus,
   Pencil,
@@ -43,9 +42,18 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { IJadwal } from "@/types/jadwal";
 import useJadwalTab from "./useJadwalTab";
+import { useState } from "react";
+import TambahJadwal from "./TambahJadwal/TambahJadwal";
+import { IDokter } from "@/types/dokter";
 
-export default function JadwalTab() {
-  const router = useRouter();
+interface PropTypes {
+  dataDokter: IDokter;
+}
+
+export default function JadwalTab({ dataDokter }: PropTypes) {
+  const [openTambah, setOpenTambah] = useState(false);
+  // const { data: dataDokter, isLoading } = useAllDokter();
+
   const {
     dataJadwals,
     meta,
@@ -74,7 +82,7 @@ export default function JadwalTab() {
           </p>
         </div>
         <Button
-          onClick={() => router.push("/admin/jadwal/tambah")}
+          onClick={() => setOpenTambah(true)}
           className="bg-havelock-blue-600 p-4"
         >
           <Plus className="mr-2 h-4 w-4" />
@@ -286,6 +294,12 @@ export default function JadwalTab() {
             </div>
           </div>
         )}
+
+        <TambahJadwal
+          open={openTambah}
+          onOpenChange={setOpenTambah}
+          dokterId={dataDokter?.id}
+        />
       </div>
     </div>
   );

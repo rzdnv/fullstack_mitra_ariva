@@ -18,6 +18,20 @@ export interface IJadwal {
   dokter: IDokter;
 }
 
+export interface ICreateJadwal {
+  dokterId: number;
+  hari: HariType;
+  jamMulai: string;
+  jamSelesai: string;
+}
+
+export interface IUpdateJadwal {
+  dokterId?: number;
+  hari?: HariType;
+  jamMulai?: string;
+  jamSelesai?: string;
+}
+
 interface IJadwalParams {
   page?: number;
   limit?: number;
@@ -26,10 +40,3 @@ interface IJadwalParams {
 }
 
 export { IJadwal, IJadwalParams };
-
-// export interface CreateJadwalPayload {
-//   dokterId: number;
-//   hari: HariType;
-//   jamMulai: string;
-//   jamSelesai: string;
-// }

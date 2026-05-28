@@ -1,6 +1,6 @@
 import instance from "@/lib/axios/instance";
 import endpoint from "./endpoint.constant";
-import { IJadwal } from "@/types/jadwal";
+import { ICreateJadwal, IJadwal, IUpdateJadwal } from "@/types/jadwal";
 
 export interface JadwalPaginatedResponse {
   data: IJadwal[];
@@ -25,9 +25,9 @@ const jadwalServices = {
 
   getById: (id: number) => instance.get(`${endpoint.JADWAL}/${id}`),
 
-  create: (payload: IJadwal) => instance.post(endpoint.JADWAL, payload),
+  create: (payload: ICreateJadwal) => instance.post(endpoint.JADWAL, payload),
 
-  update: (id: number, payload: Partial<IJadwal>) =>
+  update: (id: number, payload: Partial<IUpdateJadwal>) =>
     instance.put(`${endpoint.JADWAL}/${id}`, payload),
 
   delete: (id: number) => instance.delete(`${endpoint.JADWAL}/${id}`),
