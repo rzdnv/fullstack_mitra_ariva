@@ -70,6 +70,10 @@ export default function JadwalList() {
       <div className="mb-6 flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-slate-800">Kelola Jadwal</h2>
+          <p className="mt-1 max-w-lg text-sm text-gray-500">
+            Menampilkan daftar lengkap jadwal dokter beserta akses untuk
+            menambah, mengubah, dan menghapus data.
+          </p>
           <p className="mt-1 text-sm text-gray-500">
             Total {meta?.total ?? 0} Jadwal Dokter
           </p>

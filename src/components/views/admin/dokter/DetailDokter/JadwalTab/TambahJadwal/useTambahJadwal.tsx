@@ -32,12 +32,12 @@ interface ErrorResponse {
   message: string;
 }
 
-interface UseTambahJadwalProps {
+interface PropTypes {
   onSuccess?: () => void;
   dokterId: number;
 }
 
-const useTambahJadwal = ({ onSuccess, dokterId }: UseTambahJadwalProps) => {
+const useTambahJadwal = ({ onSuccess, dokterId }: PropTypes) => {
   const queryClient = useQueryClient();
 
   const {

@@ -79,7 +79,7 @@ const InfoTab = ({
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle>Foto Dokter</CardTitle>
+            <CardTitle className="font-DMSerif text-2xl">Foto Dokter</CardTitle>
             <CardDescription>Memuat data dokter...</CardDescription>
           </CardHeader>
 
@@ -90,7 +90,9 @@ const InfoTab = ({
 
         <Card>
           <CardHeader>
-            <CardTitle>Informasi Dokter</CardTitle>
+            <CardTitle className="font-DMSerif text-2xl">
+              Informasi Dokter
+            </CardTitle>
             <CardDescription>Memuat data dokter...</CardDescription>
           </CardHeader>
 
@@ -177,7 +179,7 @@ const InfoTab = ({
             control={control}
             render={({ field }) => (
               <Select
-                value={field.value ? String(field.value) : undefined}
+                value={field.value ? String(dataDokter.poliId) : undefined}
                 onValueChange={(value) => field.onChange(Number(value))}
                 disabled={isLoadingPoli}
               >
