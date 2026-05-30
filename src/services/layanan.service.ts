@@ -1,6 +1,6 @@
 import instance from "@/lib/axios/instance";
 import endpoint from "./endpoint.constant";
-import { ILayanan } from "@/types/layanan";
+import { ICreateLayanan, ILayanan, IUpdateLayanan } from "@/types/layanan";
 
 export interface LayananPaginatedResponse {
   data: ILayanan[];
@@ -22,9 +22,9 @@ const layananServices = {
 
   getById: (id: number) => instance.get(`${endpoint.LAYANAN}/${id}`),
 
-  create: (payload: ILayanan) => instance.post(endpoint.LAYANAN, payload),
+  create: (payload: ICreateLayanan) => instance.post(endpoint.LAYANAN, payload),
 
-  update: (id: number, payload: Partial<ILayanan>) =>
+  update: (id: number, payload: Partial<IUpdateLayanan>) =>
     instance.put(`${endpoint.LAYANAN}/${id}`, payload),
 
   delete: (id: number) => instance.delete(`${endpoint.LAYANAN}/${id}`),

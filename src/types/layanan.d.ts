@@ -6,16 +6,16 @@ interface ILayanan {
   _count?: { detail: number };
 }
 
-export { ILayanan, ILayananDetail };
+interface ICreateLayanan {
+  namaLayanan: string;
+  deskripsi: string;
+  foto: string;
+}
 
-// export interface CreateLayananPayload {
-//   namaLayanan: string;
-//   deskripsi?: string | null;
-// }
+interface IUpdateLayanan {
+  namaLayanan: string;
+  deskripsi: string;
+  foto: string;
+}
 
-// export interface CreateLayananDetailPayload {
-//   layananId: number;
-//   namaPaket: string;
-//   harga: number;
-//   deskripsi?: string | null;
-// }
+export { ILayanan, ICreateLayanan, IUpdateLayanan };

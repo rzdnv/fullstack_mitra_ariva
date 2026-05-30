@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import {
   Plus,
   Pencil,
@@ -43,9 +42,12 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 import useLayananList from "./useLayananList";
 import { ILayanan } from "@/types/layanan";
+import TambahLayanan from "../TambahLayanan/TambahLayanan";
+import { useState } from "react";
 
 export default function LayananList() {
-  const router = useRouter();
+  const [openTambah, setOpenTambah] = useState(false);
+
   const {
     dataLayanans,
     meta,
@@ -69,11 +71,18 @@ export default function LayananList() {
       <div className="mb-6 flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-slate-800">Kelola Layanan</h2>
+          <p className="mt-1 max-w-lg text-sm text-gray-500">
+            Menampilkan daftar lengkap Layanan beserta akses untuk menambah,
+            mengubah, dan menghapus data.
+          </p>
           <p className="mt-1 text-sm text-gray-500">
             Total {meta?.total ?? 0} Layanan
           </p>
         </div>
-        <Button onClick={() => router.push("/admin/layanan/tambah")}>
+        <Button
+          onClick={() => setOpenTambah(true)}
+          className="bg-havelock-blue-600 p-4"
+        >
           <Plus className="mr-2 h-4 w-4" />
           Tambah Layanan
         </Button>
@@ -285,6 +294,7 @@ export default function LayananList() {
             </div>
           </div>
         )}
+        <TambahLayanan open={openTambah} onOpenChange={setOpenTambah} />
       </div>
     </div>
   );
