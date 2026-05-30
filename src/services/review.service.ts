@@ -1,6 +1,6 @@
 import instance from "@/lib/axios/instance";
 import endpoint from "./endpoint.constant";
-import { IReview } from "@/types/review";
+import { ICreateReview, IReview, IUpdateReview } from "@/types/review";
 
 export interface ReviewPaginatedResponse {
   data: IReview[];
@@ -22,9 +22,9 @@ const reviewServices = {
 
   getById: (id: number) => instance.get(`${endpoint.REVIEW}/${id}`),
 
-  create: (payload: IReview) => instance.post(endpoint.REVIEW, payload),
+  create: (payload: ICreateReview) => instance.post(endpoint.REVIEW, payload),
 
-  update: (id: number, payload: Partial<IReview>) =>
+  update: (id: number, payload: Partial<IUpdateReview>) =>
     instance.put(`${endpoint.REVIEW}/${id}`, payload),
 
   delete: (id: number) => instance.delete(`${endpoint.REVIEW}/${id}`),

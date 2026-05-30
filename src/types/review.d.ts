@@ -4,16 +4,24 @@ interface IReview {
   tanggal: string;
   review: string;
   rating: number;
-  gender: "pria" | "wanita";
+  gender: string;
   createdAt: string;
 }
 
-export { IReview };
+interface ICreateReview {
+  nama: string;
+  tanggal: string;
+  review: string;
+  rating: number;
+  gender: string;
+}
 
-// export interface CreateReviewPayload {
-//   nama: string;
-//   tanggal: string;
-//   review: string;
-//   rating: number;
-//   gender: "pria" | "wanita";
-// }
+interface IUpdateReview {
+  nama?: string;
+  tanggal?: string;
+  review?: string;
+  rating?: number;
+  gender?: string;
+}
+
+export { IReview, IUpdateReview, ICreateReview };

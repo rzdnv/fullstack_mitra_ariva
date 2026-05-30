@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import {
   Plus,
   Pencil,
@@ -43,9 +42,12 @@ import { Skeleton } from "@/components/ui/skeleton";
 import useReviewList from "./useReviewList";
 import { IReview } from "@/types/review";
 import { formatTanggal } from "@/components/shared/formatted/formated";
+import { useState } from "react";
+import TambahReview from "../TambahReview/TambahReview";
 
 export default function ReviewList() {
-  const router = useRouter();
+  const [openTambah, setOpenTambah] = useState(false);
+
   const {
     dataReviews,
     meta,
@@ -69,11 +71,18 @@ export default function ReviewList() {
       <div className="mb-6 flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-slate-800">Kelola Review</h2>
+          <p className="mt-1 max-w-lg text-sm text-gray-500">
+            Menampilkan daftar lengkap Review beserta akses untuk menambah,
+            mengubah, dan menghapus data.
+          </p>
           <p className="mt-1 text-sm text-gray-500">
             Total {meta?.total ?? 0} Review
           </p>
         </div>
-        <Button onClick={() => router.push("/admin/review/tambah")}>
+        <Button
+          onClick={() => setOpenTambah(true)}
+          className="bg-havelock-blue-600 p-4"
+        >
           <Plus className="mr-2 h-4 w-4" />
           Tambah Review
         </Button>
@@ -174,8 +183,13 @@ export default function ReviewList() {
                   <TableCell className="font-medium text-slate-800">
                     {review.nama}
                   </TableCell>
-                  <TableCell className="font-medium text-slate-800">
-                    {review.review}
+                  <TableCell className="max-w-md">
+                    <p
+                      className="line-clamp-2 text-slate-800"
+                      title={review.review}
+                    >
+                      {review.review}
+                    </p>
                   </TableCell>
                   <TableCell className="font-medium text-slate-800">
                     {formatTanggal(review.tanggal)}
@@ -284,6 +298,7 @@ export default function ReviewList() {
             </div>
           </div>
         )}
+        <TambahReview open={openTambah} onOpenChange={setOpenTambah} />
       </div>
     </div>
   );
