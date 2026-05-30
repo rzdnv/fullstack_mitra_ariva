@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 import {
   Plus,
   Pencil,
@@ -43,9 +41,15 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import usePoliList from "./usePoliList";
 import { IPoli } from "@/types/poli";
+import { useState } from "react";
+import TambahPoli from "../TambahPoli/TambahPoli";
+import DetailPoli from "../DetailPoli/DetailPoli";
 
 export default function PoliList() {
-  const router = useRouter();
+  const [openTambah, setOpenTambah] = useState(false);
+  const [openDetail, setOpenDetail] = useState(false);
+  const [selectedPoli, setSelectedPoli] = useState<number>(0);
+
   const {
     dataPolis,
     meta,
@@ -69,11 +73,18 @@ export default function PoliList() {
       <div className="mb-6 flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-slate-800">Kelola Poli</h2>
+          <p className="mt-1 max-w-lg text-sm text-gray-500">
+            Menampilkan daftar lengkap poli beserta akses untuk menambah,
+            mengubah, dan menghapus data.
+          </p>
           <p className="mt-1 text-sm text-gray-500">
             Total {meta?.total ?? 0} Poli
           </p>
         </div>
-        <Button onClick={() => router.push("/admin/poli/tambah")}>
+        <Button
+          onClick={() => setOpenTambah(true)}
+          className="bg-havelock-blue-600 p-4"
+        >
           <Plus className="mr-2 h-4 w-4" />
           Tambah Poli
         </Button>
@@ -179,10 +190,15 @@ export default function PoliList() {
                   </TableCell>
                   <TableCell>
                     <div className="flex items-center justify-center gap-2">
-                      <Button size="sm" variant="outline" asChild>
-                        <Link href={`/admin/poli/${poli.id}`}>
-                          <Pencil className="h-4 w-4" />
-                        </Link>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={() => {
+                          setSelectedPoli(poli.id);
+                          setOpenDetail(true);
+                        }}
+                      >
+                        <Pencil className="h-4 w-4" />
                       </Button>
                       <AlertDialog
                         open={selectedId === poli.id}
@@ -277,6 +293,13 @@ export default function PoliList() {
             </div>
           </div>
         )}
+
+        <TambahPoli open={openTambah} onOpenChange={setOpenTambah} />
+        <DetailPoli
+          open={openDetail}
+          onOpenChange={setOpenDetail}
+          poliId={selectedPoli}
+        />
       </div>
     </div>
   );

@@ -7,7 +7,15 @@ interface IPoli {
   _count?: { dokter: number };
 }
 
-export { IPoli };
+interface ICreatePoli {
+  namaPoli: string;
+}
+
+interface IUpdatePoli {
+  namaPoli: string;
+}
+
+export { IPoli, ICreatePoli, IUpdatePoli };
 
 // interface CreatePoliPayload {
 //   namaPoli: string;
