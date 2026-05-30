@@ -1,8 +1,9 @@
 import jadwalServices from "@/services/jadwal.service";
 import { HariType, IUpdateJadwal } from "@/types/jadwal";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { useParams } from "next/navigation";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { AxiosError } from "axios";
+import { useParams, useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import z from "zod";
@@ -28,9 +29,15 @@ const updateJadwalSchema = z.object({
 
 export type UpdateJadwalValues = z.infer<typeof updateJadwalSchema>;
 
+interface ErrorResponse {
+  message: string;
+}
+
 const useDetailJadwal = () => {
   const params = useParams();
   const id = Number(params.id);
+  const queryClient = useQueryClient();
+  const router = useRouter();
 
   const {
     control,
@@ -68,12 +75,18 @@ const useDetailJadwal = () => {
     isSuccess: isSuccessMutateUpdateJadwal,
   } = useMutation({
     mutationFn: (payload: IUpdateJadwal) => updateJadwal(payload),
-    onError: (error) => {
-      toast.error(error.message);
+    onError: (error: AxiosError<ErrorResponse>) => {
+      const message =
+        error.response?.data?.message ?? "Gagal mengupdate jadwal";
+      toast.error(message, { position: "top-right" });
     },
     onSuccess: () => {
       // console.log("success PAYLOAD :", payload);
-      toast.success("Success Update Jadwal");
+      toast.success("Success Update Jadwal", { position: "top-right" });
+      queryClient.invalidateQueries({ queryKey: ["jadwal"] });
+      queryClient.invalidateQueries({ queryKey: ["dashboard"] });
+
+      router.replace("/admin/jadwal");
     },
   });
 

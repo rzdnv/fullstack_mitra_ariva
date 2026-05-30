@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input";
 import { useEffect } from "react";
 import useDetailPoli from "./useDetailPoli";
 import { Loader2 } from "lucide-react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface PropsTypes {
   open: boolean;
@@ -31,7 +32,7 @@ const DetailPoli = ({ open, onOpenChange, poliId }: PropsTypes) => {
     isLoadingPoli,
     handleUpdatePoli,
     isPendingMutateUpdatePoli,
-  } = useDetailPoli({ id: poliId });
+  } = useDetailPoli({ id: poliId, onSuccess: () => onOpenChange(false) });
 
   useEffect(() => {
     if (dataPoli) {
@@ -55,18 +56,22 @@ const DetailPoli = ({ open, onOpenChange, poliId }: PropsTypes) => {
           <Field data-invalid={!!errors.namaPoli}>
             <FieldLabel htmlFor="namaPoli">Nama Poli</FieldLabel>
 
-            <Controller
-              name="namaPoli"
-              control={control}
-              render={({ field }) => (
-                <Input
-                  {...field}
-                  id="namaPoli"
-                  disabled={isPendingMutateUpdatePoli}
-                  aria-invalid={!!errors.namaPoli}
-                />
-              )}
-            />
+            {isLoadingPoli ? (
+              <Skeleton className="h-10 w-full" />
+            ) : (
+              <Controller
+                name="namaPoli"
+                control={control}
+                render={({ field }) => (
+                  <Input
+                    {...field}
+                    id="namaPoli"
+                    disabled={isLoadingPoli || isPendingMutateUpdatePoli}
+                    aria-invalid={!!errors.namaPoli}
+                  />
+                )}
+              />
+            )}
 
             {errors.namaPoli && (
               <FieldDescription className="text-destructive text-xs">
@@ -88,7 +93,7 @@ const DetailPoli = ({ open, onOpenChange, poliId }: PropsTypes) => {
 
             <Button
               type="submit"
-              disabled={isPendingMutateUpdatePoli}
+              disabled={isLoadingPoli || isPendingMutateUpdatePoli}
               className="bg-apple-500 p-4"
             >
               {isPendingMutateUpdatePoli ? (

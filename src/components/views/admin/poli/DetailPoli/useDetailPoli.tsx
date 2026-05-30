@@ -1,7 +1,8 @@
 import poliServices from "@/services/poli.service";
 import { IUpdatePoli } from "@/types/poli";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { AxiosError } from "axios";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import z from "zod";
@@ -14,9 +15,16 @@ export type UpdatePoliValues = z.infer<typeof updatePoliSchema>;
 
 interface PropsTypes {
   id: number;
+  onSuccess?: () => void;
 }
 
-const useDetailPoli = ({ id }: PropsTypes) => {
+interface ErrorResponse {
+  message: string;
+}
+
+const useDetailPoli = ({ id, onSuccess }: PropsTypes) => {
+  const queryClient = useQueryClient();
+
   const {
     control,
     handleSubmit,
@@ -51,12 +59,16 @@ const useDetailPoli = ({ id }: PropsTypes) => {
     isSuccess: isSuccessMutateUpdatePoli,
   } = useMutation({
     mutationFn: (payload: IUpdatePoli) => updatePoli(payload),
-    onError: (error) => {
-      toast.error(error.message);
+    onError: (error: AxiosError<ErrorResponse>) => {
+      const message = error.response?.data?.message ?? "Gagal mengupdate poli";
+      toast.error(message, { position: "top-right" });
     },
     onSuccess: () => {
       // console.log("success PAYLOAD :", payload);
-      toast.success("Success Update Poli");
+      toast.success("Success Update Poli", { position: "top-right" });
+      queryClient.invalidateQueries({ queryKey: ["poli"] });
+      queryClient.invalidateQueries({ queryKey: ["dashboard"] });
+      onSuccess?.();
     },
   });
 

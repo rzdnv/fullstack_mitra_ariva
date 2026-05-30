@@ -1,12 +1,19 @@
 import dokterServices from "@/services/dokter.service";
 import { IUpdateDokter } from "@/types/dokter";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { useParams } from "next/navigation";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { AxiosError } from "axios";
+import { useParams, useRouter } from "next/navigation";
 import { toast } from "sonner";
+
+interface ErrorResponse {
+  message: string;
+}
 
 const useDetailDokter = () => {
   const params = useParams();
   const id = Number(params.id);
+  const queryClient = useQueryClient();
+  const router = useRouter();
 
   const getDokter = async () => {
     const { data } = await dokterServices.getById(id);
@@ -32,12 +39,16 @@ const useDetailDokter = () => {
     isSuccess: isSuccessMutateUpdateDokter,
   } = useMutation({
     mutationFn: (payload: IUpdateDokter) => updateDokter(payload),
-    onError: (error) => {
-      toast.error(error.message);
+    onError: (error: AxiosError<ErrorResponse>) => {
+      const message = error.response?.data?.message ?? "Gagal mengupdate poli";
+      toast.error(message, { position: "top-right" });
     },
     onSuccess: () => {
       // console.log("success PAYLOAD :", payload);
-      toast.success("Success Update Dokter");
+      toast.success("Success Update Poli", { position: "top-right" });
+      queryClient.invalidateQueries({ queryKey: ["poli"] });
+      queryClient.invalidateQueries({ queryKey: ["dashboard"] });
+      router.replace("/admin/jadwal");
     },
   });
 
