@@ -114,29 +114,23 @@ export default function TambahReview({ open, onOpenChange }: Props) {
 
             {/* RATING */}
             <Field data-invalid={!!errors.rating}>
-              <FieldLabel>Rating</FieldLabel>
+              <FieldLabel htmlFor="rating">Rating</FieldLabel>
 
               <Controller
                 name="rating"
                 control={control}
                 render={({ field }) => (
-                  <Select
-                    value={field.value?.toString()}
-                    onValueChange={(value) => field.onChange(Number(value))}
+                  <Input
+                    {...field}
+                    id="rating"
+                    type="number"
+                    min={1}
+                    max={5}
+                    value={field.value}
+                    onChange={(e) => field.onChange(Number(e.target.value))}
                     disabled={isPendingCreate}
-                  >
-                    <SelectTrigger aria-invalid={!!errors.rating}>
-                      <SelectValue placeholder="Pilih rating" />
-                    </SelectTrigger>
-
-                    <SelectContent>
-                      <SelectItem value="1">⭐ 1</SelectItem>
-                      <SelectItem value="2">⭐⭐ 2</SelectItem>
-                      <SelectItem value="3">⭐⭐⭐ 3</SelectItem>
-                      <SelectItem value="4">⭐⭐⭐⭐ 4</SelectItem>
-                      <SelectItem value="5">⭐⭐⭐⭐⭐ 5</SelectItem>
-                    </SelectContent>
-                  </Select>
+                    aria-invalid={!!errors.rating}
+                  />
                 )}
               />
 
