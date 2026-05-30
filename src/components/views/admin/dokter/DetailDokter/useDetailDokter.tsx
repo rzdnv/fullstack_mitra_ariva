@@ -40,15 +40,16 @@ const useDetailDokter = () => {
   } = useMutation({
     mutationFn: (payload: IUpdateDokter) => updateDokter(payload),
     onError: (error: AxiosError<ErrorResponse>) => {
-      const message = error.response?.data?.message ?? "Gagal mengupdate poli";
+      const message =
+        error.response?.data?.message ?? "Gagal mengupdate dokter";
       toast.error(message, { position: "top-right" });
     },
     onSuccess: () => {
       // console.log("success PAYLOAD :", payload);
-      toast.success("Success Update Poli", { position: "top-right" });
-      queryClient.invalidateQueries({ queryKey: ["poli"] });
+      toast.success("Success Update Dokter", { position: "top-right" });
+      queryClient.invalidateQueries({ queryKey: ["dokter"] });
       queryClient.invalidateQueries({ queryKey: ["dashboard"] });
-      router.replace("/admin/jadwal");
+      router.replace("/admin/dokter");
     },
   });
 
