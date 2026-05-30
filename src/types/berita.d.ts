@@ -1,13 +1,29 @@
 import { IUser } from "./user";
 
-export interface IBerita {
+interface IBerita {
   id: number;
   judul: string;
   isi: string;
-  gambar: string | null;
+  gambar: string;
   tanggal: string;
   userId: number;
   user: IUser;
+}
+
+interface ICreateBerita {
+  judul: string;
+  isi: string;
+  gambar: string;
+  tanggal: string;
+  userId: number;
+}
+
+interface IUpdateBerita {
+  judul?: string;
+  isi?: string;
+  gambar?: string;
+  tanggal?: string;
+  userId?: number;
 }
 
 interface IBeritaParams {
@@ -17,12 +33,4 @@ interface IBeritaParams {
   userId?: number;
 }
 
-export { IBerita, IBeritaParams };
-
-// export interface CreateBeritaPayload {
-//   judul: string;
-//   isi: string;
-//   gambar?: string | null;
-//   tanggal: string;
-//   userId: number;
-// }
+export { IBerita, IBeritaParams, ICreateBerita, IUpdateBerita };

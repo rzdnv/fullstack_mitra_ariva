@@ -1,6 +1,6 @@
 import instance from "@/lib/axios/instance";
 import endpoint from "./endpoint.constant";
-import { IBerita } from "@/types/berita";
+import { IBerita, ICreateBerita, IUpdateBerita } from "@/types/berita";
 
 export interface BeritaPaginatedResponse {
   data: IBerita[];
@@ -25,9 +25,9 @@ const beritaServices = {
 
   getById: (id: number) => instance.get(`${endpoint.BERITA}/${id}`),
 
-  create: (payload: IBerita) => instance.post(endpoint.BERITA, payload),
+  create: (payload: ICreateBerita) => instance.post(endpoint.BERITA, payload),
 
-  update: (id: number, payload: Partial<IBerita>) =>
+  update: (id: number, payload: Partial<IUpdateBerita>) =>
     instance.put(`${endpoint.BERITA}/${id}`, payload),
 
   delete: (id: number) => instance.delete(`${endpoint.BERITA}/${id}`),

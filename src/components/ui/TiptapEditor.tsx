@@ -12,10 +12,6 @@ interface Props {
   onChange: (value: string) => void;
 }
 
-// ---------------------------------------------------------------------------
-// Constants
-// ---------------------------------------------------------------------------
-
 interface ToolbarButton {
   label: string;
   action: () => void;
@@ -31,7 +27,10 @@ const TiptapEditor = ({ value, onChange }: Props) => {
     extensions: [StarterKit],
     content: value,
     immediatelyRender: false,
-    onUpdate: ({ editor }) => onChange(editor.getHTML()),
+
+    onUpdate: ({ editor }) => {
+      onChange(editor.getHTML());
+    },
   });
 
   if (!editor) return null;
@@ -53,6 +52,11 @@ const TiptapEditor = ({ value, onChange }: Props) => {
       isActive: () => editor.isActive("heading", { level: 2 }),
     },
     {
+      label: "H3",
+      action: () => editor.chain().focus().toggleHeading({ level: 3 }).run(),
+      isActive: () => editor.isActive("heading", { level: 3 }),
+    },
+    {
       label: "List",
       action: () => editor.chain().focus().toggleBulletList().run(),
       isActive: () => editor.isActive("bulletList"),
@@ -62,14 +66,16 @@ const TiptapEditor = ({ value, onChange }: Props) => {
   return (
     <div className="rounded-xl border">
       {/* Toolbar */}
-      <div className="flex gap-2 border-b p-3">
+      <div className="flex flex-wrap gap-2 border-b p-3">
         {toolbarButtons.map(({ label, action, isActive }) => (
           <button
             key={label}
             type="button"
             onClick={action}
-            className={`rounded px-3 py-1 text-sm ${
-              isActive() ? "bg-black text-white" : "bg-gray-100"
+            className={`rounded px-3 py-1 text-sm transition-colors ${
+              isActive()
+                ? "bg-black text-white"
+                : "bg-gray-100 hover:bg-gray-200"
             }`}
           >
             {label}
@@ -78,7 +84,10 @@ const TiptapEditor = ({ value, onChange }: Props) => {
       </div>
 
       {/* Editor */}
-      <EditorContent editor={editor} className="min-h-75 p-4" />
+      <EditorContent
+        editor={editor}
+        className="min-h-75 p-4 [&_.ProseMirror]:min-h-62.5 [&_.ProseMirror]:outline-none [&_.ProseMirror_h2]:mb-3 [&_.ProseMirror_h2]:text-2xl [&_.ProseMirror_h2]:font-bold [&_.ProseMirror_h3]:mb-2 [&_.ProseMirror_h3]:text-xl [&_.ProseMirror_h3]:font-semibold [&_.ProseMirror_li]:my-1 [&_.ProseMirror_p]:mb-2 [&_.ProseMirror_ul]:list-disc [&_.ProseMirror_ul]:pl-6"
+      />
     </div>
   );
 };

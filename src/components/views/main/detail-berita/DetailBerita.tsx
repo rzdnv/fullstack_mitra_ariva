@@ -111,9 +111,12 @@ const DetailBerita = () => {
           </div>
 
           {/* Content */}
-          <div className="text-justify text-base leading-8 text-slate-700 lg:text-lg">
-            {detailBerita.isi}
-          </div>
+          <div
+            className="article-content"
+            dangerouslySetInnerHTML={{
+              __html: detailBerita.isi,
+            }}
+          />
         </div>
 
         {/* Right Sidebar */}

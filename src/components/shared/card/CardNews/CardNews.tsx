@@ -4,6 +4,7 @@ import { formatTanggal } from "@/components/shared/formatted/formated";
 import { User } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { truncateHtml } from "../../truncatHtml/truncatHtml";
 
 interface PropTypes {
   _id: number;
@@ -38,7 +39,7 @@ const CardNews = (props: PropTypes) => {
         </h2>
 
         <p className="line-clamp-2 text-justify text-xs text-slate-400 lg:line-clamp-3">
-          {isi}
+          {truncateHtml(isi, 120)}
         </p>
 
         <div className="flex flex-wrap items-center gap-2 text-xs text-slate-400">

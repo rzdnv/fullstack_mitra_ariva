@@ -47,6 +47,7 @@ import { IBerita } from "@/types/berita";
 
 export default function BeritaList() {
   const router = useRouter();
+
   const {
     dataBeritas,
     meta,
@@ -70,11 +71,18 @@ export default function BeritaList() {
       <div className="mb-6 flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-slate-800">Kelola Berita</h2>
+          <p className="mt-1 max-w-lg text-sm text-gray-500">
+            Menampilkan daftar lengkap Berita beserta akses untuk menambah,
+            mengubah, dan menghapus data.
+          </p>
           <p className="mt-1 text-sm text-gray-500">
             Total {meta?.total ?? 0} berita
           </p>
         </div>
-        <Button onClick={() => router.push("/admin/berita/tambah")}>
+        <Button
+          onClick={() => router.push("/admin/berita/tambah")}
+          className="bg-havelock-blue-600 p-4"
+        >
           <Plus className="mr-2 h-4 w-4" />
           Tambah Berita
         </Button>
@@ -135,9 +143,6 @@ export default function BeritaList() {
                     <Skeleton className="h-4 w-6" />
                   </TableCell>
                   <TableCell>
-                    <Skeleton className="h-10 w-10 rounded-full" />
-                  </TableCell>
-                  <TableCell>
                     <Skeleton className="h-4 w-40" />
                   </TableCell>
                   <TableCell>
@@ -174,9 +179,9 @@ export default function BeritaList() {
                     <Image
                       src={`${berita.gambar}`}
                       alt={berita.judul}
-                      width={40}
-                      height={40}
-                      className="h-10 w-20 object-cover"
+                      width={800}
+                      height={800}
+                      className="h-auto w-40 rounded-md object-cover"
                     />
                   </TableCell>
                   <TableCell className="font-medium text-slate-800">
