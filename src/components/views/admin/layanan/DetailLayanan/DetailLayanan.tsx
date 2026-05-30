@@ -110,7 +110,7 @@ const DetailLayanan = () => {
             <div className="my-2 w-full">
               <Image
                 src={foto}
-                alt="Foto dokter"
+                alt="Foto Layanan"
                 width={400}
                 height={400}
                 className="m-auto h-auto w-1/2 rounded-lg object-cover"

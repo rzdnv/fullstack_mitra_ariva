@@ -2,6 +2,7 @@
 
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
+import { useEffect } from "react";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -23,15 +24,30 @@ interface ToolbarButton {
 // ---------------------------------------------------------------------------
 
 const TiptapEditor = ({ value, onChange }: Props) => {
+  // const editor = useEditor({
+  //   extensions: [StarterKit],
+  //   content: value,
+  //   immediatelyRender: false,
+
+  //   onUpdate: ({ editor }) => {
+  //     onChange(editor.getHTML());
+  //   },
+  // });
+
   const editor = useEditor({
     extensions: [StarterKit],
     content: value,
     immediatelyRender: false,
-
     onUpdate: ({ editor }) => {
       onChange(editor.getHTML());
     },
   });
+
+  useEffect(() => {
+    if (editor && value !== editor.getHTML()) {
+      editor.commands.setContent(value || "");
+    }
+  }, [editor, value]);
 
   if (!editor) return null;
 
