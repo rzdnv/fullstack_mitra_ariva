@@ -5,7 +5,13 @@ interface IUser {
   createdAt: string;
 }
 
-export { IUser };
+interface ICreateUser {
+  username: string;
+  password: string;
+  role: "ADMIN" | "EDITOR";
+}
+
+export { IUser, ICreateUser };
 
 // interface CreateUserPayload {
 //   username: string;

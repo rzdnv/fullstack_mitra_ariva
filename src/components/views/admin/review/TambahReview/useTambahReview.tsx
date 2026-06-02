@@ -77,7 +77,7 @@ const useTambahReview = ({ onSuccess }: PropsTypes = {}) => {
 
       onError: (error: AxiosError<ErrorResponse>) => {
         const message =
-          error.response?.data?.message ?? "Gagal menambahkan dokter";
+          error.response?.data?.message ?? "Gagal menambahkan review";
 
         toast.error(message, {
           position: "top-right",

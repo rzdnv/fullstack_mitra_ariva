@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import {
   Plus,
   Pencil,
@@ -42,9 +41,12 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 import useUserList from "./useUserList";
 import { IUser } from "@/types/user";
+import { useState } from "react";
+import TambahUser from "../TambahUser/TambahUser";
 
 export default function UserList() {
-  const router = useRouter();
+  const [openTambah, setOpenTambah] = useState(false);
+
   const {
     dataUsers,
     meta,
@@ -68,11 +70,18 @@ export default function UserList() {
       <div className="mb-6 flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-slate-800">Kelola User</h2>
+          <p className="mt-1 max-w-lg text-sm text-gray-500">
+            Menampilkan daftar lengkap User beserta akses untuk menambah,
+            mengubah, dan menghapus data.
+          </p>
           <p className="mt-1 text-sm text-gray-500">
             Total {meta?.total ?? 0} User
           </p>
         </div>
-        <Button onClick={() => router.push("/admin/user/tambah")}>
+        <Button
+          onClick={() => setOpenTambah(true)}
+          className="bg-havelock-blue-600 p-4"
+        >
           <Plus className="mr-2 h-4 w-4" />
           Tambah User
         </Button>
@@ -279,6 +288,7 @@ export default function UserList() {
             </div>
           </div>
         )}
+        <TambahUser open={openTambah} onOpenChange={setOpenTambah} />
       </div>
     </div>
   );

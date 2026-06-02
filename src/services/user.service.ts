@@ -1,6 +1,6 @@
 import instance from "@/lib/axios/instance";
 import endpoint from "./endpoint.constant";
-import { IUser } from "@/types/user";
+import { ICreateUser, IUser } from "@/types/user";
 
 export interface UserPaginatedResponse {
   data: IUser[];
@@ -22,7 +22,7 @@ const userServices = {
 
   getById: (id: number) => instance.get(`${endpoint.USERS}/${id}`),
 
-  create: (payload: IUser) => instance.post(endpoint.USERS, payload),
+  create: (payload: ICreateUser) => instance.post(endpoint.USERS, payload),
 
   update: (id: number, payload: Partial<IUser>) =>
     instance.put(`${endpoint.USERS}/${id}`, payload),
