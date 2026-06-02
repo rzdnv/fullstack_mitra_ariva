@@ -300,6 +300,31 @@
   }
 }
 
+@utility custom-scrollbar {
+  /* Ukuran lebar scrollbar */
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  /* Latar belakang jalur scrollbar */
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Desain pemutar / batang scrollbar */
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-slate-300);
+    border-radius: 9999px;
+    transition: background-color 0.2s ease;
+  }
+
+  /* Efek saat scrollbar didekati kursor */
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-slate-400);
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

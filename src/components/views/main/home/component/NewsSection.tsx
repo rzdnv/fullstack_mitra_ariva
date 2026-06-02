@@ -10,7 +10,9 @@ const NewsSection = () => {
 
   return (
     <section className="mx-8 my-20 md:mx-10">
-      <div className="grid w-full grid-cols-1 items-center gap-5 rounded-2xl bg-white px-4 py-10 md:grid-cols-2 md:items-start md:px-10">
+      <div className="grid w-full grid-cols-1 items-center gap-8 rounded-2xl bg-white px-4 py-10 md:grid-cols-2 md:items-start md:px-10">
+        {/*
+         */}
         <div className="flex flex-col items-center gap-2 px-6 text-center md:items-start md:gap-4">
           <p className="text-havelock-blue-500 text-center tracking-tight md:text-start md:text-xl">
             ✦ Kabar RSKB Mitra Ariva
@@ -27,8 +29,10 @@ const NewsSection = () => {
           </p>
         </div>
 
-        <div className="w-full overflow-y-auto">
-          <div className="flex h-120 flex-col gap-6">
+        {/*
+         */}
+        <div className="w-full">
+          <div className="flex h-120 flex-col gap-6 overflow-y-auto pr-2">
             {isLoadingBerita
               ? Array.from({ length: 7 }).map((_, i) => (
                   <NewsCardSkeleton key={i} />
