@@ -104,6 +104,15 @@ export async function updateUser(id: number, data: UpdateUserInput) {
   });
 }
 
+export async function resetPassword(id: number, newPassword: string) {
+  const hashedPassword = await bcrypt.hash(newPassword, 10);
+  return await prisma.user.update({
+    where: { id },
+    data: { password: hashedPassword },
+    select: selectUser,
+  });
+}
+
 export async function deleteUser(id: number) {
   return await prisma.user.delete({ where: { id } });
 }

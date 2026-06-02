@@ -12,6 +12,9 @@ import { requireAdmin } from "@/lib/auth-guard";
 // GET /api/review — public
 export async function GET(req: NextRequest) {
   try {
+    const { error } = await requireAdmin();
+    if (error) return error;
+
     const { searchParams } = new URL(req.url);
     const page = searchParams.get("page");
     const limit = searchParams.get("limit");

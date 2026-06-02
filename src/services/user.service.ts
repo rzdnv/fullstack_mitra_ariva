@@ -27,6 +27,9 @@ const userServices = {
   update: (id: number, payload: Partial<IUser>) =>
     instance.put(`${endpoint.USERS}/${id}`, payload),
 
+  resetPassword: (id: number, payload: Partial<IUser>) =>
+    instance.put(`${endpoint.USERS}/${id}/reset-password`, payload),
+
   delete: (id: number) => instance.delete(`${endpoint.USERS}/${id}`),
 };
 
