@@ -11,7 +11,13 @@ interface ICreateUser {
   role: "ADMIN" | "EDITOR";
 }
 
-export { IUser, ICreateUser };
+interface IUpdateUser {
+  username?: string;
+  password?: string;
+  role?: "ADMIN" | "EDITOR";
+}
+
+export { IUser, ICreateUser, IUpdateUser };
 
 // interface CreateUserPayload {
 //   username: string;

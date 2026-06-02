@@ -191,7 +191,7 @@ export default function UserList() {
                   <TableCell>
                     <div className="flex items-center justify-center gap-2">
                       <Button size="sm" variant="outline" asChild>
-                        <Link href={`/admin/review/${user.id}`}>
+                        <Link href={`/admin/users/${user.id}`}>
                           <Pencil className="h-4 w-4" />
                         </Link>
                       </Button>

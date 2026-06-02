@@ -1,6 +1,6 @@
 import instance from "@/lib/axios/instance";
 import endpoint from "./endpoint.constant";
-import { ICreateUser, IUser } from "@/types/user";
+import { ICreateUser, IUpdateUser, IUser } from "@/types/user";
 
 export interface UserPaginatedResponse {
   data: IUser[];
@@ -24,10 +24,10 @@ const userServices = {
 
   create: (payload: ICreateUser) => instance.post(endpoint.USERS, payload),
 
-  update: (id: number, payload: Partial<IUser>) =>
+  update: (id: number, payload: IUpdateUser) =>
     instance.put(`${endpoint.USERS}/${id}`, payload),
 
-  resetPassword: (id: number, payload: Partial<IUser>) =>
+  resetPassword: (id: number, payload: IUpdateUser) =>
     instance.put(`${endpoint.USERS}/${id}/reset-password`, payload),
 
   delete: (id: number) => instance.delete(`${endpoint.USERS}/${id}`),

@@ -10,8 +10,20 @@ import instance from "@/lib/axios/instance";
 import endpoint from "@/services/endpoint.constant";
 
 const loginSchema = z.object({
-  username: z.string().min(1, "Username wajib diisi"),
-  password: z.string().min(1, "Password wajib diisi"),
+  username: z
+    .string()
+    .min(6, "Username wajib diisi")
+    .regex(
+      /^[a-zA-Z0-9]+$/,
+      "Username hanya boleh berisi huruf dan angka tanpa spasi atau simbol",
+    ),
+  password: z
+    .string()
+    .min(6, "Password minimal 6 karakter")
+    .regex(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/,
+      "Password harus mengandung huruf besar, huruf kecil, dan angka",
+    ),
 });
 
 export type LoginFormValues = z.infer<typeof loginSchema>;
