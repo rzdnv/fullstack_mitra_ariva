@@ -190,8 +190,13 @@ export default function LayananList() {
                   <TableCell className="font-medium text-slate-800">
                     {layanan.namaLayanan}
                   </TableCell>
-                  <TableCell className="font-medium text-slate-800">
-                    {layanan.deskripsi}
+                  <TableCell className="max-w-sm">
+                    <p
+                      className="wrap-break-words line-clamp-2 whitespace-normal text-slate-800"
+                      title={layanan.deskripsi}
+                    >
+                      {layanan.deskripsi}
+                    </p>
                   </TableCell>
 
                   <TableCell>

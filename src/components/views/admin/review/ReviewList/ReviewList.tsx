@@ -183,9 +183,9 @@ export default function ReviewList() {
                   <TableCell className="font-medium text-slate-800">
                     {review.nama}
                   </TableCell>
-                  <TableCell className="max-w-md">
+                  <TableCell className="max-w-sm">
                     <p
-                      className="line-clamp-2 text-slate-800"
+                      className="wrap-break-words line-clamp-2 whitespace-normal text-slate-800"
                       title={review.review}
                     >
                       {review.review}
