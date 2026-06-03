@@ -39,34 +39,34 @@
 
 // src/middleware.ts
 
-import { auth } from "@/auth";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+import { getToken } from "next-auth/jwt";
 
-export default auth((req) => {
+export async function middleware(req: NextRequest) {
+  const token = await getToken({
+    req,
+    secret: process.env.AUTH_SECRET,
+  });
+
+  const isLoggedIn = !!token;
+  const role = token?.role as string | undefined;
+
   const pathname = req.nextUrl.pathname;
 
-  const isLoggedIn = !!req.auth;
-
-  const role = req.auth?.user?.role;
-
-  const isLoginPage = pathname === "/login";
-  const isAdminRoute = pathname.startsWith("/admin");
-  const isUsersRoute = pathname.startsWith("/admin/users");
-
-  if (isLoggedIn && isLoginPage) {
+  if (isLoggedIn && pathname === "/login") {
     return NextResponse.redirect(new URL("/admin", req.url));
   }
 
-  if (!isLoggedIn && isAdminRoute) {
+  if (!isLoggedIn && pathname.startsWith("/admin")) {
     return NextResponse.redirect(new URL("/login", req.url));
   }
 
-  if (isUsersRoute && role !== "ADMIN") {
+  if (pathname.startsWith("/admin/users") && role !== "ADMIN") {
     return NextResponse.redirect(new URL("/admin", req.url));
   }
 
   return NextResponse.next();
-});
+}
 
 export const config = {
   matcher: ["/admin/:path*", "/login"],
