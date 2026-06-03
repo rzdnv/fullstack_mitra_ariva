@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronsUpDown, Loader2, LogOut } from "lucide-react";
+import { ChevronsUpDown, LogOut } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -17,13 +17,18 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { useSession } from "next-auth/react";
-import useLogout from "@/hooks/useLogout";
 import { useRouter } from "next/navigation";
 
 export function NavUser() {
   const { data: session } = useSession();
   const User = session?.user;
-  const { handleLogout, isPendingLogout } = useLogout();
+
+  const handleLogout = async () => {
+    await fetch("/api/auth/logout", { method: "POST" });
+
+    router.push("/");
+    router.refresh();
+  };
   const { isMobile } = useSidebar();
   const router = useRouter();
 
@@ -83,14 +88,9 @@ export function NavUser() {
             </DropdownMenuItem>
             <DropdownMenuItem
               onClick={handleLogout}
-              disabled={isPendingLogout}
               className="cursor-pointer gap-3 text-red-500 focus:text-red-500"
             >
-              {isPendingLogout ? (
-                <Loader2 className="h-4 w-4 animate-spin" />
-              ) : (
-                <LogOut className="h-4 w-4" />
-              )}
+              <LogOut className="h-4 w-4" />
               Logout
             </DropdownMenuItem>
           </DropdownMenuContent>

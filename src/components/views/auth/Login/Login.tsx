@@ -2,7 +2,7 @@
 
 import { Controller } from "react-hook-form";
 import Image from "next/image";
-import { Eye, EyeOff, Loader2 } from "lucide-react";
+import { Eye, EyeOff, Loader2, Lock } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import useLogin from "./useLogin";
@@ -20,41 +20,42 @@ export default function LoginForm() {
   } = useLogin();
 
   return (
-    <div className="bg-havelock-blue-800 flex min-h-screen items-center justify-center px-4">
-      <div className="w-full max-w-md">
-        {/* Card */}
-        <div className="rounded-2xl bg-white p-8 shadow-lg">
-          {/* Logo & Title */}
-          <div className="mb-4 flex flex-col items-center">
-            <Image
-              src="/images/logo/logo.png"
-              alt="logo"
-              width={80}
-              height={80}
-              className="mb-3"
-            />
-            <h1 className="text-2xl font-bold text-slate-800">
+    <div className="to-havelock-blue-50/30 relative flex min-h-screen items-center justify-center bg-linear-to-br from-slate-50 via-slate-100/70 px-4 py-12">
+      <div className="z-10 w-full max-w-md">
+        <div className="rounded-3xl border border-slate-100 bg-white p-8 shadow-xl shadow-slate-200/50">
+          <div className="mb-8 flex flex-col items-center text-center">
+            <div className="relative mb-4 flex h-20 w-20 items-center justify-center rounded-2xl border border-slate-100/80 bg-slate-50 p-3 shadow-xs">
+              <Image
+                src="/images/logo/logo.png"
+                alt="Logo RSKB Mitra Ariva"
+                width={70}
+                height={70}
+                className="object-contain"
+                priority
+              />
+            </div>
+            <h1 className="font-playfair text-2xl font-bold tracking-tight text-slate-900">
               RSKB Mitra Ariva
             </h1>
-            <p className="mt-1 text-sm text-gray-500">Masuk ke panel admin</p>
+            <p className="mt-1.5 text-xs font-medium tracking-wider text-slate-400 uppercase">
+              Sistem Informasi Panel Admin
+            </p>
           </div>
 
-          {/* Root Error */}
           {errors.root && (
-            <div className="mb-6 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
+            <div className="mb-6 flex items-center gap-2 rounded-2xl border border-red-100 bg-red-50/80 px-4 py-3 text-xs font-medium text-red-600 shadow-xs">
+              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-red-500" />
               {errors.root.message}
             </div>
           )}
 
-          {/* Form */}
           <form onSubmit={handleSubmit(handleLogin)} className="space-y-5">
-            {/* Username */}
-            <Field>
+            <Field className="space-y-1.5">
               <FieldLabel
                 htmlFor="username"
-                className="text-sm font-medium text-slate-700"
+                className="text-xs font-bold tracking-wider text-slate-500 uppercase"
               >
-                Username<span className="text-destructive">*</span>
+                Username<span className="ml-0.5 text-red-500">*</span>
               </FieldLabel>
               <Controller
                 name="username"
@@ -63,27 +64,26 @@ export default function LoginForm() {
                   <Input
                     {...field}
                     id="username"
-                    placeholder="Masukkan username"
+                    placeholder="Masukkan nama pengguna"
                     autoComplete="off"
-                    className="p-6"
+                    className="focus-visible:ring-havelock-blue-500 h-12 rounded-xl border-slate-200 bg-slate-50/50 px-4 text-sm transition-all duration-200 focus-visible:bg-white"
                     disabled={isPendingLogin}
                   />
                 )}
               />
               {errors.username && (
-                <FieldDescription className="text-xs text-red-500">
+                <FieldDescription className="pt-0.5 text-xs font-medium text-red-500">
                   {errors.username.message}
                 </FieldDescription>
               )}
             </Field>
 
-            {/* Password */}
-            <Field>
+            <Field className="space-y-1.5">
               <FieldLabel
                 htmlFor="password"
-                className="text-sm font-medium text-slate-700"
+                className="text-xs font-bold tracking-wider text-slate-500 uppercase"
               >
-                Password<span className="text-destructive">*</span>
+                Password<span className="ml-0.5 text-red-500">*</span>
               </FieldLabel>
               <Controller
                 name="password"
@@ -94,15 +94,15 @@ export default function LoginForm() {
                       {...field}
                       type={showPassword ? "text" : "password"}
                       id="password"
-                      placeholder="Masukkan password"
+                      placeholder="••••••••"
                       autoComplete="off"
-                      className="p-6"
+                      className="focus-visible:ring-havelock-blue-500 h-12 rounded-xl border-slate-200 bg-slate-50/50 pr-11 pl-4 text-sm transition-all duration-200 focus-visible:bg-white"
                       disabled={isPendingLogin}
                     />
                     <button
                       type="button"
                       onClick={togglePassword}
-                      className="absolute top-1/2 right-3 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                      className="absolute top-1/2 right-3.5 -translate-y-1/2 rounded-lg p-1 text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600"
                     >
                       {showPassword ? (
                         <EyeOff className="h-4 w-4" />
@@ -114,33 +114,35 @@ export default function LoginForm() {
                 )}
               />
               {errors.password && (
-                <FieldDescription className="text-xs text-red-500">
+                <FieldDescription className="pt-0.5 text-xs font-medium text-red-500">
                   {errors.password.message}
                 </FieldDescription>
               )}
             </Field>
 
-            {/* Submit */}
             <Button
               type="submit"
-              className="w-full bg-blue-600 p-5 hover:bg-blue-700"
+              className="bg-havelock-blue-600 shadow-havelock-blue-200 hover:bg-havelock-blue-700 mt-2 h-12 w-full rounded-xl font-semibold text-white shadow-md transition-all duration-200 active:scale-98 disabled:pointer-events-none disabled:opacity-70"
               disabled={isPendingLogin}
             >
               {isPendingLogin ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Memproses...
-                </>
+                <div className="flex items-center justify-center gap-2">
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                  <span>Mengautentikasi...</span>
+                </div>
               ) : (
-                "Masuk"
+                <div className="flex items-center justify-center gap-2">
+                  <Lock className="h-3.5 w-3.5" />
+                  <span>Masuk Ke Dashboard</span>
+                </div>
               )}
             </Button>
           </form>
         </div>
 
-        {/* Footer */}
-        <p className="mt-6 text-center text-xs text-gray-400">
-          © {new Date().getFullYear()} RSKB Mitra Ariva
+        <p className="mt-8 text-center text-xs font-medium tracking-wide text-slate-400">
+          &copy; {new Date().getFullYear()} RSKB Mitra Ariva. All Rights
+          Reserved.
         </p>
       </div>
     </div>
