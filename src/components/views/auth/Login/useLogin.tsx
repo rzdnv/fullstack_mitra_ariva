@@ -35,7 +35,7 @@ interface LoginErrorResponse {
 }
 
 const loginService = async (payload: LoginFormValues) => {
-  const result = await instance.post(`${endpoint.AUTH}/auth/login`, payload);
+  const result = await instance.post(`${endpoint.AUTH}/login`, payload);
   return result.data;
 };
 
