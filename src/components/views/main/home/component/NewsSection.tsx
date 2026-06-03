@@ -9,10 +9,8 @@ const NewsSection = () => {
   const { dataBerita, isLoadingBerita } = useHome();
 
   return (
-    <section className="mx-8 my-20 md:mx-10">
-      <div className="grid w-full grid-cols-1 items-center gap-8 rounded-2xl bg-white px-4 py-10 md:grid-cols-2 md:items-start md:px-10">
-        {/*
-         */}
+    <section className="mx-4 my-20 md:mx-10">
+      <div className="grid w-full grid-cols-1 items-center gap-8 rounded-2xl bg-white py-10 md:grid-cols-2 md:items-start md:px-10">
         <div className="flex flex-col items-center gap-2 px-6 text-center md:items-start md:gap-4">
           <p className="text-havelock-blue-500 text-center tracking-tight md:text-start md:text-xl">
             ✦ Kabar RSKB Mitra Ariva
