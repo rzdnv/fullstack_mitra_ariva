@@ -17,9 +17,12 @@ const NewsSection = () => {
           <p className="text-havelock-blue-500 text-center tracking-tight md:text-start md:text-xl">
             ✦ Kabar RSKB Mitra Ariva
           </p>
-          <h1 className="font-DMSerif max-w-4xl text-center text-2xl text-slate-800 md:text-start md:text-5xl">
-            Lebih dari Sekadar Medis: Informasi untuk Komunitas
-          </h1>
+          <h2 className="font-DMSerif text-center text-3xl leading-tight text-slate-800 sm:text-4xl md:text-start lg:text-5xl lg:leading-[1.15]">
+            Lebih dari Sekadar Medis:{" "}
+            <span className="text-havelock-blue-900 block md:inline">
+              Informasi untuk Komunitas
+            </span>
+          </h2>
           <p className="text-center text-sm/7 text-slate-500 md:text-start">
             Sejak berdiri pada tahun 2002, kami berkomitmen untuk menjadi
             institusi yang transparan dan bermanfaat bagi warga Ajibarang. Di
@@ -32,7 +35,7 @@ const NewsSection = () => {
         {/*
          */}
         <div className="w-full">
-          <div className="flex h-120 flex-col gap-6 overflow-y-auto pr-2">
+          <div className="flex h-120 flex-col gap-6 overflow-y-auto p-2">
             {isLoadingBerita
               ? Array.from({ length: 7 }).map((_, i) => (
                   <NewsCardSkeleton key={i} />

@@ -48,7 +48,7 @@ export default function CardNews({
           </h2>
 
           <p className="line-clamp-2 text-[11px] leading-relaxed text-slate-400">
-            {truncateHtml(isi, 80)}
+            {truncateHtml(isi, 100)}
           </p>
         </div>
 

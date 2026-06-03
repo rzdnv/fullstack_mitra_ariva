@@ -1,24 +1,65 @@
+"use client";
+
 import { Card } from "@/components/ui/card";
+import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 
 interface PropTypes {
   foto: string;
   namaLayanan: string;
+  deskripsi?: string;
 }
 
 const CardService = (props: PropTypes) => {
-  const { foto, namaLayanan } = props;
+  const { foto, namaLayanan, deskripsi } = props;
+
+  const handleWhatsAppRedirect = () => {
+    const phoneNumber = "6281245489477";
+    const message = `Halo RSKB Mitra Ariva, saya ingin bertanya informasi lebih lanjut mengenai layanan *${namaLayanan}*.`;
+
+    const waUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+    window.open(waUrl, "_blank", "noopener,noreferrer");
+  };
 
   return (
-    <Card className="w-65 overflow-hidden rounded-2xl border-0 bg-white shadow-lg md:w-90">
-      {/* Foto */}
-      <Image
-        src={foto}
-        alt={namaLayanan}
-        width={400}
-        height={600}
-        className="h-auto w-full object-contain"
-      />
+    <Card
+      onClick={handleWhatsAppRedirect}
+      className="group hover:border-havelock-blue-300 hover:shadow-havelock-blue-950/10 relative aspect-3/4 w-full max-w-85 cursor-pointer overflow-hidden rounded-2xl border border-slate-100 bg-white p-0 shadow-md transition-all duration-500 hover:-translate-y-2 hover:shadow-xl"
+    >
+      <div className="absolute inset-0 h-full w-full">
+        <Image
+          src={foto}
+          alt={namaLayanan}
+          fill
+          sizes="(max-width: 768px) 100vw, 340px"
+          className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+          priority
+        />
+        <div className="absolute inset-0 bg-linear-to-t from-slate-900/90 via-slate-900/40 to-transparent transition-opacity duration-300 group-hover:via-slate-950/50" />
+      </div>
+
+      <div className="group-hover:bg-havelock-blue-600 group-hover:border-havelock-blue-500 absolute top-4 right-4 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white shadow-sm backdrop-blur-md transition-all duration-300 group-hover:scale-110">
+        <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:rotate-45" />
+      </div>
+
+      <div className="absolute inset-x-0 bottom-0 z-10 flex flex-col p-5 text-white transition-all duration-300">
+        <div className="space-y-1">
+          <span className="text-havelock-blue-300 inline-block text-[10px] font-bold tracking-widest uppercase">
+            Program Layanan
+          </span>
+
+          <h3 className="font-playfair group-hover:text-havelock-blue-200 text-base leading-tight font-bold tracking-wide transition-colors duration-300 sm:text-lg">
+            {namaLayanan}
+          </h3>
+
+          {deskripsi && (
+            <p className="line-clamp-2 max-h-0 text-xs leading-relaxed text-slate-200/90 transition-all duration-500 ease-in-out group-hover:mt-1.5 group-hover:max-h-12">
+              {deskripsi}
+            </p>
+          )}
+        </div>
+      </div>
     </Card>
   );
 };
