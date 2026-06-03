@@ -1,3 +1,73 @@
+// import NextAuth from "next-auth";
+// import Credentials from "next-auth/providers/credentials";
+// import { prisma } from "@/lib/prisma";
+// import bcrypt from "bcryptjs";
+// import { z } from "zod";
+
+// const loginSchema = z.object({
+//   username: z.string().min(1),
+//   password: z.string().min(1),
+// });
+
+// export const { handlers, signIn, signOut, auth } = NextAuth({
+//   session: {
+//     strategy: "jwt",
+//     maxAge: 60 * 60 * 24,
+//   },
+//   pages: {
+//     signIn: "/login",
+//   },
+//   callbacks: {
+//     async jwt({ token, user }) {
+//       if (user) {
+//         token.id = user.id;
+//         token.role = user.role;
+//         token.username = user.username;
+//       }
+//       return token;
+//     },
+//     async session({ session, token }) {
+//       if (token) {
+//         session.user.id = token.id as string;
+//         session.user.role = token.role as string;
+//         session.user.username = token.username as string;
+//       }
+//       return session;
+//     },
+//   },
+//   providers: [
+//     Credentials({
+//       credentials: {
+//         username: { label: "Username" },
+//         password: { label: "Password", type: "password" },
+//       },
+//       async authorize(credentials) {
+//         const parsed = loginSchema.safeParse(credentials);
+//         if (!parsed.success) return null;
+
+//         const user = await prisma.user.findUnique({
+//           where: { username: parsed.data.username },
+//         });
+
+//         if (!user) return null;
+
+//         const passwordMatch = await bcrypt.compare(
+//           parsed.data.password,
+//           user.password,
+//         );
+
+//         if (!passwordMatch) return null;
+
+//         return {
+//           id: String(user.id),
+//           username: user.username,
+//           role: String(user.role),
+//         };
+//       },
+//     }),
+//   ],
+// });
+
 // src/auth.ts
 
 import NextAuth from "next-auth";
@@ -12,13 +82,17 @@ const loginSchema = z.object({
 });
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  secret: process.env.AUTH_SECRET,
+
   session: {
     strategy: "jwt",
     maxAge: 60 * 60 * 24,
   },
+
   pages: {
     signIn: "/login",
   },
+
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
@@ -26,39 +100,53 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         token.role = user.role;
         token.username = user.username;
       }
+
       return token;
     },
+
     async session({ session, token }) {
-      if (token) {
+      if (session.user) {
         session.user.id = token.id as string;
         session.user.role = token.role as string;
         session.user.username = token.username as string;
       }
+
       return session;
     },
   },
+
   providers: [
     Credentials({
       credentials: {
         username: { label: "Username" },
         password: { label: "Password", type: "password" },
       },
+
       async authorize(credentials) {
         const parsed = loginSchema.safeParse(credentials);
-        if (!parsed.success) return null;
+
+        if (!parsed.success) {
+          return null;
+        }
 
         const user = await prisma.user.findUnique({
-          where: { username: parsed.data.username },
+          where: {
+            username: parsed.data.username,
+          },
         });
 
-        if (!user) return null;
+        if (!user) {
+          return null;
+        }
 
         const passwordMatch = await bcrypt.compare(
           parsed.data.password,
           user.password,
         );
 
-        if (!passwordMatch) return null;
+        if (!passwordMatch) {
+          return null;
+        }
 
         return {
           id: String(user.id),

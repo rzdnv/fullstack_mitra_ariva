@@ -1,3 +1,5 @@
+// src/components/providers/QueryProvider.tsx
+
 "use client";
 
 import queryClient from "@/lib/query-client";

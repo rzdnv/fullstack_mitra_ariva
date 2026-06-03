@@ -133,7 +133,9 @@ const loginService = async (payload: LoginFormValues) => {
     redirect: false,
   });
 
-  if (!result || result.error) {
+  console.log(result);
+
+  if (!result?.ok) {
     throw new Error("Username atau password salah");
   }
 
