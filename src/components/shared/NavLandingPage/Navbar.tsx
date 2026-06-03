@@ -105,7 +105,7 @@ const Navbar = () => {
         <div className="flex items-center gap-3">
           <div className="hidden md:flex">
             {status === "loading" ? (
-              <div className="h-11 w-32 animate-pulse rounded-full bg-gray-200" />
+              <div className="h-9 w-9 animate-pulse rounded-full bg-gray-200" />
             ) : session ? (
               <DropdownMenu modal={false}>
                 <DropdownMenuTrigger asChild>
@@ -113,15 +113,6 @@ const Navbar = () => {
                     <div className="bg-havelock-blue-500 flex h-9 w-9 items-center justify-center rounded-full font-bold text-white">
                       {session.user?.username?.charAt(0).toUpperCase() ?? "U"}
                     </div>
-
-                    {/* <div className="text-left">
-                      <p className="text-sm font-semibold text-gray-800">
-                        {session.user?.username}
-                      </p>
-                      <p className="text-xs text-gray-500">
-                        {session.user?.role}
-                      </p>
-                    </div> */}
                   </button>
                 </DropdownMenuTrigger>
 

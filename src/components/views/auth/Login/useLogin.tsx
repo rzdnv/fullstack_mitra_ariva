@@ -2,12 +2,10 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { toast } from "sonner";
-import instance from "@/lib/axios/instance";
-import endpoint from "@/services/endpoint.constant";
+import authServices from "@/services/auth.service";
 
 const loginSchema = z.object({
   username: z
@@ -34,16 +32,7 @@ interface LoginErrorResponse {
   data: null;
 }
 
-const loginService = async (payload: LoginFormValues) => {
-  const result = await instance.post(`${endpoint.AUTH}/login`, payload);
-  return result.data;
-};
-
-// ─────────────────────────────────────────
-// Hook
-// ─────────────────────────────────────────
 const useLogin = () => {
-  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePassword = () => setShowPassword((prev) => !prev);
@@ -63,7 +52,7 @@ const useLogin = () => {
   });
 
   const { mutate: mutateLogin, isPending: isPendingLogin } = useMutation({
-    mutationFn: loginService,
+    mutationFn: (payload: LoginFormValues) => authServices.login(payload),
     onError: (error: AxiosError<LoginErrorResponse>) => {
       const message =
         error.response?.data?.message ?? "Username atau password salah";
@@ -74,8 +63,9 @@ const useLogin = () => {
     },
     onSuccess: () => {
       toast.success("Login berhasil", { position: "top-right" });
-      router.push("/admin");
-      router.refresh();
+
+      window.location.href = "/admin";
+
       reset();
     },
   });
