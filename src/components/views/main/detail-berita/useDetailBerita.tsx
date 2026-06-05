@@ -18,7 +18,7 @@ const useDetailBerita = () => {
     isLoading: isLoadingDetailBerita,
     refetch: refetchDetailBerita,
   } = useQuery({
-    queryKey: ["BeritaId", id],
+    queryKey: ["berita", id],
     queryFn: getBeritaById,
     enabled: !!id,
   });
