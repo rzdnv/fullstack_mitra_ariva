@@ -21,28 +21,30 @@ const DetailBerita = () => {
   return (
     <main className="min-h-screen bg-slate-50/50 pb-16">
       <section
-        className="relative flex min-h-[35vh] w-full items-end overflow-hidden bg-cover bg-center lg:min-h-[50vh]"
+        className="relative flex min-h-[45vh] w-full items-end overflow-hidden bg-cover bg-center lg:min-h-[55vh]"
         style={{
-          backgroundImage: `url(${detailBerita.gambar})`,
+          backgroundImage: "url('/images/general/RSKB.png')",
         }}
       >
-        <div className="absolute inset-0 bg-linear-to-t from-slate-950/90 via-slate-950/50 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-slate-950/90 via-slate-950/40 to-transparent" />
 
-        {/* Konten Hero */}
-        <div className="relative z-10 mx-auto flex w-full max-w-7xl items-center gap-4 p-6 text-white lg:px-10 lg:pb-10">
-          <Image
-            src="/images/logo/logo.png"
-            alt="RSKB Mitra Ariva"
-            width={120}
-            height={120}
-            className="h-14 w-14 object-contain drop-shadow-md lg:h-20 lg:w-20"
-            priority
-          />
+        <div className="animate-fade-in relative z-10 mx-auto flex w-full max-w-7xl items-center gap-4 p-6 text-white lg:px-10 lg:pb-12">
+          <div className="relative shrink-0 rounded-2xl border border-white/10 bg-white/10 p-2.5 shadow-lg drop-shadow-md backdrop-blur-xs">
+            <Image
+              src="/images/logo/logo.png"
+              alt="RSKB Mitra Ariva"
+              width={96}
+              height={96}
+              className="h-14 w-14 object-contain lg:h-20 lg:w-20"
+              priority
+            />
+          </div>
+
           <div className="space-y-1">
-            <span className="text-havelock-blue-300 block text-xs font-bold tracking-widest uppercase">
-              Informasi & Kesehatan
+            <span className="text-havelock-blue-300 block text-xs font-bold tracking-widest uppercase sm:text-sm">
+              ✦ Informasi & Kesehatan
             </span>
-            <h1 className="font-playfair text-2xl font-extrabold tracking-tight lg:text-4xl">
+            <h1 className="font-DMSerif text-2xl leading-tight tracking-tight sm:text-3xl lg:text-5xl">
               Berita RSKB Mitra Ariva
             </h1>
           </div>
