@@ -39,12 +39,12 @@ export default function UserHeader() {
             <BreadcrumbItem className="hidden md:block">
               <BreadcrumbPage>Admin</BreadcrumbPage>{" "}
             </BreadcrumbItem>
+            <BreadcrumbSeparator className="hidden md:block" />
             {title && (
               <BreadcrumbItem>
                 <BreadcrumbPage>{title}</BreadcrumbPage>
               </BreadcrumbItem>
             )}
-            <BreadcrumbSeparator className="hidden md:block" />
           </BreadcrumbList>
         </Breadcrumb>
       </div>

@@ -1,5 +1,4 @@
 import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
 import Image from "next/image";
 import DayTime from "./DayTime";
 
@@ -14,14 +13,20 @@ interface PropTypes {
 const CardDokter = (props: PropTypes) => {
   const { Schedules, namaDokter, spesialis, fotoDokter, poli } = props;
 
-  const poliColorMap: Record<string, string> = {
-    "Poli Kandungan": "bg-candlelight-400 text-white",
-    "Poli Bedah": "bg-havelock-blue-400 text-white",
-    "Poli Penyakit Dalam": "bg-your-pink-400 text-white",
-    "Poli Umum": "bg-havelock-blue-400 text-white",
-    "Poli Saraf": "bg-your-pink-400 text-white",
-    "Poli Gigi": "bg-candlelight-400 text-white",
+  const generateMediumColor = (stringInput: string) => {
+    let hash = 0;
+    for (let i = 0; i < stringInput.length; i++) {
+      hash = stringInput.charCodeAt(i) + ((hash << 5) - hash);
+    }
+
+    // Mengacak jenis warna (0 - 360)
+    const hue = Math.abs(hash) % 360;
+
+    // Saturation 75% (warna hidup) & Lightness 60% (pas di tengah, cocok untuk text-white)
+    return `hsl(${hue}, 75%, 60%)`;
   };
+
+  const badgeBgColor = generateMediumColor(poli);
 
   return (
     <div className="group hover:border-havelock-blue-400 hover:shadow-havelock-blue-950/5 relative grid h-full grid-cols-1 gap-4 rounded-2xl border border-slate-100 bg-white p-4 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl lg:grid-cols-2">
@@ -39,10 +44,8 @@ const CardDokter = (props: PropTypes) => {
         <div>
           <Badge
             variant="secondary"
-            className={cn(
-              "rounded-full px-2.5 py-0.5 text-[11px] font-bold tracking-wider uppercase shadow-sm",
-              poliColorMap[poli] || "bg-gray-100 text-gray-700",
-            )}
+            style={{ backgroundColor: badgeBgColor }}
+            className="rounded-full border-none px-2.5 py-0.5 text-[11px] font-bold tracking-wider text-white uppercase shadow-sm" // Teks putih
           >
             {poli}
           </Badge>

@@ -20,11 +20,11 @@ export default function LoginForm() {
   } = useLogin();
 
   return (
-    <div className="to-havelock-blue-50/30 relative flex min-h-screen items-center justify-center bg-linear-to-br from-slate-50 via-slate-100/70 px-4 py-12">
+    <div className="from-havelock-blue-900 to-havelock-blue-950 relative flex min-h-screen items-center justify-center bg-linear-to-br px-4 py-12">
       <div className="z-10 w-full max-w-md">
-        <div className="rounded-3xl border border-slate-100 bg-white p-8 shadow-xl shadow-slate-200/50">
+        <div className="rounded-3xl border border-slate-100 bg-white p-8 shadow-lg shadow-slate-200/50">
           <div className="mb-8 flex flex-col items-center text-center">
-            <div className="relative mb-4 flex h-20 w-20 items-center justify-center rounded-2xl border border-slate-100/80 bg-slate-50 p-3 shadow-xs">
+            <div className="relative mb-4 flex h-20 w-20 items-center justify-center rounded-full border border-slate-100/80 bg-slate-50 p-1 shadow-xs">
               <Image
                 src="/images/logo/logo.png"
                 alt="Logo RSKB Mitra Ariva"
@@ -34,7 +34,7 @@ export default function LoginForm() {
                 priority
               />
             </div>
-            <h1 className="font-playfair text-2xl font-bold tracking-tight text-slate-900">
+            <h1 className="text-2xl font-bold tracking-tight text-slate-900">
               RSKB Mitra Ariva
             </h1>
             <p className="mt-1.5 text-xs font-medium tracking-wider text-slate-400 uppercase">
@@ -53,7 +53,7 @@ export default function LoginForm() {
             <Field className="space-y-1.5">
               <FieldLabel
                 htmlFor="username"
-                className="text-xs font-bold tracking-wider text-slate-500 uppercase"
+                className="text-xs font-bold tracking-wider text-slate-500"
               >
                 Username<span className="ml-0.5 text-red-500">*</span>
               </FieldLabel>
@@ -81,7 +81,7 @@ export default function LoginForm() {
             <Field className="space-y-1.5">
               <FieldLabel
                 htmlFor="password"
-                className="text-xs font-bold tracking-wider text-slate-500 uppercase"
+                className="text-xs font-bold tracking-wider text-slate-500"
               >
                 Password<span className="ml-0.5 text-red-500">*</span>
               </FieldLabel>
