@@ -29,6 +29,8 @@ import { IDokter, IUpdateDokter } from "@/types/dokter";
 import { IPoli } from "@/types/poli";
 
 import useInfoTab from "./useInfoTab";
+import { Field, FieldDescription, FieldLabel } from "@/components/ui/field";
+import { Textarea } from "@/components/ui/textarea";
 
 interface PropTypes {
   dataDokter: IDokter;
@@ -66,6 +68,7 @@ const InfoTab = ({
       reset({
         nama: dataDokter.nama,
         spesialis: dataDokter.spesialis,
+        deskripsi: dataDokter.deskripsi,
         poliId: dataDokter.poliId,
         foto: dataDokter.foto,
       });
@@ -158,49 +161,119 @@ const InfoTab = ({
 
         <CardContent className="space-y-4">
           {/* NAMA */}
-          <Controller
-            name="nama"
-            control={control}
-            render={({ field }) => (
-              <Input {...field} placeholder="Nama dokter" />
+          <Field data-invalid={!!errors.nama}>
+            <FieldLabel htmlFor="nama">Nama Dokter</FieldLabel>
+
+            <Controller
+              name="nama"
+              control={control}
+              render={({ field }) => (
+                <Input
+                  {...field}
+                  id="nama"
+                  placeholder="nama"
+                  disabled={isPendingMutateUpdateDokter}
+                  aria-invalid={!!errors.nama}
+                />
+              )}
+            />
+
+            {errors.nama && (
+              <FieldDescription className="text-destructive text-xs">
+                {errors.nama.message}
+              </FieldDescription>
             )}
-          />
+          </Field>
 
           {/* SPESIALIS */}
-          <Controller
-            name="spesialis"
-            control={control}
-            render={({ field }) => <Input {...field} placeholder="Spesialis" />}
-          />
+          <Field data-invalid={!!errors.spesialis}>
+            <FieldLabel htmlFor="spesialis">Spesialis</FieldLabel>
+
+            <Controller
+              name="spesialis"
+              control={control}
+              render={({ field }) => (
+                <Input
+                  {...field}
+                  id="spesialis"
+                  placeholder="Dokter Spesialis Bedah"
+                  disabled={isPendingMutateUpdateDokter}
+                  aria-invalid={!!errors.spesialis}
+                />
+              )}
+            />
+
+            {errors.spesialis && (
+              <FieldDescription className="text-destructive text-xs">
+                {errors.spesialis.message}
+              </FieldDescription>
+            )}
+          </Field>
 
           {/* POLI */}
-          <Controller
-            name="poliId"
-            control={control}
-            render={({ field }) => (
-              <Select
-                value={field.value ? String(dataDokter.poliId) : undefined}
-                onValueChange={(value) => field.onChange(Number(value))}
-                disabled={isLoadingPoli}
-              >
-                <SelectTrigger className="w-full">
-                  <SelectValue
-                    placeholder={
-                      isLoadingPoli ? "Memuat poli..." : "Pilih poli"
-                    }
-                  />
-                </SelectTrigger>
+          <Field data-invalid={!!errors.poliId}>
+            <FieldLabel>Poli</FieldLabel>
 
-                <SelectContent>
-                  {dataPoli?.map((poli: IPoli) => (
-                    <SelectItem key={poli.id} value={String(poli.id)}>
-                      {poli.namaPoli}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+            <Controller
+              name="poliId"
+              control={control}
+              render={({ field }) => (
+                <Select
+                  value={field.value ? String(field.value) : undefined}
+                  onValueChange={(value) => field.onChange(Number(value))}
+                  disabled={isLoadingPoli || isPendingMutateUpdateDokter}
+                >
+                  <SelectTrigger aria-invalid={!!errors.poliId}>
+                    <SelectValue
+                      placeholder={
+                        isLoadingPoli ? "Memuat poli..." : "Pilih poli"
+                      }
+                    />
+                  </SelectTrigger>
+
+                  <SelectContent>
+                    {dataPoli?.map((poli: IPoli) => (
+                      <SelectItem key={poli.id} value={String(poli.id)}>
+                        {poli.namaPoli}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              )}
+            />
+
+            {errors.poliId && (
+              <FieldDescription className="text-destructive text-xs">
+                {errors.poliId.message}
+              </FieldDescription>
             )}
-          />
+          </Field>
+
+          {/* DESKRIPSI */}
+          <Field data-invalid={!!errors.deskripsi}>
+            <FieldLabel>Deskripsi</FieldLabel>
+
+            <Controller
+              name="deskripsi"
+              control={control}
+              render={({ field }) => (
+                <Textarea
+                  {...field}
+                  value={field.value ?? ""}
+                  id="deskripsi"
+                  placeholder="Deskripsi singkat dokter..."
+                  disabled={isPendingMutateUpdateDokter}
+                  rows={3}
+                />
+              )}
+            />
+
+            {errors.deskripsi && (
+              <FieldDescription className="text-destructive text-xs">
+                {errors.deskripsi.message}
+              </FieldDescription>
+            )}
+          </Field>
 
           {/* BUTTON */}
           <Button

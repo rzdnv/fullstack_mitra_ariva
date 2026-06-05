@@ -3756,6 +3756,7 @@ export namespace Prisma {
     id: number | null
     nama: string | null
     spesialis: string | null
+    deskripsi: string | null
     foto: string | null
     poliId: number | null
     createdAt: Date | null
@@ -3765,6 +3766,7 @@ export namespace Prisma {
     id: number | null
     nama: string | null
     spesialis: string | null
+    deskripsi: string | null
     foto: string | null
     poliId: number | null
     createdAt: Date | null
@@ -3774,6 +3776,7 @@ export namespace Prisma {
     id: number
     nama: number
     spesialis: number
+    deskripsi: number
     foto: number
     poliId: number
     createdAt: number
@@ -3795,6 +3798,7 @@ export namespace Prisma {
     id?: true
     nama?: true
     spesialis?: true
+    deskripsi?: true
     foto?: true
     poliId?: true
     createdAt?: true
@@ -3804,6 +3808,7 @@ export namespace Prisma {
     id?: true
     nama?: true
     spesialis?: true
+    deskripsi?: true
     foto?: true
     poliId?: true
     createdAt?: true
@@ -3813,6 +3818,7 @@ export namespace Prisma {
     id?: true
     nama?: true
     spesialis?: true
+    deskripsi?: true
     foto?: true
     poliId?: true
     createdAt?: true
@@ -3909,6 +3915,7 @@ export namespace Prisma {
     id: number
     nama: string
     spesialis: string
+    deskripsi: string | null
     foto: string | null
     poliId: number
     createdAt: Date
@@ -3937,6 +3944,7 @@ export namespace Prisma {
     id?: boolean
     nama?: boolean
     spesialis?: boolean
+    deskripsi?: boolean
     foto?: boolean
     poliId?: boolean
     createdAt?: boolean
@@ -3949,6 +3957,7 @@ export namespace Prisma {
     id?: boolean
     nama?: boolean
     spesialis?: boolean
+    deskripsi?: boolean
     foto?: boolean
     poliId?: boolean
     createdAt?: boolean
@@ -3959,6 +3968,7 @@ export namespace Prisma {
     id?: boolean
     nama?: boolean
     spesialis?: boolean
+    deskripsi?: boolean
     foto?: boolean
     poliId?: boolean
     createdAt?: boolean
@@ -3969,12 +3979,13 @@ export namespace Prisma {
     id?: boolean
     nama?: boolean
     spesialis?: boolean
+    deskripsi?: boolean
     foto?: boolean
     poliId?: boolean
     createdAt?: boolean
   }
 
-  export type DokterOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nama" | "spesialis" | "foto" | "poliId" | "createdAt", ExtArgs["result"]["dokter"]>
+  export type DokterOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nama" | "spesialis" | "deskripsi" | "foto" | "poliId" | "createdAt", ExtArgs["result"]["dokter"]>
   export type DokterInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     poli?: boolean | PoliDefaultArgs<ExtArgs>
     jadwal?: boolean | Dokter$jadwalArgs<ExtArgs>
@@ -3997,6 +4008,7 @@ export namespace Prisma {
       id: number
       nama: string
       spesialis: string
+      deskripsi: string | null
       foto: string | null
       poliId: number
       createdAt: Date
@@ -4428,6 +4440,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Dokter", 'Int'>
     readonly nama: FieldRef<"Dokter", 'String'>
     readonly spesialis: FieldRef<"Dokter", 'String'>
+    readonly deskripsi: FieldRef<"Dokter", 'String'>
     readonly foto: FieldRef<"Dokter", 'String'>
     readonly poliId: FieldRef<"Dokter", 'Int'>
     readonly createdAt: FieldRef<"Dokter", 'DateTime'>
@@ -9251,6 +9264,7 @@ export namespace Prisma {
     id: 'id',
     nama: 'nama',
     spesialis: 'spesialis',
+    deskripsi: 'deskripsi',
     foto: 'foto',
     poliId: 'poliId',
     createdAt: 'createdAt'
@@ -9535,6 +9549,7 @@ export namespace Prisma {
     id?: IntFilter<"Dokter"> | number
     nama?: StringFilter<"Dokter"> | string
     spesialis?: StringFilter<"Dokter"> | string
+    deskripsi?: StringNullableFilter<"Dokter"> | string | null
     foto?: StringNullableFilter<"Dokter"> | string | null
     poliId?: IntFilter<"Dokter"> | number
     createdAt?: DateTimeFilter<"Dokter"> | Date | string
@@ -9546,6 +9561,7 @@ export namespace Prisma {
     id?: SortOrder
     nama?: SortOrder
     spesialis?: SortOrder
+    deskripsi?: SortOrderInput | SortOrder
     foto?: SortOrderInput | SortOrder
     poliId?: SortOrder
     createdAt?: SortOrder
@@ -9560,6 +9576,7 @@ export namespace Prisma {
     NOT?: DokterWhereInput | DokterWhereInput[]
     nama?: StringFilter<"Dokter"> | string
     spesialis?: StringFilter<"Dokter"> | string
+    deskripsi?: StringNullableFilter<"Dokter"> | string | null
     foto?: StringNullableFilter<"Dokter"> | string | null
     poliId?: IntFilter<"Dokter"> | number
     createdAt?: DateTimeFilter<"Dokter"> | Date | string
@@ -9571,6 +9588,7 @@ export namespace Prisma {
     id?: SortOrder
     nama?: SortOrder
     spesialis?: SortOrder
+    deskripsi?: SortOrderInput | SortOrder
     foto?: SortOrderInput | SortOrder
     poliId?: SortOrder
     createdAt?: SortOrder
@@ -9588,6 +9606,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Dokter"> | number
     nama?: StringWithAggregatesFilter<"Dokter"> | string
     spesialis?: StringWithAggregatesFilter<"Dokter"> | string
+    deskripsi?: StringNullableWithAggregatesFilter<"Dokter"> | string | null
     foto?: StringNullableWithAggregatesFilter<"Dokter"> | string | null
     poliId?: IntWithAggregatesFilter<"Dokter"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Dokter"> | Date | string
@@ -9950,6 +9969,7 @@ export namespace Prisma {
     id: number
     nama: string
     spesialis: string
+    deskripsi?: string | null
     foto?: string | null
     createdAt?: Date | string
     poli: PoliCreateNestedOneWithoutDokterInput
@@ -9960,6 +9980,7 @@ export namespace Prisma {
     id: number
     nama: string
     spesialis: string
+    deskripsi?: string | null
     foto?: string | null
     poliId: number
     createdAt?: Date | string
@@ -9970,6 +9991,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
     spesialis?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
     foto?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     poli?: PoliUpdateOneRequiredWithoutDokterNestedInput
@@ -9980,6 +10002,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
     spesialis?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
     foto?: NullableStringFieldUpdateOperationsInput | string | null
     poliId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9990,6 +10013,7 @@ export namespace Prisma {
     id: number
     nama: string
     spesialis: string
+    deskripsi?: string | null
     foto?: string | null
     poliId: number
     createdAt?: Date | string
@@ -9999,6 +10023,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
     spesialis?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
     foto?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10007,6 +10032,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
     spesialis?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
     foto?: NullableStringFieldUpdateOperationsInput | string | null
     poliId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10488,6 +10514,7 @@ export namespace Prisma {
     id?: SortOrder
     nama?: SortOrder
     spesialis?: SortOrder
+    deskripsi?: SortOrder
     foto?: SortOrder
     poliId?: SortOrder
     createdAt?: SortOrder
@@ -10502,6 +10529,7 @@ export namespace Prisma {
     id?: SortOrder
     nama?: SortOrder
     spesialis?: SortOrder
+    deskripsi?: SortOrder
     foto?: SortOrder
     poliId?: SortOrder
     createdAt?: SortOrder
@@ -10511,6 +10539,7 @@ export namespace Prisma {
     id?: SortOrder
     nama?: SortOrder
     spesialis?: SortOrder
+    deskripsi?: SortOrder
     foto?: SortOrder
     poliId?: SortOrder
     createdAt?: SortOrder
@@ -11142,6 +11171,7 @@ export namespace Prisma {
     id: number
     nama: string
     spesialis: string
+    deskripsi?: string | null
     foto?: string | null
     createdAt?: Date | string
     jadwal?: JadwalDokterCreateNestedManyWithoutDokterInput
@@ -11151,6 +11181,7 @@ export namespace Prisma {
     id: number
     nama: string
     spesialis: string
+    deskripsi?: string | null
     foto?: string | null
     createdAt?: Date | string
     jadwal?: JadwalDokterUncheckedCreateNestedManyWithoutDokterInput
@@ -11189,6 +11220,7 @@ export namespace Prisma {
     id?: IntFilter<"Dokter"> | number
     nama?: StringFilter<"Dokter"> | string
     spesialis?: StringFilter<"Dokter"> | string
+    deskripsi?: StringNullableFilter<"Dokter"> | string | null
     foto?: StringNullableFilter<"Dokter"> | string | null
     poliId?: IntFilter<"Dokter"> | number
     createdAt?: DateTimeFilter<"Dokter"> | Date | string
@@ -11292,6 +11324,7 @@ export namespace Prisma {
     id: number
     nama: string
     spesialis: string
+    deskripsi?: string | null
     foto?: string | null
     createdAt?: Date | string
     poli: PoliCreateNestedOneWithoutDokterInput
@@ -11301,6 +11334,7 @@ export namespace Prisma {
     id: number
     nama: string
     spesialis: string
+    deskripsi?: string | null
     foto?: string | null
     poliId: number
     createdAt?: Date | string
@@ -11326,6 +11360,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
     spesialis?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
     foto?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     poli?: PoliUpdateOneRequiredWithoutDokterNestedInput
@@ -11335,6 +11370,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
     spesialis?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
     foto?: NullableStringFieldUpdateOperationsInput | string | null
     poliId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11428,6 +11464,7 @@ export namespace Prisma {
     id: number
     nama: string
     spesialis: string
+    deskripsi?: string | null
     foto?: string | null
     createdAt?: Date | string
   }
@@ -11436,6 +11473,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
     spesialis?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
     foto?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     jadwal?: JadwalDokterUpdateManyWithoutDokterNestedInput
@@ -11445,6 +11483,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
     spesialis?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
     foto?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     jadwal?: JadwalDokterUncheckedUpdateManyWithoutDokterNestedInput
@@ -11454,6 +11493,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
     spesialis?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
     foto?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

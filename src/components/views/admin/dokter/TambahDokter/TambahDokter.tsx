@@ -28,6 +28,7 @@ import {
 
 import InputImage from "@/components/shared/InputImage/InputImage";
 import { Field, FieldDescription, FieldLabel } from "@/components/ui/field";
+import { Textarea } from "@/components/ui/textarea";
 
 interface Props {
   open: boolean;
@@ -190,6 +191,32 @@ export default function TambahDokter({ open, onOpenChange }: Props) {
                 {errors.poliId && (
                   <FieldDescription className="text-destructive text-xs">
                     {errors.poliId.message}
+                  </FieldDescription>
+                )}
+              </Field>
+
+              {/* DESKRIPSI */}
+              <Field data-invalid={!!errors.deskripsi}>
+                <FieldLabel>Deskripsi</FieldLabel>
+
+                <Controller
+                  name="deskripsi"
+                  control={control}
+                  render={({ field }) => (
+                    <Textarea
+                      {...field}
+                      value={field.value ?? ""}
+                      id="deskripsi"
+                      placeholder="Deskripsi singkat dokter..."
+                      disabled={isPendingCreate}
+                      rows={3}
+                    />
+                  )}
+                />
+
+                {errors.deskripsi && (
+                  <FieldDescription className="text-destructive text-xs">
+                    {errors.deskripsi.message}
                   </FieldDescription>
                 )}
               </Field>

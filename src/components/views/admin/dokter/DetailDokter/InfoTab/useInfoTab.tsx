@@ -14,6 +14,8 @@ const updateDokterSchema = z.object({
 
   spesialis: z.string().min(1, "Spesialis wajib diisi"),
 
+  deskripsi: z.string().min(1, "Deskripsi wajib diisi"),
+
   poliId: z.number().int().positive("Poli wajib dipilih"),
 
   foto: z.string().min(1, "Foto wajib diupload"),
@@ -43,6 +45,7 @@ const useInfoTab = () => {
     defaultValues: {
       nama: "",
       spesialis: "",
+      deskripsi: "",
       poliId: 0,
       foto: "",
     },

@@ -89,6 +89,7 @@ export async function createDokter(data: CreateDokterInput) {
       id: generateId("dokter"),
       nama: data.nama,
       spesialis: data.spesialis,
+      deskripsi: data.deskripsi,
       foto: data.foto,
       poliId: data.poliId,
     },
@@ -117,6 +118,7 @@ export async function updateDokter(id: number, data: UpdateDokterInput) {
     data: {
       nama: data.nama,
       spesialis: data.spesialis,
+      deskripsi: data.deskripsi,
       foto: data.foto,
       poliId: data.poliId,
     },

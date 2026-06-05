@@ -59,6 +59,7 @@ model Dokter {
   id        Int            @id
   nama      String
   spesialis String
+  deskripsi String?
   foto      String?
   poliId    Int            @map("poli_id")
   createdAt DateTime       @default(now()) @map("created_at")

@@ -138,6 +138,7 @@ exports.Prisma.DokterScalarFieldEnum = {
   id: 'id',
   nama: 'nama',
   spesialis: 'spesialis',
+  deskripsi: 'deskripsi',
   foto: 'foto',
   poliId: 'poliId',
   createdAt: 'createdAt'
