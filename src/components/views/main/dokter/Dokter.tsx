@@ -63,6 +63,7 @@ const Dokter = () => {
             : dataDokters?.map((dokter: IDokter) => (
                 <div key={dokter.id} className="h-full w-full">
                   <CardDokter
+                    _id={dokter.id}
                     namaDokter={dokter.nama}
                     spesialis={dokter.spesialis}
                     fotoDokter={`${dokter.foto}`}
