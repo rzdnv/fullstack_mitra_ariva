@@ -1,5 +1,6 @@
 "use client";
 
+import { truncateHtml } from "@/components/shared/truncatHtml/truncatHtml";
 import { Card } from "@/components/ui/card";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
@@ -52,7 +53,7 @@ const CardService = (props: PropTypes) => {
 
           {deskripsi && (
             <p className="line-clamp-2 max-h-0 text-xs leading-relaxed text-slate-200/90 transition-all duration-500 ease-in-out group-hover:mt-1.5 group-hover:max-h-12">
-              {deskripsi}
+              {truncateHtml(deskripsi, 50)}
             </p>
           )}
         </div>

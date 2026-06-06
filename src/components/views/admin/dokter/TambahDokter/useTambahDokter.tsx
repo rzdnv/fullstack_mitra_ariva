@@ -9,6 +9,7 @@ import { toast } from "sonner";
 import dokterServices from "@/services/dokter.service";
 import poliServices from "@/services/poli.service";
 import uploadServices from "@/services/upload.service";
+import { useRouter } from "next/navigation";
 
 // Schema
 const tambahDokterSchema = z.object({
@@ -29,12 +30,9 @@ interface ErrorResponse {
   message: string;
 }
 
-// interface UseTambahDokterProps {
-//   onSuccess?: () => void;
-// }
-
 const useTambahDokter = () => {
   const queryClient = useQueryClient();
+  const router = useRouter();
 
   // FOTO STATE
   const [fotoUrl, setFotoUrl] = useState<string | null>(null);
@@ -168,7 +166,7 @@ const useTambahDokter = () => {
         reset();
 
         setFotoUrl(null);
-        // onSuccess?.();
+        router.replace("/admin/dokter");
       },
 
       onError: (error: AxiosError<ErrorResponse>) => {

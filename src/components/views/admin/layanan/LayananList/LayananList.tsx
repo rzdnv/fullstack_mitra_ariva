@@ -42,11 +42,11 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 import useLayananList from "./useLayananList";
 import { ILayanan } from "@/types/layanan";
-import TambahLayanan from "../TambahLayanan/TambahLayanan";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { truncateHtml } from "@/components/shared/truncatHtml/truncatHtml";
 
 export default function LayananList() {
-  const [openTambah, setOpenTambah] = useState(false);
+  const router = useRouter();
 
   const {
     dataLayanans,
@@ -80,7 +80,7 @@ export default function LayananList() {
           </p>
         </div>
         <Button
-          onClick={() => setOpenTambah(true)}
+          onClick={() => router.push("/admin/layanan/tambah")}
           className="bg-havelock-blue-600 p-4"
         >
           <Plus className="mr-2 h-4 w-4" />
@@ -202,7 +202,7 @@ export default function LayananList() {
                       className="wrap-break-words line-clamp-2 whitespace-normal text-slate-800"
                       title={layanan.deskripsi}
                     >
-                      {layanan.deskripsi}
+                      {truncateHtml(layanan.deskripsi, 100)}
                     </p>
                   </TableCell>
 
@@ -306,7 +306,6 @@ export default function LayananList() {
             </div>
           </div>
         )}
-        <TambahLayanan open={openTambah} onOpenChange={setOpenTambah} />
       </div>
     </div>
   );

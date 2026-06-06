@@ -8,6 +8,7 @@ import { toast } from "sonner";
 
 import uploadServices from "@/services/upload.service";
 import layananServices from "@/services/layanan.service";
+import { useRouter } from "next/navigation";
 
 // Schema
 const tambahLayananSchema = z.object({
@@ -24,12 +25,9 @@ interface ErrorResponse {
   message: string;
 }
 
-interface PropsTypes {
-  onSuccess?: () => void;
-}
-
-const useTambahLayanan = ({ onSuccess }: PropsTypes = {}) => {
+const useTambahLayanan = () => {
   const queryClient = useQueryClient();
+  const router = useRouter();
 
   // FOTO STATE
   const [fotoUrl, setFotoUrl] = useState<string | null>(null);
@@ -148,9 +146,9 @@ const useTambahLayanan = ({ onSuccess }: PropsTypes = {}) => {
         });
 
         reset();
+        router.replace("/admin/layanan");
 
         setFotoUrl(null);
-        onSuccess?.();
       },
 
       onError: (error: AxiosError<ErrorResponse>) => {
