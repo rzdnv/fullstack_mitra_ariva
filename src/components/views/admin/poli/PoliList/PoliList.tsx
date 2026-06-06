@@ -125,6 +125,13 @@ export default function PoliList() {
         </div>
       )}
 
+      {isPendingDeletePoli && (
+        <div className="mb-2 flex items-center gap-2 text-xs text-gray-400">
+          <Loader2 className="h-3 w-3 animate-spin" />
+          Sedang menghapus data...
+        </div>
+      )}
+
       {/* Table */}
       <div className="overflow-hidden rounded-xl border bg-white shadow-sm">
         <Table>
