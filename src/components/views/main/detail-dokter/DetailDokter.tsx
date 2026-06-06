@@ -1,15 +1,18 @@
 "use client";
 
 import Image from "next/image";
-import { Stethoscope, Calendar, Clock } from "lucide-react";
+import { Stethoscope, Calendar, Clock, ArrowLeft } from "lucide-react";
 import { FaInstagram, FaFacebook, FaYoutube } from "react-icons/fa";
 
 import useDetailDokter from "./useDetailDokter";
 import LoadingState from "@/components/shared/loadingstate/LoadingState";
 import { IJadwal } from "@/types/jadwal";
+import { useRouter } from "next/navigation";
 
 const DetailDokter = () => {
   const { detailDokter, isLoadingDetailDokter } = useDetailDokter();
+
+  const router = useRouter();
 
   if (isLoadingDetailDokter) {
     return <LoadingState judul="Memuat Profil Dokter" />;
@@ -51,7 +54,17 @@ const DetailDokter = () => {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-12 lg:px-10">
+      <div className="mx-auto max-w-6xl pt-6">
+        <button
+          onClick={() => router.back()}
+          className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-600 shadow-2xs transition-all duration-200 hover:bg-slate-50 hover:text-slate-900 active:scale-98"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          <span>Kembali</span>
+        </button>
+      </div>
+
+      <section className="mx-auto max-w-7xl px-4 py-8 lg:px-10">
         <div className="rounded-3xl border border-slate-100 bg-white p-5 shadow-xs sm:p-8">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-5">
             <div className="md:col-span-2">
@@ -91,10 +104,12 @@ const DetailDokter = () => {
                   <h4 className="font-DMSerif mb-2 text-base text-slate-900">
                     Tentang Dokter
                   </h4>
-                  <p className="text-justify leading-relaxed">
-                    {detailDokter.deskripsi ||
-                      "Belum ada deskripsi profil untuk dokter ini."}
-                  </p>
+                  <div
+                    className="prose prose-slate max-w-none space-y-4 text-sm leading-relaxed text-slate-700 sm:text-base [&_ol]:list-decimal [&_ol]:pl-5 [&_p]:text-justify [&_p]:leading-relaxed [&_strong]:font-semibold [&_strong]:text-slate-900 [&_ul]:list-disc [&_ul]:pl-5"
+                    dangerouslySetInnerHTML={{
+                      __html: detailDokter.deskripsi,
+                    }}
+                  />
                 </div>
 
                 <div className="space-y-3 border-t border-slate-100 pt-5">

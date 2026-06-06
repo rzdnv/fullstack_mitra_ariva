@@ -130,11 +130,12 @@ const DetailLayanan = () => {
               <div className="bg-havelock-blue-500/30 h-0.5 w-16 rounded-full" />
             </div>
 
-            <div className="prose prose-slate max-w-none">
-              <p className="text-justify text-sm leading-relaxed whitespace-pre-line text-slate-600 sm:text-base">
-                {detailLayanan?.deskripsi}
-              </p>
-            </div>
+            <div
+              className="prose prose-slate max-w-none space-y-4 text-sm leading-relaxed text-slate-700 sm:text-base [&_ol]:list-decimal [&_ol]:pl-5 [&_p]:text-justify [&_p]:leading-relaxed [&_strong]:font-semibold [&_strong]:text-slate-900 [&_ul]:list-disc [&_ul]:pl-5"
+              dangerouslySetInnerHTML={{
+                __html: detailLayanan?.deskripsi,
+              }}
+            />
           </div>
         </div>
       </section>
