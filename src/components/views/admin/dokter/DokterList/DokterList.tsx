@@ -44,11 +44,11 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import useDokterList from "./useDokterList";
 import { IDokter } from "@/types/dokter";
-import TambahDokter from "../TambahDokter/TambahDokter";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function DokterList() {
-  const [openTambah, setOpenTambah] = useState(false);
+  const router = useRouter();
+
   const {
     dataDokters,
     meta,
@@ -82,7 +82,7 @@ export default function DokterList() {
         </div>
 
         <Button
-          onClick={() => setOpenTambah(true)}
+          onClick={() => router.push("/admin/dokter/tambah")}
           className="bg-havelock-blue-600 p-4"
         >
           <Plus className="mr-2 h-4 w-4" />
@@ -122,6 +122,13 @@ export default function DokterList() {
         <div className="mb-2 flex items-center gap-2 text-xs text-gray-400">
           <Loader2 className="h-3 w-3 animate-spin" />
           Memperbarui...
+        </div>
+      )}
+
+      {isPendingDeleteDokter && (
+        <div className="mb-2 flex items-center gap-2 text-xs text-gray-400">
+          <Loader2 className="h-3 w-3 animate-spin" />
+          Sedang Menghapus data...
         </div>
       )}
 
@@ -306,7 +313,6 @@ export default function DokterList() {
             </div>
           </div>
         )}
-        <TambahDokter open={openTambah} onOpenChange={setOpenTambah} />
       </div>
     </div>
   );

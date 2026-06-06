@@ -29,11 +29,11 @@ interface ErrorResponse {
   message: string;
 }
 
-interface UseTambahDokterProps {
-  onSuccess?: () => void;
-}
+// interface UseTambahDokterProps {
+//   onSuccess?: () => void;
+// }
 
-const useTambahDokter = ({ onSuccess }: UseTambahDokterProps = {}) => {
+const useTambahDokter = () => {
   const queryClient = useQueryClient();
 
   // FOTO STATE
@@ -168,7 +168,7 @@ const useTambahDokter = ({ onSuccess }: UseTambahDokterProps = {}) => {
         reset();
 
         setFotoUrl(null);
-        onSuccess?.();
+        // onSuccess?.();
       },
 
       onError: (error: AxiosError<ErrorResponse>) => {
