@@ -5,16 +5,15 @@ interface IBerita {
   judul: string;
   isi: string;
   gambar: string;
-  tanggal: string;
   userId: number;
   user: IUser;
+  createdAt: string;
 }
 
 interface ICreateBerita {
   judul: string;
   isi: string;
   gambar: string;
-  tanggal: string;
   userId: number;
 }
 
@@ -22,7 +21,6 @@ interface IUpdateBerita {
   judul?: string;
   isi?: string;
   gambar?: string;
-  tanggal?: string;
   userId?: number;
 }
 

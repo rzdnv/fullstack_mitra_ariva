@@ -50,7 +50,6 @@ const DetailBerita = () => {
         judul: dataBerita.judul,
         isi: dataBerita.isi,
         gambar: dataBerita.gambar,
-        tanggal: dataBerita.tanggal?.split("T")[0],
       });
     }
   }, [dataBerita, reset]);
@@ -139,29 +138,6 @@ const DetailBerita = () => {
                 {errors.judul && (
                   <FieldDescription className="text-destructive text-xs">
                     {errors.judul.message}
-                  </FieldDescription>
-                )}
-              </Field>
-
-              {/* TANGGAL */}
-              <Field data-invalid={!!errors.tanggal}>
-                <FieldLabel>Tanggal</FieldLabel>
-
-                <Controller
-                  name="tanggal"
-                  control={control}
-                  render={({ field }) => (
-                    <Input
-                      {...field}
-                      type="date"
-                      disabled={isPendingMutateUpdateBerita}
-                    />
-                  )}
-                />
-
-                {errors.tanggal && (
-                  <FieldDescription className="text-destructive text-xs">
-                    {errors.tanggal.message}
                   </FieldDescription>
                 )}
               </Field>

@@ -9,7 +9,7 @@ import { IBeritaParams } from "@/types/berita";
 
 export async function getAllBerita() {
   return await prisma.berita.findMany({
-    orderBy: { tanggal: "desc" },
+    orderBy: { createdAt: "desc" },
     include: {
       user: {
         select: {
@@ -53,7 +53,7 @@ export async function getBeritaPaginated({
           },
         },
       },
-      orderBy: { tanggal: "desc" },
+      orderBy: { createdAt: "desc" },
     }),
     prisma.berita.count({ where }),
   ]);
@@ -107,7 +107,6 @@ export async function createBerita(data: CreateBeritaInput) {
       judul: data.judul,
       isi: data.isi,
       gambar: data.gambar,
-      tanggal: new Date(data.tanggal),
       userId: data.userId,
     },
     include: {
@@ -129,7 +128,6 @@ export async function updateBerita(id: number, data: UpdateBeritaInput) {
       judul: data.judul,
       isi: data.isi,
       gambar: data.gambar,
-      tanggal: data.tanggal ? new Date(data.tanggal) : undefined,
       userId: data.userId,
     },
     include: {

@@ -18,6 +18,10 @@ const DetailBerita = () => {
     return <LoadingState judul="Memuat Berita" />;
   }
 
+  const BeritaLainnya = dataBerita?.filter(
+    (item: IBerita) => item.id !== detailBerita?.id,
+  );
+
   return (
     <main className="min-h-screen bg-slate-50/50 pb-16">
       <section
@@ -61,7 +65,7 @@ const DetailBerita = () => {
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-slate-500 sm:text-sm">
               <div className="flex items-center gap-1.5">
                 <Calendar className="text-havelock-blue-500 h-4 w-4" />
-                <span>{formatTanggal(detailBerita.tanggal)}</span>
+                <span>{formatTanggal(detailBerita.createdAt)}</span>
               </div>
               <span className="hidden text-slate-300 sm:inline">•</span>
               <div className="flex items-center gap-1.5">
@@ -133,14 +137,14 @@ const DetailBerita = () => {
             </div>
 
             <div className="flex gap-4 overflow-x-auto p-2 lg:flex-col lg:overflow-visible">
-              {dataBerita?.map((berita: IBerita) => (
+              {BeritaLainnya?.map((berita: IBerita) => (
                 <div key={berita.id} className="min-w-70 lg:min-w-0">
                   <CardNews
                     _id={berita.id}
                     gambar={`${berita.gambar}`}
                     judul={berita.judul}
                     isi={berita.isi}
-                    tanggal={berita.tanggal}
+                    tanggal={berita.createdAt}
                     username={berita.user.username}
                   />
                 </div>

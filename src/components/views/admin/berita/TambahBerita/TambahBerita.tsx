@@ -109,31 +109,6 @@ const TambahBerita = () => {
                 )}
               </Field>
 
-              {/* TANGGAL */}
-              <Field data-invalid={!!errors.tanggal}>
-                <FieldLabel htmlFor="tanggal">Tanggal</FieldLabel>
-
-                <Controller
-                  name="tanggal"
-                  control={control}
-                  render={({ field }) => (
-                    <Input
-                      {...field}
-                      id="tanggal"
-                      type="date"
-                      disabled={isPendingCreate}
-                      aria-invalid={!!errors.tanggal}
-                    />
-                  )}
-                />
-
-                {errors.tanggal && (
-                  <FieldDescription className="text-destructive text-xs">
-                    {errors.tanggal.message}
-                  </FieldDescription>
-                )}
-              </Field>
-
               {/* ISI BERITA */}
               <Field data-invalid={!!errors.isi}>
                 <FieldLabel htmlFor="isi">Isi Berita</FieldLabel>

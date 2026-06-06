@@ -22,8 +22,6 @@ const updateBeritaSchema = z.object({
   isi: z.string().min(1, "Isi berita wajib diisi"),
 
   gambar: z.string().min(1, "gambar wajib diupload"),
-
-  tanggal: z.string().min(1, "Tanggal wajib diupload"),
 });
 
 export type UpdateBeritaValues = z.infer<typeof updateBeritaSchema>;
@@ -56,7 +54,6 @@ const useDetailBerita = () => {
       judul: "",
       isi: "",
       gambar: "",
-      tanggal: "",
     },
   });
 

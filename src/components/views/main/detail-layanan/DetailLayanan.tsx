@@ -77,7 +77,6 @@ const DetailLayanan = () => {
         </div>
       </section>
 
-      {/* 1. TOP UTILITY BAR */}
       <div className="mx-auto max-w-6xl px-4 pt-6 sm:px-6 lg:px-8">
         <button
           onClick={() => router.back()}
@@ -88,12 +87,9 @@ const DetailLayanan = () => {
         </button>
       </div>
 
-      {/* 2. AREA UTAMA DETAIL LAYANAN */}
       <section className="mx-auto max-w-6xl px-4 pt-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-start gap-8 overflow-hidden rounded-3xl border border-slate-100 bg-white p-4 shadow-xs sm:p-8 md:grid-cols-12">
-          {/* KOLOM KIRI: POSTER & BUTTON WA */}
           <div className="mx-auto w-full max-w-md space-y-4 md:col-span-5 md:max-w-none lg:col-span-4">
-            {/* Frame Foto Poster Portrait */}
             <div className="relative aspect-3/4 w-full overflow-hidden rounded-2xl border border-slate-100 bg-slate-50 shadow-sm">
               <Image
                 src={detailLayanan?.foto}
@@ -105,7 +101,6 @@ const DetailLayanan = () => {
               />
             </div>
 
-            {/* ACTION CTA BUTTON: WhatsApp Berada Tepat di Bawah Poster */}
             <button
               onClick={handleWhatsAppRedirect}
               className="inline-flex w-full items-center justify-center gap-2.5 rounded-2xl bg-emerald-600 py-3.5 text-sm font-bold text-white shadow-md shadow-emerald-100 transition-all duration-200 hover:bg-emerald-700 hover:shadow-lg active:scale-98"
@@ -115,7 +110,6 @@ const DetailLayanan = () => {
             </button>
           </div>
 
-          {/* KOLOM KANAN: DETAIL INFORMASI TEKS */}
           <div className="space-y-6 md:col-span-7 lg:col-span-8">
             <div className="flex flex-wrap items-center gap-2 text-xs font-medium text-slate-400">
               <div className="flex items-center gap-1.5 rounded-lg border border-slate-100 bg-slate-50 px-2.5 py-1 text-slate-500">
@@ -145,7 +139,6 @@ const DetailLayanan = () => {
         </div>
       </section>
 
-      {/* 3. LIST REKOMENDASI MENGGUNAKAN CARD SERVICE */}
       {layananLainnya && layananLainnya.length > 0 && (
         <section className="mx-auto max-w-6xl px-4 pt-14 sm:px-6 lg:px-8">
           <div className="mb-6 flex items-center justify-between">

@@ -44,6 +44,7 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import useBeritaList from "./useBeritaList";
 import { IBerita } from "@/types/berita";
+import { formatTanggal } from "@/components/shared/formatted/formated";
 
 export default function BeritaList() {
   const router = useRouter();
@@ -131,6 +132,7 @@ export default function BeritaList() {
               <TableHead className="w-12">No</TableHead>
               <TableHead>Foto</TableHead>
               <TableHead>Judul</TableHead>
+              <TableHead>Dibuat</TableHead>
               <TableHead>Author</TableHead>
               <TableHead className="text-center">Aksi</TableHead>
             </TableRow>
@@ -144,6 +146,9 @@ export default function BeritaList() {
                   </TableCell>
                   <TableCell>
                     <Skeleton className="h-4 w-40" />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton className="h-4 w-32" />
                   </TableCell>
                   <TableCell>
                     <Skeleton className="h-4 w-32" />
@@ -186,6 +191,10 @@ export default function BeritaList() {
                   </TableCell>
                   <TableCell className="font-medium text-slate-800">
                     {berita.judul}
+                  </TableCell>
+
+                  <TableCell className="font-medium text-slate-800">
+                    {formatTanggal(berita.createdAt)}
                   </TableCell>
 
                   <TableCell>

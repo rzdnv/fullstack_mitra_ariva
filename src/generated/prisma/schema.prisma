@@ -86,7 +86,6 @@ model Berita {
   judul     String
   isi       String   @db.Text
   gambar    String?
-  tanggal   DateTime @db.Date
   userId    Int      @map("user_id")
   createdAt DateTime @default(now()) @map("created_at")
   user      User     @relation(fields: [userId], references: [id])

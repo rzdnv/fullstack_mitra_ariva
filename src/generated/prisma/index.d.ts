@@ -6028,7 +6028,6 @@ export namespace Prisma {
     judul: string | null
     isi: string | null
     gambar: string | null
-    tanggal: Date | null
     userId: number | null
     createdAt: Date | null
   }
@@ -6038,7 +6037,6 @@ export namespace Prisma {
     judul: string | null
     isi: string | null
     gambar: string | null
-    tanggal: Date | null
     userId: number | null
     createdAt: Date | null
   }
@@ -6048,7 +6046,6 @@ export namespace Prisma {
     judul: number
     isi: number
     gambar: number
-    tanggal: number
     userId: number
     createdAt: number
     _all: number
@@ -6070,7 +6067,6 @@ export namespace Prisma {
     judul?: true
     isi?: true
     gambar?: true
-    tanggal?: true
     userId?: true
     createdAt?: true
   }
@@ -6080,7 +6076,6 @@ export namespace Prisma {
     judul?: true
     isi?: true
     gambar?: true
-    tanggal?: true
     userId?: true
     createdAt?: true
   }
@@ -6090,7 +6085,6 @@ export namespace Prisma {
     judul?: true
     isi?: true
     gambar?: true
-    tanggal?: true
     userId?: true
     createdAt?: true
     _all?: true
@@ -6187,7 +6181,6 @@ export namespace Prisma {
     judul: string
     isi: string
     gambar: string | null
-    tanggal: Date
     userId: number
     createdAt: Date
     _count: BeritaCountAggregateOutputType | null
@@ -6216,7 +6209,6 @@ export namespace Prisma {
     judul?: boolean
     isi?: boolean
     gambar?: boolean
-    tanggal?: boolean
     userId?: boolean
     createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -6227,7 +6219,6 @@ export namespace Prisma {
     judul?: boolean
     isi?: boolean
     gambar?: boolean
-    tanggal?: boolean
     userId?: boolean
     createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -6238,7 +6229,6 @@ export namespace Prisma {
     judul?: boolean
     isi?: boolean
     gambar?: boolean
-    tanggal?: boolean
     userId?: boolean
     createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -6249,12 +6239,11 @@ export namespace Prisma {
     judul?: boolean
     isi?: boolean
     gambar?: boolean
-    tanggal?: boolean
     userId?: boolean
     createdAt?: boolean
   }
 
-  export type BeritaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "judul" | "isi" | "gambar" | "tanggal" | "userId" | "createdAt", ExtArgs["result"]["berita"]>
+  export type BeritaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "judul" | "isi" | "gambar" | "userId" | "createdAt", ExtArgs["result"]["berita"]>
   export type BeritaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -6275,7 +6264,6 @@ export namespace Prisma {
       judul: string
       isi: string
       gambar: string | null
-      tanggal: Date
       userId: number
       createdAt: Date
     }, ExtArgs["result"]["berita"]>
@@ -6706,7 +6694,6 @@ export namespace Prisma {
     readonly judul: FieldRef<"Berita", 'String'>
     readonly isi: FieldRef<"Berita", 'String'>
     readonly gambar: FieldRef<"Berita", 'String'>
-    readonly tanggal: FieldRef<"Berita", 'DateTime'>
     readonly userId: FieldRef<"Berita", 'Int'>
     readonly createdAt: FieldRef<"Berita", 'DateTime'>
   }
@@ -9290,7 +9277,6 @@ export namespace Prisma {
     judul: 'judul',
     isi: 'isi',
     gambar: 'gambar',
-    tanggal: 'tanggal',
     userId: 'userId',
     createdAt: 'createdAt'
   };
@@ -9682,7 +9668,6 @@ export namespace Prisma {
     judul?: StringFilter<"Berita"> | string
     isi?: StringFilter<"Berita"> | string
     gambar?: StringNullableFilter<"Berita"> | string | null
-    tanggal?: DateTimeFilter<"Berita"> | Date | string
     userId?: IntFilter<"Berita"> | number
     createdAt?: DateTimeFilter<"Berita"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -9693,7 +9678,6 @@ export namespace Prisma {
     judul?: SortOrder
     isi?: SortOrder
     gambar?: SortOrderInput | SortOrder
-    tanggal?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     user?: UserOrderByWithRelationInput
@@ -9707,7 +9691,6 @@ export namespace Prisma {
     judul?: StringFilter<"Berita"> | string
     isi?: StringFilter<"Berita"> | string
     gambar?: StringNullableFilter<"Berita"> | string | null
-    tanggal?: DateTimeFilter<"Berita"> | Date | string
     userId?: IntFilter<"Berita"> | number
     createdAt?: DateTimeFilter<"Berita"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -9718,7 +9701,6 @@ export namespace Prisma {
     judul?: SortOrder
     isi?: SortOrder
     gambar?: SortOrderInput | SortOrder
-    tanggal?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     _count?: BeritaCountOrderByAggregateInput
@@ -9736,7 +9718,6 @@ export namespace Prisma {
     judul?: StringWithAggregatesFilter<"Berita"> | string
     isi?: StringWithAggregatesFilter<"Berita"> | string
     gambar?: StringNullableWithAggregatesFilter<"Berita"> | string | null
-    tanggal?: DateTimeWithAggregatesFilter<"Berita"> | Date | string
     userId?: IntWithAggregatesFilter<"Berita"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Berita"> | Date | string
   }
@@ -10105,7 +10086,6 @@ export namespace Prisma {
     judul: string
     isi: string
     gambar?: string | null
-    tanggal: Date | string
     createdAt?: Date | string
     user: UserCreateNestedOneWithoutBeritaInput
   }
@@ -10115,7 +10095,6 @@ export namespace Prisma {
     judul: string
     isi: string
     gambar?: string | null
-    tanggal: Date | string
     userId: number
     createdAt?: Date | string
   }
@@ -10125,7 +10104,6 @@ export namespace Prisma {
     judul?: StringFieldUpdateOperationsInput | string
     isi?: StringFieldUpdateOperationsInput | string
     gambar?: NullableStringFieldUpdateOperationsInput | string | null
-    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutBeritaNestedInput
   }
@@ -10135,7 +10113,6 @@ export namespace Prisma {
     judul?: StringFieldUpdateOperationsInput | string
     isi?: StringFieldUpdateOperationsInput | string
     gambar?: NullableStringFieldUpdateOperationsInput | string | null
-    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10145,7 +10122,6 @@ export namespace Prisma {
     judul: string
     isi: string
     gambar?: string | null
-    tanggal: Date | string
     userId: number
     createdAt?: Date | string
   }
@@ -10155,7 +10131,6 @@ export namespace Prisma {
     judul?: StringFieldUpdateOperationsInput | string
     isi?: StringFieldUpdateOperationsInput | string
     gambar?: NullableStringFieldUpdateOperationsInput | string | null
-    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -10164,7 +10139,6 @@ export namespace Prisma {
     judul?: StringFieldUpdateOperationsInput | string
     isi?: StringFieldUpdateOperationsInput | string
     gambar?: NullableStringFieldUpdateOperationsInput | string | null
-    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10637,7 +10611,6 @@ export namespace Prisma {
     judul?: SortOrder
     isi?: SortOrder
     gambar?: SortOrder
-    tanggal?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
   }
@@ -10652,7 +10625,6 @@ export namespace Prisma {
     judul?: SortOrder
     isi?: SortOrder
     gambar?: SortOrder
-    tanggal?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
   }
@@ -10662,7 +10634,6 @@ export namespace Prisma {
     judul?: SortOrder
     isi?: SortOrder
     gambar?: SortOrder
-    tanggal?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
   }
@@ -11115,7 +11086,6 @@ export namespace Prisma {
     judul: string
     isi: string
     gambar?: string | null
-    tanggal: Date | string
     createdAt?: Date | string
   }
 
@@ -11124,7 +11094,6 @@ export namespace Prisma {
     judul: string
     isi: string
     gambar?: string | null
-    tanggal: Date | string
     createdAt?: Date | string
   }
 
@@ -11162,7 +11131,6 @@ export namespace Prisma {
     judul?: StringFilter<"Berita"> | string
     isi?: StringFilter<"Berita"> | string
     gambar?: StringNullableFilter<"Berita"> | string | null
-    tanggal?: DateTimeFilter<"Berita"> | Date | string
     userId?: IntFilter<"Berita"> | number
     createdAt?: DateTimeFilter<"Berita"> | Date | string
   }
@@ -11429,7 +11397,6 @@ export namespace Prisma {
     judul: string
     isi: string
     gambar?: string | null
-    tanggal: Date | string
     createdAt?: Date | string
   }
 
@@ -11438,7 +11405,6 @@ export namespace Prisma {
     judul?: StringFieldUpdateOperationsInput | string
     isi?: StringFieldUpdateOperationsInput | string
     gambar?: NullableStringFieldUpdateOperationsInput | string | null
-    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -11447,7 +11413,6 @@ export namespace Prisma {
     judul?: StringFieldUpdateOperationsInput | string
     isi?: StringFieldUpdateOperationsInput | string
     gambar?: NullableStringFieldUpdateOperationsInput | string | null
-    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -11456,7 +11421,6 @@ export namespace Prisma {
     judul?: StringFieldUpdateOperationsInput | string
     isi?: StringFieldUpdateOperationsInput | string
     gambar?: NullableStringFieldUpdateOperationsInput | string | null
-    tanggal?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

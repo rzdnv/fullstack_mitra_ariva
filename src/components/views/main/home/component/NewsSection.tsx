@@ -45,7 +45,7 @@ const NewsSection = () => {
                     gambar={`${berita.gambar}`}
                     judul={berita.judul}
                     isi={berita.isi}
-                    tanggal={berita.tanggal}
+                    tanggal={berita.createdAt}
                     username={berita.user.username}
                   />
                 ))}
