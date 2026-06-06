@@ -60,6 +60,7 @@ const Layanan = () => {
               ))
             : dataLayanan?.map((layanan: ILayanan) => (
                 <CardService
+                  _id={layanan.id}
                   key={layanan.id}
                   foto={layanan.foto}
                   namaLayanan={layanan.namaLayanan}

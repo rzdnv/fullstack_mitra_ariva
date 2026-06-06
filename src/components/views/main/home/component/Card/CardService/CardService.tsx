@@ -3,28 +3,25 @@
 import { Card } from "@/components/ui/card";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 interface PropTypes {
   foto: string;
+  _id: number;
   namaLayanan: string;
   deskripsi?: string;
 }
 
 const CardService = (props: PropTypes) => {
-  const { foto, namaLayanan, deskripsi } = props;
+  const { foto, namaLayanan, deskripsi, _id } = props;
 
-  const handleWhatsAppRedirect = () => {
-    const phoneNumber = "6281245489477";
-    const message = `Halo RSKB Mitra Ariva, saya ingin bertanya informasi lebih lanjut mengenai layanan *${namaLayanan}*.`;
+  const router = useRouter();
 
-    const waUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-
-    window.open(waUrl, "_blank", "noopener,noreferrer");
-  };
+  const handleDetail = () => router.push(`/layanan/${_id}`);
 
   return (
     <Card
-      onClick={handleWhatsAppRedirect}
+      onClick={handleDetail}
       className="group hover:border-havelock-blue-300 hover:shadow-havelock-blue-950/10 relative aspect-3/4 w-full max-w-85 cursor-pointer overflow-hidden rounded-2xl border border-slate-100 bg-white p-0 shadow-md transition-all duration-500 hover:-translate-y-2 hover:shadow-xl"
     >
       <div className="absolute inset-0 h-full w-full">

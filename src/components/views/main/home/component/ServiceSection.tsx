@@ -33,6 +33,7 @@ const ServiceSection = () => {
                   className="w-65 shrink-0 snap-center transition-transform duration-300 hover:-translate-y-1 sm:w-70"
                 >
                   <CardService
+                    _id={layanan.id}
                     foto={`${layanan.foto}`}
                     namaLayanan={layanan.namaLayanan}
                     deskripsi={layanan.deskripsi}
