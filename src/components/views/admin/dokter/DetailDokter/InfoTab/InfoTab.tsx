@@ -30,7 +30,7 @@ import { IPoli } from "@/types/poli";
 
 import useInfoTab from "./useInfoTab";
 import { Field, FieldDescription, FieldLabel } from "@/components/ui/field";
-import { Textarea } from "@/components/ui/textarea";
+import TiptapEditor from "@/components/ui/TiptapEditor";
 
 interface PropTypes {
   dataDokter: IDokter;
@@ -257,13 +257,10 @@ const InfoTab = ({
               name="deskripsi"
               control={control}
               render={({ field }) => (
-                <Textarea
+                <TiptapEditor
                   {...field}
-                  value={field.value ?? ""}
-                  id="deskripsi"
-                  placeholder="Deskripsi singkat dokter..."
-                  disabled={isPendingMutateUpdateDokter}
-                  rows={3}
+                  value={field.value}
+                  onChange={field.onChange}
                 />
               )}
             />

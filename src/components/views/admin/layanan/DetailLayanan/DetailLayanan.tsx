@@ -18,7 +18,7 @@ import { Input } from "@/components/ui/input";
 import InputImage from "@/components/shared/InputImage/InputImage";
 import useDetailLayanan from "./useDetailLayanan";
 import { Field, FieldDescription, FieldLabel } from "@/components/ui/field";
-import { Textarea } from "@/components/ui/textarea";
+import TiptapEditor from "@/components/ui/TiptapEditor";
 
 const DetailLayanan = () => {
   const {
@@ -175,12 +175,10 @@ const DetailLayanan = () => {
               name="deskripsi"
               control={control}
               render={({ field }) => (
-                <Textarea
+                <TiptapEditor
                   {...field}
-                  id="deskripsi"
-                  placeholder="Deskripsi Layanan"
-                  disabled={isPendingMutateUpdateLayanan}
-                  aria-invalid={!!errors.deskripsi}
+                  value={field.value}
+                  onChange={field.onChange}
                 />
               )}
             />
