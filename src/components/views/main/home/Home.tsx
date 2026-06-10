@@ -5,6 +5,7 @@ import HeroSection from "./component/HeroSection";
 import HighlightSection from "./component/HighlightSection";
 import NewsSection from "./component/NewsSection";
 import PartnerSection from "./component/PartnerSection";
+import RegistrationSection from "./component/RegistrationSection";
 import ReviewSection from "./component/ReviewSection";
 import ServiceSection from "./component/ServiceSection";
 
@@ -19,6 +20,7 @@ const Home = () => {
       <ServiceSection />
       <NewsSection />
       <PartnerSection />
+      <RegistrationSection />
       <ReviewSection />
     </div>
   );

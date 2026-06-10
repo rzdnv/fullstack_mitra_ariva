@@ -51,13 +51,13 @@ export const LAYANAN_LIST = [
 
 export function FasilitiesCard({ title, desc, icon: Icon }: LayananCardProps) {
   return (
-    <div className="group flex h-full w-65 shrink-0 snap-center flex-col justify-between rounded-2xl border border-slate-100 bg-white p-6 shadow-xs transition-all duration-300 sm:w-full">
+    <div className="group flex h-full w-65 shrink-0 snap-center flex-col justify-between rounded-2xl border border-slate-100 bg-white p-6 shadow-xs sm:w-full">
       <div>
-        <div className="mb-5 w-fit rounded-xl border border-slate-100/80 bg-slate-50 p-3.5 transition-colors duration-300">
-          <Icon className="h-6 w-6 text-slate-500 transition-colors duration-300" />
+        <div className="mb-5 w-fit rounded-xl border border-slate-100/80 bg-slate-50 p-3.5">
+          <Icon className="h-6 w-6 text-slate-500" />
         </div>
 
-        <h3 className="font-playfair mb-2 text-base font-bold text-slate-800 transition-colors duration-200 lg:text-lg">
+        <h3 className="font-DMSerif mb-2 text-base text-slate-800 lg:text-lg">
           {title}
         </h3>
 
@@ -71,7 +71,7 @@ export function FasilitiesCard({ title, desc, icon: Icon }: LayananCardProps) {
           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
           <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
         </span>
-        <span className="text-[11px] font-medium tracking-wide text-slate-400 uppercase transition-colors duration-200">
+        <span className="text-[11px] font-medium tracking-wide text-slate-400 uppercase">
           Layanan Tersedia
         </span>
       </div>
