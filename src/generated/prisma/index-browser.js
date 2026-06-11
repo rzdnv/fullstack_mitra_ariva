@@ -185,14 +185,48 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
-exports.Prisma.QueryMode = {
-  default: 'default',
-  insensitive: 'insensitive'
+exports.Prisma.UserOrderByRelevanceFieldEnum = {
+  username: 'username',
+  password: 'password'
+};
+
+exports.Prisma.PoliOrderByRelevanceFieldEnum = {
+  namaPoli: 'namaPoli'
 };
 
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
+};
+
+exports.Prisma.DokterOrderByRelevanceFieldEnum = {
+  nama: 'nama',
+  spesialis: 'spesialis',
+  deskripsi: 'deskripsi',
+  foto: 'foto'
+};
+
+exports.Prisma.JadwalDokterOrderByRelevanceFieldEnum = {
+  jamMulai: 'jamMulai',
+  jamSelesai: 'jamSelesai'
+};
+
+exports.Prisma.BeritaOrderByRelevanceFieldEnum = {
+  judul: 'judul',
+  isi: 'isi',
+  gambar: 'gambar'
+};
+
+exports.Prisma.LayananOrderByRelevanceFieldEnum = {
+  namaLayanan: 'namaLayanan',
+  deskripsi: 'deskripsi',
+  foto: 'foto'
+};
+
+exports.Prisma.ReviewOrderByRelevanceFieldEnum = {
+  nama: 'nama',
+  review: 'review',
+  gender: 'gender'
 };
 exports.Role = exports.$Enums.Role = {
   ADMIN: 'ADMIN',

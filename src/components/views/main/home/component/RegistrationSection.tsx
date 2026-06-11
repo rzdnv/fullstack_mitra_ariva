@@ -1,6 +1,6 @@
 "use client";
 
-import { Smartphone, PhoneCall, CheckCircle2, ArrowRight } from "lucide-react";
+import { CheckCircle2, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { FaWhatsapp } from "react-icons/fa";
 
@@ -33,7 +33,6 @@ const RegistrationSection = () => {
         </h2>
       </div>
 
-      {/* GRID KARTU UTAMA */}
       <div className="mx-auto mt-14 grid w-full max-w-5xl grid-cols-1 gap-8 sm:grid-cols-2">
         <div
           onClick={handleMobileJKNRedirect}
