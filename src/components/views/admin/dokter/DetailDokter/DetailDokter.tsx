@@ -6,13 +6,7 @@ import InfoTab from "./InfoTab/InfoTab";
 import JadwalTab from "./JadwalTab/JadwalTab";
 
 export default function DetailDokter() {
-  const {
-    dataDokter,
-    isLoadingDokter,
-    handleUpdateDokter,
-    isPendingMutateUpdateDokter,
-    isSuccessMutateUpdateDokter,
-  } = useDetailDokter();
+  const { dataDokter, isLoadingDokter } = useDetailDokter();
 
   return (
     <div>
@@ -29,13 +23,7 @@ export default function DetailDokter() {
           <TabsTrigger value="jadwal">Jadwal</TabsTrigger>
         </TabsList>
         <TabsContent value="info" className="my-2">
-          <InfoTab
-            dataDokter={dataDokter}
-            isLoadingDokter={isLoadingDokter}
-            handleUpdateDokter={handleUpdateDokter}
-            isPendingMutateUpdateDokter={isPendingMutateUpdateDokter}
-            isSuccessMutateUpdateDokter={isSuccessMutateUpdateDokter}
-          />
+          <InfoTab dataDokter={dataDokter} isLoadingDokter={isLoadingDokter} />
         </TabsContent>
         <TabsContent value="jadwal" className="my-2">
           <JadwalTab dataDokter={dataDokter} />

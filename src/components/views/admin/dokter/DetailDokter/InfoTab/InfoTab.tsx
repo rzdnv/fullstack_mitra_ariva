@@ -25,7 +25,7 @@ import {
 
 import InputImage from "@/components/shared/InputImage/InputImage";
 
-import { IDokter, IUpdateDokter } from "@/types/dokter";
+import { IDokter } from "@/types/dokter";
 import { IPoli } from "@/types/poli";
 
 import useInfoTab from "./useInfoTab";
@@ -35,17 +35,9 @@ import TiptapEditor from "@/components/ui/TiptapEditor";
 interface PropTypes {
   dataDokter: IDokter;
   isLoadingDokter: boolean;
-  handleUpdateDokter: (data: IUpdateDokter) => void;
-  isPendingMutateUpdateDokter: boolean;
-  isSuccessMutateUpdateDokter: boolean;
 }
 
-const InfoTab = ({
-  dataDokter,
-  isLoadingDokter,
-  handleUpdateDokter,
-  isPendingMutateUpdateDokter,
-}: PropTypes) => {
+const InfoTab = ({ dataDokter, isLoadingDokter }: PropTypes) => {
   const {
     dataPoli,
     isLoadingPoli,
@@ -61,6 +53,9 @@ const InfoTab = ({
     isDeletingFoto,
     handleUploadFoto,
     handleRemoveFoto,
+
+    handleUpdateDokter,
+    isPendingMutateUpdateDokter,
   } = useInfoTab();
 
   useEffect(() => {

@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { toast } from "sonner";
@@ -37,6 +37,32 @@ const useTambahBerita = () => {
   const [isUploadingFoto, setIsUploadingFoto] = useState(false);
 
   const [isDeletingFoto, setIsDeletingFoto] = useState(false);
+
+  // ← Ref untuk track fotoUrl terbaru di cleanup
+  const fotoUrlRef = useRef<string | null>(null);
+
+  // ← Track apakah form berhasil submit
+  const isSubmittedRef = useRef(false);
+
+  // ← Sync fotoUrl ke ref setiap kali berubah
+  useEffect(() => {
+    fotoUrlRef.current = fotoUrl;
+  }, [fotoUrl]);
+
+  // ← Hapus foto otomatis saat keluar halaman (unmount)
+  useEffect(() => {
+    return () => {
+      // Kalau sudah submit berhasil, tidak perlu hapus
+      if (isSubmittedRef.current) return;
+
+      // Kalau ada foto yang belum disimpan → hapus
+      if (fotoUrlRef.current) {
+        uploadServices.removeFile({ fileUrl: fotoUrlRef.current }).catch(() => {
+          // Silent error — tidak perlu toast karena user sudah keluar
+        });
+      }
+    };
+  }, []); // ← empty dependency, hanya jalan saat unmount
 
   // FORM
   const {
@@ -146,6 +172,9 @@ const useTambahBerita = () => {
         queryClient.invalidateQueries({
           queryKey: ["dashboard"],
         });
+
+        // ← Tandai sudah submit berhasil agar cleanup tidak hapus foto
+        isSubmittedRef.current = true;
 
         reset();
         setFotoUrl(null);
