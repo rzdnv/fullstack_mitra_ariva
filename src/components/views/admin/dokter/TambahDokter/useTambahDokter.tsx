@@ -9,6 +9,7 @@ import dokterServices from "@/services/dokter.service";
 import poliServices from "@/services/poli.service";
 import uploadServices from "@/services/upload.service";
 import { useRouter } from "next/navigation";
+import { FILE_SIZE, validateFile } from "@/lib/validate-file";
 
 const tambahDokterSchema = z.object({
   nama: z.string().min(1, "Nama dokter wajib diisi"),
@@ -84,11 +85,18 @@ const useTambahDokter = () => {
   });
 
   const handleUploadFoto = async (file: File) => {
+    const validation = validateFile(file, { maxSize: FILE_SIZE.MB_2 });
+    if (!validation.valid) {
+      toast.error(validation.message, { position: "top-right" });
+      return;
+    }
+
     setIsUploadingFoto(true);
+
     try {
       const formData = new FormData();
       formData.append("file", file);
-      const { data } = await uploadServices.uploadSingle(formData);
+      const { data } = await uploadServices.uploadSingle(formData, "dokter");
       const url = data.data.secure_url;
       setFotoUrl(url);
       setValue("foto", url, { shouldValidate: true });

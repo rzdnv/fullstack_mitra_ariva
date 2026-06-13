@@ -1,3 +1,4 @@
+import { FILE_SIZE, validateFile } from "@/lib/validate-file";
 import layananServices from "@/services/layanan.service";
 import uploadServices from "@/services/upload.service";
 import { IUpdateLayanan } from "@/types/layanan";
@@ -85,6 +86,12 @@ const useDetailLayanan = () => {
 
   // UPLOAD FOTO
   const handleUploadFoto = async (file: File) => {
+    const validation = validateFile(file, { maxSize: FILE_SIZE.MB_1 });
+    if (!validation.valid) {
+      toast.error(validation.message, { position: "top-right" });
+      return;
+    }
+
     setIsUploadingFoto(true);
 
     try {
@@ -92,7 +99,7 @@ const useDetailLayanan = () => {
 
       formData.append("file", file);
 
-      const { data } = await uploadServices.uploadSingle(formData);
+      const { data } = await uploadServices.uploadSingle(formData, "layanan");
 
       const url = data.data.secure_url;
 

@@ -1,3 +1,4 @@
+import { FILE_SIZE, validateFile } from "@/lib/validate-file";
 import dokterServices from "@/services/dokter.service";
 import poliServices from "@/services/poli.service";
 import uploadServices from "@/services/upload.service";
@@ -137,6 +138,12 @@ const useInfoTab = () => {
 
   // UPLOAD FOTO
   const handleUploadFoto = async (file: File) => {
+    const validation = validateFile(file, { maxSize: FILE_SIZE.MB_2 });
+    if (!validation.valid) {
+      toast.error(validation.message, { position: "top-right" });
+      return;
+    }
+
     setIsUploadingFoto(true);
 
     try {
@@ -144,7 +151,7 @@ const useInfoTab = () => {
 
       formData.append("file", file);
 
-      const { data } = await uploadServices.uploadSingle(formData);
+      const { data } = await uploadServices.uploadSingle(formData, "dokter");
 
       const url = data.data.secure_url;
 

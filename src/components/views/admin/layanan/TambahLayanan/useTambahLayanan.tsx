@@ -9,6 +9,7 @@ import { toast } from "sonner";
 import uploadServices from "@/services/upload.service";
 import layananServices from "@/services/layanan.service";
 import { useRouter } from "next/navigation";
+import { FILE_SIZE, validateFile } from "@/lib/validate-file";
 
 // Schema
 const tambahLayananSchema = z.object({
@@ -81,6 +82,12 @@ const useTambahLayanan = () => {
 
   // UPLOAD FOTO
   const handleUploadFoto = async (file: File) => {
+    const validation = validateFile(file, { maxSize: FILE_SIZE.MB_1 });
+    if (!validation.valid) {
+      toast.error(validation.message, { position: "top-right" });
+      return;
+    }
+
     setIsUploadingFoto(true);
 
     try {
@@ -88,7 +95,7 @@ const useTambahLayanan = () => {
 
       formData.append("file", file);
 
-      const { data } = await uploadServices.uploadSingle(formData);
+      const { data } = await uploadServices.uploadSingle(formData, "layanan");
 
       const url = data.data.secure_url;
 
