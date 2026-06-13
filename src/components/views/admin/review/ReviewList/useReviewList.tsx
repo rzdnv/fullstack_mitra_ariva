@@ -4,6 +4,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { AxiosError } from "axios";
 import reviewServices from "@/services/review.service";
+import { useDebounce } from "@/hooks/useDebounce";
 
 interface ErrorResponse {
   message: string;
@@ -14,11 +15,13 @@ const useReviewList = () => {
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const { currentPage, currentLimit, currentSearch, setUrl } = useChangeUrl();
 
+  const debouncedSearch = useDebounce(currentSearch, 500);
+
   // GET ALL
   const getReviews = async () => {
     let params = `limit=${currentLimit}&page=${currentPage}`;
-    if (currentSearch) {
-      params += `&search=${currentSearch}`;
+    if (debouncedSearch) {
+      params += `&search=${debouncedSearch}`;
     }
     const { data } = await reviewServices.getAllPaginated(params);
     return data.data;
@@ -29,7 +32,7 @@ const useReviewList = () => {
     isLoading: isLoadingReviews,
     isRefetching: isRefetchingReviews,
   } = useQuery({
-    queryKey: ["review", currentPage, currentLimit, currentSearch],
+    queryKey: ["review", currentPage, currentLimit, debouncedSearch],
     queryFn: getReviews,
     enabled: !!currentPage && !!currentLimit,
   });

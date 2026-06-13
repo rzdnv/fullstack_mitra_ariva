@@ -4,6 +4,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { AxiosError } from "axios";
 import layananServices from "@/services/layanan.service";
+import { useDebounce } from "@/hooks/useDebounce";
 
 interface ErrorResponse {
   message: string;
@@ -14,11 +15,13 @@ const useLayananList = () => {
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const { currentPage, currentLimit, currentSearch, setUrl } = useChangeUrl();
 
+  const debouncedSearch = useDebounce(currentSearch, 500);
+
   // GET ALL
   const getLayanans = async () => {
     let params = `limit=${currentLimit}&page=${currentPage}`;
-    if (currentSearch) {
-      params += `&search=${currentSearch}`;
+    if (debouncedSearch) {
+      params += `&search=${debouncedSearch}`;
     }
     const { data } = await layananServices.getAllPaginated(params);
     return data.data;
@@ -29,7 +32,7 @@ const useLayananList = () => {
     isLoading: isLoadingLayanans,
     isRefetching: isRefetchingLayanans,
   } = useQuery({
-    queryKey: ["layanan", currentPage, currentLimit, currentSearch],
+    queryKey: ["layanan", currentPage, currentLimit, debouncedSearch],
     queryFn: getLayanans,
     enabled: !!currentPage && !!currentLimit,
   });

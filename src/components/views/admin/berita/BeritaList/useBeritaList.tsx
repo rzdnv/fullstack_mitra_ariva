@@ -4,6 +4,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { AxiosError } from "axios";
 import beritaServices from "@/services/berita.service";
+import { useDebounce } from "@/hooks/useDebounce";
 
 interface ErrorResponse {
   message: string;
@@ -14,11 +15,13 @@ const useBeritaList = () => {
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const { currentPage, currentLimit, currentSearch, setUrl } = useChangeUrl();
 
+  const debouncedSearch = useDebounce(currentSearch, 500);
+
   // GET ALL
   const getBeritas = async () => {
     let params = `limit=${currentLimit}&page=${currentPage}`;
-    if (currentSearch) {
-      params += `&search=${currentSearch}`;
+    if (debouncedSearch) {
+      params += `&search=${debouncedSearch}`;
     }
     const { data } = await beritaServices.getAllPaginated(params);
     return data.data;
@@ -29,7 +32,7 @@ const useBeritaList = () => {
     isLoading: isLoadingBeritas,
     isRefetching: isRefetchingBeritas,
   } = useQuery({
-    queryKey: ["berita", currentPage, currentLimit, currentSearch],
+    queryKey: ["berita", currentPage, currentLimit, debouncedSearch],
     queryFn: getBeritas,
     enabled: !!currentPage && !!currentLimit,
   });

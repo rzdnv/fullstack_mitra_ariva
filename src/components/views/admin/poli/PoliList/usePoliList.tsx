@@ -4,6 +4,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { AxiosError } from "axios";
 import poliServices from "@/services/poli.service";
+import { useDebounce } from "@/hooks/useDebounce";
 
 interface ErrorResponse {
   message: string;
@@ -14,11 +15,13 @@ const usePoliList = () => {
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const { currentPage, currentLimit, currentSearch, setUrl } = useChangeUrl();
 
+  const debouncedSearch = useDebounce(currentSearch, 500);
+
   // GET ALL
   const getPolis = async () => {
     let params = `limit=${currentLimit}&page=${currentPage}`;
-    if (currentSearch) {
-      params += `&search=${currentSearch}`;
+    if (debouncedSearch) {
+      params += `&search=${debouncedSearch}`;
     }
     const { data } = await poliServices.getAllPaginated(params);
     return data.data;
@@ -29,7 +32,7 @@ const usePoliList = () => {
     isLoading: isLoadingPolis,
     isRefetching: isRefetchingPolis,
   } = useQuery({
-    queryKey: ["poli", currentPage, currentLimit, currentSearch],
+    queryKey: ["poli", currentPage, currentLimit, debouncedSearch],
     queryFn: getPolis,
     enabled: !!currentPage && !!currentLimit,
   });

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { AxiosError } from "axios";
 import jadwalServices from "@/services/jadwal.service";
+import { useDebounce } from "@/hooks/useDebounce";
 
 interface ErrorResponse {
   message: string;
@@ -14,11 +15,13 @@ const useJadwalList = () => {
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const { currentPage, currentLimit, currentSearch, setUrl } = useChangeUrl();
 
+  const debouncedSearch = useDebounce(currentSearch, 500);
+
   // GET ALL
   const getJadwals = async () => {
     let params = `limit=${currentLimit}&page=${currentPage}`;
-    if (currentSearch) {
-      params += `&search=${currentSearch}`;
+    if (debouncedSearch) {
+      params += `&search=${debouncedSearch}`;
     }
     const { data } = await jadwalServices.getAllPaginated(params);
     return data.data;
@@ -29,7 +32,7 @@ const useJadwalList = () => {
     isLoading: isLoadingJadwals,
     isRefetching: isRefetchingJadwals,
   } = useQuery({
-    queryKey: ["jadwal", currentPage, currentLimit, currentSearch],
+    queryKey: ["jadwal", currentPage, currentLimit, debouncedSearch],
     queryFn: getJadwals,
     enabled: !!currentPage && !!currentLimit,
   });

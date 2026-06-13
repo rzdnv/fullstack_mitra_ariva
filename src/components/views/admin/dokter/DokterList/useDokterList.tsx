@@ -4,6 +4,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { toast } from "sonner";
 import { AxiosError } from "axios";
+import { useDebounce } from "@/hooks/useDebounce";
 
 interface ErrorResponse {
   message: string;
@@ -14,11 +15,13 @@ const useDokterList = () => {
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const { currentPage, currentLimit, currentSearch, setUrl } = useChangeUrl();
 
+  const debouncedSearch = useDebounce(currentSearch, 500);
+
   // GET ALL
   const getDokters = async () => {
     let params = `limit=${currentLimit}&page=${currentPage}`;
-    if (currentSearch) {
-      params += `&search=${currentSearch}`;
+    if (debouncedSearch) {
+      params += `&search=${debouncedSearch}`;
     }
     const { data } = await dokterServices.getAllPaginated(params);
     return data.data;
@@ -29,7 +32,7 @@ const useDokterList = () => {
     isLoading: isLoadingDokters,
     isRefetching: isRefetchingDokters,
   } = useQuery({
-    queryKey: ["dokter", currentPage, currentLimit, currentSearch],
+    queryKey: ["dokter", currentPage, currentLimit, debouncedSearch],
     queryFn: getDokters,
     enabled: !!currentPage && !!currentLimit,
   });
