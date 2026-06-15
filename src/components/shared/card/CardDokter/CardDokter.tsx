@@ -3,7 +3,7 @@
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { CalendarDays } from "lucide-react";
+import { CalendarDays, Stethoscope } from "lucide-react";
 
 interface PropTypes {
   _id: number;
@@ -17,17 +17,6 @@ interface PropTypes {
 const CardDokter = (props: PropTypes) => {
   const { _id, Schedules, namaDokter, spesialis, fotoDokter, poli } = props;
   const router = useRouter();
-
-  const generateMediumColor = (stringInput: string) => {
-    let hash = 0;
-    for (let i = 0; i < stringInput.length; i++) {
-      hash = stringInput.charCodeAt(i) + ((hash << 5) - hash);
-    }
-    const hue = Math.abs(hash) % 360;
-    return `hsl(${hue}, 65%, 45%)`;
-  };
-
-  const badgeBgColor = generateMediumColor(poli);
 
   return (
     <div
@@ -48,25 +37,23 @@ const CardDokter = (props: PropTypes) => {
       {/* Area Detail Informasi */}
       <div className="flex flex-col p-1">
         <div className="space-y-3.5">
-          {/* Badge Nama Poli */}
-          <div>
-            <Badge
-              variant="secondary"
-              style={{ backgroundColor: badgeBgColor }}
-              className="rounded-full border-none px-2.5 py-0.5 text-[10px] font-bold tracking-wider text-white uppercase shadow-2xs"
-            >
-              {poli}
-            </Badge>
-          </div>
-
           {/* Nama & Spesialisasi Dokter */}
           <div className="space-y-1">
-            <h3 className="font-playfair group-hover:text-havelock-blue-600 line-clamp-2 text-base font-bold text-slate-800 transition-colors duration-200 lg:text-lg">
+            <h3 className="font-DMSerif group-hover:text-havelock-blue-600 line-clamp-2 text-base text-slate-800 transition-colors duration-200 lg:text-lg">
               {namaDokter}
             </h3>
             <p className="text-[11px] font-semibold tracking-wider text-slate-400 uppercase">
               {spesialis}
             </p>
+          </div>
+          <div>
+            <Badge
+              variant="secondary"
+              className="rounded-full border-none px-2.5 py-1 text-[10px] font-bold tracking-wider uppercase shadow-2xs"
+            >
+              <Stethoscope className="text-havelock-blue-500 h-4 w-4" />
+              {poli}
+            </Badge>
           </div>
         </div>
 

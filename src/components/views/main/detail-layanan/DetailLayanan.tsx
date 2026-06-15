@@ -23,13 +23,10 @@ const DetailLayanan = () => {
     if (!detailLayanan) return;
 
     const phoneNumber = "6281245489477";
-    const currentUrl =
-      typeof window !== "undefined" ? window.location.href : "";
 
     const message =
       `Halo Admin RSKB Mitra Ariva, saya ingin berkonsultasi / mendaftar untuk layanan medis berikut:\n\n` +
-      `*Nama Layanan:* ${detailLayanan.namaLayanan}\n` +
-      `*Referensi Tautan:* ${currentUrl}\n\n` +
+      `*Nama Layanan:* ${detailLayanan.namaLayanan}\n\n` +
       `Mohon informasi mengenai jadwal kuota, estimasi durasi penanganan, dan persyaratan dokumen yang perlu saya siapkan. Terima kasih.`;
 
     const waUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
