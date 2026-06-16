@@ -7,9 +7,9 @@ import { AxiosError } from "axios";
 import { toast } from "sonner";
 import dokterServices from "@/services/dokter.service";
 import poliServices from "@/services/poli.service";
-import uploadServices from "@/services/upload.service";
 import { useRouter } from "next/navigation";
 import { FILE_SIZE, validateFile } from "@/lib/validate-file";
+import uploadServices from "@/services/upload.service";
 
 const tambahDokterSchema = z.object({
   nama: z.string().min(1, "Nama dokter wajib diisi"),

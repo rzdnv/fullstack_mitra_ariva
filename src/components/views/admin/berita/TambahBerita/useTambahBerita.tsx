@@ -6,11 +6,11 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { toast } from "sonner";
 
-import uploadServices from "@/services/upload.service";
 import beritaServices from "@/services/berita.service";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { FILE_SIZE, validateFile } from "@/lib/validate-file";
+import uploadServices from "@/services/upload.service";
 
 // Schema
 const tambahBeritaSchema = z.object({

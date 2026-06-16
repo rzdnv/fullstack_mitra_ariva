@@ -4,7 +4,7 @@ import {
   UpdateBeritaInput,
 } from "@/lib/validations/berita.validation";
 import { generateId } from "../generate-id";
-import cloudinaryService from "../cloudinary";
+import { deleteImage } from "@/lib/image-processor";
 import { IBeritaParams } from "@/types/berita";
 
 export async function getAllBerita() {
@@ -122,6 +122,17 @@ export async function createBerita(data: CreateBeritaInput) {
 }
 
 export async function updateBerita(id: number, data: UpdateBeritaInput) {
+  if (data.gambar) {
+    const existing = await prisma.berita.findUnique({
+      where: { id },
+      select: { gambar: true },
+    });
+
+    if (existing?.gambar && existing.gambar !== data.gambar) {
+      await deleteImage(existing.gambar).catch(console.error);
+    }
+  }
+
   return await prisma.berita.update({
     where: { id },
     data: {
@@ -149,11 +160,9 @@ export async function deleteBerita(id: number) {
   });
 
   if (berita?.gambar) {
-    const result = await cloudinaryService.remove(berita.gambar);
-
-    if (!result || result.result !== "ok") {
-      throw new Error("Gagal menghapus gambar di Cloudinary");
-    }
+    await deleteImage(berita.gambar).catch(() => {
+      throw new Error("Gagal menghapus gambar");
+    });
   }
 
   return await prisma.berita.delete({

@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { generateId } from "@/lib/generate-id";
-import cloudinaryService from "@/lib/cloudinary";
+import { deleteImage } from "@/lib/image-processor";
 import {
   CreateDokterInput,
   UpdateDokterInput,
@@ -104,12 +104,9 @@ export async function updateDokter(id: number, data: UpdateDokterInput) {
       where: { id },
       select: { foto: true },
     });
+
     if (existing?.foto && existing.foto !== data.foto) {
-      try {
-        await cloudinaryService.remove(existing.foto);
-      } catch (error) {
-        console.error("Gagal hapus foto lama cloudinary:", error);
-      }
+      await deleteImage(existing.foto).catch(console.error);
     }
   }
 
@@ -134,17 +131,11 @@ export async function deleteDokter(id: number) {
   });
 
   if (dokter?.foto) {
-    const result = await cloudinaryService.remove(dokter.foto);
-    if (!result || result.result !== "ok") {
-      throw new Error("Gagal menghapus foto di Cloudinary");
-    }
+    await deleteImage(dokter.foto).catch(() => {
+      throw new Error("Gagal menghapus foto");
+    });
   }
 
-  await prisma.jadwalDokter.deleteMany({
-    where: { dokterId: id },
-  });
-
-  return await prisma.dokter.delete({
-    where: { id },
-  });
+  await prisma.jadwalDokter.deleteMany({ where: { dokterId: id } });
+  return await prisma.dokter.delete({ where: { id } });
 }
