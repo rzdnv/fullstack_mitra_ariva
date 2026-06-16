@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Calendar, ArrowLeft, ArrowRight, ShieldCheck } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa"; // Pastikan react-icons/fa terinstal
+import { FaWhatsapp } from "react-icons/fa";
 import { formatTanggal } from "@/components/shared/formatted/formated";
 import LoadingState from "@/components/shared/loadingstate/LoadingState";
 import useDetailLayanan from "./useDetailLayanan";
