@@ -4,7 +4,7 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
 }
 
 // ─────────────────────────────────────────
@@ -54,7 +54,7 @@ model Dokter {
   id        Int            @id
   nama      String
   spesialis String
-  deskripsi String?        @db.LongText // ← ganti dari tanpa annotation
+  deskripsi String?        @db.Text
   foto      String?
   poliId    Int            @map("poli_id")
   createdAt DateTime       @default(now()) @map("created_at")
@@ -79,7 +79,7 @@ model JadwalDokter {
 model Berita {
   id        Int      @id
   judul     String
-  isi       String   @db.LongText // ← ganti dari @db.Text
+  isi       String   @db.Text
   gambar    String?
   userId    Int      @map("user_id")
   createdAt DateTime @default(now()) @map("created_at")
@@ -91,7 +91,7 @@ model Berita {
 model Layanan {
   id          Int      @id
   namaLayanan String   @map("nama_layanan")
-  deskripsi   String?  @db.LongText // ← ganti dari @db.Text
+  deskripsi   String?  @db.Text
   foto        String?
   createdAt   DateTime @default(now()) @map("created_at")
 
@@ -102,7 +102,7 @@ model Review {
   id        Int      @id
   nama      String
   tanggal   DateTime @db.Date
-  review    String   @db.LongText // ← ganti dari @db.Text
+  review    String   @db.Text
   rating    Int
   gender    String
   createdAt DateTime @default(now()) @map("created_at")
