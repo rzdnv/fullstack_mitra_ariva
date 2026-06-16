@@ -97,7 +97,7 @@ const useTambahDokter = () => {
       const formData = new FormData();
       formData.append("file", file);
       const { data } = await uploadServices.uploadSingle(formData, "dokter");
-      const url = data.data.secure_url;
+      const url = data.data.url;
       setFotoUrl(url);
       setValue("foto", url, { shouldValidate: true });
       toast.success("Foto berhasil diupload", { position: "top-right" });

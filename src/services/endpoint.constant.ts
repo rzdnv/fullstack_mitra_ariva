@@ -8,14 +8,9 @@ const endpoint = {
   USERS: "/user",
   REVIEW: "/review",
   DASHBOARD: "/dashboard",
-  // CLOUDINARY: {
-  //   UPLOAD: "/cloudinary/upload",
-  //   UPLOAD_MULTIPLE: "/cloudinary/upload-multiple",
-  //   REMOVE: "/cloudinary/remove",
-  // },
   UPLOAD: {
-    SINGLE: "/api/upload",
-    REMOVE: "/api/upload/remove",
+    SINGLE: "/upload",
+    REMOVE: "/upload/remove",
   },
 };
 

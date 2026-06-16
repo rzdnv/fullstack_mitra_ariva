@@ -153,7 +153,7 @@ const useInfoTab = () => {
 
       const { data } = await uploadServices.uploadSingle(formData, "dokter");
 
-      const url = data.data.secure_url;
+      const url = data.data.url;
 
       setFotoUrl(url);
 

@@ -97,7 +97,7 @@ const useTambahLayanan = () => {
 
       const { data } = await uploadServices.uploadSingle(formData, "layanan");
 
-      const url = data.data.secure_url;
+      const url = data.data.url;
 
       setFotoUrl(url);
 

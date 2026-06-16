@@ -101,7 +101,7 @@ const useDetailBerita = () => {
 
       const { data } = await uploadServices.uploadSingle(formData, "berita");
 
-      const url = data.data.secure_url;
+      const url = data.data.url;
 
       setFotoUrl(url);
 
