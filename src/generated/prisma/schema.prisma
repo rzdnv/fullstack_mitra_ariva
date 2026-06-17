@@ -60,6 +60,7 @@ model Dokter {
   createdAt DateTime       @default(now()) @map("created_at")
   poli      Poli           @relation(fields: [poliId], references: [id])
   jadwal    JadwalDokter[]
+  berita    Berita[]
 
   @@map("dokter")
 }
@@ -82,8 +83,10 @@ model Berita {
   isi       String   @db.LongText // ← ganti dari @db.Text
   gambar    String?
   userId    Int      @map("user_id")
+  dokterId  Int?     @map("dokter_id")
   createdAt DateTime @default(now()) @map("created_at")
   user      User     @relation(fields: [userId], references: [id])
+  dokter    Dokter?  @relation(fields: [dokterId], references: [id])
 
   @@map("berita")
 }

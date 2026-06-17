@@ -159,6 +159,7 @@ exports.Prisma.BeritaScalarFieldEnum = {
   isi: 'isi',
   gambar: 'gambar',
   userId: 'userId',
+  dokterId: 'dokterId',
   createdAt: 'createdAt'
 };
 

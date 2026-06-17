@@ -1453,10 +1453,12 @@ export namespace Prisma {
 
   export type DokterCountOutputType = {
     jadwal: number
+    berita: number
   }
 
   export type DokterCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     jadwal?: boolean | DokterCountOutputTypeCountJadwalArgs
+    berita?: boolean | DokterCountOutputTypeCountBeritaArgs
   }
 
   // Custom InputTypes
@@ -1475,6 +1477,13 @@ export namespace Prisma {
    */
   export type DokterCountOutputTypeCountJadwalArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: JadwalDokterWhereInput
+  }
+
+  /**
+   * DokterCountOutputType without action
+   */
+  export type DokterCountOutputTypeCountBeritaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BeritaWhereInput
   }
 
 
@@ -3668,6 +3677,7 @@ export namespace Prisma {
     createdAt?: boolean
     poli?: boolean | PoliDefaultArgs<ExtArgs>
     jadwal?: boolean | Dokter$jadwalArgs<ExtArgs>
+    berita?: boolean | Dokter$beritaArgs<ExtArgs>
     _count?: boolean | DokterCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["dokter"]>
 
@@ -3687,6 +3697,7 @@ export namespace Prisma {
   export type DokterInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     poli?: boolean | PoliDefaultArgs<ExtArgs>
     jadwal?: boolean | Dokter$jadwalArgs<ExtArgs>
+    berita?: boolean | Dokter$beritaArgs<ExtArgs>
     _count?: boolean | DokterCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -3695,6 +3706,7 @@ export namespace Prisma {
     objects: {
       poli: Prisma.$PoliPayload<ExtArgs>
       jadwal: Prisma.$JadwalDokterPayload<ExtArgs>[]
+      berita: Prisma.$BeritaPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -4046,6 +4058,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     poli<T extends PoliDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PoliDefaultArgs<ExtArgs>>): Prisma__PoliClient<$Result.GetResult<Prisma.$PoliPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     jadwal<T extends Dokter$jadwalArgs<ExtArgs> = {}>(args?: Subset<T, Dokter$jadwalArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$JadwalDokterPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    berita<T extends Dokter$beritaArgs<ExtArgs> = {}>(args?: Subset<T, Dokter$beritaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BeritaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4451,6 +4464,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: JadwalDokterScalarFieldEnum | JadwalDokterScalarFieldEnum[]
+  }
+
+  /**
+   * Dokter.berita
+   */
+  export type Dokter$beritaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Berita
+     */
+    select?: BeritaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Berita
+     */
+    omit?: BeritaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BeritaInclude<ExtArgs> | null
+    where?: BeritaWhereInput
+    orderBy?: BeritaOrderByWithRelationInput | BeritaOrderByWithRelationInput[]
+    cursor?: BeritaWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BeritaScalarFieldEnum | BeritaScalarFieldEnum[]
   }
 
   /**
@@ -5470,11 +5507,13 @@ export namespace Prisma {
   export type BeritaAvgAggregateOutputType = {
     id: number | null
     userId: number | null
+    dokterId: number | null
   }
 
   export type BeritaSumAggregateOutputType = {
     id: number | null
     userId: number | null
+    dokterId: number | null
   }
 
   export type BeritaMinAggregateOutputType = {
@@ -5483,6 +5522,7 @@ export namespace Prisma {
     isi: string | null
     gambar: string | null
     userId: number | null
+    dokterId: number | null
     createdAt: Date | null
   }
 
@@ -5492,6 +5532,7 @@ export namespace Prisma {
     isi: string | null
     gambar: string | null
     userId: number | null
+    dokterId: number | null
     createdAt: Date | null
   }
 
@@ -5501,6 +5542,7 @@ export namespace Prisma {
     isi: number
     gambar: number
     userId: number
+    dokterId: number
     createdAt: number
     _all: number
   }
@@ -5509,11 +5551,13 @@ export namespace Prisma {
   export type BeritaAvgAggregateInputType = {
     id?: true
     userId?: true
+    dokterId?: true
   }
 
   export type BeritaSumAggregateInputType = {
     id?: true
     userId?: true
+    dokterId?: true
   }
 
   export type BeritaMinAggregateInputType = {
@@ -5522,6 +5566,7 @@ export namespace Prisma {
     isi?: true
     gambar?: true
     userId?: true
+    dokterId?: true
     createdAt?: true
   }
 
@@ -5531,6 +5576,7 @@ export namespace Prisma {
     isi?: true
     gambar?: true
     userId?: true
+    dokterId?: true
     createdAt?: true
   }
 
@@ -5540,6 +5586,7 @@ export namespace Prisma {
     isi?: true
     gambar?: true
     userId?: true
+    dokterId?: true
     createdAt?: true
     _all?: true
   }
@@ -5636,6 +5683,7 @@ export namespace Prisma {
     isi: string
     gambar: string | null
     userId: number
+    dokterId: number | null
     createdAt: Date
     _count: BeritaCountAggregateOutputType | null
     _avg: BeritaAvgAggregateOutputType | null
@@ -5664,8 +5712,10 @@ export namespace Prisma {
     isi?: boolean
     gambar?: boolean
     userId?: boolean
+    dokterId?: boolean
     createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
+    dokter?: boolean | Berita$dokterArgs<ExtArgs>
   }, ExtArgs["result"]["berita"]>
 
 
@@ -5676,18 +5726,21 @@ export namespace Prisma {
     isi?: boolean
     gambar?: boolean
     userId?: boolean
+    dokterId?: boolean
     createdAt?: boolean
   }
 
-  export type BeritaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "judul" | "isi" | "gambar" | "userId" | "createdAt", ExtArgs["result"]["berita"]>
+  export type BeritaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "judul" | "isi" | "gambar" | "userId" | "dokterId" | "createdAt", ExtArgs["result"]["berita"]>
   export type BeritaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
+    dokter?: boolean | Berita$dokterArgs<ExtArgs>
   }
 
   export type $BeritaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Berita"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
+      dokter: Prisma.$DokterPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -5695,6 +5748,7 @@ export namespace Prisma {
       isi: string
       gambar: string | null
       userId: number
+      dokterId: number | null
       createdAt: Date
     }, ExtArgs["result"]["berita"]>
     composites: {}
@@ -6037,6 +6091,7 @@ export namespace Prisma {
   export interface Prisma__BeritaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    dokter<T extends Berita$dokterArgs<ExtArgs> = {}>(args?: Subset<T, Berita$dokterArgs<ExtArgs>>): Prisma__DokterClient<$Result.GetResult<Prisma.$DokterPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6071,6 +6126,7 @@ export namespace Prisma {
     readonly isi: FieldRef<"Berita", 'String'>
     readonly gambar: FieldRef<"Berita", 'String'>
     readonly userId: FieldRef<"Berita", 'Int'>
+    readonly dokterId: FieldRef<"Berita", 'Int'>
     readonly createdAt: FieldRef<"Berita", 'DateTime'>
   }
     
@@ -6417,6 +6473,25 @@ export namespace Prisma {
      * Limit how many Beritas to delete.
      */
     limit?: number
+  }
+
+  /**
+   * Berita.dokter
+   */
+  export type Berita$dokterArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dokter
+     */
+    select?: DokterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dokter
+     */
+    omit?: DokterOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DokterInclude<ExtArgs> | null
+    where?: DokterWhereInput
   }
 
   /**
@@ -8371,6 +8446,7 @@ export namespace Prisma {
     isi: 'isi',
     gambar: 'gambar',
     userId: 'userId',
+    dokterId: 'dokterId',
     createdAt: 'createdAt'
   };
 
@@ -8646,6 +8722,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Dokter"> | Date | string
     poli?: XOR<PoliScalarRelationFilter, PoliWhereInput>
     jadwal?: JadwalDokterListRelationFilter
+    berita?: BeritaListRelationFilter
   }
 
   export type DokterOrderByWithRelationInput = {
@@ -8658,6 +8735,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     poli?: PoliOrderByWithRelationInput
     jadwal?: JadwalDokterOrderByRelationAggregateInput
+    berita?: BeritaOrderByRelationAggregateInput
     _relevance?: DokterOrderByRelevanceInput
   }
 
@@ -8674,6 +8752,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Dokter"> | Date | string
     poli?: XOR<PoliScalarRelationFilter, PoliWhereInput>
     jadwal?: JadwalDokterListRelationFilter
+    berita?: BeritaListRelationFilter
   }, "id">
 
   export type DokterOrderByWithAggregationInput = {
@@ -8776,8 +8855,10 @@ export namespace Prisma {
     isi?: StringFilter<"Berita"> | string
     gambar?: StringNullableFilter<"Berita"> | string | null
     userId?: IntFilter<"Berita"> | number
+    dokterId?: IntNullableFilter<"Berita"> | number | null
     createdAt?: DateTimeFilter<"Berita"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    dokter?: XOR<DokterNullableScalarRelationFilter, DokterWhereInput> | null
   }
 
   export type BeritaOrderByWithRelationInput = {
@@ -8786,8 +8867,10 @@ export namespace Prisma {
     isi?: SortOrder
     gambar?: SortOrderInput | SortOrder
     userId?: SortOrder
+    dokterId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     user?: UserOrderByWithRelationInput
+    dokter?: DokterOrderByWithRelationInput
     _relevance?: BeritaOrderByRelevanceInput
   }
 
@@ -8800,8 +8883,10 @@ export namespace Prisma {
     isi?: StringFilter<"Berita"> | string
     gambar?: StringNullableFilter<"Berita"> | string | null
     userId?: IntFilter<"Berita"> | number
+    dokterId?: IntNullableFilter<"Berita"> | number | null
     createdAt?: DateTimeFilter<"Berita"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    dokter?: XOR<DokterNullableScalarRelationFilter, DokterWhereInput> | null
   }, "id">
 
   export type BeritaOrderByWithAggregationInput = {
@@ -8810,6 +8895,7 @@ export namespace Prisma {
     isi?: SortOrder
     gambar?: SortOrderInput | SortOrder
     userId?: SortOrder
+    dokterId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     _count?: BeritaCountOrderByAggregateInput
     _avg?: BeritaAvgOrderByAggregateInput
@@ -8827,6 +8913,7 @@ export namespace Prisma {
     isi?: StringWithAggregatesFilter<"Berita"> | string
     gambar?: StringNullableWithAggregatesFilter<"Berita"> | string | null
     userId?: IntWithAggregatesFilter<"Berita"> | number
+    dokterId?: IntNullableWithAggregatesFilter<"Berita"> | number | null
     createdAt?: DateTimeWithAggregatesFilter<"Berita"> | Date | string
   }
 
@@ -9065,6 +9152,7 @@ export namespace Prisma {
     createdAt?: Date | string
     poli: PoliCreateNestedOneWithoutDokterInput
     jadwal?: JadwalDokterCreateNestedManyWithoutDokterInput
+    berita?: BeritaCreateNestedManyWithoutDokterInput
   }
 
   export type DokterUncheckedCreateInput = {
@@ -9076,6 +9164,7 @@ export namespace Prisma {
     poliId: number
     createdAt?: Date | string
     jadwal?: JadwalDokterUncheckedCreateNestedManyWithoutDokterInput
+    berita?: BeritaUncheckedCreateNestedManyWithoutDokterInput
   }
 
   export type DokterUpdateInput = {
@@ -9087,6 +9176,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     poli?: PoliUpdateOneRequiredWithoutDokterNestedInput
     jadwal?: JadwalDokterUpdateManyWithoutDokterNestedInput
+    berita?: BeritaUpdateManyWithoutDokterNestedInput
   }
 
   export type DokterUncheckedUpdateInput = {
@@ -9098,6 +9188,7 @@ export namespace Prisma {
     poliId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     jadwal?: JadwalDokterUncheckedUpdateManyWithoutDokterNestedInput
+    berita?: BeritaUncheckedUpdateManyWithoutDokterNestedInput
   }
 
   export type DokterCreateManyInput = {
@@ -9198,6 +9289,7 @@ export namespace Prisma {
     gambar?: string | null
     createdAt?: Date | string
     user: UserCreateNestedOneWithoutBeritaInput
+    dokter?: DokterCreateNestedOneWithoutBeritaInput
   }
 
   export type BeritaUncheckedCreateInput = {
@@ -9206,6 +9298,7 @@ export namespace Prisma {
     isi: string
     gambar?: string | null
     userId: number
+    dokterId?: number | null
     createdAt?: Date | string
   }
 
@@ -9216,6 +9309,7 @@ export namespace Prisma {
     gambar?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutBeritaNestedInput
+    dokter?: DokterUpdateOneWithoutBeritaNestedInput
   }
 
   export type BeritaUncheckedUpdateInput = {
@@ -9224,6 +9318,7 @@ export namespace Prisma {
     isi?: StringFieldUpdateOperationsInput | string
     gambar?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: IntFieldUpdateOperationsInput | number
+    dokterId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -9233,6 +9328,7 @@ export namespace Prisma {
     isi: string
     gambar?: string | null
     userId: number
+    dokterId?: number | null
     createdAt?: Date | string
   }
 
@@ -9250,6 +9346,7 @@ export namespace Prisma {
     isi?: StringFieldUpdateOperationsInput | string
     gambar?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: IntFieldUpdateOperationsInput | number
+    dokterId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -9735,9 +9832,25 @@ export namespace Prisma {
     _max?: NestedEnumHariFilter<$PrismaModel>
   }
 
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
+  }
+
+  export type DokterNullableScalarRelationFilter = {
+    is?: DokterWhereInput | null
+    isNot?: DokterWhereInput | null
   }
 
   export type BeritaOrderByRelevanceInput = {
@@ -9752,12 +9865,14 @@ export namespace Prisma {
     isi?: SortOrder
     gambar?: SortOrder
     userId?: SortOrder
+    dokterId?: SortOrder
     createdAt?: SortOrder
   }
 
   export type BeritaAvgOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    dokterId?: SortOrder
   }
 
   export type BeritaMaxOrderByAggregateInput = {
@@ -9766,6 +9881,7 @@ export namespace Prisma {
     isi?: SortOrder
     gambar?: SortOrder
     userId?: SortOrder
+    dokterId?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -9775,12 +9891,30 @@ export namespace Prisma {
     isi?: SortOrder
     gambar?: SortOrder
     userId?: SortOrder
+    dokterId?: SortOrder
     createdAt?: SortOrder
   }
 
   export type BeritaSumOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    dokterId?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type LayananOrderByRelevanceInput = {
@@ -9984,11 +10118,25 @@ export namespace Prisma {
     connect?: JadwalDokterWhereUniqueInput | JadwalDokterWhereUniqueInput[]
   }
 
+  export type BeritaCreateNestedManyWithoutDokterInput = {
+    create?: XOR<BeritaCreateWithoutDokterInput, BeritaUncheckedCreateWithoutDokterInput> | BeritaCreateWithoutDokterInput[] | BeritaUncheckedCreateWithoutDokterInput[]
+    connectOrCreate?: BeritaCreateOrConnectWithoutDokterInput | BeritaCreateOrConnectWithoutDokterInput[]
+    createMany?: BeritaCreateManyDokterInputEnvelope
+    connect?: BeritaWhereUniqueInput | BeritaWhereUniqueInput[]
+  }
+
   export type JadwalDokterUncheckedCreateNestedManyWithoutDokterInput = {
     create?: XOR<JadwalDokterCreateWithoutDokterInput, JadwalDokterUncheckedCreateWithoutDokterInput> | JadwalDokterCreateWithoutDokterInput[] | JadwalDokterUncheckedCreateWithoutDokterInput[]
     connectOrCreate?: JadwalDokterCreateOrConnectWithoutDokterInput | JadwalDokterCreateOrConnectWithoutDokterInput[]
     createMany?: JadwalDokterCreateManyDokterInputEnvelope
     connect?: JadwalDokterWhereUniqueInput | JadwalDokterWhereUniqueInput[]
+  }
+
+  export type BeritaUncheckedCreateNestedManyWithoutDokterInput = {
+    create?: XOR<BeritaCreateWithoutDokterInput, BeritaUncheckedCreateWithoutDokterInput> | BeritaCreateWithoutDokterInput[] | BeritaUncheckedCreateWithoutDokterInput[]
+    connectOrCreate?: BeritaCreateOrConnectWithoutDokterInput | BeritaCreateOrConnectWithoutDokterInput[]
+    createMany?: BeritaCreateManyDokterInputEnvelope
+    connect?: BeritaWhereUniqueInput | BeritaWhereUniqueInput[]
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
@@ -10017,6 +10165,20 @@ export namespace Prisma {
     deleteMany?: JadwalDokterScalarWhereInput | JadwalDokterScalarWhereInput[]
   }
 
+  export type BeritaUpdateManyWithoutDokterNestedInput = {
+    create?: XOR<BeritaCreateWithoutDokterInput, BeritaUncheckedCreateWithoutDokterInput> | BeritaCreateWithoutDokterInput[] | BeritaUncheckedCreateWithoutDokterInput[]
+    connectOrCreate?: BeritaCreateOrConnectWithoutDokterInput | BeritaCreateOrConnectWithoutDokterInput[]
+    upsert?: BeritaUpsertWithWhereUniqueWithoutDokterInput | BeritaUpsertWithWhereUniqueWithoutDokterInput[]
+    createMany?: BeritaCreateManyDokterInputEnvelope
+    set?: BeritaWhereUniqueInput | BeritaWhereUniqueInput[]
+    disconnect?: BeritaWhereUniqueInput | BeritaWhereUniqueInput[]
+    delete?: BeritaWhereUniqueInput | BeritaWhereUniqueInput[]
+    connect?: BeritaWhereUniqueInput | BeritaWhereUniqueInput[]
+    update?: BeritaUpdateWithWhereUniqueWithoutDokterInput | BeritaUpdateWithWhereUniqueWithoutDokterInput[]
+    updateMany?: BeritaUpdateManyWithWhereWithoutDokterInput | BeritaUpdateManyWithWhereWithoutDokterInput[]
+    deleteMany?: BeritaScalarWhereInput | BeritaScalarWhereInput[]
+  }
+
   export type JadwalDokterUncheckedUpdateManyWithoutDokterNestedInput = {
     create?: XOR<JadwalDokterCreateWithoutDokterInput, JadwalDokterUncheckedCreateWithoutDokterInput> | JadwalDokterCreateWithoutDokterInput[] | JadwalDokterUncheckedCreateWithoutDokterInput[]
     connectOrCreate?: JadwalDokterCreateOrConnectWithoutDokterInput | JadwalDokterCreateOrConnectWithoutDokterInput[]
@@ -10029,6 +10191,20 @@ export namespace Prisma {
     update?: JadwalDokterUpdateWithWhereUniqueWithoutDokterInput | JadwalDokterUpdateWithWhereUniqueWithoutDokterInput[]
     updateMany?: JadwalDokterUpdateManyWithWhereWithoutDokterInput | JadwalDokterUpdateManyWithWhereWithoutDokterInput[]
     deleteMany?: JadwalDokterScalarWhereInput | JadwalDokterScalarWhereInput[]
+  }
+
+  export type BeritaUncheckedUpdateManyWithoutDokterNestedInput = {
+    create?: XOR<BeritaCreateWithoutDokterInput, BeritaUncheckedCreateWithoutDokterInput> | BeritaCreateWithoutDokterInput[] | BeritaUncheckedCreateWithoutDokterInput[]
+    connectOrCreate?: BeritaCreateOrConnectWithoutDokterInput | BeritaCreateOrConnectWithoutDokterInput[]
+    upsert?: BeritaUpsertWithWhereUniqueWithoutDokterInput | BeritaUpsertWithWhereUniqueWithoutDokterInput[]
+    createMany?: BeritaCreateManyDokterInputEnvelope
+    set?: BeritaWhereUniqueInput | BeritaWhereUniqueInput[]
+    disconnect?: BeritaWhereUniqueInput | BeritaWhereUniqueInput[]
+    delete?: BeritaWhereUniqueInput | BeritaWhereUniqueInput[]
+    connect?: BeritaWhereUniqueInput | BeritaWhereUniqueInput[]
+    update?: BeritaUpdateWithWhereUniqueWithoutDokterInput | BeritaUpdateWithWhereUniqueWithoutDokterInput[]
+    updateMany?: BeritaUpdateManyWithWhereWithoutDokterInput | BeritaUpdateManyWithWhereWithoutDokterInput[]
+    deleteMany?: BeritaScalarWhereInput | BeritaScalarWhereInput[]
   }
 
   export type DokterCreateNestedOneWithoutJadwalInput = {
@@ -10055,12 +10231,36 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
+  export type DokterCreateNestedOneWithoutBeritaInput = {
+    create?: XOR<DokterCreateWithoutBeritaInput, DokterUncheckedCreateWithoutBeritaInput>
+    connectOrCreate?: DokterCreateOrConnectWithoutBeritaInput
+    connect?: DokterWhereUniqueInput
+  }
+
   export type UserUpdateOneRequiredWithoutBeritaNestedInput = {
     create?: XOR<UserCreateWithoutBeritaInput, UserUncheckedCreateWithoutBeritaInput>
     connectOrCreate?: UserCreateOrConnectWithoutBeritaInput
     upsert?: UserUpsertWithoutBeritaInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutBeritaInput, UserUpdateWithoutBeritaInput>, UserUncheckedUpdateWithoutBeritaInput>
+  }
+
+  export type DokterUpdateOneWithoutBeritaNestedInput = {
+    create?: XOR<DokterCreateWithoutBeritaInput, DokterUncheckedCreateWithoutBeritaInput>
+    connectOrCreate?: DokterCreateOrConnectWithoutBeritaInput
+    upsert?: DokterUpsertWithoutBeritaInput
+    disconnect?: DokterWhereInput | boolean
+    delete?: DokterWhereInput | boolean
+    connect?: DokterWhereUniqueInput
+    update?: XOR<XOR<DokterUpdateToOneWithWhereWithoutBeritaInput, DokterUpdateWithoutBeritaInput>, DokterUncheckedUpdateWithoutBeritaInput>
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -10237,12 +10437,40 @@ export namespace Prisma {
     _max?: NestedEnumHariFilter<$PrismaModel>
   }
 
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type BeritaCreateWithoutUserInput = {
     id: number
     judul: string
     isi: string
     gambar?: string | null
     createdAt?: Date | string
+    dokter?: DokterCreateNestedOneWithoutBeritaInput
   }
 
   export type BeritaUncheckedCreateWithoutUserInput = {
@@ -10250,6 +10478,7 @@ export namespace Prisma {
     judul: string
     isi: string
     gambar?: string | null
+    dokterId?: number | null
     createdAt?: Date | string
   }
 
@@ -10288,6 +10517,7 @@ export namespace Prisma {
     isi?: StringFilter<"Berita"> | string
     gambar?: StringNullableFilter<"Berita"> | string | null
     userId?: IntFilter<"Berita"> | number
+    dokterId?: IntNullableFilter<"Berita"> | number | null
     createdAt?: DateTimeFilter<"Berita"> | Date | string
   }
 
@@ -10299,6 +10529,7 @@ export namespace Prisma {
     foto?: string | null
     createdAt?: Date | string
     jadwal?: JadwalDokterCreateNestedManyWithoutDokterInput
+    berita?: BeritaCreateNestedManyWithoutDokterInput
   }
 
   export type DokterUncheckedCreateWithoutPoliInput = {
@@ -10309,6 +10540,7 @@ export namespace Prisma {
     foto?: string | null
     createdAt?: Date | string
     jadwal?: JadwalDokterUncheckedCreateNestedManyWithoutDokterInput
+    berita?: BeritaUncheckedCreateNestedManyWithoutDokterInput
   }
 
   export type DokterCreateOrConnectWithoutPoliInput = {
@@ -10393,6 +10625,34 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type BeritaCreateWithoutDokterInput = {
+    id: number
+    judul: string
+    isi: string
+    gambar?: string | null
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutBeritaInput
+  }
+
+  export type BeritaUncheckedCreateWithoutDokterInput = {
+    id: number
+    judul: string
+    isi: string
+    gambar?: string | null
+    userId: number
+    createdAt?: Date | string
+  }
+
+  export type BeritaCreateOrConnectWithoutDokterInput = {
+    where: BeritaWhereUniqueInput
+    create: XOR<BeritaCreateWithoutDokterInput, BeritaUncheckedCreateWithoutDokterInput>
+  }
+
+  export type BeritaCreateManyDokterInputEnvelope = {
+    data: BeritaCreateManyDokterInput | BeritaCreateManyDokterInput[]
+    skipDuplicates?: boolean
+  }
+
   export type PoliUpsertWithoutDokterInput = {
     update: XOR<PoliUpdateWithoutDokterInput, PoliUncheckedUpdateWithoutDokterInput>
     create: XOR<PoliCreateWithoutDokterInput, PoliUncheckedCreateWithoutDokterInput>
@@ -10444,6 +10704,22 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"JadwalDokter"> | Date | string
   }
 
+  export type BeritaUpsertWithWhereUniqueWithoutDokterInput = {
+    where: BeritaWhereUniqueInput
+    update: XOR<BeritaUpdateWithoutDokterInput, BeritaUncheckedUpdateWithoutDokterInput>
+    create: XOR<BeritaCreateWithoutDokterInput, BeritaUncheckedCreateWithoutDokterInput>
+  }
+
+  export type BeritaUpdateWithWhereUniqueWithoutDokterInput = {
+    where: BeritaWhereUniqueInput
+    data: XOR<BeritaUpdateWithoutDokterInput, BeritaUncheckedUpdateWithoutDokterInput>
+  }
+
+  export type BeritaUpdateManyWithWhereWithoutDokterInput = {
+    where: BeritaScalarWhereInput
+    data: XOR<BeritaUpdateManyMutationInput, BeritaUncheckedUpdateManyWithoutDokterInput>
+  }
+
   export type DokterCreateWithoutJadwalInput = {
     id: number
     nama: string
@@ -10452,6 +10728,7 @@ export namespace Prisma {
     foto?: string | null
     createdAt?: Date | string
     poli: PoliCreateNestedOneWithoutDokterInput
+    berita?: BeritaCreateNestedManyWithoutDokterInput
   }
 
   export type DokterUncheckedCreateWithoutJadwalInput = {
@@ -10462,6 +10739,7 @@ export namespace Prisma {
     foto?: string | null
     poliId: number
     createdAt?: Date | string
+    berita?: BeritaUncheckedCreateNestedManyWithoutDokterInput
   }
 
   export type DokterCreateOrConnectWithoutJadwalInput = {
@@ -10488,6 +10766,7 @@ export namespace Prisma {
     foto?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     poli?: PoliUpdateOneRequiredWithoutDokterNestedInput
+    berita?: BeritaUpdateManyWithoutDokterNestedInput
   }
 
   export type DokterUncheckedUpdateWithoutJadwalInput = {
@@ -10498,6 +10777,7 @@ export namespace Prisma {
     foto?: NullableStringFieldUpdateOperationsInput | string | null
     poliId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    berita?: BeritaUncheckedUpdateManyWithoutDokterNestedInput
   }
 
   export type UserCreateWithoutBeritaInput = {
@@ -10519,6 +10799,33 @@ export namespace Prisma {
   export type UserCreateOrConnectWithoutBeritaInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutBeritaInput, UserUncheckedCreateWithoutBeritaInput>
+  }
+
+  export type DokterCreateWithoutBeritaInput = {
+    id: number
+    nama: string
+    spesialis: string
+    deskripsi?: string | null
+    foto?: string | null
+    createdAt?: Date | string
+    poli: PoliCreateNestedOneWithoutDokterInput
+    jadwal?: JadwalDokterCreateNestedManyWithoutDokterInput
+  }
+
+  export type DokterUncheckedCreateWithoutBeritaInput = {
+    id: number
+    nama: string
+    spesialis: string
+    deskripsi?: string | null
+    foto?: string | null
+    poliId: number
+    createdAt?: Date | string
+    jadwal?: JadwalDokterUncheckedCreateNestedManyWithoutDokterInput
+  }
+
+  export type DokterCreateOrConnectWithoutBeritaInput = {
+    where: DokterWhereUniqueInput
+    create: XOR<DokterCreateWithoutBeritaInput, DokterUncheckedCreateWithoutBeritaInput>
   }
 
   export type UserUpsertWithoutBeritaInput = {
@@ -10548,11 +10855,45 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type DokterUpsertWithoutBeritaInput = {
+    update: XOR<DokterUpdateWithoutBeritaInput, DokterUncheckedUpdateWithoutBeritaInput>
+    create: XOR<DokterCreateWithoutBeritaInput, DokterUncheckedCreateWithoutBeritaInput>
+    where?: DokterWhereInput
+  }
+
+  export type DokterUpdateToOneWithWhereWithoutBeritaInput = {
+    where?: DokterWhereInput
+    data: XOR<DokterUpdateWithoutBeritaInput, DokterUncheckedUpdateWithoutBeritaInput>
+  }
+
+  export type DokterUpdateWithoutBeritaInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    spesialis?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    foto?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    poli?: PoliUpdateOneRequiredWithoutDokterNestedInput
+    jadwal?: JadwalDokterUpdateManyWithoutDokterNestedInput
+  }
+
+  export type DokterUncheckedUpdateWithoutBeritaInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nama?: StringFieldUpdateOperationsInput | string
+    spesialis?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    foto?: NullableStringFieldUpdateOperationsInput | string | null
+    poliId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    jadwal?: JadwalDokterUncheckedUpdateManyWithoutDokterNestedInput
+  }
+
   export type BeritaCreateManyUserInput = {
     id: number
     judul: string
     isi: string
     gambar?: string | null
+    dokterId?: number | null
     createdAt?: Date | string
   }
 
@@ -10562,6 +10903,7 @@ export namespace Prisma {
     isi?: StringFieldUpdateOperationsInput | string
     gambar?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    dokter?: DokterUpdateOneWithoutBeritaNestedInput
   }
 
   export type BeritaUncheckedUpdateWithoutUserInput = {
@@ -10569,6 +10911,7 @@ export namespace Prisma {
     judul?: StringFieldUpdateOperationsInput | string
     isi?: StringFieldUpdateOperationsInput | string
     gambar?: NullableStringFieldUpdateOperationsInput | string | null
+    dokterId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -10577,6 +10920,7 @@ export namespace Prisma {
     judul?: StringFieldUpdateOperationsInput | string
     isi?: StringFieldUpdateOperationsInput | string
     gambar?: NullableStringFieldUpdateOperationsInput | string | null
+    dokterId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -10597,6 +10941,7 @@ export namespace Prisma {
     foto?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     jadwal?: JadwalDokterUpdateManyWithoutDokterNestedInput
+    berita?: BeritaUpdateManyWithoutDokterNestedInput
   }
 
   export type DokterUncheckedUpdateWithoutPoliInput = {
@@ -10607,6 +10952,7 @@ export namespace Prisma {
     foto?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     jadwal?: JadwalDokterUncheckedUpdateManyWithoutDokterNestedInput
+    berita?: BeritaUncheckedUpdateManyWithoutDokterNestedInput
   }
 
   export type DokterUncheckedUpdateManyWithoutPoliInput = {
@@ -10623,6 +10969,15 @@ export namespace Prisma {
     hari: $Enums.Hari
     jamMulai: string
     jamSelesai: string
+    createdAt?: Date | string
+  }
+
+  export type BeritaCreateManyDokterInput = {
+    id: number
+    judul: string
+    isi: string
+    gambar?: string | null
+    userId: number
     createdAt?: Date | string
   }
 
@@ -10647,6 +11002,33 @@ export namespace Prisma {
     hari?: EnumHariFieldUpdateOperationsInput | $Enums.Hari
     jamMulai?: StringFieldUpdateOperationsInput | string
     jamSelesai?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BeritaUpdateWithoutDokterInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    judul?: StringFieldUpdateOperationsInput | string
+    isi?: StringFieldUpdateOperationsInput | string
+    gambar?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutBeritaNestedInput
+  }
+
+  export type BeritaUncheckedUpdateWithoutDokterInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    judul?: StringFieldUpdateOperationsInput | string
+    isi?: StringFieldUpdateOperationsInput | string
+    gambar?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BeritaUncheckedUpdateManyWithoutDokterInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    judul?: StringFieldUpdateOperationsInput | string
+    isi?: StringFieldUpdateOperationsInput | string
+    gambar?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
