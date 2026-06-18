@@ -214,7 +214,11 @@ const InfoTab = ({ dataDokter, isLoadingDokter }: PropTypes) => {
               control={control}
               render={({ field }) => (
                 <Select
-                  value={field.value ? String(field.value) : undefined}
+                  value={
+                    field.value
+                      ? String(field.value)
+                      : String(dataDokter.poliId)
+                  }
                   onValueChange={(value) => field.onChange(Number(value))}
                   disabled={isLoadingPoli || isPendingMutateUpdateDokter}
                 >

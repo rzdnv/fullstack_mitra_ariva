@@ -226,6 +226,7 @@ const useDetailBerita = () => {
     handleSubmit,
     errors,
     watch,
+    setValue,
     reset,
 
     // image

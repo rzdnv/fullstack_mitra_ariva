@@ -21,7 +21,7 @@ const CardDokter = (props: PropTypes) => {
   return (
     <div
       onClick={() => router.push(`/dokter/${_id}`)}
-      className="group hover:border-havelock-blue-200 relative grid h-full cursor-pointer grid-cols-1 gap-5 rounded-2xl border border-slate-100 bg-white p-4 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-100 lg:grid-cols-2"
+      className="group hover:border-havelock-blue-200 relative grid h-full cursor-pointer grid-cols-1 gap-5 rounded-2xl border border-slate-100 bg-white p-4 shadow-xs ring-1 ring-slate-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-100 lg:grid-cols-2"
     >
       {/* Area Foto Dokter */}
       <div className="relative aspect-3/4 w-full overflow-hidden rounded-xl bg-slate-50 lg:h-full">

@@ -22,6 +22,7 @@ export async function getAllBerita() {
         select: {
           id: true,
           nama: true,
+          foto: true,
           spesialis: true,
           poli: true,
         },
@@ -100,6 +101,7 @@ export async function getBeritaByUser(userId: number) {
         select: {
           id: true,
           nama: true,
+          foto: true,
           spesialis: true,
           poli: true,
         },
@@ -124,6 +126,7 @@ export async function getBeritaById(id: number) {
         select: {
           id: true,
           nama: true,
+          foto: true,
           spesialis: true,
           poli: true,
         },
@@ -154,6 +157,7 @@ export async function createBerita(data: CreateBeritaInput) {
         select: {
           id: true,
           nama: true,
+          foto: true,
           spesialis: true,
           poli: true,
         },
@@ -195,6 +199,7 @@ export async function updateBerita(id: number, data: UpdateBeritaInput) {
         select: {
           id: true,
           nama: true,
+          foto: true,
           spesialis: true,
           poli: true,
         },
