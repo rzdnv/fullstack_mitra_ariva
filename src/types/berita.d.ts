@@ -8,6 +8,7 @@ interface IBerita {
   userId: number;
   user: IUser;
   createdAt: string;
+  dokterId: number;
 }
 
 interface ICreateBerita {
@@ -15,6 +16,7 @@ interface ICreateBerita {
   isi: string;
   gambar: string;
   userId: number;
+  dokterId?: number;
 }
 
 interface IUpdateBerita {
@@ -22,6 +24,7 @@ interface IUpdateBerita {
   isi?: string;
   gambar?: string;
   userId?: number;
+  dokterId?: number;
 }
 
 interface IBeritaParams {

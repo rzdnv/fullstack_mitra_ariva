@@ -20,6 +20,14 @@ import useDetailBerita from "./useDetailBerita";
 import InputImage from "@/components/shared/InputImage/InputImage";
 import TiptapEditor from "@/components/ui/TiptapEditor";
 import Image from "next/image";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { IDokter } from "@/types/dokter";
 
 const DetailBerita = () => {
   const {
@@ -40,6 +48,9 @@ const DetailBerita = () => {
     isDeletingFoto,
     handleUploadFoto,
     handleRemoveFoto,
+
+    dataDokters,
+    isLoadingDokters,
   } = useDetailBerita();
 
   const gambar = watch("gambar");
@@ -50,6 +61,7 @@ const DetailBerita = () => {
         judul: dataBerita.judul,
         isi: dataBerita.isi,
         gambar: dataBerita.gambar,
+        dokterId: dataBerita.dokterId,
       });
     }
   }, [dataBerita, reset]);
@@ -140,6 +152,50 @@ const DetailBerita = () => {
                     {errors.judul.message}
                   </FieldDescription>
                 )}
+              </Field>
+
+              {/* Dokter */}
+              <Field data-invalid={!!errors.dokterId}>
+                <FieldLabel>Dokter</FieldLabel>
+
+                <Controller
+                  name="dokterId"
+                  control={control}
+                  render={({ field }) => (
+                    <Select
+                      // value={field.value ? String(field.value) : undefined}
+                      // value={String(dataBerita.dokterId)}
+                      onValueChange={(value) => field.onChange(Number(value))}
+                      disabled={isPendingMutateUpdateBerita}
+                    >
+                      <SelectTrigger aria-invalid={!!errors.dokterId}>
+                        <SelectValue
+                          placeholder={
+                            isLoadingDokters
+                              ? "Memuat dokter..."
+                              : "Pilih dokter"
+                          }
+                        />
+                      </SelectTrigger>
+
+                      <SelectContent>
+                        {dataDokters?.map((dokter: IDokter) => (
+                          <SelectItem
+                            key={dokter.id}
+                            value={dokter.id.toString()}
+                          >
+                            {dokter.nama}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  )}
+                />
+
+                <FieldDescription className="mt-1 w-full text-sm text-gray-500 italic">
+                  Sematkan nama dokter jika artikel/berita tersebut ditulis oleh
+                  atau bersumber dari dokter yang bersangkutan.
+                </FieldDescription>
               </Field>
 
               {/* ISI */}

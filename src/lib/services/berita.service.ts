@@ -18,6 +18,14 @@ export async function getAllBerita() {
           role: true,
         },
       },
+      dokter: {
+        select: {
+          id: true,
+          nama: true,
+          spesialis: true,
+          poli: true,
+        },
+      },
     },
   });
 }
@@ -52,6 +60,14 @@ export async function getBeritaPaginated({
             role: true,
           },
         },
+        dokter: {
+          select: {
+            id: true,
+            nama: true,
+            spesialis: true,
+            poli: true,
+          },
+        },
       },
       orderBy: { createdAt: "desc" },
     }),
@@ -80,6 +96,14 @@ export async function getBeritaByUser(userId: number) {
           role: true,
         },
       },
+      dokter: {
+        select: {
+          id: true,
+          nama: true,
+          spesialis: true,
+          poli: true,
+        },
+      },
     },
     orderBy: { createdAt: "desc" },
   });
@@ -96,6 +120,14 @@ export async function getBeritaById(id: number) {
           role: true,
         },
       },
+      dokter: {
+        select: {
+          id: true,
+          nama: true,
+          spesialis: true,
+          poli: true,
+        },
+      },
     },
   });
 }
@@ -108,6 +140,7 @@ export async function createBerita(data: CreateBeritaInput) {
       isi: data.isi,
       gambar: data.gambar,
       userId: data.userId,
+      dokterId: data.dokterId,
     },
     include: {
       user: {
@@ -115,6 +148,14 @@ export async function createBerita(data: CreateBeritaInput) {
           id: true,
           username: true,
           role: true,
+        },
+      },
+      dokter: {
+        select: {
+          id: true,
+          nama: true,
+          spesialis: true,
+          poli: true,
         },
       },
     },
@@ -140,6 +181,7 @@ export async function updateBerita(id: number, data: UpdateBeritaInput) {
       isi: data.isi,
       gambar: data.gambar,
       userId: data.userId,
+      dokterId: data.dokterId,
     },
     include: {
       user: {
@@ -147,6 +189,14 @@ export async function updateBerita(id: number, data: UpdateBeritaInput) {
           id: true,
           username: true,
           role: true,
+        },
+      },
+      dokter: {
+        select: {
+          id: true,
+          nama: true,
+          spesialis: true,
+          poli: true,
         },
       },
     },

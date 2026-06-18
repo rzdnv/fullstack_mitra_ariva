@@ -1,5 +1,6 @@
 import { FILE_SIZE, validateFile } from "@/lib/validate-file";
 import beritaServices from "@/services/berita.service";
+import dokterServices from "@/services/dokter.service";
 import uploadServices from "@/services/upload.service";
 import { IUpdateBerita } from "@/types/berita";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -23,6 +24,8 @@ const updateBeritaSchema = z.object({
   isi: z.string().min(1, "Isi berita wajib diisi"),
 
   gambar: z.string().min(1, "gambar wajib diupload"),
+
+  dokterId: z.number().int().positive().optional(),
 });
 
 export type UpdateBeritaValues = z.infer<typeof updateBeritaSchema>;
@@ -81,7 +84,18 @@ const useDetailBerita = () => {
       judul: "",
       isi: "",
       gambar: "",
+      dokterId: 0,
     },
+  });
+
+  const getDokters = async () => {
+    const { data } = await dokterServices.getAll();
+    return data.data;
+  };
+
+  const { data: dataDokters, isLoading: isLoadingDokters } = useQuery({
+    queryKey: ["dokter"],
+    queryFn: getDokters,
   });
 
   // UPLOAD FOTO
@@ -193,7 +207,7 @@ const useDetailBerita = () => {
   });
 
   const handleUpdateBerita = (data: IUpdateBerita) => {
-    // console.log("SUBMIT DATA Berita:", data);
+    console.log("SUBMIT DATA Berita:", data);
     mutateUpdateBerita(data);
   };
 
@@ -220,6 +234,9 @@ const useDetailBerita = () => {
     isDeletingFoto,
     handleUploadFoto,
     handleRemoveFoto,
+
+    dataDokters,
+    isLoadingDokters,
   };
 };
 
