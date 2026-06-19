@@ -207,7 +207,7 @@ const useDetailBerita = () => {
   });
 
   const handleUpdateBerita = (data: IUpdateBerita) => {
-    console.log("SUBMIT DATA Berita:", data);
+    // console.log("SUBMIT DATA Berita:", data);
     mutateUpdateBerita(data);
   };
 
