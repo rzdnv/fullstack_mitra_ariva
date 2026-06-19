@@ -28,7 +28,7 @@ export default function CardNews({
   return (
     <div
       onClick={() => router.push(`/berita/${_id}`)}
-      className="group hover:border-havelock-blue-300 hover:shadow-havelock-blue-950/5 grid h-36 w-full shrink-0 cursor-pointer grid-cols-5 overflow-hidden rounded-2xl border border-slate-100 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+      className="group hover:border-havelock-blue-300 hover:shadow-havelock-blue-950/5 grid h-36 w-full shrink-0 cursor-pointer grid-cols-5 overflow-hidden rounded-2xl border border-slate-100 bg-white ring-1 ring-slate-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
     >
       <div className="relative col-span-2 h-full w-full overflow-hidden">
         <Image

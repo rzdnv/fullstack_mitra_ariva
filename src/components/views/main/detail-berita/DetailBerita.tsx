@@ -126,6 +126,51 @@ const DetailBerita = () => {
               __html: detailBerita.isi,
             }}
           />
+
+          {detailBerita.dokter && (
+            <div className="group hover:border-havelock-blue-200 relative mt-10 flex flex-col justify-between gap-5 overflow-hidden rounded-2xl border border-slate-100 bg-linear-to-br from-slate-50 to-white p-5 shadow-xs ring-1 ring-slate-200 transition-all duration-300 hover:shadow-md sm:flex-row sm:items-center md:p-6">
+              <div className="bg-havelock-blue-500 absolute top-0 left-0 h-full w-1 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+              <div className="flex items-center gap-4 md:gap-5">
+                <div className="group-hover:border-havelock-blue-400 relative h-16 w-16 shrink-0 overflow-hidden rounded-full border-2 border-slate-200/80 bg-slate-50 p-0.5 shadow-2xs transition-transform duration-300 lg:h-20 lg:w-20">
+                  <div className="relative h-full w-full overflow-hidden rounded-full">
+                    <Image
+                      src={detailBerita.dokter.foto}
+                      alt={detailBerita.dokter.nama}
+                      fill
+                      className="object-cover object-center"
+                      priority
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-1">
+                  <div className="bg-havelock-blue-50 text-havelock-blue-600 inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-[10px] font-medium tracking-wider uppercase">
+                    <span className="bg-havelock-blue-500 h-1 w-1 animate-pulse rounded-full" />
+                    Penulis & Peninjau Medis
+                  </div>
+
+                  <h4 className="font-DMSerif group-hover:text-havelock-blue-600 text-base text-slate-800 transition-colors duration-200 lg:text-lg">
+                    {detailBerita.dokter.nama}
+                  </h4>
+
+                  <div className="flex flex-col gap-0.5 text-xs text-slate-500 lg:text-sm">
+                    <p className="font-semibold text-emerald-600">
+                      {detailBerita.dokter.spesialis}
+                    </p>
+                    {detailBerita.dokter.poli && (
+                      <p className="flex items-center gap-1">
+                        <span>Unit Layanan:</span>
+                        <span className="font-medium text-slate-700">
+                          {detailBerita.dokter.poli.namaPoli}
+                        </span>
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
 
         <aside className="lg:col-span-1">

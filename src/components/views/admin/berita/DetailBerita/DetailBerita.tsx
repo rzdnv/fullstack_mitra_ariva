@@ -163,8 +163,11 @@ const DetailBerita = () => {
                   control={control}
                   render={({ field }) => (
                     <Select
-                      // value={field.value ? String(field.value) : undefined}
-                      // value={String(dataBerita.dokterId)}
+                      value={
+                        field.value
+                          ? String(field.value)
+                          : String(dataBerita.dokterId)
+                      }
                       onValueChange={(value) => field.onChange(Number(value))}
                       disabled={isPendingMutateUpdateBerita}
                     >
