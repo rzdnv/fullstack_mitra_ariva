@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useEffect, useRef, useState } from "react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { toast } from "sonner";
 
@@ -11,6 +11,7 @@ import beritaServices from "@/services/berita.service";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { FILE_SIZE, validateFile } from "@/lib/validate-file";
+import dokterServices from "@/services/dokter.service";
 
 // Schema
 const tambahBeritaSchema = z.object({
@@ -19,6 +20,8 @@ const tambahBeritaSchema = z.object({
   isi: z.string().min(1, "Isi berita wajib diisi"),
 
   gambar: z.string().min(1, "gambar wajib diupload"),
+
+  dokterId: z.number().int().positive().optional(),
 });
 
 export type TambahBeritaValues = z.infer<typeof tambahBeritaSchema>;
@@ -79,7 +82,18 @@ const useTambahBerita = () => {
       judul: "",
       isi: "",
       gambar: "",
+      dokterId: 0,
     },
+  });
+
+  const getDokters = async () => {
+    const { data } = await dokterServices.getAll();
+    return data.data;
+  };
+
+  const { data: dataDokters, isLoading: isLoadingDokters } = useQuery({
+    queryKey: ["dokter"],
+    queryFn: getDokters,
   });
 
   // UPLOAD FOTO
@@ -224,6 +238,10 @@ const useTambahBerita = () => {
     handleUploadFoto,
     handleRemoveFoto,
     handleResetForm,
+
+    // dokter
+    dataDokters,
+    isLoadingDokters,
   };
 };
 

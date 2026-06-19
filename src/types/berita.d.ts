@@ -6,7 +6,9 @@ interface IBerita {
   isi: string;
   gambar: string;
   userId: number;
+  dokterId: number;
   user: IUser;
+  berita: IBerita;
   createdAt: string;
 }
 
@@ -15,6 +17,7 @@ interface ICreateBerita {
   isi: string;
   gambar: string;
   userId: number;
+  dokterId?: number;
 }
 
 interface IUpdateBerita {
@@ -22,6 +25,7 @@ interface IUpdateBerita {
   isi?: string;
   gambar?: string;
   userId?: number;
+  dokterId?: number;
 }
 
 interface IBeritaParams {

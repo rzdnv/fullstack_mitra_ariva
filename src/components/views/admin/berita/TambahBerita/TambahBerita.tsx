@@ -9,6 +9,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { IDokter } from "@/types/dokter";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -34,6 +42,9 @@ const TambahBerita = () => {
     handleUploadFoto,
     handleRemoveFoto,
     handleResetForm,
+
+    dataDokters,
+    isLoadingDokters,
   } = useTambahBerita();
 
   return (
@@ -107,6 +118,49 @@ const TambahBerita = () => {
                     {errors.judul.message}
                   </FieldDescription>
                 )}
+              </Field>
+
+              {/* Dokter */}
+              <Field data-invalid={!!errors.dokterId}>
+                <FieldLabel>Dokter</FieldLabel>
+
+                <Controller
+                  name="dokterId"
+                  control={control}
+                  render={({ field }) => (
+                    <Select
+                      value={field.value ? String(field.value) : undefined}
+                      onValueChange={(value) => field.onChange(Number(value))}
+                      disabled={isPendingCreate}
+                    >
+                      <SelectTrigger aria-invalid={!!errors.dokterId}>
+                        <SelectValue
+                          placeholder={
+                            isLoadingDokters
+                              ? "Memuat dokter..."
+                              : "Pilih dokter"
+                          }
+                        />
+                      </SelectTrigger>
+
+                      <SelectContent>
+                        {dataDokters?.map((dokter: IDokter) => (
+                          <SelectItem
+                            key={dokter.id}
+                            value={dokter.id.toString()}
+                          >
+                            {dokter.nama}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  )}
+                />
+
+                <FieldDescription className="mt-1 w-full text-sm text-gray-500 italic">
+                  Sematkan nama dokter jika artikel/berita tersebut ditulis oleh
+                  atau bersumber dari dokter yang bersangkutan.
+                </FieldDescription>
               </Field>
 
               {/* ISI BERITA */}

@@ -18,6 +18,14 @@ export async function getAllBerita() {
           role: true,
         },
       },
+      dokter: {
+        select: {
+          id: true,
+          nama: true,
+          spesialis: true,
+          poli: true,
+        },
+      },
     },
   });
 }
@@ -80,6 +88,14 @@ export async function getBeritaByUser(userId: number) {
           role: true,
         },
       },
+      dokter: {
+        select: {
+          id: true,
+          nama: true,
+          spesialis: true,
+          poli: true,
+        },
+      },
     },
     orderBy: { createdAt: "desc" },
   });
@@ -94,6 +110,14 @@ export async function getBeritaById(id: number) {
           id: true,
           username: true,
           role: true,
+        },
+      },
+      dokter: {
+        select: {
+          id: true,
+          nama: true,
+          spesialis: true,
+          poli: true,
         },
       },
     },
@@ -117,6 +141,14 @@ export async function createBerita(data: CreateBeritaInput) {
           role: true,
         },
       },
+      dokter: {
+        select: {
+          id: true,
+          nama: true,
+          spesialis: true,
+          poli: true,
+        },
+      },
     },
   });
 }
@@ -136,6 +168,14 @@ export async function updateBerita(id: number, data: UpdateBeritaInput) {
           id: true,
           username: true,
           role: true,
+        },
+      },
+      dokter: {
+        select: {
+          id: true,
+          nama: true,
+          spesialis: true,
+          poli: true,
         },
       },
     },
