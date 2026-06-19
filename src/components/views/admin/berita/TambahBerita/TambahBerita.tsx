@@ -130,7 +130,9 @@ const TambahBerita = () => {
                   render={({ field }) => (
                     <Select
                       value={field.value ? String(field.value) : undefined}
-                      onValueChange={(value) => field.onChange(Number(value))}
+                      onValueChange={(val) =>
+                        field.onChange(val === "none" ? undefined : Number(val))
+                      }
                       disabled={isPendingCreate}
                     >
                       <SelectTrigger aria-invalid={!!errors.dokterId}>
@@ -144,6 +146,7 @@ const TambahBerita = () => {
                       </SelectTrigger>
 
                       <SelectContent>
+                        <SelectItem value="none">Tidak ada</SelectItem>
                         {dataDokters?.map((dokter: IDokter) => (
                           <SelectItem
                             key={dokter.id}

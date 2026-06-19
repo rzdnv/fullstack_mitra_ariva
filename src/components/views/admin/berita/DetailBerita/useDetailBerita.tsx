@@ -25,7 +25,7 @@ const updateBeritaSchema = z.object({
 
   gambar: z.string().min(1, "gambar wajib diupload"),
 
-  dokterId: z.number().int().positive().optional(),
+  dokterId: z.number().int().positive().optional().nullable(),
 });
 
 export type UpdateBeritaValues = z.infer<typeof updateBeritaSchema>;
@@ -84,7 +84,7 @@ const useDetailBerita = () => {
       judul: "",
       isi: "",
       gambar: "",
-      dokterId: 0,
+      dokterId: undefined,
     },
   });
 
@@ -208,7 +208,10 @@ const useDetailBerita = () => {
 
   const handleUpdateBerita = (data: IUpdateBerita) => {
     // console.log("SUBMIT DATA Berita:", data);
-    mutateUpdateBerita(data);
+    mutateUpdateBerita({
+      ...data,
+      dokterId: data.dokterId || undefined,
+    });
   };
 
   return {

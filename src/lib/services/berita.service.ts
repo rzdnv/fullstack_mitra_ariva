@@ -143,7 +143,7 @@ export async function createBerita(data: CreateBeritaInput) {
       isi: data.isi,
       gambar: data.gambar,
       userId: data.userId,
-      dokterId: data.dokterId,
+      dokterId: data.dokterId ?? null,
     },
     include: {
       user: {
@@ -185,7 +185,7 @@ export async function updateBerita(id: number, data: UpdateBeritaInput) {
       isi: data.isi,
       gambar: data.gambar,
       userId: data.userId,
-      dokterId: data.dokterId,
+      dokterId: data.dokterId ?? null,
     },
     include: {
       user: {

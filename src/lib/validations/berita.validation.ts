@@ -8,7 +8,7 @@ export const createBeritaSchema = z.object({
     .number()
     .int()
     .positive({ message: "User id wajib dipilih" }),
-  dokterId: z.number().int().positive().optional(),
+  dokterId: z.number().int().positive().optional().nullable(),
 });
 
 export const updateBeritaSchema = z.object({
@@ -17,7 +17,7 @@ export const updateBeritaSchema = z.object({
   gambar: z.string().min(1, "Format URL foto tidak valid").optional(),
 
   userId: z.number().int().positive().optional(),
-  dokterId: z.number().int().positive().optional(),
+  dokterId: z.number().int().positive().optional().nullable(),
 });
 
 export type CreateBeritaInput = z.infer<typeof createBeritaSchema>;
