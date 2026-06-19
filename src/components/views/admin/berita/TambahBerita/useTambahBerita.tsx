@@ -21,7 +21,7 @@ const tambahBeritaSchema = z.object({
 
   gambar: z.string().min(1, "gambar wajib diupload"),
 
-  dokterId: z.number().int().positive().optional(),
+  dokterId: z.number().int().positive().optional().nullable(),
 });
 
 export type TambahBeritaValues = z.infer<typeof tambahBeritaSchema>;
@@ -82,7 +82,7 @@ const useTambahBerita = () => {
       judul: "",
       isi: "",
       gambar: "",
-      dokterId: 0,
+      dokterId: undefined,
     },
   });
 
@@ -219,6 +219,7 @@ const useTambahBerita = () => {
     mutateCreateBerita({
       ...values,
       userId,
+      dokterId: values.dokterId || undefined,
     });
   };
 

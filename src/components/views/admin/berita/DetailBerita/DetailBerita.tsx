@@ -55,6 +55,8 @@ const DetailBerita = () => {
 
   const gambar = watch("gambar");
 
+  // console.log("data berita : " + dataBerita?.dokter);
+
   useEffect(() => {
     if (dataBerita) {
       reset({
@@ -168,7 +170,10 @@ const DetailBerita = () => {
                           ? String(field.value)
                           : String(dataBerita.dokterId)
                       }
-                      onValueChange={(value) => field.onChange(Number(value))}
+                      // onValueChange={(value) => field.onChange(Number(value))}
+                      onValueChange={(val) =>
+                        field.onChange(val === "none" ? undefined : Number(val))
+                      }
                       disabled={isPendingMutateUpdateBerita}
                     >
                       <SelectTrigger aria-invalid={!!errors.dokterId}>
@@ -182,6 +187,7 @@ const DetailBerita = () => {
                       </SelectTrigger>
 
                       <SelectContent>
+                        <SelectItem value="none">Tidak ada</SelectItem>
                         {dataDokters?.map((dokter: IDokter) => (
                           <SelectItem
                             key={dokter.id}
