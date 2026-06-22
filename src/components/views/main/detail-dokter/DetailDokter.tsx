@@ -54,7 +54,7 @@ const DetailDokter = () => {
         </div>
       </section>
 
-      <div className="mx-auto max-w-6xl pt-6">
+      <div className="mx-auto max-w-6xl px-4 pt-6">
         <button
           onClick={() => router.back()}
           className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-600 shadow-2xs transition-all duration-200 hover:bg-slate-50 hover:text-slate-900 active:scale-98"
@@ -77,6 +77,39 @@ const DetailDokter = () => {
                   className="object-cover object-center"
                   priority
                 />
+              </div>
+              <div className="hidden space-y-3 border-slate-100 pt-5 md:block">
+                <h4 className="font-DMSerif text-xl text-slate-900 md:text-2xl">
+                  Jadwal Praktik Dokter
+                </h4>
+
+                <div className="grid grid-cols-1 gap-3">
+                  {detailDokter.jadwal && detailDokter.jadwal.length > 0 ? (
+                    detailDokter.jadwal.map((jdwl: IJadwal) => (
+                      <div
+                        key={jdwl.id}
+                        className="flex flex-col justify-between rounded-2xl border border-slate-50 bg-slate-50/50 p-3 ring-1 ring-slate-200 transition-colors hover:bg-slate-50"
+                      >
+                        <div className="mb-2 flex items-center gap-2">
+                          <Calendar className="h-4 w-4 text-slate-500" />
+                          <span className="text-sm font-bold tracking-wide text-slate-800">
+                            {jdwl.hari}
+                          </span>
+                        </div>
+                        <div className="flex w-fit items-center gap-1.5 rounded-xl border border-slate-100 bg-white px-2.5 py-1.5 text-xs font-semibold text-slate-600">
+                          <Clock className="h-3.5 w-3.5 text-slate-400" />
+                          <span>
+                            {jdwl.jamMulai} - {jdwl.jamSelesai}
+                          </span>
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <p className="py-2 text-sm text-slate-500 sm:col-span-2 lg:col-span-3">
+                      Tidak ada jadwal praktik saat ini.
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
 
@@ -101,9 +134,9 @@ const DetailDokter = () => {
                 </div>
 
                 <div className="prose prose-slate max-w-none border-t border-slate-100 pt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
-                  <h4 className="font-DMSerif mb-2 text-base text-slate-900">
+                  {/* <h4 className="font-DMSerif mb-2 text-base text-slate-900">
                     Tentang Dokter
-                  </h4>
+                  </h4> */}
                   <div
                     className="prose prose-slate max-w-none space-y-4 text-sm leading-relaxed text-slate-700 sm:text-base [&_ol]:list-decimal [&_ol]:pl-5 [&_p]:text-justify [&_p]:leading-relaxed [&_strong]:font-semibold [&_strong]:text-slate-900 [&_ul]:list-disc [&_ul]:pl-5"
                     dangerouslySetInnerHTML={{
@@ -112,8 +145,8 @@ const DetailDokter = () => {
                   />
                 </div>
 
-                <div className="space-y-3 border-t border-slate-100 pt-5">
-                  <h4 className="font-DMSerif text-base text-slate-900">
+                <div className="block space-y-3 border-t border-slate-100 pt-5 md:hidden">
+                  <h4 className="font-DMSerif text-xl text-slate-900 md:text-2xl">
                     Jadwal Praktik Dokter
                   </h4>
 
@@ -122,7 +155,7 @@ const DetailDokter = () => {
                       detailDokter.jadwal.map((jdwl: IJadwal) => (
                         <div
                           key={jdwl.id}
-                          className="flex flex-col justify-between rounded-2xl border border-slate-50 bg-slate-50/50 p-3 transition-colors hover:bg-slate-50"
+                          className="flex flex-col justify-between rounded-2xl border border-slate-50 bg-slate-50/50 p-3 ring-1 ring-slate-200 transition-colors hover:bg-slate-50"
                         >
                           <div className="mb-2 flex items-center gap-2">
                             <Calendar className="h-4 w-4 text-slate-500" />
