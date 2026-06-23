@@ -44,6 +44,7 @@ import useLayananList from "./useLayananList";
 import { ILayanan } from "@/types/layanan";
 import { useRouter } from "next/navigation";
 import { truncateHtml } from "@/components/shared/truncatHtml/truncatHtml";
+import { formatTanggal } from "@/components/shared/formatted/formated";
 
 export default function LayananList() {
   const router = useRouter();
@@ -139,6 +140,7 @@ export default function LayananList() {
               <TableHead>Foto</TableHead>
               <TableHead>Nama Layanan</TableHead>
               <TableHead>Deskripsi</TableHead>
+              <TableHead>Tanggal</TableHead>
               <TableHead className="text-center">Aksi</TableHead>
             </TableRow>
           </TableHeader>
@@ -154,6 +156,9 @@ export default function LayananList() {
                   </TableCell>
                   <TableCell>
                     <Skeleton className="h-4 w-40" />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton className="h-4 w-32" />
                   </TableCell>
                   <TableCell>
                     <Skeleton className="h-4 w-32" />
@@ -194,8 +199,10 @@ export default function LayananList() {
                       className="h-auto w-25 rounded-md object-cover"
                     />
                   </TableCell>
-                  <TableCell className="font-medium text-slate-800">
-                    {layanan.namaLayanan}
+                  <TableCell className="max-w-sm">
+                    <p className="wrap-break-words line-clamp-2 font-medium whitespace-normal text-slate-800">
+                      {layanan.namaLayanan}
+                    </p>
                   </TableCell>
                   <TableCell className="max-w-sm">
                     <p
@@ -204,6 +211,9 @@ export default function LayananList() {
                     >
                       {truncateHtml(layanan.deskripsi, 100)}
                     </p>
+                  </TableCell>
+                  <TableCell className="font-medium text-slate-800">
+                    {formatTanggal(layanan.createdAt)}
                   </TableCell>
 
                   <TableCell>

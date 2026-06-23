@@ -31,7 +31,7 @@ const CardService = (props: PropTypes) => {
           alt={namaLayanan}
           fill
           sizes="(max-width: 768px) 100vw, 340px"
-          className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+          className="object-cover object-center transition-transform duration-700 ease-out"
           priority
         />
         <div className="absolute inset-0 bg-linear-to-t from-slate-900/90 via-slate-900/40 to-transparent transition-opacity duration-300 group-hover:via-slate-950/50" />
@@ -47,7 +47,7 @@ const CardService = (props: PropTypes) => {
             Program Layanan
           </span>
 
-          <h3 className="font-playfair group-hover:text-havelock-blue-200 text-base leading-tight font-bold tracking-wide transition-colors duration-300 sm:text-lg">
+          <h3 className="font-DMSerif group-hover:text-havelock-blue-200 text-base leading-tight tracking-wide transition-colors duration-300 sm:text-lg">
             {namaLayanan}
           </h3>
 

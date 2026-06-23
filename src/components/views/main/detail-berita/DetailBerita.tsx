@@ -124,7 +124,7 @@ const DetailBerita = () => {
           </div>
 
           <div
-            className="prose prose-slate max-w-none space-y-4 text-sm leading-relaxed text-slate-700 sm:text-base [&_ol]:list-decimal [&_ol]:pl-5 [&_p]:text-justify [&_p]:leading-relaxed [&_strong]:font-semibold [&_strong]:text-slate-900 [&_ul]:list-disc [&_ul]:pl-5"
+            className="prose-custom-layanan"
             dangerouslySetInnerHTML={{
               __html: detailBerita.isi,
             }}

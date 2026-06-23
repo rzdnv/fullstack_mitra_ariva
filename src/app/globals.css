@@ -5,6 +5,8 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+@plugin "@tailwindcss/typography";
+
 @custom-variant dark (&:is(.dark *));
 
 @theme {
@@ -322,6 +324,26 @@
   /* Efek saat scrollbar didekati kursor */
   &::-webkit-scrollbar-thumb:hover {
     background-color: var(--color-slate-400);
+  }
+}
+
+@layer components {
+  .prose-custom-layanan {
+    @apply prose prose-slate max-w-none space-y-4 text-sm leading-relaxed text-slate-700 sm:text-base;
+
+    /* Styling untuk Paragraf & Teks Tebal */
+    @apply [&_p]:text-justify [&_p]:leading-relaxed;
+    @apply [&_strong]:font-semibold [&_strong]:text-slate-900;
+
+    /* Styling untuk List (Bullet & Numbering) */
+    @apply [&_ol]:list-decimal [&_ol]:pl-5;
+    @apply [&_ul]:list-disc [&_ul]:pl-5;
+
+    /* Styling untuk Heading 2 (H2) */
+    @apply [&_h2]:mt-6 [&_h2]:mb-2 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-slate-800 md:[&_h2]:text-2xl;
+
+    /* Styling untuk Heading 3 (H3) */
+    @apply [&_h3]:mt-4 [&_h3]:mb-1 [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:text-slate-800 md:[&_h3]:text-xl;
   }
 }
 

@@ -196,8 +196,11 @@ export default function BeritaList() {
                       className="h-auto w-40 rounded-md object-cover"
                     />
                   </TableCell>
-                  <TableCell className="font-medium text-slate-800">
-                    {berita.judul}
+
+                  <TableCell className="max-w-sm">
+                    <p className="wrap-break-words line-clamp-2 font-medium whitespace-normal text-slate-800">
+                      {berita.judul}
+                    </p>
                   </TableCell>
 
                   <TableCell className="font-medium text-slate-800">

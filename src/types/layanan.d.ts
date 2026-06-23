@@ -3,6 +3,7 @@ interface ILayanan {
   namaLayanan: string;
   deskripsi: string;
   foto: string;
+  createdAt: string;
   _count?: { detail: number };
 }
 

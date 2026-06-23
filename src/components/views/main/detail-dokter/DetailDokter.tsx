@@ -1,7 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { Stethoscope, Calendar, Clock, ArrowLeft } from "lucide-react";
+import {
+  Stethoscope,
+  Calendar,
+  Clock,
+  ArrowLeft,
+  CheckCircle2,
+  MessageCircle,
+  PhoneCall,
+} from "lucide-react";
 import { FaInstagram, FaFacebook, FaYoutube } from "react-icons/fa";
 
 import useDetailDokter from "./useDetailDokter";
@@ -11,7 +19,6 @@ import { useRouter } from "next/navigation";
 
 const DetailDokter = () => {
   const { detailDokter, isLoadingDetailDokter } = useDetailDokter();
-
   const router = useRouter();
 
   if (isLoadingDetailDokter) {
@@ -24,7 +31,7 @@ const DetailDokter = () => {
     <main className="min-h-screen bg-slate-50/50 pb-16">
       {/* Hero Section */}
       <section
-        className="relative flex min-h-[45vh] w-full items-end overflow-hidden bg-cover bg-center lg:min-h-[55vh]"
+        className="relative flex min-h-[40vh] w-full items-end overflow-hidden bg-cover bg-center lg:min-h-[48vh]"
         style={{
           backgroundImage: "url('/images/general/RSKB.png')",
         }}
@@ -38,7 +45,7 @@ const DetailDokter = () => {
               alt="RSKB Mitra Ariva"
               width={96}
               height={96}
-              className="h-14 w-14 object-contain lg:h-20 lg:w-20"
+              className="h-13 w-13 object-contain lg:h-18 lg:w-18"
               priority
             />
           </div>
@@ -47,14 +54,15 @@ const DetailDokter = () => {
             <span className="text-havelock-blue-300 block text-xs font-bold tracking-widest uppercase sm:text-sm">
               ✦ Profil & Spesialisasi Dokter
             </span>
-            <h1 className="font-DMSerif text-2xl leading-tight tracking-tight sm:text-3xl lg:text-5xl">
+            <h1 className="font-DMSerif text-2xl leading-tight tracking-tight sm:text-3xl lg:text-4xl">
               {detailDokter.nama}
             </h1>
           </div>
         </div>
       </section>
 
-      <div className="mx-auto max-w-6xl px-4 pt-6 md:px-0">
+      {/* Tombol Kembali */}
+      <div className="mx-auto max-w-7xl px-4 pt-6 lg:px-10">
         <button
           onClick={() => router.back()}
           className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-600 shadow-2xs transition-all duration-200 hover:bg-slate-50 hover:text-slate-900 active:scale-98"
@@ -64,11 +72,13 @@ const DetailDokter = () => {
         </button>
       </div>
 
-      <section className="mx-auto max-w-7xl px-4 py-8 lg:px-10">
-        <div className="rounded-3xl border border-slate-100 bg-white p-5 shadow-xs sm:p-8">
+      {/* Konten Utama */}
+      <section className="mx-auto max-w-7xl px-4 py-6 lg:px-10">
+        <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-xs sm:p-8">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-5">
-            <div className="md:col-span-2">
-              <div className="relative aspect-3/4 w-full overflow-hidden rounded-2xl border border-slate-100 shadow-sm">
+            {/* KOLOM KIRI: FOTO, PENDAFTARAN & JADWAL (DESKTOP) */}
+            <div className="space-y-6 md:col-span-2">
+              <div className="relative aspect-3/4 w-full overflow-hidden rounded-2xl border border-slate-200 shadow-xs">
                 <Image
                   src={detailDokter.foto}
                   alt={detailDokter.nama}
@@ -78,25 +88,61 @@ const DetailDokter = () => {
                   priority
                 />
               </div>
-              <div className="hidden space-y-3 border-slate-100 pt-5 md:block">
-                <h4 className="font-DMSerif text-xl text-slate-900 md:text-2xl">
-                  Jadwal Praktik Dokter
-                </h4>
 
-                <div className="grid grid-cols-1 gap-3">
+              {/* Area Pendaftaran (Muncul di bawah foto untuk Desktop, Tersembunyi di Mobile) */}
+              <div className="hidden space-y-3 border-t border-slate-200 pt-4 md:block">
+                <h4 className="text-xs font-bold tracking-widest text-slate-400 uppercase">
+                  Pendaftaran & Janji Temu Online:
+                </h4>
+                <div className="grid grid-cols-1 gap-2.5">
+                  <a
+                    href="https://play.google.com/store/apps/details?id=app.bpjs.mobile"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 rounded-xl bg-sky-600 px-4 py-2.5 text-xs font-bold text-white shadow-xs transition-all hover:bg-sky-700 active:scale-98"
+                  >
+                    <PhoneCall className="h-4 w-4" />
+                    <span>Registrasi via Mobile JKN</span>
+                  </a>
+                  <a
+                    href={`https://wa.me/6281245489477?text=${encodeURIComponent(
+                      `Halo Admin Customer Care RSKB Mitra Ariva,\n\n` +
+                        `Saya ingin berkonsultasi / mendaftar janji temu online dengan dokter spesialis berikut:\n\n` +
+                        `*Nama Dokter:* ${detailDokter.nama}\n` +
+                        `*Spesialisasi:* ${detailDokter.spesialis}\n` +
+                        `*Poliklinik:* ${detailDokter.poli?.namaPoli || "-"}\n\n` +
+                        `Mohon informasi mengenai kuota ketersediaan pasien umum/asuransi hari ini, berkas persyaratan yang perlu disiapkan, serta estimasi jam kedatangan. Terima kasih.`,
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-4 py-2.5 text-xs font-bold text-white shadow-xs transition-all hover:bg-emerald-700 active:scale-98"
+                  >
+                    <MessageCircle className="h-4 w-4" />
+                    <span>Chat WhatsApp Customer Care</span>
+                  </a>
+                </div>
+              </div>
+
+              {/* Jadwal Praktik Dokter (Muncul di bawah Pendaftaran untuk Desktop, Tersembunyi di Mobile) */}
+              <div className="hidden space-y-3.5 border-t border-slate-200 pt-4 md:block">
+                <div className="flex items-center gap-2 pb-1">
+                  <Calendar className="h-4 w-4 text-slate-400" />
+                  <h4 className="font-DMSerif text-lg text-slate-900">
+                    Jadwal Praktik Dokter
+                  </h4>
+                </div>
+
+                <div className="grid grid-cols-1 gap-2">
                   {detailDokter.jadwal && detailDokter.jadwal.length > 0 ? (
                     detailDokter.jadwal.map((jdwl: IJadwal) => (
                       <div
                         key={jdwl.id}
-                        className="flex flex-col justify-between rounded-2xl border border-slate-50 bg-slate-50/50 p-3 ring-1 ring-slate-200 transition-colors hover:bg-slate-50"
+                        className="hover:bg-havelock-blue-50/30 flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50/50 px-3.5 py-2.5 transition-all duration-200 hover:translate-x-0.5"
                       >
-                        <div className="mb-2 flex items-center gap-2">
-                          <Calendar className="h-4 w-4 text-slate-500" />
-                          <span className="text-sm font-bold tracking-wide text-slate-800">
-                            {jdwl.hari}
-                          </span>
-                        </div>
-                        <div className="flex w-fit items-center gap-1.5 rounded-xl border border-slate-100 bg-white px-2.5 py-1.5 text-xs font-semibold text-slate-600">
+                        <span className="text-xs font-bold tracking-wide text-slate-700 uppercase">
+                          {jdwl.hari}
+                        </span>
+                        <div className="shadow-3xs flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-2 py-1 text-xs font-semibold text-slate-600">
                           <Clock className="h-3.5 w-3.5 text-slate-400" />
                           <span>
                             {jdwl.jamMulai} - {jdwl.jamSelesai}
@@ -105,109 +151,152 @@ const DetailDokter = () => {
                       </div>
                     ))
                   ) : (
-                    <p className="py-2 text-sm text-slate-500 sm:col-span-2 lg:col-span-3">
-                      Tidak ada jadwal praktik saat ini.
+                    <p className="py-2 text-xs text-slate-400 italic">
+                      Tidak ada jadwal praktik aktif saat ini.
                     </p>
                   )}
                 </div>
               </div>
             </div>
 
+            {/* KOLOM KANAN: IDENTITAS, DESKRIPSI & SOSIAL MEDIA */}
             <div className="flex flex-col justify-between space-y-6 md:col-span-3">
               <div className="space-y-5">
                 <div className="space-y-1">
                   <h2 className="font-DMSerif text-2xl leading-tight text-slate-950 sm:text-3xl">
                     {detailDokter.nama}
                   </h2>
-                  <p className="text-sm font-semibold text-slate-500 lg:text-base">
+                  <p className="text-xs font-semibold tracking-wider text-slate-400 uppercase">
                     {detailDokter.spesialis}
                   </p>
                 </div>
 
-                <div className="flex flex-wrap items-center gap-2">
-                  <div className="flex items-center gap-1.5 rounded-full bg-slate-100 px-3 py-1 text-xs sm:text-sm">
-                    <Stethoscope className="text-havelock-blue-500 h-4 w-4" />
-                    <span className="font-medium text-slate-700">
-                      {detailDokter.poli?.namaPoli}
-                    </span>
+                {/* Badge Poliklinik & Asuransi */}
+                <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-4">
+                  <div className="flex items-center gap-1.5 rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-700 uppercase">
+                    <Stethoscope className="text-havelock-blue-500 h-3.5 w-3.5" />
+                    <span>{detailDokter.poli?.namaPoli}</span>
+                  </div>
+                  <div className="flex items-center gap-1 rounded-full border border-sky-100 bg-sky-50 px-2.5 py-1 text-xs font-semibold text-sky-600">
+                    <CheckCircle2 className="h-3.5 w-3.5" /> Menerima BPJS
+                  </div>
+                  <div className="flex items-center gap-1 rounded-full border border-emerald-100 bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-600">
+                    <CheckCircle2 className="h-3.5 w-3.5" /> Umum & Swasta
                   </div>
                 </div>
 
-                <div className="prose prose-slate max-w-none border-t border-slate-100 pt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
-                  {/* <h4 className="font-DMSerif mb-2 text-base text-slate-900">
-                    Tentang Dokter
-                  </h4> */}
+                {/* ALUR KHUSUS MOBILE: Pendaftaran -> Jadwal -> Deskripsi */}
+                <div className="block space-y-5 md:hidden">
+                  {/* Pendaftaran Mobile */}
+                  <div className="space-y-2">
+                    <h4 className="text-xs font-bold tracking-widest text-slate-400 uppercase">
+                      Pendaftaran & Janji Temu Online:
+                    </h4>
+                    <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                      <a
+                        href="https://play.google.com/store/apps/details?id=app.bpjs.mobile"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2 rounded-xl bg-sky-600 px-4 py-2.5 text-xs font-bold text-white"
+                      >
+                        <PhoneCall className="h-4 w-4" />
+                        <span>Registrasi via Mobile JKN</span>
+                      </a>
+                      <a
+                        href={`https://wa.me/6281245489477?text=${encodeURIComponent(
+                          `Halo Admin Customer Care RSKB Mitra Ariva,\n\n` +
+                            `Saya ingin berkonsultasi / mendaftar janji temu online dengan dokter spesialis berikut:\n\n` +
+                            `*Nama Dokter:* ${detailDokter.nama}\n` +
+                            `*Spesialisasi:* ${detailDokter.spesialis}\n` +
+                            `*Poliklinik:* ${detailDokter.poli?.namaPoli || "-"}\n\n` +
+                            `Mohon informasi mengenai kuota ketersediaan pasien umum/asuransi hari ini, berkas persyaratan yang perlu disiapkan, serta estimasi jam kedatangan. Terima kasih.`,
+                        )}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-4 py-2.5 text-xs font-bold text-white"
+                      >
+                        <MessageCircle className="h-4 w-4" />
+                        <span>Chat WhatsApp Customer Care</span>
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Jadwal Mobile */}
+                  <div className="space-y-3 border-t border-slate-200 pt-4">
+                    <div className="flex items-center gap-2 pb-1">
+                      <Calendar className="h-4 w-4 text-slate-400" />
+                      <h4 className="font-DMSerif text-lg text-slate-900">
+                        Jadwal Praktik Dokter
+                      </h4>
+                    </div>
+                    <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                      {detailDokter.jadwal && detailDokter.jadwal.length > 0 ? (
+                        detailDokter.jadwal.map((jdwl: IJadwal) => (
+                          <div
+                            key={jdwl.id}
+                            className="flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50/50 px-3 py-2"
+                          >
+                            <span className="text-xs font-bold text-slate-700 uppercase">
+                              {jdwl.hari}
+                            </span>
+                            <div className="flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-2 py-1 text-xs font-semibold text-slate-600">
+                              <Clock className="h-3.5 w-3.5 text-slate-400" />
+                              <span>
+                                {jdwl.jamMulai} - {jdwl.jamSelesai}
+                              </span>
+                            </div>
+                          </div>
+                        ))
+                      ) : (
+                        <p className="py-2 text-xs text-slate-400 italic">
+                          Tidak ada jadwal praktik aktif saat ini.
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Deskripsi Profil HTML Editor */}
+                <div className="prose-custom-layanan border-t border-slate-200 pt-4 md:border-none md:pt-0">
                   <div
-                    className="prose prose-slate max-w-none space-y-4 text-sm leading-relaxed text-slate-700 sm:text-base [&_ol]:list-decimal [&_ol]:pl-5 [&_p]:text-justify [&_p]:leading-relaxed [&_strong]:font-semibold [&_strong]:text-slate-900 [&_ul]:list-disc [&_ul]:pl-5"
                     dangerouslySetInnerHTML={{
                       __html: detailDokter.deskripsi,
                     }}
                   />
                 </div>
-
-                <div className="block space-y-3 border-t border-slate-100 pt-5 md:hidden">
-                  <h4 className="font-DMSerif text-xl text-slate-900 md:text-2xl">
-                    Jadwal Praktik Dokter
-                  </h4>
-
-                  <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                    {detailDokter.jadwal && detailDokter.jadwal.length > 0 ? (
-                      detailDokter.jadwal.map((jdwl: IJadwal) => (
-                        <div
-                          key={jdwl.id}
-                          className="flex flex-col justify-between rounded-2xl border border-slate-50 bg-slate-50/50 p-3 ring-1 ring-slate-200 transition-colors hover:bg-slate-50"
-                        >
-                          <div className="mb-2 flex items-center gap-2">
-                            <Calendar className="h-4 w-4 text-slate-500" />
-                            <span className="text-sm font-bold tracking-wide text-slate-800">
-                              {jdwl.hari}
-                            </span>
-                          </div>
-                          <div className="flex w-fit items-center gap-1.5 rounded-xl border border-slate-100 bg-white px-2.5 py-1.5 text-xs font-semibold text-slate-600">
-                            <Clock className="h-3.5 w-3.5 text-slate-400" />
-                            <span>
-                              {jdwl.jamMulai} - {jdwl.jamSelesai}
-                            </span>
-                          </div>
-                        </div>
-                      ))
-                    ) : (
-                      <p className="py-2 text-sm text-slate-500 sm:col-span-2 lg:col-span-3">
-                        Tidak ada jadwal praktik saat ini.
-                      </p>
-                    )}
-                  </div>
-                </div>
               </div>
 
-              <div className="mt-6 flex items-center gap-3.5 border-t border-slate-100 pt-4 text-xl">
-                <span className="text-xs font-semibold tracking-wider text-slate-400 uppercase">
-                  Ikuti Kami:
-                </span>
-                <a
-                  href="https://instagram.com/rskbmitraariva"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#E4405F] transition-transform duration-300 hover:scale-110"
-                >
-                  <FaInstagram />
-                </a>
-                <a
-                  href="https://www.facebook.com/p/RSKB-Mitra-Ariva-100077028291181/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#1877F2] transition-transform duration-300 hover:scale-110"
-                >
-                  <FaFacebook />
-                </a>
-                <a
-                  href="https://www.youtube.com/channel/UCjG64fMScEg1dIhQHTI4_fg"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#FF0000] transition-transform duration-300 hover:scale-110"
-                >
-                  <FaYoutube />
-                </a>
+              {/* SOSIAL MEDIA RS (Paling Bawah Card Kanan) */}
+              <div className="border-t border-slate-200 pt-4">
+                <div className="flex items-center gap-3.5 pt-1 text-xl">
+                  <span className="text-[11px] font-bold tracking-wider text-slate-400 uppercase">
+                    Ikuti Kami:
+                  </span>
+                  <a
+                    href="https://instagram.com/rskbmitraariva"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#E4405F] transition-transform duration-300 hover:scale-110"
+                  >
+                    <FaInstagram />
+                  </a>
+                  <a
+                    href="https://www.facebook.com/p/RSKB-Mitra-Ariva-100077028291181/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#1877F2] transition-transform duration-300 hover:scale-110"
+                  >
+                    <FaFacebook />
+                  </a>
+                  <a
+                    href="https://www.youtube.com/channel/UCjG64fMScEg1dIhQHTI4_fg"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#FF0000] transition-transform duration-300 hover:scale-110"
+                  >
+                    <FaYoutube />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
