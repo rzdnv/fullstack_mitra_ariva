@@ -10,9 +10,12 @@ import useDetailBerita from "./useDetailBerita";
 import { IBerita } from "@/types/berita";
 import LoadingState from "@/components/shared/loadingstate/LoadingState";
 import CardNews from "@/components/shared/card/CardNews/CardNews";
+import { useRouter } from "next/navigation";
 
 const DetailBerita = () => {
   const { dataBerita, detailBerita, isLoadingDetailBerita } = useDetailBerita();
+
+  const router = useRouter();
 
   if (isLoadingDetailBerita) {
     return <LoadingState judul="Memuat Berita" />;
@@ -128,7 +131,10 @@ const DetailBerita = () => {
           />
 
           {detailBerita.dokter && (
-            <div className="group hover:border-havelock-blue-200 relative mt-10 flex flex-col justify-between gap-5 overflow-hidden rounded-2xl border border-slate-100 bg-linear-to-br from-slate-50 to-white p-5 shadow-xs ring-1 ring-slate-200 transition-all duration-300 hover:shadow-md sm:flex-row sm:items-center md:p-6">
+            <div
+              onClick={() => router.push(`/dokter/${detailBerita.dokter.id}`)}
+              className="group hover:border-havelock-blue-200 relative mt-10 flex flex-col justify-between gap-5 overflow-hidden rounded-2xl border border-slate-100 bg-linear-to-br from-slate-50 to-white p-5 shadow-xs ring-1 ring-slate-200 transition-all duration-300 hover:shadow-md sm:flex-row sm:items-center md:p-6"
+            >
               <div className="bg-havelock-blue-500 absolute top-0 left-0 h-full w-1 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
               <div className="flex items-center gap-4 md:gap-5">
