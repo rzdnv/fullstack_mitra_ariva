@@ -1,4 +1,3 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Card,
   CardContent,
@@ -7,6 +6,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Star } from "lucide-react";
+import Image from "next/image";
 
 interface PropTypes {
   Name: string;
@@ -18,46 +18,23 @@ interface PropTypes {
 
 const CardReview = (props: PropTypes) => {
   const { Name, Date, Review, Rating, Gender } = props;
+
   return (
-    // <Card className=" h-full bg-white shadow-lg">
-    //   <CardHeader className="flex items-center gap-4">
-    //     <Avatar size="lg">
-    //       <AvatarImage
-    //         src={`/images/logo/avatar_${Gender}.png`}
-    //         alt="profile"
-    //       />
-    //       <AvatarFallback>CN</AvatarFallback>
-    //     </Avatar>
-    //     <div>
-    //       <CardTitle className="text-slate-800 ">{Name}</CardTitle>
-    //       <CardDescription className="text-xs ">{Date}</CardDescription>
-    //     </div>
-    //   </CardHeader>
-    //   <CardContent className="flex flex-col gap-2 h-full">
-    //     <p className="line-clamp-3 mb-auto text-xs md:text-sm px-6 text-slate-900">
-    //       {Review}
-    //     </p>
-    //     <div className="flex items-center gap-1 mt-2">
-    //       <Star className="w-5 h-5 " fill="#FFC81E" stroke="#FFC81E" />
-    //       <span className="font-light text-sm italic">{Rating} Rating</span>
-    //     </div>
-    //   </CardContent>
-    // </Card>
     <Card className="group hover:border-havelock-blue-200 relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-slate-100 bg-white p-1 shadow-sm transition-all duration-300 hover:shadow-md">
-      {/* Menggunakan pembungkus grid 3 baris agar pembagian ruang atas, tengah, bawah selalu konsisten */}
       <div className="grid h-full grid-rows-[auto_1fr_auto] p-3">
-        {/* BARIS 1: Header (Avatar & Nama) */}
         <CardHeader className="flex flex-row items-center gap-3 p-0 pb-3">
-          <Avatar className="h-10 w-10 border border-slate-50 bg-slate-50">
-            <AvatarImage
+          <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border border-slate-100 bg-slate-50">
+            <Image
               src={`/images/logo/avatar_${Gender}.png`}
               alt={Name}
-              className="object-cover"
+              width={100}
+              height={100}
+              className="h-full w-full object-cover"
+              onError={(e) => {
+                e.currentTarget.src = "/images/logo/avatar_pria.png";
+              }}
             />
-            <AvatarFallback className="bg-havelock-blue-50 text-havelock-blue-600 text-xs font-semibold">
-              {Name.slice(0, 2).toUpperCase()}
-            </AvatarFallback>
-          </Avatar>
+          </div>
 
           <div className="space-y-0.5">
             <CardTitle className="group-hover:text-havelock-blue-600 text-xs font-bold text-slate-800 transition-colors duration-300 lg:text-sm">
@@ -69,14 +46,12 @@ const CardReview = (props: PropTypes) => {
           </div>
         </CardHeader>
 
-        {/* BARIS 2: Isi Review (Akan mengambil sisa ruang tengah secara adil) */}
         <CardContent className="p-0 pb-4">
           <p className="line-clamp-4 text-xs leading-relaxed text-slate-600 italic">
             {Review}
           </p>
         </CardContent>
 
-        {/* BARIS 3: Rating Bintang (Mengunci sejajar di dasar boks) */}
         <div className="flex items-center justify-between gap-2 rounded-lg bg-slate-50/80 px-2.5 py-1.5">
           <div className="flex items-center gap-0.5">
             {Array.from({ length: 5 }).map((_, i) => (
